@@ -1,0 +1,105 @@
+\documentclass[10pt,a4paper,hidelinks]{scrartcl} % KOMA-Script article scrartcl
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[nochapters]{../classicthesis} % nochapters
+
+\begin{document}
+    \title{\rmfamily\normalfont\spacedallcaps{Piano di lavoro}}
+    \author{\spacedlowsmallcaps{Nicola Moretto (matr. 578258)}}
+    \date{\today}
+    
+    \maketitle
+    
+    \begin{abstract}
+        \noindent Piano di lavoro settimanale per stage esterno presso \textsf{FondaMente}.
+    \end{abstract}
+       
+    %\tableofcontents
+    
+    \section{Contesto lavorativo}
+	Analisi, progettazione e sviluppo di una piattaforma web tematica per la condivisione di contenuti informativi creati dagli utenti e la vendita diretta di prodotti da parte di aziende medio-piccole o indipententi.
+
+	\section{Piano di lavoro}
+
+	\paragraph{Obiettivi}
+	\begin{enumerate}
+		\item Estendere l'attuale sistema di classificazione della piattaforma al fine di integrare criteri addizionali che facilitino la catalogazione e il recupero dei contenuti informativi
+		\item Progettare un'interfaccia grafica dinamica compatibile con le moderne tecnologie web (HTML5, Javascript, \ldots) per la consultazione dei risultati di una ricerca, che presenti:
+		\begin{itemize}
+			\item le informazioni essenziali associate a ciascun contenuto;
+			\item le relazioni esistenti tra i contenuti;
+			\item i criteri e i parametri del sistema di classificazione.
+		\end{itemize}
+	\end{enumerate}
+	
+	\subsection{Analisi delle classi di contenuti informativi della piattaforma}
+	\label{stage::workplan::1}
+	A partire dall'insieme delle classi di contenuti informativi presenti nella piattaforma, verrà svolta un'analisi dettagliata per evidenziarne analogie e differenze, con particolare attenzione agli aspetti di interesse e rilevanza per il sistema di classificazione:
+	\begin{itemize}
+		\item scenario d'uso;
+		\item proprietà\footnote{Autore, data di creazione, titolo, contenuto, emozione, intenzioni, giudizio, \ldots};
+		\item interrelazioni.
+	\end{itemize}
+
+	\subsection{Analisi dei requisiti per il sistema di classificazione}
+	\label{stage::workplan::2}
+	Verranno individuati i requisiti aggiuntivi del sistema di classificazione dei contenuti in accordo ai risultati dell'analisi svolta nella fase \ref{stage::workplan::1} e tenendo in considerazione valutazioni preliminari connesse all'usabilità (reperimento delle informazioni cercate, navigazione dei contenuti, \ldots) e alle prestazioni (generalizzazione o specializzazione della ricerca, \ldots).
+
+	\subsection{Analisi comparativa dei principali sistemi di classificazione della conoscenza}
+	\label{stage::workplan::3}
+	Verrà svolta un'analisi comparativa di alcuni sistemi di classificazione esistenti per valutarne punti di forza e debolezza rispetto a ciascun requisito emerso nella fase \ref{stage::workplan::2}:
+	\begin{itemize}
+		\item dizionario (\emph{tag});
+		\item tassonomia (\emph{argomenti/categorie});
+		\item \ldots
+	\end{itemize}
+	La selezione definitiva dei sistemi di classificazione da prendere in esame verrà stilata di comune accordo con il referente sulla base dei requisiti sopra citati.
+
+	\subsection{Progettazione del sistema di classificazione}
+	\label{stage::workplan::4}
+	Verrà svolta la fase iniziale di progettazione del sistema di classificazione della conoscenza, con particolare evidenza per i punti di contatto e di discontinuità con i sistemi analizzati nella fase \ref{stage::workplan::3} e le soluzioni adottate per superare limiti e vincoli dei suddetti sistemi; dovranno essre inoltre tenute in debita considerazione le problematiche legate a usabilità e sprestazioni del sistema in scenari caratterizzati da un numero consistente di contenuti da gestire, elaborare e visualizzare.
+	% Argomenti + grafo orientato di parole chiave definite dall'utente o ricavate dal testo
+
+	\subsection{Progettazione avanzata del sistema di classificazione}
+	\label{stage::workplan::5}
+	Verrà portata a termine la fase di progettazione del sistema di classificazione della conoscenza, con particolare evidenza per l'integrazione dei nuovi criteri di classificazione nel sistema preesistente.
+	
+	\subsection{Implementazione del sistema di classificazione nel modello relazionale}
+	\label{stage::workplan::6}
+	Verranno integrate - nel modello relazionale esistente della piattaforma - le informazioni aggiuntive necessarie a realizzare il sistema di classificazione così come definito al termine della fase \ref{stage::workplan::5}: le modifiche introdotte riguarderanno principalmente l'adeguamento delle entità relative ai tipi di contenuti e ai criteri di classificazione per gestire i nuovi criteri di classificazione.
+
+	\subsection{Progettazione dell'interfaccia grafica: visualizzazione dei risultati di ricerche}
+	\label{stage::workplan::7}
+	Verrà svolta la fase iniziale di progettazione dell'interfaccia grafica concentrando l'attenzione al soddisfacimento dei requisiti inerenti la visualizzazione delle informazioni rilevanti per i risultati di una ricerca sui contenuti della piattaforma (classe, proprietà, interrelazioni, \ldots) e il sistema di classificazione (criteri, parametri, \ldots).
+	%(colore, forma, \ldots)
+
+	\subsection{Progettazione dell'interfaccia grafica: raffinamento dei criteri di ricerca}
+	\label{stage::workplan::8}
+	Verrà portata a termine la progettazione dell'interfaccia grafica con il soddisfacimento dei requisiti rimanenti, correlati essenzialmente al raffinamento dei risultati della ricerca allo scopo di permettere all'utente di filtrare facilmente quelli per lui rilevanti: in questa fase dovranno essere individuati i criteri e i parametri su cui l'utente potrà intervenire per ampliare o restringere l'ambito della ricerca e dovranno essere definite le modalità e i gradi di libertà con cui potrà farlo.
+
+	\newpage
+	\paragraph{Fasi opzionali}
+	A seguito di stime e valutazioni interne sul carico di lavoro richiesto dalle attività sin qui elencate, si è ritenuto non coerente con una pianificazione sostenibile l'inclusione di ulteriori attività, finalizzate specificatamente alla realizzazione di un prototipo dell'interfaccia, nonostante l'interesse e la volontà di studente e referente ad ottenere un prototipo funzionante.
+
+	Si chiarisce pertanto che le attività di seguito riportate - a titolo provvisorio - sono da considerarsi opzionali: la decisione sul loro effettivo svolgimento terrà conto dei seguenti fattori:
+	\begin{itemize}
+	\item valutazione del consuntivo relativo al carico di lavoro rispetto alla pianificazione;
+	\item valutazioni preliminari di fattibilità (competenze da acquisire, maturità tecnologica, \ldots).
+	\end{itemize}
+
+	\subsection{Analisi di fattibilità tecnica e tecnologica}
+	\label{stage::workplan::9}
+	Analisi di fattibilità tecnica e tecnologica finalizzata all'individuazione di strumenti (librerie, framework, \ldots), tecnologie (HTML5) e soluzioni idonei allo sviluppo dell'interfaccia grafica - le cui specifiche sono state definite nelle fasi \ref{stage::workplan::7} e \ref{stage::workplan::8} - considerando anche gli eventuali vincoli imposti dall'architettura della piattaforma.
+
+	\subsection{Realizzazione del primo prototipo dell'interfaccia grafica}
+	\label{stage::workplan::10}
+	Realizzazione di un primo prototipo dell'interfaccia grafica che implementi le specifiche delineate nella fase \ref{stage::workplan::6}.
+
+	\subsection{Realizzazione del secondo prototipo dell'interfaccia grafica}
+	\label{stage::workplan::11}
+	Realizzazione del secondo prototipo che includa i filtri per il raffinamento della ricerca definiti nella fase \ref{stage::workplan::7}.
+	
+	\section{Conoscenze acquisite}
+	\ldots %Competenze di analisi di sistemi di classificazione
+
+\end{document}
