@@ -1,0 +1,108 @@
+% **************************************************************************************************************
+% A Classic Thesis Style
+% An Homage to The Elements of Typographic Style
+%
+% Copyright (C) 2011 Andr\'e Miede http://www.miede.de
+%
+% If you like the style then I would appreciate a postcard. My address 
+% can be found in the file ClassicThesis.pdf. A collection of the 
+% postcards I received so far is available online at 
+% http://postcards.miede.de
+%
+% License:
+% This program is free software; you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation; either version 2 of the License, or
+% (at your option) any later version.
+%
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License
+% along with this program; see the file COPYING.  If not, write to
+% the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+% Boston, MA 02111-1307, USA.
+%
+% **************************************************************************************************************
+% Note:
+%    * You must not use "u etc. in strings/commands that will be spaced out (use \"u or real umlauts instead)
+%    * New enumeration (small caps): \begin{aenumerate} \end{aenumerate}
+%    * For margin notes: \marginpar or \graffito{}
+%    * Do not use bold fonts in this style, it is designed around them
+%    * Use tables as in the examples
+%    * See classicthesis-preamble.sty for useful commands
+% **************************************************************************************************************
+% To Do:
+%    * Eliminare l'opzione draft e drafting dal comando \documentclass
+%    * [Opzionale] Aggiungere le opzioni twoside + BCOR=5mm e "decommentare" i margini nella pagina di titolo
+% **************************************************************************************************************
+\documentclass[a4paper,openright,numbers=noenddot,headinclude,footinclude,abstracton,11pt]{scrreprt}
+\usepackage[italian]{babel}
+\usepackage{makeidx}
+\usepackage{parskip}
+\usepackage{textcomp}
+\usepackage[utf8]{inputenc}
+\input{tesi-config}
+\hyphenation{}
+\makeindex
+
+\begin{document}
+\pagenumbering{arabic}
+\pagestyle{scrheadings} %alternativa: headings%
+\frenchspacing
+\raggedbottom
+%\renewcommand*{\bibname}{new name}
+%\setbibpreamble{}
+
+%********************************************************************
+% Frontmatter
+%*******************************************************
+\include{matter/Titlepage}
+\include{matter/Titleback}
+\include{matter/Dedication}
+\include{matter/Abstract}
+\include{matter/Acknowledgments}
+\include{matter/Contents}
+
+%********************************************************************
+% Parte 1
+%*******************************************************
+% use \cleardoublepage here to avoid problems with pdfbookmark
+\ctparttext{Presentazione di \emph{Social (Life) Shuttle}.}
+\part{La piattaforma}
+\include{chapters/Chapter01}
+
+%********************************************************************
+% Parte 2
+%*******************************************************
+\ctparttext{Panoramica e presentazione delle classi di contenuti informativi della piattaforma.}
+\part{Contenuti informativi}
+\include{chapters/Chapter02}
+\include{chapters/Chapter03}
+\include{chapters/Chapter04}
+
+%********************************************************************
+% Parte 3
+%*******************************************************
+\ctparttext{Panoramica e presentazione dei sistemi di classificazione utilizzati nella piattaforma.}
+\part{Sistemi di classificazione}
+\include{chapters/Chapter05}
+\include{chapters/Chapter06}
+
+%********************************************************************
+% Parte 3
+%*******************************************************
+\ctparttext{Panoramica e presentazione dell'interfaccia di visualizzazione dei risultati di ricerca e delle relazioni tra i contenuti informativi.}
+\part{Ricerca e navigazione}
+
+% ********************************************************************
+% Backmatter
+%*******************************************************
+\appendix
+\part{Appendice}
+\include{chapters/Chapter0A}
+\cleardoublepage\include{matter/Bibliography}
+%\cleardoublepage\printindex
+\end{document}
