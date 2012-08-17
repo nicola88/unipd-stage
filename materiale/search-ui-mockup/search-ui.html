@@ -10,8 +10,8 @@
 			$(function(){
 
 				// Accordion
-				$("#accordion-intenzioni").accordion({ header: "h3" });
-				$("#accordion-emozioni").accordion({ header: "h3" });
+				$("#intenzioni").accordion({ header: "h3" });
+				$("#emozioni").accordion({ header: "h3" });
 
 				//Autocomplete
 				$("#autocomplete").autocomplete({
@@ -88,6 +88,12 @@
 			ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
 			ul#icons span.ui-icon {float: left; margin: 0 4px;}
 			div {width:20%;}
+			.accordion ul {
+				font-size:12px;
+			}
+			.accordion ul li {
+				line-height:1.8;
+			}
 		</style>
 	</head>
 	<body>
@@ -95,30 +101,27 @@
 
 		<!-- Accordion -->
 		<h2>Intenzioni</h2>
-		<div id="accordion-intenzioni">
+		<div class="accordion" id="intenzioni">
 			<div>
 				<h3><a href="#"><strong>Attivi</strong></a></h3>
-				<ul>
-					<li>Attivo #1</li>
-					<li>Attivo #2</li>
-					<li>Attivo #3</li>
+				<ul style="list-style-image:url('img/remove.png');">
+					<li>Idea</li>
+					<li>Punto di vista</li>
 				</ul>
 			</div>
 			<div>
 				<h3><a href="#"><strong>Disponibili</strong></a></h3>
-				<ul>
-					<li>Disponibile #1</li>
-					<li>Disponibile #2</li>
-					<li>Disponibile #3</li>
+				<ul style="list-style-image:url('img/add.png');">
+					<li>Dichiarazione</li>
 				</ul>
 			</div>
 		</div>
 
 		<h2>Emozioni</h2>
-		<div id="accordion-emozioni">
+		<div class="accordion" id="emozioni">
 			<div>
 				<h3><a href="#"><strong>Attivi</strong></a></h3>
-				<ul>
+				<ul style="list-style-image:url('img/remove.png');">
 					<li>Attivo #1</li>
 					<li>Attivo #2</li>
 					<li>Attivo #3</li>
@@ -126,7 +129,7 @@
 			</div>
 			<div>
 				<h3><a href="#"><strong>Disponibili</strong></a></h3>
-				<ul>
+				<ul style="list-style-image:url('img/add.png');">
 					<li>Disponibile #1</li>
 					<li>Disponibile #2</li>
 					<li>Disponibile #3</li>
