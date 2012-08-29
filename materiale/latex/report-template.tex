@@ -1,0 +1,35 @@
+\documentclass[10pt,a4paper,hidelinks,draft]{scrreprt} % KOMA-Script article scrartcl
+\usepackage[italian]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[]{../../classicthesis} % nochapters
+\setcounter{tocdepth}{1}
+
+\begin{document}
+    \title{\rmfamily\normalfont\spacedallcaps{Titolo}}
+    \author{\spacedlowsmallcaps{Nicola Moretto (matr. 578258)}}
+    \date{\today}
+    
+    \maketitle
+    
+    \begin{abstract}
+        \noindent Breve descrizione del documento.
+    \end{abstract}
+    
+	\begin{table}[ht]
+	\centering
+	\begin{tabular}{|c|c|c|}
+	\hline
+	\textsc{Versione} & \textsc{Data} & \textsc{Modifiche} \\ \hline
+	0.0 & \ldots & \ldots \\ \hline
+	\end{tabular}
+	\caption{Registro delle modifiche}
+	\label{tab:stage:wp:workload}
+	\end{table}
+
+	\tableofcontents
+
+	\chapter{Capitolo}
+	\section{Sezione}
+	\subsection{Sottosezione}
+
+\end{document}
