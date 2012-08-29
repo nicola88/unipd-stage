@@ -19,11 +19,15 @@
 
     \section{Contesto lavorativo}
 	Analisi, progettazione e sviluppo di una piattaforma web tematica per la condivisione di contenuti informativi creati dagli utenti e la vendita diretta di prodotti da parte di aziende medio-piccole o indipententi.
+	
+	La pianificazione e l'esecuzione delle attività di progetto è gestita mediante software \textit{Spark} e \textit{Altova}.
+
+	Lo studente incontrerà il proponente al termine di ciascuna settimana di lavoro per valutare i progressi e manterrà contatti quotidiani con gli altri membri del team di progetto.
 
 	\section{Obiettivi}
 	\begin{enumerate}
 		\item Estendere l'attuale sistema di classificazione della piattaforma al fine di integrare criteri addizionali che facilitino la catalogazione e il recupero dei contenuti informativi.
-		\item Progettare un'interfaccia grafica dinamica per la consultazione dei risultati di una ricerca, che presenti:
+		\item Progettare un'interfaccia grafica dinamica per la navigazione dei contenuti, che presenti:
 		\begin{itemize}
 			\item le informazioni essenziali associate a ciascun contenuto;
 			\item le relazioni esistenti tra i contenuti;
@@ -32,6 +36,7 @@
 		\end{itemize}
 	\end{enumerate}
 
+	\newpage
 	\section{Attivit\`a}
 	
 	\subsection{Analisi delle classi di contenuti informativi della piattaforma}
@@ -56,14 +61,14 @@
 		\item tassonomia (\emph{argomenti/categorie});
 		\item \ldots
 	\end{itemize}
-	La selezione definitiva dei sistemi di classificazione da prendere in esame verrà stilata di comune accordo con il referente sulla base dei requisiti sopra citati.
+	La selezione definitiva dei sistemi di classificazione da prendere in esame verrà concordata con il referente sulla base dei requisiti sopra citati.
 
 	\subsection{Progettazione del sistema di classificazione}
 	\label{sec:stage:wp:design}
 	Verrà svolta la fase iniziale di progettazione del sistema di classificazione della conoscenza, con particolare evidenza per i punti di forza dei sistemi analizzati nella fase \ref{sec:stage:wp:ac} e per le soluzioni adottate per superarne limiti o vincoli.
 	% Argomenti + grafo orientato di parole chiave definite dall'utente o ricavate dal testo
 
-	Dovranno essere inoltre tenute in debita considerazione le problematiche legate a usabilità e prestazioni del sistema in scenari caratterizzati da un numero consistente di contenuti da gestire, elaborare e visualizzare.
+	Dovranno essere inoltre tenute in debita considerazione le problematiche legate alle prestazioni del sistema in scenari caratterizzati da un numero consistente di contenuti da gestire, elaborare e visualizzare.
 	
 	\subsection{Implementazione del sistema di classificazione nel modello relazionale}
 	\label{sec:stage:wp:build}
@@ -73,19 +78,24 @@
 
 	\subsection{Analisi dei requisiti dell'interfaccia grafica}
 	\label{sec:stage:wp:ui:ar}
-	Verrà stilata la lista dei requisiti dell'interfaccia grafica a partire dalle specifiche del sistema di classificazione (fase \ref{sec:stage:wp:ar}), in particolare rispetto alla visualizzazione dei contenuti e al raffinamento dei criteri di ricerca.
+	Verrà svolta un'analisi dei requisiti per individuare i casi d'uso e i requisiti dell'interfaccia grafica, a partire dalle specifiche dei contenuti e del sistema di classificazione (fase \ref{sec:stage:wp:ar}), in particolare rispetto alla visualizzazione, la navigazione e il filtraggio dei contenuti.
 
-	\subsection{Progettazione dell'interfaccia grafica: visualizzazione dei risultati di ricerca}
-	\label{sec:stage:wp:ui:design}
-	Verrà svolta la fase iniziale di progettazione dell'interfaccia grafica puntando al soddisfacimento dei requisiti inerenti la visualizzazione delle informazioni rilevanti dei contenuti della piattaforma (classe, proprietà, interrelazioni, \ldots) e il sistema di classificazione (criteri, parametri, \ldots).
+	\subsection{Progettazione dell'interfaccia grafica: visualizzazione dei contenuti}
+	\label{sec:stage:wp:ui:design:view}
+	Verrà svolta la fase iniziale di progettazione dell'interfaccia grafica, che prevede il soddisfacimento dei requisiti inerenti la visualizzazione dei contenuti della piattaforma (classe, proprietà, interrelazioni, \ldots).
+	
+	La valutazione degli aspetti grafici e visivi è oggetto di studio da parte di altre figure professionali (psicologi e sociologi) coninvolti nel progetto.
 	%(colore, forma, \ldots)
 
-	\subsection{Progettazione dell'interfaccia grafica: raffinamento dei criteri di ricerca}
-	\label{sec:stage:wp:ui:advanced-design}
-	Verrà portata a termine la progettazione dell'interfaccia grafica con il soddisfacimento dei requisiti rimanenti, correlati essenzialmente al raffinamento e alla manipolazione dei risultati della ricerca.
+	\subsection{Progettazione dell'interfaccia grafica: filtraggio dei contenuti}
+	\label{sec:stage:wp:ui:design:filter}
+	Verrà portata avanti la fase di progettazione dell'interfaccia grafica, con la definizione e l'integrazione delle opzioni e degli strumenti per filtrare i contenuti visualizzati, secondo i criteri di classificazione della piattaforma e le proprietà fondamentali dei contenuti medesimi.
 
-	In questa fase dovranno essere individuati i criteri e i parametri su cui l'utente potrà intervenire per ampliare o restringere l'ambito della ricerca e dovranno essere definite le modalità e i gradi di libertà con cui potrà farlo.
+	\subsection{Progettazione dell'interfaccia grafica: navigazione dei contenuti}
+	\label{sec:stage:wp:ui:design:nav}
+	Verrà portata a termine la fase di progettazione dell'interfaccia grafica, al fine di offrire un meccanismo di navigazione di contenuti affini in base ai criteri di classificazione definiti nella fase \ref{sec:stage:wp:design}.
 
+	\newpage
 	\section{Calendario}
 	
 	\subsection*{I settimana (10/09/2012 - 14/09/2012)}
@@ -101,7 +111,7 @@
 	\begin{enumerate}
 	\item \nameref{sec:stage:wp:design}
 	\end{enumerate}
-	\subsection*{IV settimana (1/10/2012 - 5/09/2012)}
+	\subsection*{IV settimana (1/10/2012 - 5/10/2012)}
 	\begin{enumerate}
 	\item \nameref{sec:stage:wp:build}
 	\end{enumerate}
@@ -111,19 +121,80 @@
 	\end{enumerate}	
 	\subsection*{VI settimana (15/10/2012 - 19/10/2012)}
 	\begin{enumerate}
-	\item \nameref{sec:stage:wp:ui:design}
+	\item \nameref{sec:stage:wp:ui:design:view}
 	\end{enumerate}
 	\subsection*{VII settimana (22/10/2012 - 26/10/2012)}
 	\begin{enumerate}
-	\item \nameref{sec:stage:wp:ui:design}
-	\item \nameref{sec:stage:wp:ui:advanced-design}
+	\item \nameref{sec:stage:wp:ui:design:filter}
 	\end{enumerate}
-	\subsection*{VIII settimana (29/10/2012 - 2/1/2012)}
+	\subsection*{VIII settimana (29/10/2012 - 2/11/2012)}
 	\begin{enumerate}
-	\item \nameref{sec:stage:wp:ui:advanced-design}
+	\item \nameref{sec:stage:wp:ui:design:nav}
 	\end{enumerate}
 
+	\begin{table}[ht]
+	\centering
+	\begin{tabular}{|c|c|}
+	\hline
+	\textsc{Settimana} & \textsc{Ore di lavoro} \\ \hline
+	I & 40 \\ \hline
+	II & 40 \\ \hline
+	III & 40 \\ \hline
+	IV & 40 \\ \hline
+	V & 40 \\ \hline
+	VI & 40 \\ \hline
+	VII & 40 \\ \hline
+	VIII & 40 \\ \hline
+	\textsc{Totale} & 320 \\ \hline
+	\end{tabular}
+	\caption{Ore lavorative}
+	\label{tab:stage:wp:workload}
+	\end{table}
+
+
+	\newpage
+	\section{Prodotti}
+	Di seguito si riporta per ciascun prodotto previsto il \textsc{tipo} (documentazione o software) e le \textsc{fasi} al termine delle quali è previsto il rilascio di una versione, indicata con la notazione \textsc{x.y} (ove \textsc{x.0} rappresenta una versione approvata dal proponente).
+
+	\subsection{Sistema di classificazione}
+	\label{sec:stage:prod:sc}
+	La prima versione (1.0) del documento descrive i requisiti del sistema di classificazione, frutto di analisi preliminari sui contenuti e le relative relazioni.
+
+	Nella versione successiva (2.0) tali informazioni vengono integrate e ampliate con i risultati dell'analisi di alcuni sistemi di classificazione esistenti, con particolare riguardo ai punti di forza e ai limiti rispetto ai suddetti requisiti, e vengono quindi illustrate e motivate in dettaglio le scelte progettuali compiute, tenendo in considerazione gli eventuali vincoli connessi alla complessità di elaborazione delle informazioni di classificazione nel contesto reale della piattforma.
+	\begin{description}
+	\item[Fase (versione):] \ref{sec:stage:wp:ar} (1.0) - \ref{sec:stage:wp:design} (2.0)
+	\item[Tipo:] documentazione
+	\end{description}
+
+	\subsection{Modello relazionale}
+	Il documento presenta le modifiche richieste al modello relazionale esistente della piattaforma per integrare i nuovi criteri, discutendone vantaggi e svantaggi.
+	\label{sec:stage:prod:mr}
+	\begin{description}
+	\item[Fase (versione):] \ref{sec:stage:wp:build} (1.0)
+	\item[Tipo:] documentazione
+	\end{description}
+
+	\subsection{Interfaccia grafica - Analisi dei requisiti}
+	Il documento descrive i requisiti e i casi d'uso dell'interfaccia grafica per la visualizzazione, la navigazione e il filtraggio dei contenuti alla luce dei nuovi criteri di classificazione integrati nella piattaforma.
+	\label{sec:stage:prod:ui:ar}
+	\begin{description}
+	\item[Fase (versione):] \ref{sec:stage:wp:ui:ar} (1.0)
+	\item[Tipo:] documentazione
+	\end{description}
+
+	\subsection{Interfaccia grafica - Schema di progettazione}
+	Il documento fornisce le linee guida dettagliate per l'implementazione dell'interfaccia grafica, tra cui:
+	\begin{itemize}
+	\item la rappresentazione dei \textit{contenuti} (tipo, proprietà, relazioni, \ldots) e \textit{criteri di classificazione} (valori, relazioni, \ldots);
+	\item la definzione dei gradi di libertà e delle modalità d'interazione per la navigazione dei contenuti affini.
+	\end{itemize}
+	Le informazioni riportate prescinderanno da qualsiasi assunzione riguardo la tecnologia utilizzata, fornendo una descrizione astratta dei principi e delle specifiche di funzionamento.
+	\label{sec:stage:prod:ui:design}
+	\begin{description}
+	\item[Fase (versione):] \ref{sec:stage:wp:ui:design:view} (1.0) - \ref{sec:stage:wp:ui:design:filter} (2.0) - \ref{sec:stage:wp:ui:design:nav} (3.0)
+	\item[Tipo:] documentazione
+	\end{description}
+
 	%\section{Conoscenze acquisite}
-	%\ldots %Competenze di analisi di sistemi di classificazione
 
 \end{document}
