@@ -1,7 +1,8 @@
-\documentclass[10pt,a4paper,hidelinks,draft]{scrreprt} % KOMA-Script article scrartcl
+\documentclass[10pt,a4paper,headinclude,hidelinks,draft]{scrreprt} % KOMA-Script article scrartcl
 \usepackage[italian]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage[]{../../classicthesis} % nochapters
+\pagestyle{scrheadings}
 \setcounter{tocdepth}{1}
 
 \begin{document}
@@ -27,6 +28,11 @@
 	\end{table}
 
 	\tableofcontents
+	\listoffigures
+	\begingroup
+	\let\clearpage\relax
+	\listoftables
+	\endgroup
 
 	\chapter{Capitolo}
 	\section{Sezione}

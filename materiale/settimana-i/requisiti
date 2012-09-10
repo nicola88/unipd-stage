@@ -1,0 +1,35 @@
+CASI D'USO
++ Gestione delle etichette
+	- Aggiunta di un'etichetta [sinonimi]
+	- Aggiunta di un sinonimo (esistente o meno) ad un'etichetta [sinonimi]	:: un significato, diversi significanti
+	- Aggiunta di un'accezione ad un'etichetta [ambiguità, metadati]		:: un significate, diversi significati
+	- Eliminazione di un'etichetta
+* Inserimento di un nuovo contenuto
+	- Assegnazione di un'etichetta [duplicati, sinonimi] :: granularità
+	- Rimozione di un'etichetta
+* Consultazione dei contenuti informativi
+	- Esplorazione delle etichette
+	- Ricerca di un'etichetta [sinonimi, gerarchia]
+	- Ricerca di etichette correlate [gerarchia (padre o figlio), sinonimi]
+	- Ricerca contenuti per etichetta
+	- Ricerca contenuti per etichette multiple (AND, OR, ...)
+	- Ricerca di contenuti affini (aventi etichette comuni)
+
+REQUISITI
+- Assegnazione multipla di etichette ad un contenuto
+- Identificazione di etichette ridondanti
+- Gestione dei sinonimi di un'etichetta
+- Gestione delle accezioni di un'etichetta
+- Gestione relazioni tra etichette [gerarchia]
+- Navigabilità delle etichette // argomenti e sottoargomenti
+
+====================================================
+SPECIFICHE
++ Gerarchia di etichette
+	- n padri (v. Accezione)
+	- m figli
++ Gestione delle proprietà/metadati delle etichette
+	- Accezione :: associata al legame con il padre
+	- Lingua
++ Gestione avanzata
+	- Etichette affini (usate più spesso in combinazione)
