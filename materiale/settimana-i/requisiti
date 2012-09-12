@@ -1,12 +1,12 @@
 CASI D'USO
 + Gestione delle etichette
 	- Aggiunta di un'etichetta [sinonimi]
-	- Aggiunta di un sinonimo (esistente o meno) ad un'etichetta [sinonimi]	:: un significato, diversi significanti
-	- Aggiunta di un'accezione ad un'etichetta [ambiguità, metadati]		:: un significate, diversi significati
+	- Aggiunta di un sinonimo (esistente o meno) ad un'etichetta [sinonimi]
+	- Aggiunta di un'accezione ad un'etichetta [ambiguità, metadati]
 	- Eliminazione di un'etichetta
 * Inserimento di un nuovo contenuto
 	- Assegnazione di un'etichetta [duplicati, sinonimi] :: granularità
-	- Rimozione di un'etichetta
+	- Rimozione di un'etichetta	
 * Consultazione dei contenuti informativi
 	- Esplorazione delle etichette
 	- Ricerca di un'etichetta [sinonimi, gerarchia]
@@ -16,20 +16,32 @@ CASI D'USO
 	- Ricerca di contenuti affini (aventi etichette comuni)
 
 REQUISITI
-- Assegnazione multipla di etichette ad un contenuto
-- Identificazione di etichette ridondanti
-- Gestione dei sinonimi di un'etichetta
-- Gestione delle accezioni di un'etichetta
-- Gestione relazioni tra etichette [gerarchia]
-- Navigabilità delle etichette // argomenti e sottoargomenti
+Ciascuna etichetta primaria può avere 0...n sinonimi
+Aggiunta di un sinonimo ad un'etichetta primaria
+Eliminazione di un sinonimo di un'etichetta primaria
 
-====================================================
+Ciascuna etichetta può avere 0...n accezioni
+Aggiunta di un'accezione ad un'etichetta
+Eliminazione di un'accezione di un'etichetta
+
+A ciascun contenuto possono essere assegnate 0...n etichette
+Assegnazione di un'etichetta primaria ad un contenuto
+Eliminazione di un'etichetta primaria associata ad un contenuto
+
+Ciascuna etichetta può avere 0...n padri
+Aggiunta di un padre ad un'etichetta
+Eliminazione di un padre di un'etichetta
+
+Ciascuna etichetta può avere 0...n figli
+Aggiunta di un figlio ad un'etichetta
+Eliminazione di un figlio di un'etichetta
+
+==================================================
 SPECIFICHE
 + Gerarchia di etichette
 	- n padri (v. Accezione)
 	- m figli
 + Gestione delle proprietà/metadati delle etichette
 	- Accezione :: associata al legame con il padre
-	- Lingua
 + Gestione avanzata
 	- Etichette affini (usate più spesso in combinazione)
