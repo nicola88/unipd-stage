@@ -1,7 +1,0 @@
-Content-Type: text/x-zim-wiki
-Wiki-Format: zim 0.4
-Creation-Date: 2012-08-09T17:42:03+02:00
-
-====== Criteri di classificazione ======
-Created giovedì 09 agosto 2012
-
