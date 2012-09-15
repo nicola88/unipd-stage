@@ -28,18 +28,13 @@
 	0.3 & 12-09-2012 & Aggiunto il capitolo \nameref{ch:stage:req}. \\ \hline
 	0.4 & 13-09-2012 & Ampliato il capitolo \nameref{ch:stage:req}. \\ \hline
 	0.5 & 14-09-2012 & Rivisto il capitolo \nameref{ch:stage:req}. \\ \hline
-	1.0 & \ldots & Pubblicazione della prima versione ufficiale. \\ \hline
+	1.0 & 15-09-2012 & Pubblicazione della prima versione ufficiale. \\ \hline
 	\end{tabular}
 	\caption{Registro delle modifiche}
 	\label{tab:stage:wp:workload}
 	\end{table}
 
 	\tableofcontents
-	\listoffigures
-	\begingroup
-	\let\clearpage\relax
-	\listoftables
-	\endgroup
 
 	\chapter{Contenuti informativi}
 	\label{ch:stage:contenuti}
@@ -95,9 +90,9 @@
 	\section{Gestione delle etichette}
 	\label{sec:stage:req:tag}
 	
-	Il \textsc{dizionario} della piattaforma\marginpar{Modello concettuale} rappresenta - nella visione più elementare - un insieme di \textsc{etichette}: più in dettaglio, è possibile paragonarlo ad un dizionario enciclopedico o linguistico, costituito da una insieme di voci o lemmi, ciascuno dei quali possiede svariati significati (\textsc{accezioni}), che - a seconda del contesto o ambito di riferimento - identificano differenti entità del relativo dominio.
+	Il \textsc{dizionario} della piattaforma\marginpar{Modello concettuale} rappresenta - nella visione più elementare - un insieme di \textsc{etichette}: più in dettaglio, è possibile paragonarlo ad un dizionario linguistico, costituito da una insieme di lemmi, ciascuno dei quali possiede svariati significati (\textsc{accezioni}), che - a seconda del contesto o ambito di riferimento - identificano differenti entità del dominio.
 
-Riprendendone la connotazione insiemistica\marginpar{Notazione}, può risultare conveniente immaginare e trattare il dizionario $D$ come l'unione di $n$ sottoinsiemi $E_i$, ciascuno dei quali corrisponde ad un'entità del dominio e contiene esattamente un'etichetta \textsc{primaria} $e_0$, che identifica univocamente il sottoinsieme/entità in questione, e gli eventuali $m$ \textsc{sinonimi} $e_j$ (in numero arbitrario, anche nullo).\footnote{$i \in \mathbb{N}, i \leq n=\left|D\right|$}\footnote{$k \in \mathbb{N}, k \leq m=\left|E_i\right|$}
+Riprendendone la connotazione insiemistica\marginpar{Notazione}, può risultare conveniente immaginare e trattare il dizionario $D$ come l'unione di $n$ sottoinsiemi $E_i$, ciascuno dei quali corrisponde ad un'entità del dominio e contiene esattamente un'etichetta \textsc{primaria} $e_0$, che identifica univocamente il sottoinsieme o entità in questione, e gli eventuali $m$ \textsc{sinonimi} $e_j$ (in numero arbitrario, anche nullo).\footnote{$i \in \mathbb{N}, i \leq n=\left|D\right|$}\footnote{$k \in \mathbb{N}, k \leq m=\left|E_i\right|$}
 
 %	\begin{figure}[ht]
 %		\begin{center}
@@ -131,7 +126,7 @@ Riprendendone la connotazione insiemistica\marginpar{Notazione}, può risultare 
 %		\end{center}
 %	\end{figure}
 
-	Le etichette sinonimiche\marginpar{Copertura sintattica} vengono conservate nel dizionario per garantire una maggior copertura sintattica, aiutando a stabilire se un'etichetta cercata o scelta dall'utente sia già stata utilizzata in precedenza, con quale significato e in quale ambito e dunque risulti già presente nel dizionario.
+	Le etichette sinonimiche\marginpar{Copertura sintattica} vengono conservate nel dizionario per garantire una maggior copertura sintattica, aiutando a stabilire se un'etichetta cercata o scelta dall'utente sia già stata utilizzata in precedenza (con quale significato, in quale ambito, \ldots) e dunque risulti già presente nel dizionario.
 
 	Ai contenuti tuttavia vengono assegnate le corrispettive chiavi primarie, al fine di rendere più efficiente la catalogazione, la ricerca, la navigazione e la consultazione dei contenuti stessi.
 
@@ -141,7 +136,7 @@ Riprendendone la connotazione insiemistica\marginpar{Notazione}, può risultare 
 	Da quel momento, qualora un utente provi ad assegnare quella medesima parola o espressione ad un contenuto della piattaforma, il sistema vi assegnerà automaticamente l'etichetta primaria $e_0$.
 
 	\subsection[Accezioni]{Ciascuna etichetta può avere $0...n$ accezioni}
-	Ciascuna etichetta\marginpar{Ambiguità semantica} può riferirsi a entità differenti a seconda del contesto, perciò diventa cruciale poterne precisare le possibili $t$ accezioni $a_k \in A$, ossia le entità cui si possa riferire.\footnote{$k \in \mathbb{N}, k \leq t=\left|A\right|$}
+	Ciascuna etichetta\marginpar{Ambiguità semantica} può riferirsi a entità differenti a seconda del contesto, perciò diventa cruciale poterne precisare le possibili accezioni $a_k \in A$, ossia le entità cui si possa riferire.\footnote{$k \in \mathbb{N}, k \leq t=\left|A\right|$}
 %	\begin{figure}[ht]
 %		\begin{center}
 %	    	\includegraphics{../img/placeholder.png}
@@ -149,7 +144,7 @@ Riprendendone la connotazione insiemistica\marginpar{Notazione}, può risultare 
 %		\end{center}
 %	\end{figure}
 	
-	Con l'introduzione delle accezioni\marginpar{Accezioni, entità e sottoinsiemi}, il dizionario della piattaforma acquisisce una nuova dimensione poiché ciascuna etichetta può appartenere contemporaneamente (per ogni accezione) a diversi sottoinsiemi: dal momento che ciascuna entità corrisponde ad un sottoinsieme distinto e ogni accezione di un'etichetta riferisce un'entità diversa, la medesima etichetta si colloca in $\left|A\right|$ sottoinsiemi differenti.
+	Con l'introduzione delle accezioni\marginpar{Accezioni, entità e sottoinsiemi}, il dizionario della piattaforma acquisisce una nuova dimensione poiché ciascuna etichetta può appartenere contemporaneamente a diversi sottoinsiemi: dal momento che ciascuna entità corrisponde ad un sottoinsieme distinto e ogni accezione di un'etichetta riferisce un'entità diversa, la medesima etichetta si colloca in $\left|A\right|$ sottoinsiemi differenti.
 %	\begin{figure}[ht]
 %		\begin{center}
 %	    	\includegraphics{../img/placeholder.png}
@@ -191,13 +186,12 @@ Riprendendone la connotazione insiemistica\marginpar{Notazione}, può risultare 
 	Se l'etichetta è sinonimica si procede semplicemente alla sua cancellazione.
 	\end{description}
 
-	\subsection[Gerarchia]{Ciascuna etichetta può avere $0...n$ padri e $0...m$ figli}
-	\subsubsection{Aggiunta di un'etichetta padre}
-	L'aggiunta di un'etichetta padre consiste nell'inserire una nuova etichetta, che rappresenti un tema più generico rispetto a quello corrente.
-	\subsubsection{Aggiunta di un'etichetta figlio}
-	L'aggiunta di un'etichetta padre consiste nell'inserire una nuova etichetta, che rappresenti un tema più specifico rispetto a quello corrente.
-	%\subsubsection{Eliminazione di un'etichetta padre}
-	%\subsubsection{Eliminazione di un'etichetta figlio}
+	\subsection[Gerarchia]{Ciascuna etichetta primaria può avere $0...n$ padri e $0...m$ figli}
+	Riprendendo la similitudine tra il dizionario della etichette e uno linguistico, si giunge facilmente a notare come non si tratti, in entrambi i casi, di semplici insieme di entit $E_i$ slegate, ma si possano intuitivamente individuare tra di esse delle relazioni gerarchiche (dal generale al particolare), capaci di trascendere la banale enumerazione alfabetica.
+
+	Nel dizionario della piattaforma\marginpar{Gerarchia} tali relazioni vengono rese attraverso legami tra le etichette primarie, ciascuna delle quali identifica univocamente un'entità del dominio ($e_0 \in E_i$), e si traducono nella possibilità di associare a ciascuna etichetta primaria un numero arbitrario di padri (etichette generiche) e figli (etichette specialistiche).
+
+	A differenze delle strutture gerarchiche classiche\marginpar{Estensioni}, ove ciascun elemento può avere molti figli ma un solo padre, il dizionario delle etichette estende la relazione \textit{uno-a-molti} anche agli elementi padre: la possibilità di assegnare differenti padri ad una medesima etichetta primaria si spiega con il desiderio di eliminare eventuali e possibili ambiguità, consentendo ad un utente di individuare un'etichetta seguendo differenti cammini nella gerarchia.
 
 	\section{Gestione dei contenuti} % Inserimento vs consultazione
 	
@@ -229,16 +223,17 @@ Riprendendone la connotazione insiemistica\marginpar{Notazione}, può risultare 
 	\label{sec:stage:cls:scenari:read}
 	La ricerca e la consultazione dei contenuti rappresentano attività cruciali per gli utenti della piattaforma e ci si affida al criteri di classificazione delle etichette per reperire in maniera efficiente le informazioni cercate; l'approccio e lo scopo con cui gli utenti navigano l'insieme di contenuti disponibili all'interno della piattaforma può tuttavia differire sensibilmente.
 	\subsection{Esplorazione gerarchica delle etichette}
-	L'utente alle prime armi\marginpar{Gerarchia} o semplicemente interessato a conoscere gli argomenti discussi nella piattaforma esplora i contenuti informativi a partire dalle etichette: per facilitare la navigazione di queste ultime dev'essere disponibile una struttura gerarchica, che le raccolga e le cataloghi in maniera ordinata.
+	L'utente alle prime armi\marginpar{Gerarchia} o semplicemente interessato a conoscere gli argomenti discussi nella piattaforma esplora i contenuti informativi a partire dalle etichette: per facilitarne la navigazione si ricorre ad una struttura gerarchica, che le raccolga e le cataloghi in maniera ordinata.
 
-	Tale soluzione\marginpar{Dicotomia} permette all'utente di individuare più rapidamente gli argomenti di interesse mediante un \textsc{processo dicotomico}, che partendo dagli argomenti generali proceda per ulteriori raffinamenti sino ad individuare con crescente precisione e accuratezza i temi di interesse, senza dover consultare l'insieme delle etichette nella sua completezza.
+	Tale soluzione\marginpar{Dicotomia} permette all'utente di individuare più rapidamente gli argomenti di interesse mediante un \textsc{processo dicotomico}, che partendo dagli argomenti generali proceda per ulteriori raffinamenti sino ad individuare con crescente precisione e accuratezza i temi di interesse, senza dover consultare esaustivamente l'insieme delle etichette.
 
 	Gli elementi della gerarchia\marginpar{Elementi} sono etichette primarie, a ciascuna delle quali sono associate delle accezioni e - per ciascuna di esse - i relativi sinonimi. 
 	\subsection{Ricerca di un'etichetta}
-	L'utente alla ricerca di informazioni su un particolare tema cerca di individuare le etichette esistenti aventi con esso maggiore attinenza e rilevanza: la ricerca di corrispondenze nel dizionario prevede che:
+	L'utente alla ricerca di informazioni su un particolare tema cerca di individuare le etichette aventi maggiore attinenza e rilevanza; la ricerca di corrispondenze nel dizionario prevede che:
 	\begin{enumerate}
-	\item vengano prese in esame tutte le etichette, poiché solo contemplando le chiavi primarie e i relativi sinonimi si massimizza la probabilità di ottenere riscontri positivi (maggiore copertura sintattica);
-	\item vengano restituite le chiavi primarie corrispondenti alla ricerca, anche qualora si abbia riscontro su un sinonimo $e_j$, nel cui caso si restituisce la corrispondente etichetta primaria $e_0$.
+	\item vengano prese in esame tutte le etichette $e \in E_i$, poiché solo contemplando le chiavi primarie e i relativi sinonimi si massimizza la probabilità di ottenere riscontri positivi (maggiore copertura sintattica);
+	\item vengano restituite le chiavi primarie corrispondenti alla ricerca;
+	\item per ogni sinonimo $e_j \in E_i$ individuato, si restituisce la corrispondente etichetta primaria $e_0 \in E_i$.
 	\end{enumerate}
 
 	\subsection{Ricerca di contenuti mediante etichette}
@@ -249,9 +244,9 @@ Riprendendone la connotazione insiemistica\marginpar{Notazione}, può risultare 
 	A questo punto\marginpar{Corrispondenza} si possono distinguere tre casi principali, a seconda del grado di corrispondenza/attinenza dei contenuti rispetto alle etichette cercate:
 	\begin{description}
 	\item[Corrispondenza completa:] $E_s \subseteq E_c$ \hfill \\
-	Al contenuto sono state assegnate tutte le etichette richieste dall'utente e verrà quindi visualizzato in cima ai risultati di ricerca (massima attinenza).
+	Al contenuto risultano assegnate tutte le etichette richieste dall'utente e viene quindi visualizzato in cima ai risultati di ricerca (massima attinenza).
  	\item[Corrispondenza parziale:] $E_s \cap E_c \neq \emptyset$ \hfill \\
-	Al contenuto sono state assegnate parte delle etichette richieste dall'utente (media attinenza).
+	Al contenuto risulta assegnata parte delle etichette richieste dall'utente (media attinenza).
 	\item[Nessuna corrispondenza:] $E_s \cap E_c = \emptyset$\hfill \\
 	Al contenuto non risulta assegnata alcuna etichetta richiesta dall'utente (attinenza nulla).
 	\end{description}
@@ -260,7 +255,6 @@ Riprendendone la connotazione insiemistica\marginpar{Notazione}, può risultare 
 	$$\left|{E_s \cap E_c}\right|$$
 	\subsection{Ricerca di contenuti affini}
 	La ricerca di contenuti affini consiste nell'identificare, a partire da un contenuto dato, altri la cui pertinenza rispetto al tema trattato sia massima: in questo scenario valgono le medesime considerazioni emerse nella sezione precedente, previa sostituzione di $U_e$ con l'insieme delle etichette assegnate al contenuto corrente.
-	
 
 	%\chapter{Progettazione}
 
