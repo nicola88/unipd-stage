@@ -30,7 +30,8 @@
 	0.4 & 13-09-2012 & Ampliato il capitolo \nameref{ch:stage:req}. \\ \hline
 	0.5 & 14-09-2012 & Rivisto il capitolo \nameref{ch:stage:req}. \\ \hline
 	1.0 & 15-09-2012 & Pubblicazione della prima versione ufficiale. \\ \hline
-	1.1 & 18-09-2012 & Revisione e ampliamento della sezione \nameref{ch:stage:req}. \\ \hline
+	1.1 & 18-09-2012 & Rivista e ampliata la sezione \nameref{ch:stage:req}. \\ \hline
+	1.2 & 19-09-2012 & Aggiornate le sezioni \textit{\nameref{sec:stage:req:entità}} e \textit{\nameref{sec:stage:req:etichette}}. \\ \hline
 	\end{tabular}
 	\caption{Registro delle modifiche}
 	\label{tab:stage:wp:workload}
@@ -38,6 +39,9 @@
 
 	\tableofcontents
 
+	%----------
+	% CAPITOLO
+	%----------
 	\chapter{Contenuti informativi}
 	\label{ch:stage:contenuti}
 	\section{Introduzione}
@@ -84,45 +88,55 @@
 
 	A ciascun contenuto\marginpar{Discussione} pubblicato nella piattaforma è possibile rispondere con altri del medesimo tipo o differente: ciò implica che, a partire da un contenuto qualsiasi, può nascere una discussione in grado di svilupparsi e ramificarsi con il massimo grado di libertà, non essendovi limiti sui tipi di contenuti o vincoli sul tema. Ad esempio, una risposta ad un contenuto può - in virtù di una particolare associazione di idee - riguardare un tema non strettamente correlato al contenuto di partenza.
 	
-
+	%----------
+	% CAPITOLO
+	%----------
 	\chapter{Requisiti}
 	\label{ch:stage:req}
+	Ove la conoscenza della piattaforma\marginpar{Conoscenza} è generata dai contenuti pubblicati dagli utenti, si rende necessario un criterio (o insieme di criteri) di classificazione per facilitare e rendere più efficienti possibili la catalogazione, il reperimento e la consultazione delle informazioni in essi contenute.
 
-	Introduzione sui contenuti della piattaforma e le entità (multiple) da riferire.
+	Il classificatore\marginpar{Classificatore} tiene traccia dei frammenti di informazione presenti nei contenuti, ciascuno dei quali può riferire una o più \textsc{entità} del dominio della piattaforma; nella sua essenza, il criterio di classificazione deve quindi provvedere ad associare a ciascun contenuto delle \textsc{etichette}, che contrassegnano le entità citate al suo interno.
 
+	% SEZIONE
 	\section{Entit\`a}
 	\label{sec:stage:req:entità}
+	Le \textsc{entità}\marginpar{Entità} della piattaforma rappresentano elementi concreti (luoghi, persone, \ldots) o astratti (concetti, \ldots) a cui afferiscono i contenuti e riguardo i quali la piattaforma contiene informazioni.
+
+	Il \textsc{dominio} della piattaforma\marginpar{Dizionario} rappresenta l'insieme di entità definite - in un dato instante - all'interno della piattaforma; esso risulta per certi versi paragonabile ad un dizionario linguistico, costituito da una insieme di lemmi, ciascuno dei quali possiede svariati significati (\textsc{accezioni}), identificanti - a seconda del contesto - altrettante entità del dominio.
+
 	\subsection{Identificazione univoca di un'entit\`a}
-	Entità $\to$ identificatore
+	Gli utenti possono in genere\marginpar{Sinonimi} riferire la stessa entità (concreta o astratta) mediante termini o espressioni differenti: tale ambiguità rappresenta un ostacolo decisivo per un'identificazione chiara e consistente dell'entità all'interno della piattaforma, rendendo più complesso stabilire se due o più contenuti riferiscano la medesima entità.
+
+	Ciascuna entità del dominio della piattaforma\marginpar{Ambiguità sintattica} deve perciò essere identificata in modo univoco da un termine o un'espressione precisa per eliminare possibili ambiguità sintattiche e renderla così riferibile e riconoscibile - dall'utente o dal sistema - in modo chiaro e preciso all'interno di qualsiasi contenuto.
+
+	In caso contrario\marginpar{Sintassi e semantica}, una delle possibile conseguenze sarebbe una minore accuratezza dei risultati di ricerca, dovuta alla restituzione dei soli contenuti nei quali l'entità sia identificata precisamente dall'etichetta scelta, ove invece l'esito desiderato consisterebbe nell'insieme di contenuti in cui l'entità sia riferita, a prescindere dalla specifica etichetta utilizzata: in altre parole, si desidera che la ricerca venga trasferita dal piano puramente sintattico (l'etichetta specifica) a quello semantico (l'entità indicata dall'etichetta).
+
+	$$ \textrm{entità} \rightarrow \textrm{identificatore} $$
 	\subsection{Identificazione non ambigua di un'entit\`a}
-	Identificatore $\to$ entità
+	Ciascun termine o espressione\marginpar{Accezioni} può assumere significati differenti (accezioni) - e dunque identificare entità distinte - a seconda del contesto in cui è inserito o citato.
+
+	Riveste un'importanza cruciale\marginpar{Ambiguità semantica} poter stabilire senza ambiguità all'interno di ciascun contenuto a quale accezione del termine o dell'espressione si faccia riferimento, per consentire una corretta identificazione dell'entità riferita.
+
+	$$ \textrm{identificatore} \rightarrow \textrm{entità} $$
+
 	\subsection{Gestione delle relazioni tra entit\`a}
 
-	Riprendendo la similitudine tra il dizionario della etichette e uno linguistico, si giunge facilmente a notare come non si tratti, in entrambi i casi, di semplici insieme di entit $E_i$ slegate, ma si possano intuitivamente individuare tra di esse delle relazioni gerarchiche (dal generale al particolare), capaci di trascendere la banale enumerazione alfabetica.
-
-	Nel dizionario della piattaforma\marginpar{Gerarchia} tali relazioni vengono rese attraverso legami tra le etichette primarie, ciascuna delle quali identifica univocamente un'entità del dominio ($e_0 \in E_i$), e si traducono nella possibilità di associare a ciascuna etichetta primaria un numero arbitrario di padri (etichette generiche) e figli (etichette specialistiche).
-
-	A differenze delle strutture gerarchiche classiche\marginpar{Estensioni}, ove ciascun elemento può avere molti figli ma un solo padre, il dizionario delle etichette estende la relazione \textit{uno-a-molti} anche agli elementi padre: la possibilità di assegnare differenti padri ad una medesima etichetta primaria si spiega con il desiderio di eliminare eventuali e possibili ambiguità, consentendo ad un utente di individuare un'etichetta seguendo differenti cammini nella gerarchia.
+	Osservando la similitudine tra il dominio delle entità e un dizionario linguistico, si nota immediatamente l'esistenza di relazioni gerarchiche (dal generale al particolare) tra le entità, che si traducono nella necessità di poter associare a ciascuna entità, o più precisamente all'etichetta primaria che la identifica, un numero arbitrario di padri (entità generiche) e figli (entità specialistiche).
 
 	\subsubsection{Ciascuna entit\`a ha $0\ldots n$ figli}
+	Ciascuna entità ammette naturalmente delle sotto-entità specialistiche, che ne rappresentano un aspetto o sfaccettatura particolare.
 	\subsubsection{Ciascuna entit\`a ha $0\ldots n$ padri}
+	A differenze della struttura gerarchica classica\marginpar{Padri e figli}, ove ciascun elemento può avere molti figli ma un solo padre, il dominio delle entità estende la relazione \textit{uno-a-molti} anche agli elementi padre per consentire di esprimere l'eventuale ambiguità associata ad una generica entità, ossia la possibilità che essa trovi collocazione logica in diverse posizioni all'interno della gerarchia.
 	\subsubsection{Principio di sostituzione}
+	Il principio di sostituzione implica l'esistenza di relazioni nascoste, frutto dell'ereditarietà gerarchica e particolarmente rilevanti nella selezione di contenuti riguardanti una determinata entità: la selezione va infatti estesa ricorsivamente a tutte le entità figlie di quella data.   
 	\subsection{Ricerca di un'entit\`a}
+	La ricerca di un'entità da parte dell'utente risulta facilitata dalla struttura gerarchica, che consente attraverso un processo dicotomico (dal generale al particolare) di portarla a termine nel modo più efficiente possibile. 
 
-	\paragraph{Soluzione}
-	\begin{enumerate}
-	\item Distinzione tra etichette primarie e sinonimiche (rispetto ad accezioni di un'etichetta).
-	\item Relazione 1:1 tra etichette primarie ed entità.
-	\item Grafo aciclico orientato delle entità.
-	\end{enumerate}
-
-	% SEZIONE 
+	% SEZIONE
 	\section{Etichette}
-	\label{sec:stage:req:tag}
+	\label{sec:stage:req:etichette}
 	
-	Il \textsc{dizionario} della piattaforma\marginpar{Modello concettuale} rappresenta - nella visione più elementare - un insieme di \textsc{etichette}: più in dettaglio, è possibile paragonarlo ad un dizionario linguistico, costituito da una insieme di lemmi, ciascuno dei quali possiede svariati significati (\textsc{accezioni}), che - a seconda del contesto o ambito di riferimento - identificano differenti entità del dominio.
-
-Riprendendone la connotazione insiemistica\marginpar{Notazione}, può risultare conveniente immaginare e trattare il dizionario $D$ come l'unione di $n$ sottoinsiemi $E_i$, ciascuno dei quali corrisponde ad un'entità del dominio e contiene esattamente un'etichetta \textsc{primaria} $e_0$, che identifica univocamente il sottoinsieme o entità in questione, e gli eventuali $m$ \textsc{sinonimi} $e_j$ (in numero arbitrario, anche nullo).\footnote{$i \in \mathbb{N}, i \leq n=\left|D\right|$}\footnote{$j \in \mathbb{N}, j \leq m=\left|E_i\right|$}
+	Riprendendo il modello concettuale\marginpar{Entità ed etichette} accennato nella sezione \ref{sec:stage:req:entità}, può risultare conveniente immaginare il dizionario $D$ come l'unione di sottoinsiemi $E_i$, ciascuno dei quali corrisponde ad un'entità distinta e contiene esattamente un'\textsc{etichetta primaria} $e_0$, che identifica univocamente il sottoinsieme o entità in questione e gli eventuali \textsc{sinonimi} $e_j$ (in numero arbitrario, anche nullo).\footnote{$i \in \mathbb{N}, i \leq n=\left|D\right|$}\footnote{$j \in \mathbb{N}, j \leq m=\left|E_i\right|$}
 
 %	\begin{figure}[ht]
 %		\begin{center}
@@ -132,8 +146,10 @@ Riprendendone la connotazione insiemistica\marginpar{Notazione}, può risultare 
 %	\end{figure}
 
 	\subsection{Gestione dei sinonimi}
+	Sebbene ciascuna entità\marginpar{Copertura sintattica} sia identificata univocamente da un'etichetta primaria all'interno di qualsiasi contenuto, i sinonimi vengono memorizzati e conservati nel dizionario poiché rivestono un ruolo altrettanto cruciale: dal momento che ciascun utente può cercare o riferirsi ad un'entità mediante il suo identificatore univoco (l'etichetta primaria) o una qualsiasi forma alternativa ma semanticamente equivalente (i sinonimi), conservare questi ultimi consente di individuare con maggior probabilità e precisione l'entità cui l'utente fa riferimento, di stabilire se essa sia già definita all'interno del dominio della piattaforma e di aggiungere eventualmente il termine o l'espressione cercata come nuova etichetta (primaria o sinonimica). 
+
 	\subsubsection{Ciascuna etichetta può avere $0\ldots n$ sinonimi}
-	Gli utenti possono scegliere etichette\marginpar{Ambiguità sintattica} differenti per riferire la stessa entità (concreta o astratta): trascurando i legami sinonimici tra le etichette, tale ambiguità determina la parzialità dei risultati di una ricerca a seconda dell'etichetta scelta, poiché verrebbe restituito il sottoinsieme dei contenuti all'interno dei quali l'entità sia identificata precisamente da tale etichetta.
+	Come accennato in precedenza è possibile riferirsi ad un'entità con termini o espressioni differenti, sebbene all'interno della piattaforma l'identificazione sia univoca e dunque tutti i sinonimi rimandino ad una precisa e specifica etichetta primaria.
 	
 %	\begin{figure}[ht]
 %		\begin{center}
@@ -141,8 +157,6 @@ Riprendendone la connotazione insiemistica\marginpar{Notazione}, può risultare 
 %			\caption[Ambiguità sintattica]{Ambiguità sintattica: un significante, molti significati}
 %		\end{center}
 %	\end{figure}
-
-	L'esito desiderato della ricerca\marginpar{Sintassi e semantica} consiste invece nell'insieme di contenuti in cui l'entità sia riferita, a prescindere dalla specifica etichetta utilizzata: in altre parole, si desidera che la ricerca venga trasferita dal piano puramente sintattico (l'etichetta specifica) a quello semantico (l'entità indicata dall'etichetta).
 
 	Per evitare la proliferazione di etichette duplicate\marginpar{Etichette primarie e sinonimiche} (sintatticamente differenti ma riferenti la medesima entità), che contribuirebbe a indebolire l'efficacia (qualità dei risultati di ricerca, navigabilità dei contenuti, \ldots) e l'efficienza (dimensione del dizionario, \ldots) del sistema di classificazione, risulta utile, per ogni entità $E_i$:
 	\begin{enumerate}
@@ -157,27 +171,19 @@ Riprendendone la connotazione insiemistica\marginpar{Notazione}, può risultare 
 %		\end{center}
 %	\end{figure}
 
-	Le etichette sinonimiche\marginpar{Copertura sintattica} vengono conservate nel dizionario per garantire una maggior copertura sintattica, aiutando a stabilire se un'etichetta cercata o scelta dall'utente sia già stata utilizzata in precedenza (con quale significato, in quale ambito, \ldots) e dunque risulti già presente nel dizionario.
-
-	Ai contenuti tuttavia vengono assegnate le corrispettive chiavi primarie, al fine di rendere più efficiente la catalogazione, la ricerca, la navigazione e la consultazione dei contenuti stessi.
-
 	\subsubsection{Aggiunta di un sinonimo ad un'etichetta}
-	Ogni qualvolta un utente sceglie una nuova etichetta $e$, che risulti sinonimo di un'altra esistente $e_j \in E_i$, essa viene aggiunta al dizionario interno della piattaforma come $e_{m+1} \in E_i$ sinonimo di $e_0 \in E_i$.
+	Ogni qualvolta un utente suggerisce una nuova etichetta $e$, che risulti sinonimo di un'altra esistente $e_j \in E_i$, essa viene aggiunta al dizionario interno della piattaforma come $e_{m+1} \in E_i$ sinonimo di $e_0 \in E_i$; da quel momento, qualora un utente provi ad assegnarla ad un contenuto della piattaforma, il sistema assegnerà automaticamente la corrispondente etichetta primaria $e_0$.
 
-	Da quel momento, qualora un utente provi ad assegnare quella medesima parola o espressione ad un contenuto della piattaforma, il sistema vi 
-assegnerà automaticamente l'etichetta primaria $e_0$.
+	Non si da il caso che la nuova etichetta\marginpar{Accezioni e sinonimi} $e_{m+1}$ possa essere sinonimo - rispetto ad una specifica accezione - di due (o più) etichette primarie, ma può essere sinonimo di etichette primarie in numero al più pari alle relative accezioni.
 
-%	L'aggiunta di un'etichetta sinonimica consiste nell'assegnare ad un'entità esistente un nuovo possibile identificatore, associando tale etichetta $e_{m+1} \in E_i$ alla corrispondente primaria $e_0 \in E_i$. Da un punto di vista insiemistico si assiste all'inserimento dell'etichetta medesima nel sottoinsieme corrispondente alla suddetta entità e identificato dall'etichetta primaria $e_0$.
-
-%	Non si da il caso che la nuova etichetta\marginpar{Accezioni e sinonimi} $e_{m+1}$ possa essere sinonimo - rispetto ad una specifica accezione - di due (o più) etichette primarie, ma può essere sinonimo di etichette primarie in numero al più pari alle relative accezioni.
-
-%	Si considerino ad esempio\marginpar{Uno-a-molti} due etichette primarie, $e_1 \in E_i$ e $e_2 \in E_i$: per la proprietà transitiva, se $e_1$ è sinonimo di $e_{m+1}$ e $e_2$ è sinonimo di $e_{m+1}$, allora $e_1$ e $e_2$ sono a loro volta sinonimi; ma allora, in accordo ai principi sopra illustrati, l'ultima tra $e_1$ e $e_2$ ad essere stata aggiunta doveva essere inserita nel sottoinsieme dell'altra, contraddicendo così le ipotesi iniziali.
+	Si considerino ad esempio\marginpar{Uno-a-molti} due etichette primarie, $e_1 \in E_i$ e $e_2 \in E_i$: per la proprietà transitiva, se $e_1$ è sinonimo di $e_{m+1}$ e $e_2$ è sinonimo di $e_{m+1}$, allora $e_1$ e $e_2$ sono a loro volta sinonimi; ma allora, in accordo ai principi sopra illustrati, l'ultima tra $e_1$ e $e_2$ ad essere stata aggiunta doveva essere inserita nel sottoinsieme dell'altra, contraddicendo così le ipotesi iniziali.
 
 	\subsubsection{Eliminazione di un sinonimo associato ad un'etichetta}
+	In considerazione delle esigenze di copertura sintattica, l'eliminazione di un sinonimo associato ad un'etichetta avviene solo in condizioni molto particolari, tali da invalidare la relazione sinonimica tra l'etichetta primarie e il sinonimo stesso.
 
 	\subsection{Gestione delle accezioni}
 	\subsubsection{Ciascuna etichetta può avere $1\ldots n$ accezioni}
-	Ciascuna etichetta\marginpar{Ambiguità semantica} può riferirsi a entità differenti a seconda del contesto, perciò diventa cruciale poterne precisare le possibili accezioni $a_k \in A$, ossia le entità cui si possa riferire.\footnote{$k \in \mathbb{N}, k \leq t=\left|A\right|$}
+	Ciascuna etichetta\marginpar{Ambiguità semantica} può riferirsi a entità differenti a seconda del contesto, perciò diventa indispensabile poterne precisare le possibili accezioni $a_k \in A$.\footnote{$k \in \mathbb{N}, k \leq t=\left|A\right|$}
 %	\begin{figure}[ht]
 %		\begin{center}
 %	    	\includegraphics{../img/placeholder.png}
@@ -185,7 +191,12 @@ assegnerà automaticamente l'etichetta primaria $e_0$.
 %		\end{center}
 %	\end{figure}
 	
-	Con l'introduzione delle accezioni\marginpar{Accezioni, entità e sottoinsiemi}, il dizionario della piattaforma acquisisce una nuova dimensione poiché ciascuna etichetta può appartenere contemporaneamente a diversi sottoinsiemi: dal momento che ciascuna entità corrisponde ad un sottoinsieme distinto e ogni accezione di un'etichetta riferisce un'entità diversa, la medesima etichetta si colloca in $\left|A\right|$ sottoinsiemi differenti.
+	Con l'introduzione delle accezioni\marginpar{Accezioni, entità e sottoinsiemi}, il dizionario della piattaforma acquisisce una nuova dimensione poiché ciascuna etichetta - al variare dell'accezione - si riferisce ad un'entità differente e può essere:
+	\begin{description}
+	\item[primaria] L'etichetta identifica univocamente un'entità del dominio e ha un numero arbitrario di sinonimi.
+	\item[sinonimica] L'etichetta rappresenta un sinonimo di un'etichetta primaria.
+	\end{description}
+
 %	\begin{figure}[ht]
 %		\begin{center}
 %	    	\includegraphics{../img/placeholder.png}
@@ -200,28 +211,33 @@ assegnerà automaticamente l'etichetta primaria $e_0$.
 	L'eliminazione di un'accezione $a_k \in A_j$ associata ad un'etichetta $e_j \in E_i$ prevede due possibili casi:
 	\begin{description}
 	\item[Etichetta primaria:] \hfill \\
-	Se l'etichetta è primaria, l'accezione viene eliminata e un sinonimo viene promosso in sua vece ad etichetta primaria del sottoinsieme.
+	Se l'etichetta è primaria, l'accezione viene eliminata e un sinonimo viene promosso in sua vece ad etichetta primaria, identificatore univoco dell'entità.
  	\item[Etichetta sinonimica] \hfill \\
-	Se l'etichetta è sinonimica, si procede direttamente alla cancellazione dell'accezione	.
+	Se l'etichetta è sinonimica, si procede direttamente alla cancellazione dell'accezione.
 	\end{description}
 
 	\subsection{Gestione del dizionario}
 	Il dizionario contiene in ogni istante $$\sum_{i \in \mathbb{N}, i \leq n}\left|E_i\right|$$ etichette, a ciascuna delle quali sono associate $\left|A_{i,j}\right|$ accezioni.
 
 	\subsubsection{Il dizionario contiene $0\ldots n$ etichette}
+	Il dizionario contiene un numero di etichette almeno pari al numero di entità definite poiché ciascuna entità dev'essere identificata dalla corrispondente etichetta primaria:
+	$$\sum_{i \leq n}{\left|E_i\right|} \geq \sum_{i \leq n}{min\{\left|E_i\right|\}} = \sum_{i \leq n}{1} = n$$
 
 	\subsubsection{Inserimento di una nuova etichetta}
-	L'aggiunta di un'etichetta primaria consiste nell'individuare una nuova entità ancora ignota al dizionario e nell'assegnarle come identificatore tale etichetta. Da un punto di vista insiemistico, si assiste alla formazione di un nuovo sottoinsieme $E_i$ contenente un unico elemento $e_0$, ossia l'etichetta stessa.
+	L'aggiunta di un'etichetta primaria implica l'identificazione di una nuova entità non ancora presente nel dizionario, l'assegnazione dell'etichetta primaria come identificatore univoco e l'inserimento nella gerarchia.
+	
+	%Da un punto di vista insiemistico, si assiste alla formazione di un nuovo sottoinsieme $E_i$ contenente un unico elemento $e_0$, ossia l'etichetta stessa.
 
 	\subsubsection{Eliminazione di un'etichetta esistente}
 	L'eliminazione di un'etichetta $e_j \in E_i$ richiede di considerare separatamente ogni possibile accezione $a_k \in A_j$, valutando caso per caso:
 	\begin{description}
 	\item[Etichetta primaria]\hfill \\
-	Se l'etichetta è primaria viene eliminata e un sinonimo viene promosso in sua vece ad etichetta primaria del sottoinsieme.
+	Se l'etichetta è primaria viene eliminata e un sinonimo viene promosso in sua vece ad etichetta primaria, identificatore univoco dell'entità.
  	\item[Etichetta sinonimica] \hfill \\
-	Se l'etichetta è sinonimica si procede semplicemente alla sua cancellazione.
+	Se l'etichetta è sinonimica si procede direttamente alla cancellazione dell'etichetta medesima.
 	\end{description}
 
+	% SECTION
 	\section{Contenuti} % Inserimento vs consultazione
 	
 	\subsection{Gestione delle etichette}
@@ -288,8 +304,13 @@ assegnerà automaticamente l'etichetta primaria $e_0$.
 	\subsubsection{Ricerca di contenuti affini}
 	La ricerca di contenuti affini consiste nell'identificare, a partire da un contenuto dato, altri la cui pertinenza rispetto al tema trattato sia massima: in questo scenario valgono le medesime considerazioni emerse nella sezione precedente, previa sostituzione di $U_e$ con l'insieme delle etichette assegnate al contenuto corrente.
 
-	%\chapter{Progettazione}
-	%\section{Entit\`a del dominio}
+	\chapter{Progettazione}
+	\section{Entit\`a del dominio}
+	\begin{enumerate}
+	\item Distinzione tra etichette primarie e sinonimiche (rispetto ad accezioni di un'etichetta).
+	\item Relazione 1:1 tra etichette primarie ed entità.
+	\item Grafo aciclico orientato delle entità.
+	\end{enumerate}
 	%\section{Contenuti informativi}
 
 \end{document}
