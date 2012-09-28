@@ -33,7 +33,8 @@
 	1.1 & 18-09-2012 & Rivista e ampliata la sezione \nameref{ch:stage:requisiti}. \\ \hline
 	1.2 & 19-09-2012 & Aggiornate le sezioni \textit{\nameref{sec:stage:requisiti:entità}} e \textit{\nameref{sec:stage:requisiti:etichette}}. \\ \hline
 	1.3 & 21-09-2012 & Aggiornata la sezione \textit{\nameref{sec:stage:requisiti:contenuti}}. \\ \hline
-	1.4 & 24-09-2012 & \ldots \\ \hline
+	1.4 & 24-09-2012 & Aggiunto il capitolo \nameref{ch:stage:design}.  \\ \hline
+	1.5 & 27-09-2012 & Redatte le sezioni \textit{\nameref{sec:stage:design:entità}} e \textit{\nameref{sec:stage:design:etichette}}. \\ \hline	
 	\end{tabular}
 	\caption{Registro delle modifiche}
 	\label{tab:stage:wp:workload}
@@ -339,7 +340,7 @@
 %		\end{center}
 %	\end{figure}
 
-	Ciascun contenuto contribuisce a tale serbatoio di conoscenza con frammenti di informazione relativi ad una o più \textsc{entità del dominio}: l'obiettivo del sistema di classificazione è tenere traccia delle relazioni esistenti tra contenuti ed entità al fine di agevolare la catalogazione ed il reperimento delle informazioni riportate nei primi e riguardanti le seconde.
+	Ciascun contenuto contribuisce a tale serbatoio di conoscenza con frammenti di informazione relativi ad \textsc{entità del dominio}: l'obiettivo del sistema di classificazione è tenere traccia delle relazioni esistenti tra contenuti ed entità al fine di agevolare la catalogazione ed il reperimento delle informazioni riportate nei primi e riguardanti le seconde.
 
 %	\begin{figure}[ht]
 %		\begin{center}
@@ -353,24 +354,35 @@
 
 	Per catalogare le informazioni riportate in un contenuto è necessario innanzi tutto identificare le entità cui si fa riferimento e quindi associare permanentemente tale meta-informazione al contenuto stesso. Solo così sarà possibile, in un secondo momento, raccogliere e recuperare efficientemente le informazioni riguardanti una certa entità, anche se frammentate nei vari contenuti.
 
-	Tale processo richiede di individuare una parola o breve espressione (\textsc{etichetta}) da associare al contenuto e capace di identificare in maniera chiara l'entità in questione: essendo gli utenti chiamati ad assolvere a tale compito, emergono diversi ostacoli all'effettivo raggiungimento dell'obiettivo prefissato.
+	Tale processo richiede di individuare una parola o breve espressione (\textsc{etichetta}) da associare al contenuto e capace di identificare in maniera chiara l'entità citata: essendo gli utenti chiamati ad assolvere a tale compito, è necessario tenere conto di alcuni ostacoli all'effettivo raggiungimento dell'obiettivo prefissato.
 
 	\section{Etichette}
 	\label{sec:stage:design:etichette}
 
 	\subsection{Ambiguità sintattica}
-	In prima battuta occorre considerare che possono esistere diversi termini o espressioni - in una data lingua - per identificare una certa entità (\textsc{sinonimi}) e così diversi utenti possono ragionevolmente scegliere altrettante etichette per riferire la medesima entità all'interno dei rispettivi contenuti: se si accorda loro tale libertà, è necessario distinguere nettamente il piano sintattico (l'etichetta) da quello semantico (l'entità) e tener presente le implicazioni nella ricerca di contenuti a partire dalle etichette.
+	In prima battuta\marginpar{Sinonimi} occorre considerare che possono esistere diversi termini o espressioni - in una data lingua - per identificare una certa entità (\textsc{sinonimi}) e così diversi utenti possono ragionevolmente scegliere altrettante etichette per riferirla all'interno di un contenuto: accordando loro tale libertà, è necessario distinguere nettamente il piano sintattico (l'etichetta) da quello semantico (l'entità) e tener presente le implicazioni nella ricerca di contenuti a partire dalle etichette.
 
-	Il sistema di classificazione\marginpar{Problema} è chiamato dunque a contemplare due esigenze fondamentali:
+	Il primo passo\marginpar{Duplicati} consiste nel definire uno standard per il \textsc{formato delle etichette}, ossia un insieme di regole tali da impedire la proliferazione di duplicati, equivalenti sul piano non solo semantico ma anche sintattico e differenti ad esempio per l'uso degli spazi, dei caratteri maiuscoli, \ldots. L'osservanza e l'adesione a tali regole nel processo di immissione di nuove etichette rappresenta un requisito essenziale per garantire la \textsc{consistenza} del dizionario della piattaforma.
+
+	A questo punto, il sistema di classificazione\marginpar{Esigenze} è chiamato a soddisfare e conciliare due esigenze cruciali:
 	\begin{itemize}
-	\item la possibilità per l'utente di riferirsi alla medesima entità con etichette differenti;
-	\item la necessità di identificare univocamente un'entità mediante un'etichetta specifica.
+	\item la possibilità per l'utente di riferirsi alla medesima entità con etichette differenti, che siano effettivamente riconosciute come identificatori semanticamente equivalenti;
+	\item la necessità di identificare univocamente un'entità mediante un'etichetta specifica per gestire in maniera efficiente la catalogazione e il reperimento delle informazioni relative, frammentate tra i vari contenuti.
 	\end{itemize}
+
+%	\begin{figure}[ht]
+%		\begin{center}
+%	    	\includegraphics{../img/placeholder.png}
+%			\caption[Entità, etichette e contenuti]{Relazione logica tra entità, etichette e contenuti}
+%		\end{center}
+%	\end{figure}
 
 	La soluzione\marginpar{Soluzione} adottata consiste nel distinguere le etichette - dal punto di vista di una certa entità - in:
 	\begin{description}
-	\item[Primaria] L'etichetta primaria identifica univocamente l'entità del dominio: a tutti i contenuti ove essa sia citata viene assegnata tale etichetta.
-	\item[Secondarie] Le etichette secondarie rappresentano termini o espressioni alternative con cui gli utenti possono riferire la medesima entità.
+	\item[Primaria] \hfill \\
+	L'etichetta primaria identifica univocamente l'entità del dominio: a tutti i contenuti ove essa sia citata viene assegnata tale etichetta.
+	\item[Secondarie] \hfill \\
+	Le etichette secondarie rappresentano termini o espressioni alternative e equivalenti ad una primaria con la quale gli utenti possono riferire l'entità corrispondente. Ciascuna dev'essere chiaramente riconducibile ad una ben precisa etichetta primaria.
 	\end{description}
 
 %	\begin{figure}[ht]
@@ -380,22 +392,41 @@
 %		\end{center}
 %	\end{figure}
 
-	Tale soluzione\marginpar{Vantaggi} coniuga la libertà dell'utente, che può riferire una certa entità con etichette sintatticamente differenti ma semanticamente equivalenti, e l'efficienza del sistema di classificazione, che identifica univocamente ciascuna entità con una sola etichetta (primaria). Poiché l'etichetta primaria identifica univocamente l'entità, è sufficiente associare ad essa ciascuna etichetta secondaria per consentire al sistema di riconoscere che esse identificano la medesima entità.
+	Tale soluzione\marginpar{Vantaggi} coniuga la libertà dell'utente, che può riferire un'entità con etichette diverse ma sinonimiche, e l'efficienza del sistema di classificazione, che identifica univocamente ciascuna entità con un'etichetta (primaria) distinta.
 
 	\subsection{Ricerca di un'etichetta}
-	La ricerca di contenuti opera sia sul piano sintattico sua su quello semantico: l'utente specifica infatti un'etichetta (\textsc{sintassi}) per cercare i contenuti riguardanti l'entità (\textsc{semantica}) da essa riferita. Ove la ricerca si limiti a considerare l'etichetta in questione sarà scarsamente efficiente e i risultati saranno inevitabilmente parziali, contemplando i soli contenuti in cui l'entità in questione sia riferita dalla specifica etichetta e dunque trascurando la componente semantica.
+	La ricerca di contenuti\marginpar{Da etichetta...} opera una traslazione dal piano sintattico a quello semantico: l'utente specifica infatti un'etichetta (\textsc{sintassi}) per cercare i contenuti riguardanti un'entità (\textsc{semantica}). Ove la ricerca si limiti a considerare l'etichetta inserita, l'efficacia ne risente poiché i risultati saranno inevitabilmente parziali e contempleranno i soli contenuti in cui l'entità in questione sia riferita dalla specifica etichetta.
 	
-	La soluzione adottata consente all'utente di specificare come termine di ricerca un'etichetta qualsiasi e garantisce allo stesso tempo che i risultati di ricerca includano tutti i contenuti referenti l'entità in questione, a prescindere dall'etichetta specificata. Poiché ai contenuti sono associate solo etichette primarie, una certa entità è identificata universalmente mediante un'unica etichetta primaria: se l'etichetta inserita dall'utente fosse secondaria, prima di effettuare la ricerca essa verrebbe automaticamente sostituita dalla corrispettiva primaria.
+	La distinzione\marginpar{...ad entità} tra etichette primarie e secondarie e l'assegnazione di sole etichette primarie ai contenuti colmano tale divario consentendo all'utente di specificare come termine di ricerca un'etichetta qualsiasi (primaria o secondaria) e identificando - a partire da questa - l'entità intesa dall'utente: qualora l'etichetta sia primaria l'associazione è immediata, altrimenti è sufficiente risalire dalla secondaria alla corrispondente primaria.
+
+	I vantaggi immediati\marginpar{Vantaggi} sono una maggiore \textsc{efficienza} e \textsc{efficacia} della ricerca: nota l'entità cui l'utente fa riferimento, in tutti i contenuti ove sia presente essa è identificata mediante un'unica etichetta primaria. Ne consegue che limitandosi a cercare i contenuti cui sia stata assegnata (o in cui occorra) l'etichetta primaria, si ha la garanzia di non trascurare alcun risultato utile o attinente.
+
+	Un ulteriore\marginpar{Dimensione} aspetto da tenere in considerazione riguarda la dimensione del dizionario: per stabilire se l'etichetta cercata sia presente può essere necessario - nel caso peggiore - scorrere interamente il dizionario. Per incrementare l'efficienza è opportuno indicizzare le etichette del dizionario in modo da poter effettuare la ricerca durante la digitazione simulando un automa a stati finiti: ogni passo corrisponde all'aggiunta di un carattere e ogni stato dell'automa identifica un'etichetta o il prefisso per un sottoinsieme di etichette del dizionario.
+
+	%Ciò consentirebbe inoltre di fornire suggerimenti durante la digitazione e funzionalità di auto-completamento, che propongano una lista di etichette corrispondenti ai criteri di ricerca.
 
 	\subsection{Inserimento di un'etichetta}
+	L'ostacolo principale\marginpar{Primaria o secondaria} all'adozione della soluzione proposta consiste, qualora l'etichetta cercata non sia presente nel dizionario, nel riconoscere se essa si riferisca ad un'entità non ancora definita nel dominio, e sia dunque destinata a divenirne etichetta primaria, o rappresenti una denominazione alternativa per un'entità preesistente (etichetta secondaria); in questo caso occorre essere in grado di stabilire quale sia l'entità in questione.
 
-%	\paragraph{Etichetta primaria}
+	La prima soluzione\marginpar{Corrispondenza sintattica...} presa in esame consiste nel cercare all'interno del dizionario etichette simili sul piano sintattico: ad esempio, ove l'etichetta rappresenti il nome proprio di un'entità è ragionevole pensare che essa possa rappresentare una forma abbreviata, contratta o espansa di altre etichette già esistenti e riferenti la medesima entità. 
 
-%	\paragraph{Etichetta secondaria}
+	La seconda soluzione\marginpar{...o semantica} si basa sulla ricerca di etichette affini, ossia valuta quali etichette vengano utilizzate più spesso in combinazione a quelle già assegnate al presente contenuto, eventualmente sfruttando le relazioni gerarchiche tra etichette primarie, per identificare l'entità/etichetta primaria più attinente.
+
+	Tale analisi può iniziare prendendo in considerazione i contenuti relativi alla medesima discussione ed eventualmente in seguito estendersi ad altri, privilegiando quelli riguardanti i medesimi temi ed allargando - ove utile - l'attenzione a quelli aventi attinenza decrescente.
+
+	Per facilitare tale controllo, le informazioni riguardanti l'utilizzo combinato delle etichette dovrebbero essere elaborate preventivamente e mantenute aggiornate con opportuna regolarità per risultare sufficientemente attendibili e rispecchianti lo scenario reale.
+
+	%\paragraph{Etichetta primaria}
+
+	%\paragraph{Etichetta secondaria}
 
 	\subsection{Eliminazione di un'etichetta}
+	\ldots
 
 	\subsection{Assegnazione di un'etichetta ad un contenuto}
+	- Individuazione entità
+	- Scelta etichetta
+	- Ricerca nel dizionario
 
 	\section{Accezioni}
 	\label{sec:stage:design:accezioni}
