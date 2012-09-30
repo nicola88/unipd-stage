@@ -34,7 +34,9 @@
 	1.2 & 19-09-2012 & Aggiornate le sezioni \textit{\nameref{sec:stage:requisiti:entità}} e \textit{\nameref{sec:stage:requisiti:etichette}}. \\ \hline
 	1.3 & 21-09-2012 & Aggiornata la sezione \textit{\nameref{sec:stage:requisiti:contenuti}}. \\ \hline
 	1.4 & 24-09-2012 & Aggiunto il capitolo \nameref{ch:stage:design}.  \\ \hline
-	1.5 & 27-09-2012 & Redatte le sezioni \textit{\nameref{sec:stage:design:entità}} e \textit{\nameref{sec:stage:design:etichette}}. \\ \hline	
+	1.5 & 27-09-2012 & Redatte le sezioni \textit{\nameref{sec:stage:design:entità}} e \textit{\nameref{sec:stage:design:etichette}}. \\ \hline
+	1.6 & 28-09-2012 & Ampliata la sezione \textit{\nameref{sec:stage:design:etichette}} e redatta la sezione \textit{\nameref{sec:stage:design:contenuti}}. \\ \hline
+	2.0 & 30-09-2012 & Pubblicazione della seconda versione ufficiale. \\ \hline	
 	\end{tabular}
 	\caption{Registro delle modifiche}
 	\label{tab:stage:wp:workload}
@@ -130,8 +132,6 @@
 	\label{sec:stage:requisiti:entità:relazioni}
 
 	Osservando la similitudine tra il dominio delle entità e un dizionario linguistico, si nota immediatamente l'esistenza di relazioni gerarchiche (dal generale al particolare) tra le entità, che si traducono nella possibilità di associare a ciascuna entità un numero arbitrario di padri (entità generiche) e figli (entità specialistiche).
-
-%	Gli elementi della gerarchia\marginpar{Elementi} risultano dunque essere etichette primarie, a ciascuna delle quali saranno associate delle accezioni (v. sezione \ref{sec:stage:requisiti:etichette:accezioni}) e - per ciascuna di esse - i relativi sinonimi (v. sezione \ref{sec:stage:requisiti:etichette:sinonimi}).
 
 	\subsubsection{Ciascuna entit\`a ha $0\ldots n$ figli}
 	Ciascuna entità ammette naturalmente delle sotto-entità specialistiche, che ne rappresentano un aspetto o sfaccettatura particolare.
@@ -356,6 +356,14 @@
 
 	Tale processo richiede di individuare una parola o breve espressione (\textsc{etichetta}) da associare al contenuto e capace di identificare in maniera chiara l'entità citata: essendo gli utenti chiamati ad assolvere a tale compito, è necessario tenere conto di alcuni ostacoli all'effettivo raggiungimento dell'obiettivo prefissato.
 
+	\subsection{Relazioni gerarchiche}
+	
+	Come illustrato nella sezione \ref{sec:stage:design:etichette:accezioni}\marginpar{Gerarchia}, ciascuna entità è identificata univocamente dall'accezione chiave di un'etichetta, a cui è possibile associare $0...n$ accezioni padre: l'insieme delle relazioni così definite genera una struttura a \textsc{grafo orientato aciclico}
+
+	L'obiettivo primario\marginpar{Obiettivi} di tale struttura è organizzare l'insieme delle entità del dominio in una struttura ordinata, che consenta agli utenti di consultare agevolmente - mediante un processo dicotomico dal generale al particolare - le tematiche affrontate dai contenuti pubblicati dagli utenti.
+
+	L'assenza di cicli dovrebbe essere garantita dal fatto che non si da il caso che esistano due entità per cui la relazione padre-figlio sia simmetrica: si tratta di una proprietà necessaria a garantire una struttura aciclica la cui verifica tuttavia può risultare onerosa sul piano computazionale a causa della molteplicità \textit{molti-a-molti} della relazione.
+
 	\section{Etichette}
 	\label{sec:stage:design:etichette}
 
@@ -382,7 +390,7 @@
 	\item[Primaria] \hfill \\
 	L'etichetta primaria identifica univocamente l'entità del dominio: a tutti i contenuti ove essa sia citata viene assegnata tale etichetta.
 	\item[Secondarie] \hfill \\
-	Le etichette secondarie rappresentano termini o espressioni alternative e equivalenti ad una primaria con la quale gli utenti possono riferire l'entità corrispondente. Ciascuna dev'essere chiaramente riconducibile ad una ben precisa etichetta primaria.
+	Le etichette secondarie rappresentano termini o espressioni alternative (equivalenti e chiaramente riconducibili ad una primaria) con la quale gli utenti possono riferire l'entità corrispondente.
 	\end{description}
 
 %	\begin{figure}[ht]
@@ -394,45 +402,53 @@
 
 	Tale soluzione\marginpar{Vantaggi} coniuga la libertà dell'utente, che può riferire un'entità con etichette diverse ma sinonimiche, e l'efficienza del sistema di classificazione, che identifica univocamente ciascuna entità con un'etichetta (primaria) distinta.
 
+	\subsection{Ambiguità semantica}
+	\label{sec:stage:design:etichette:accezioni}
+	Ciascuna etichetta può assumere diversi significati (\textsc{accezioni}) a seconda del contesto in cui viene impiegata, potendo risultare semanticamente ambigua e riferirsi a diverse entità; gli utenti invece devono poter comunicare in maniera chiara a quale entità si riferiscano ogni qualvolta assegnino ad un contenuto o cerchino un'etichetta avente accezioni multiple.
+
+	In uno scenario ove ciascuna etichetta abbia multiple accezioni, ossia possa riferirsi ad entità differenti, la distinzione tra primaria o secondaria non è assoluta, ma la si deve considerare variabile a seconda dell'accezione/entità considerata. Per tale ragione si distinguono le accezioni di un'etichetta in:
+	\begin{description}
+	\item[Chiave] \hfill \\
+	L'etichetta è primaria rispetto all'entità identificata dall'accezione; per ogni entità può esserci quindi una sola etichetta avente la corrispondente accezione primaria. 
+	\item[Sinonimica] \hfill \\
+	L'etichetta è secondaria rispetto all'entità identificata dall'accezione; per ogni entità possono esserci $0...n$ etichette aventi accezione secondaria.
+	\end{description}
+
+	Le relazioni sinonimiche tra etichette primarie e secondarie, ossia il fatto che ciascuna etichetta secondaria sia sinonimo di una ben precisa etichetta primaria, vanno ripensate e ridefinite alla luce di tale distinzione a livello di singola accezione. Se l'accezione è primaria, l'etichetta identifica univocamente l'entità corrispondente; in caso contrario (accezione sinonimica) l'etichetta - per l'accezione specifica - è sinonimo dell'unica etichetta, la cui accezione relativa alla medesima entità sia chiave. 
+
 	\subsection{Ricerca di un'etichetta}
-	La ricerca di contenuti\marginpar{Da etichetta...} opera una traslazione dal piano sintattico a quello semantico: l'utente specifica infatti un'etichetta (\textsc{sintassi}) per cercare i contenuti riguardanti un'entità (\textsc{semantica}). Ove la ricerca si limiti a considerare l'etichetta inserita, l'efficacia ne risente poiché i risultati saranno inevitabilmente parziali e contempleranno i soli contenuti in cui l'entità in questione sia riferita dalla specifica etichetta.
+	La ricerca di contenuti\marginpar{Da etichetta...} opera una traslazione dal piano sintattico a quello semantico: l'utente specifica infatti un'etichetta (\textsc{sintassi}) per cercare i contenuti riguardanti un'entità (\textsc{semantica}). Ove la ricerca si limiti a considerare l'etichetta inserita, i risultati potranno essere parziali, contemplando i soli contenuti in cui l'entità sia riferita dalla specifica etichetta, o addirittura errati, includendo contenuti riguardanti tutte le accezioni dell'etichetta anziché la sola di interesse per l'utente.
 	
-	La distinzione\marginpar{...ad entità} tra etichette primarie e secondarie e l'assegnazione di sole etichette primarie ai contenuti colmano tale divario consentendo all'utente di specificare come termine di ricerca un'etichetta qualsiasi (primaria o secondaria) e identificando - a partire da questa - l'entità intesa dall'utente: qualora l'etichetta sia primaria l'associazione è immediata, altrimenti è sufficiente risalire dalla secondaria alla corrispondente primaria.
+	Le accezioni\marginpar{...ad accezione...} consentono di distinguere le entità riferibili dall'etichetta: ove siano più d'una è l'utente ad essere chiamato a scegliere quale corrisponda al significato inteso o a decidere di proseguire la ricerca sul piano puramente sintattico, ossia contemplando tutte le possibili accezioni.
 
-	I vantaggi immediati\marginpar{Vantaggi} sono una maggiore \textsc{efficienza} e \textsc{efficacia} della ricerca: nota l'entità cui l'utente fa riferimento, in tutti i contenuti ove sia presente essa è identificata mediante un'unica etichetta primaria. Ne consegue che limitandosi a cercare i contenuti cui sia stata assegnata (o in cui occorra) l'etichetta primaria, si ha la garanzia di non trascurare alcun risultato utile o attinente.
+	La distinzione\marginpar{...fino all'entità} tra etichetta primaria o secondaria (rispetto all'accezione data) e l'assegnazione di sole etichette primarie ai contenuti colmano infine tale divario consentendo all'utente di specificare come termine di ricerca un'etichetta qualsiasi e identificando - a partire da questa - l'entità intesa dall'utente. Qualora l'etichetta sia primaria l'associazione è immediata, altrimenti è sufficiente risalire dalla secondaria alla corrispondente primaria.
 
-	Un ulteriore\marginpar{Dimensione} aspetto da tenere in considerazione riguarda la dimensione del dizionario: per stabilire se l'etichetta cercata sia presente può essere necessario - nel caso peggiore - scorrere interamente il dizionario. Per incrementare l'efficienza è opportuno indicizzare le etichette del dizionario in modo da poter effettuare la ricerca durante la digitazione simulando un automa a stati finiti: ogni passo corrisponde all'aggiunta di un carattere e ogni stato dell'automa identifica un'etichetta o il prefisso per un sottoinsieme di etichette del dizionario.
+	I vantaggi immediati\marginpar{Vantaggi} sono una maggiore \textsc{efficienza} e \textsc{efficacia} della ricerca: nota l'entità cui l'utente fa riferimento, in tutti i contenuti ove sia presente essa è identificata mediante un'unica etichetta primaria, declinata in un'accezione specifica. Ne consegue che limitandosi a cercare i contenuti cui sia stata assegnata l'etichetta primaria nella medesima accezione, si ha la garanzia di non trascurare alcun risultato utile o includerne altri non semanticamente attinenti.
 
-	%Ciò consentirebbe inoltre di fornire suggerimenti durante la digitazione e funzionalità di auto-completamento, che propongano una lista di etichette corrispondenti ai criteri di ricerca.
+	Un aspetto da tenere in considerazione\marginpar{Dimensione} sul fronte delle prestazioni riguarda la dimensione del dizionario: stabilire se un'etichetta cercata sia presente nel dizionario potrebbe avere - nel caso peggiore - una complessità pari alla dimensione del dizionario, ossia $O(\left|D\right|)$.\footnote{$D$ rappresenta il dizionario della piattaforma, inteso come insieme delle etichette primarie e secondarie.}
+
+	\subsection{Aggiunta di un'accezione}
+	Se l'etichetta cercata risulta presente nel dizionario, ma in accezioni differenti rispetto a quella intesa dall'utente, è possibile specificare una nuova accezione. Per decidere se sia chiave o sinonimica occorre stabilire se l'entità riferita sia già presente nel dizionario sotto forma di accezione primaria di un'etichetta differente.
 
 	\subsection{Inserimento di un'etichetta}
-	L'ostacolo principale\marginpar{Primaria o secondaria} all'adozione della soluzione proposta consiste, qualora l'etichetta cercata non sia presente nel dizionario, nel riconoscere se essa si riferisca ad un'entità non ancora definita nel dominio, e sia dunque destinata a divenirne etichetta primaria, o rappresenti una denominazione alternativa per un'entità preesistente (etichetta secondaria); in questo caso occorre essere in grado di stabilire quale sia l'entità in questione.
+	L'ostacolo principale\marginpar{Primaria o secondaria} all'adozione della soluzione proposta consiste, qualora l'etichetta cercata sia presente nel dizionario in accezioni differenti rispetto a quella intesa dall'utente o non vi sia affatto, nel riconoscere se essa si riferisca ad un'entità non ancora definita nel dominio, e sia dunque destinata a divenirne etichetta primaria, o rappresenti una denominazione alternativa per un'entità preesistente (etichetta secondaria); in questo caso occorre essere in grado di stabilire quale sia l'entità in questione.
 
-	La prima soluzione\marginpar{Corrispondenza sintattica...} presa in esame consiste nel cercare all'interno del dizionario etichette simili sul piano sintattico: ad esempio, ove l'etichetta rappresenti il nome proprio di un'entità è ragionevole pensare che essa possa rappresentare una forma abbreviata, contratta o espansa di altre etichette già esistenti e riferenti la medesima entità. 
+	Sono state immaginate alcune ipotesi di soluzioni per facilitare il processo di individuazione e riconoscimento dell'entità cui l'etichetta potrebbe riferirsi, che consistono nel proporre all'utente una lista il più possibile precisa e accurata di potenziali entità che egli è chiamato a vagliare.
+ 
+	La prima soluzione\marginpar{Corrispondenza sintattica...} consiste nel cercare all'interno del dizionario etichette simili sul piano sintattico: ad esempio, ove l'etichetta rappresenti il nome proprio di un'entità è ragionevole pensare che essa possa rappresentare una forma abbreviata, contratta o espansa di altre etichette già esistenti e riferenti la medesima entità. 
 
-	La seconda soluzione\marginpar{...o semantica} si basa sulla ricerca di etichette affini, ossia valuta quali etichette vengano utilizzate più spesso in combinazione a quelle già assegnate al presente contenuto, eventualmente sfruttando le relazioni gerarchiche tra etichette primarie, per identificare l'entità/etichetta primaria più attinente.
+	La seconda soluzione\marginpar{...o semantica} si basa sulla ricerca di etichette affini, ossia valuta quali etichette vengano utilizzate più spesso in combinazione a quelle già assegnate al presente contenuto. Tale analisi può partire dai contenuti relativi alla medesima discussione ed eventualmente in seguito estendersi ad altri aventi attinenza minore.
 
-	Tale analisi può iniziare prendendo in considerazione i contenuti relativi alla medesima discussione ed eventualmente in seguito estendersi ad altri, privilegiando quelli riguardanti i medesimi temi ed allargando - ove utile - l'attenzione a quelli aventi attinenza decrescente.
-
-	Per facilitare tale controllo, le informazioni riguardanti l'utilizzo combinato delle etichette dovrebbero essere elaborate preventivamente e mantenute aggiornate con opportuna regolarità per risultare sufficientemente attendibili e rispecchianti lo scenario reale.
-
-	%\paragraph{Etichetta primaria}
-
-	%\paragraph{Etichetta secondaria}
+	\subsection{Eliminazione di un'accezione}
+	L'accezione di un'etichetta riferisce un'entità del dominio: qualora sia chiave, è necessario individuare un'accezione secondaria per la medesima entità da promuovere al suo posto e con cui sostituirla in tutti i contenuti ai quali sia stata assegnata.
 
 	\subsection{Eliminazione di un'etichetta}
-	\ldots
-
-	\subsection{Assegnazione di un'etichetta ad un contenuto}
-	- Individuazione entità
-	- Scelta etichetta
-	- Ricerca nel dizionario
-
-	\section{Accezioni}
-	\label{sec:stage:design:accezioni}
-
-	\subsection{Ambiguità semantica}
+	L'eliminazione di un'etichetta consiste essenzialmente nella rimozione di ogni accezione che la caratterizzi, secondo quanto descritto nella sezione precedente.
 
 	\section{Contenuti}
 	\label{sec:stage:design:contenuti}
+
+	\subsection{Assegnazione di un'etichetta}
+	Per identificare un'entità citata in un contenuto occorre scegliere un'etichetta che la identifichi in una delle sue accezioni: ciò che viene effettivamente associato al contenuto rappresenta l'etichetta primaria con cui l'entità stessa viene identificata nel dominio della piattaforma.
+
 \end{document}
