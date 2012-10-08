@@ -29,6 +29,7 @@
 	0.3 & 3-10-2012 & Redazione della sezione \nameref{ch:stage:er:operazioni}. \\ \hline
 	0.4 & 4-10-2012 & Aggiornamento e revisione della sezione \nameref{ch:stage:er:operazioni}. \\ \hline
 	0.5 & 5-10-2012 & Redazione della sezione \nameref{ch:stage:er:schema}. \\ \hline
+	1.0 & 6-10-2012 & Revisione definitiva del documento. \\ \hline
 	\end{tabular}
 	\caption{Registro delle modifiche}
 	\label{tab:stage:wp:workload}
@@ -59,7 +60,7 @@
 
 	\section{Sintassi}
 	\subsection{etichette}
-	Le etichette, intese come singole parole o brevi espressioni aventi lunghezza massima fissata (150 caratteri) e codificate secondo un formato standard, rappresentano lo strumento per identificare una determinata entità e sono a loro volta univocamente distinguibili per la struttura sintattica.
+	Le etichette, intese come singole parole o brevi espressioni aventi lunghezza massima fissata (150 caratteri) e codificate secondo un formato standard, rappresentano lo strumento con cui l'utente può identificare una determinata entità e sono a loro volta univocamente distinguibili per la struttura sintattica.
 
 	Un'etichetta\marginpar{Accezioni} possiede diverse accezioni, ciascuna delle quali individua un'entità ben precisa del dominio e può essere chiave o sinonimica, a seconda che identifichi univocamente l'entità in questione o meno. Nel primo caso l'etichetta viene definita primaria (rispetto all'entità), altrimenti secondaria.
 	
@@ -69,18 +70,46 @@
 
 	Ciascuna etichetta può avere diverse accezioni chiave, ossia identificare univocamente diverse entità in altrettante accezioni, ma ciascuna entità ha una sola etichetta primaria.
 
+	\begin{description}
+	\item[etichetta FK(etichette)] \hfill \\
+	Etichetta (primaria) che identifica l'entità del dominio.
+	\item[tipo Fk(tipi\textunderscore entita)] \hfill \\
+	Categoria (o sotto dominio) di appartenenza dell'entità.
+	\end{description}
+
 	\subsection{tipi\textunderscore entita}
-	Le entità del dominio possono essere convenientemente distinte organizzate in sotto domini a seconda di ciò che rappresentano: un luogo, una persona, un evento, un prodotto, un concetto, \ldots. 
+	Le entità del dominio possono essere convenientemente organizzate in sotto domini a seconda di ciò che rappresentano: un luogo, una persona, un evento, un prodotto, un concetto, \ldots. 
 
 	\subsection{sinonimi}
 	Ciascuna entità è richiamabile e riferibile dall'utente mediante etichette secondarie: le accezioni secondarie di ciascuna etichetta sono presenti in tale tabella e ciascuna di esse è associata chiaramente ad un'entità del dominio.
 
+	\begin{description}
+	\item[etichetta FK(etichette)] \hfill \\
+	Etichetta di cui l'accezione sinonimica è relativa.
+	\item[entita Fk(entita)] \hfill \\
+	Entita (accezione chiave) cui si riferisce l'accezione sinonimica.
+	\end{description}
+
 	\subsection{gerarchia}
 	Le relazioni gerarchiche tra le etichette vengono conservate in questa tabella e vengono aggiornate automaticamente in caso di aggiornamento o cancellazione di un'accezione chiave/entita.
+
+	\begin{description}
+	\item[padre FK(entita)] \hfill \\
+	Padre dell'entità corrente.
+	\item[entita Fk(entita)] \hfill \\
+	Entità corrente.
+	\end{description}
 
 	\section{Contenuti}
 	\subsection{classificazione}
 	A ciascun contenuto possono essere assegnate diverse etichette primarie, ciascuna declinata in un'accezione specifica che individua precisamente l'entità riferita nel contenuto.
+
+	\begin{description}
+	\item[contenuto FK(contenuti)] \hfill \\
+	Contenuto pubblicato nella piattaforma.
+	\item[entita Fk(entita)] \hfill \\
+	Entita riferita nel contenuto.
+	\end{description}
 
 	%----------
 	% CAPITOLO
@@ -339,7 +368,7 @@ INSERT INTO classificazione(contenuto,entita)
 \end{verbatim}
 
 	\subsection{Ricerca delle etichette assegnate}
-	Il reperimento della lista delle etichette primarie	assegnate ad un contenuto richiede di consultare le tabelle \texttt{classificazione} ed \texttt{entita}.
+	Il reperimento della lista delle etichette primarie assegnate ad un contenuto richiede di consultare le tabelle \texttt{classificazione} ed \texttt{entita}.
 \begin{verbatim}
 SELECT e.etichetta
   FROM classificazione AS c JOIN entita AS e
