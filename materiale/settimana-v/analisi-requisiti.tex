@@ -1,0 +1,413 @@
+\documentclass[10pt,a4paper,headinclude,footinclude,hidelinks]{scrreprt} % KOMA-Script
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage[]{../../classicthesis} % nochapters
+\pagestyle{scrheadings}
+\setcounter{tocdepth}{1}
+
+\begin{document}
+    \title{\rmfamily\normalfont\spacedallcaps{Analisi dei requisiti}}
+    \author{\spacedlowsmallcaps{Nicola Moretto (matr. 578258)}}
+    \date{\today}
+    
+    \maketitle
+    
+    \begin{abstract}
+        \noindent Il documento illustra i casi d'uso e i requisiti dell'interfaccia grafica per la visualizzazione e la navigazione dei contenuti.
+    \end{abstract}
+    
+	\begin{table}[ht]
+	\centering
+	\begin{tabular}{|c|c|l|}
+	\hline
+	\textsc{Versione} & \textsc{Data} & \textsc{Modifiche} \\ \hline
+	0.1 & 8-10-2012 & Stesura iniziale del documento. \\ \hline
+	0.2 & 10-10-2012 & Redatte le sezioni \nameref{ch:stage:ar:uc:1} e parzialmente la \nameref{ch:stage:ar:uc:2}. \\ \hline
+
+	\end{tabular}
+	\caption{Registro delle modifiche}
+	\label{tab:stage:wp:workload}
+	\end{table}
+
+	\tableofcontents
+
+	%----------
+	% CAPITOLO
+	%----------
+	\chapter{Introduzione}
+	\label{ch:stage:ar:intro}
+
+	\chapter{Casi d'uso}
+	\label{ch:stage:ar:uc}
+
+	\section[UC.1]{UC.1 - Ricerca di contenuti informativi}
+	\label{ch:stage:ar:uc:1}
+	Il diagramma dei casi d'uso (v. figura \ldots) descrive l'interazione dell'utente per eseguire una ricerca sui contenuti pubblicati nella piattaforma.
+
+	Il primo passo\marginpar{Criteri di ricerca} consiste nell'inserire le chiavi di ricerca (\nameref{ch:stage:ar:uc:1_1}), che possono rappresentare etichette del dizionario assegnate ai contenuti o frasi citate all'interno di questi ultimi, nel titolo o nel corpo: l'utente può quindi restringere l'ambito di ricerca alle sole etichette o frasi (\nameref{ch:stage:ar:uc:1_2}).
+
+	Per ogni etichetta\marginpar{Etichette ed accezioni} inserita, ove essa possieda accezioni multiple, l'utente è chiamato a indicare quelle di interesse (\nameref{ch:stage:ar:uc:1_3}): nel complesso, esse individuano un insieme di entità di cui si desiderano ottenere informazioni.
+
+	I risultati di ricerca riportano la lista delle entità cercate (\nameref{ch:stage:ar:uc:1_4}), che l'utente può modificare - per alterare i criteri di ricerca - eliminando un'entità (\nameref{ch:stage:ar:uc:1_5}) oppure sostituendola con un'entità padre (\nameref{ch:stage:ar:uc:1_6}) o figlio (\nameref{ch:stage:ar:uc:1_7}).
+
+ 	\subsection[UC.1.1]{UC.1.1 - Inserire i termini di ricerca}
+	\label{ch:stage:ar:uc:1_1}
+	\paragraph{Attori:}  utente
+	\paragraph{Precondizioni:} il browser visualizza la pagina di ricerca.
+	\paragraph{Postcondizioni:} la barra di ricerca contiene una lista di stringhe separate da virgole.
+	\paragraph{Scenario principale} \hfill \\
+	L'utente inserisce i termini o le espressioni, separati da virgola, nella barra di ricerca, potendo avvantaggiarsi - per le etichette - di un meccanismo di completamento automatico durante la digitazione.
+
+	\subsection[UC.1.2]{UC.1.2 - Selezionare l'ambito di ricerca}
+	\label{ch:stage:ar:uc:1_2}
+	\paragraph{Attori:} utente
+	\paragraph{Precondizioni:} il browser visualizza la pagina di ricerca.
+	\paragraph{Postcondizioni:} l'utente ha impostato l'ambito di ricerca desiderato.
+	\paragraph{Scenario principale} \hfill \\
+	L'utente seleziona uno dei possibili ambiti in cui effettuare la ricerca:
+	\begin{itemize}
+	\item solo etichette;
+	\item solo frasi;
+	\item etichette e frasi (predefinito).
+	\end{itemize}
+
+	\subsection[UC.1.3]{UC.1.3 - Selezionare una o più accezioni di un'etichetta}
+	\label{ch:stage:ar:uc:1_3}
+	\paragraph{Attori:} utente
+	\paragraph{Precondizioni:} il sistema mostra un elenco di accezioni relative ad un'etichetta inserita come termine di ricerca.
+	\paragraph{Postcondizioni:} il sistema ha associato un'entità precisa all'etichetta.
+	\paragraph{Scenario principale}  \hfill \\
+	L'utente seleziona l'accezione dell'etichetta facente riferimento all'entità intesa.
+
+	\subsection[UC.1.4]{UC.1.4 - Visualizzare le entità cercate}
+	\label{ch:stage:ar:uc:1_4}
+	\paragraph{Attori:} utente
+	\paragraph{Precondizioni:} il sistema mostra i risultati della ricerca.
+	\paragraph{Postcondizioni:} il sistema mostra le entità cercate nei contenuti .
+	\paragraph{Scenario principale} \hfill \\
+	In un'area dedicata l'utente visualizza la lista delle entità cercate nei contenuti e riferite dalle etichette inserite come termini di ricerca (o dalle relative accezioni).
+
+	\subsection[UC.1.5]{UC.1.5 - Eliminare un'entità cercata}
+	\label{ch:stage:ar:uc:1_5}
+	\paragraph{Attori:} utente
+	\paragraph{Precondizioni:} il sistema mostra la lista delle entità cercate nei contenuti.
+	\paragraph{Postcondizioni:} un'entità è stata eliminata dalla lista e i risultati di ricerca sono stati aggiornati.
+	\paragraph{Scenario principale}
+	\begin{enumerate}
+	\item L'utente visualizza la lista delle entità (\nameref{ch:stage:ar:uc:1_4});
+	\item l'utente seleziona un'entità;
+	\item l'utente cancella l'entità dalla lista.
+	\end{enumerate}
+	\paragraph{Scenari alternativi}
+	\begin{enumerate}
+	\item l'entità cercata non è presente nella lista
+		\begin{enumerate}
+		\item l'utente non effettua alcuna operazione.
+		\end{enumerate}
+	\end{enumerate}
+
+	\subsection[UC.1.6]{UC.1.6 - Visualizzare i padri di un'entità cercata}
+	\label{ch:stage:ar:uc:1_6}
+	\paragraph{Attori:} utente
+	\paragraph{Precondizioni:} il sistema mostra la lista delle entità cercate nei contenuti.
+	\paragraph{Postcondizioni:} il sistema visualizza l'insieme dei padri di un'entità presente nella lista.
+	\paragraph{Scenario principale}
+	\begin{enumerate}
+	\item L'utente visualizza la lista delle entità (\nameref{ch:stage:ar:uc:1_4});
+	\item l'utente seleziona un'entità;
+	\item l'utente richiama la lista delle entità padre.
+	\end{enumerate}
+
+	\subsection[UC.1.7]{UC.1.7 - Visualizzare i figli di un'entità cercata}
+	\label{ch:stage:ar:uc:1_8}
+	\paragraph{Attori:} utente
+	\paragraph{Precondizioni:} il sistema mostra la lista delle entità cercate nei contenuti.
+	\paragraph{Postcondizioni:} il sistema visualizza l'insieme dei figli di un'entità presente nella lista.
+	\paragraph{Scenario principale}
+	\begin{enumerate}
+	\item L'utente visualizza la lista delle entità (\nameref{ch:stage:ar:uc:1_4});
+	\item l'utente seleziona un'entità;
+	\item l'utente richiama la lista delle entità figlie.
+	\end{enumerate}
+
+	\subsection[UC.1.8]{UC.1.8 - Selezionare un padre dell'entità cercata}
+	\label{ch:stage:ar:uc:1_8}
+	\paragraph{Attori:} utente
+	\paragraph{Precondizioni:} il sistema mostra la lista delle entità cercate nei contenuti.
+	\paragraph{Postcondizioni:} un'entità è stata sostituita con un padre e i risultati di ricerca sono stati aggiornati.
+	\paragraph{Scenario principale}
+	\begin{enumerate}
+	\item L'utente richiama la lista dei padri di un'entità (\nameref{ch:stage:ar:uc:1_6});
+	\item l'utente seleziona un'entità padre.
+	\end{enumerate}
+
+	\subsection[UC.1.9]{UC.1.9 - Selezionare un figlio dell'entità cercata}
+	\label{ch:stage:ar:uc:1_9}
+	\paragraph{Attori:} utente
+	\paragraph{Precondizioni:} il sistema mostra la lista delle entità cercate nei contenuti.
+	\paragraph{Postcondizioni:} un'entità è stata sostituita con un figlio e i risultati di ricerca sono stati aggiornati.
+	\paragraph{Scenario principale}
+	\begin{enumerate}
+	\item L'utente richiama la lista dei figli di un'entità (\nameref{ch:stage:ar:uc:1_7});
+	\item l'utente seleziona un'entità figlia.
+	\end{enumerate}
+
+	% SECTION
+	\section[UC.2]{UC.2 - Raffinamento dei criteri di ricerca}
+	\label{ch:stage:ar:uc:2}
+	Questo diagramma dei casi d'uso (vedi \ldots) mostra le possibilità offerte all'utente per raffinare i criteri di ricerca così da ridurre la dimensione e migliorare la qualità e l'attinenza dei risultati di ricerca.
+
+	L'utente può intervenire su un'ampia varietà di parametri, suddivisi tra criteri di classificazione e proprietà dei contenuti.
+
+	\paragraph{Criteri di classificazione}
+	\begin{itemize}
+	\item argomento;
+	\item emozione;
+	\item giudizio;
+	\item intenzione.
+	\end{itemize}
+
+	\paragraph{Propriet\`a}
+	\begin{itemize}
+	\item autore;
+	\item data di pubblicazione;
+	\item tipo.
+	\end{itemize}
+
+	\subsection[UC.2.1]{UC.2.1 - Visualizzare la lista degli utenti autorizzati}
+	\label{ch:stage:ar:uc:2_1}
+	\paragraph{Attori:} utente
+	\paragraph{Precondizioni:} il sistema visualizza i contenuti corrispondenti ai criteri di ricerca immessi e ai filtri impostati.
+	\paragraph{Postcondizioni:} il sistema mostra la lista degli utenti autorizzati, ossia aventi pubblicato almeno un contenuto presente e visualizzato tra i risultati di ricerca.
+	\paragraph{Scenario principale}
+	L'utente apre la lista degli utenti autorizzati.
+
+	\subsection[UC.2.2]{UC.2.2 - Visualizzare la lista degli utenti bloccati}
+	\label{ch:stage:ar:uc:2_2}
+	\paragraph{Attori:} utente
+	\paragraph{Precondizioni:} il sistema visualizza i contenuti corrispondenti ai criteri di ricerca immessi e ai filtri impostati.
+	\paragraph{Postcondizioni:} il sistema mostra la lista degli utenti bloccati, ossia aventi pubblicato almeno un contenuto presente ma non visualizzato tra i risultati di ricerca.
+	\paragraph{Scenario principale} \hfill \\
+	L'utente apre la lista degli utenti bloccati.
+
+	\subsection[UC.2.3]{UC.2.3 - Mostrare i contenuti pubblicati da un utente}
+	\label{ch:stage:ar:uc:2_3}
+	\paragraph{Attori:} utente
+	\paragraph{Precondizioni:} il sistema visualizza i contenuti corrispondenti ai criteri di ricerca immessi e ai filtri impostati.
+	\paragraph{Postcondizioni:} il sistema mostra - in aggiunta ai precedenti - i contenuti pubblicati dall'utente selezionato.
+	\paragraph{Scenario principale}
+	\begin{enumerate}
+	\item l'utente visualizza la lista degli utenti bloccati (\nameref{ch:stage:ar:uc:2_2});
+	\item l'utente seleziona quello di cui desidera visualizzare i contenuti tra i risultati di ricerca;
+	\item l'utente lo sposta nella lista degli utenti autorizzati.
+	\end{enumerate}
+
+	\subsection[UC.2.4]{UC.2.4 - Nascondere i contenuti pubblicati da un utente}
+	\label{ch:stage:ar:uc:2_4}
+	\paragraph{Attori:} utente
+	\paragraph{Precondizioni:} il sistema visualizza i contenuti corrispondenti ai criteri di ricerca immessi e ai filtri impostati.
+	\paragraph{Postcondizioni:} il sistema nasconde dai risultati di ricerca i contenuti pubblicati dall'utente selezionato.
+	\paragraph{Scenario principale}
+	\begin{enumerate}
+	\item l'utente visualizza la lista degli utenti autorizzati (\nameref{ch:stage:ar:uc:2_1});
+	\item l'utente seleziona quello di cui desidera nascondere i contenuti presenti nei risultati di ricerca;
+	\item l'utente lo sposta nella lista degli utenti bloccati.
+	\end{enumerate}
+
+	\subsection[UC.2.5]{UC.2.5 - Mostrare i contenuti pubblicati da qualsiasi utente}
+	\label{ch:stage:ar:uc:2_5}
+	\paragraph{Attori:} utente
+	\paragraph{Precondizioni:} il sistema visualizza i contenuti corrispondenti ai criteri di ricerca immessi e ai filtri impostati.
+	\paragraph{Postcondizioni:} il sistema mostra i contenuti corrispondenti ai criteri immessi e ai filtri impostati, a prescindere dall'utente che li ha pubblicati.
+	\paragraph{Scenario principale}
+	\begin{enumerate}
+	\item l'utente visualizza la lista degli utenti bloccati (\nameref{ch:stage:ar:uc:2_2});
+	\item l'utente svuota la lista.
+	\end{enumerate}
+
+	\subsection[UC.2.6]{UC.2.6 - Visualizzare la lista dei tipi di contenuto autorizzati}
+	\label{ch:stage:ar:uc:2_6}
+	\paragraph{Attori:} utente
+	\paragraph{Precondizioni:} il sistema visualizza i contenuti corrispondenti ai criteri di ricerca immessi e ai filtri impostati.
+	\paragraph{Postcondizioni:} il sistema mostra la lista dei tipi di contenuto autorizzati, ossia visualizzati tra i risultati di ricerca.
+	\paragraph{Scenario principale} \hfill \\
+	L'utente apre la lista dei tipi di contenuto autorizzati.
+
+	\subsection[UC.2.7]{UC.2.7 - Visualizzare la lista dei tipi di contenuto bloccati}
+	\label{ch:stage:ar:uc:2_7}
+	\paragraph{Attori:} utente
+	\paragraph{Precondizioni:} il sistema visualizza i contenuti corrispondenti ai criteri di ricerca immessi e ai filtri impostati.
+	\paragraph{Postcondizioni:} il sistema mostra la lista dei tipi di contenuto bloccati, ossia rimossi dai risultati di ricerca.
+	\paragraph{Scenario principale} \hfill \\
+	L'utente apre la lista dei tipi di contenuto bloccati.
+
+	\subsection[UC.2.8]{UC.2.8 - Mostrare un tipo di contenuto}
+	\label{ch:stage:ar:uc:2_8}
+	\paragraph{Attori:} utente
+	\paragraph{Precondizioni:} il sistema visualizza i contenuti corrispondenti ai criteri di ricerca immessi e ai filtri impostati.
+	\paragraph{Postcondizioni:} il sistema mostra - in aggiunta ai precedenti - i contenuti corrispondenti al tipo selezionato.
+	\paragraph{Scenario principale}
+	\begin{enumerate}
+	\item l'utente visualizza la lista dei tipi di contenuto bloccati (\nameref{ch:stage:ar:uc:2_7});
+	\item l'utente seleziona il tipo di contenuto che desidera visualizzare tra i risultati di ricerca;
+	\item l'utente lo sposta nella lista dei tipi di contenuto autorizzati.
+	\end{enumerate}
+
+	\subsection[UC.2.9]{UC.2.9 - Nascondere un tipo di contenuto}
+	\label{ch:stage:ar:uc:2_9}
+	\paragraph{Attori:} utente
+	\paragraph{Precondizioni:} il sistema visualizza i contenuti corrispondenti ai criteri di ricerca immessi e ai filtri impostati.
+	\paragraph{Postcondizioni:} il sistema nasconde i contenuti corrispondenti al tipo selezionato dai risultati di ricerca.
+	\paragraph{Scenario principale}
+	\begin{enumerate}
+	\item l'utente visualizza la lista dei tipi di contenuto autorizzati (\nameref{ch:stage:ar:uc:2_6});
+	\item l'utente seleziona il tipo di contenuto che desidera rimuovere dai risultati di ricerca;
+	\item l'utente lo sposta nella lista dei tipi di contenuto bloccati.
+	\end{enumerate}
+
+	\subsection[UC.2.10]{UC.2.10 - Visualizzare tutti i tipi di contenuto}
+	\label{ch:stage:ar:uc:2_10}
+	\paragraph{Attori:} utente
+	\paragraph{Precondizioni:} il sistema visualizza i contenuti corrispondenti ai criteri di ricerca immessi e ai filtri impostati.
+	\paragraph{Postcondizioni:} il sistema mostra i contenuti corrispondenti ai criteri immessi e ai filtri impostati, a prescindere dal tipo.
+	\paragraph{Scenario principale}
+	\begin{enumerate}
+	\item l'utente visualizza la lista dei tipi di contenuto bloccati (\nameref{ch:stage:ar:uc:2_7});
+	\item l'utente svuota la lista.
+	\end{enumerate}
+
+	\subsection[UC.2.11]{UC.2.11 - Selezionare la data minima di pubblicazione dei contenuti}
+	\label{ch:stage:ar:uc:2_11}
+	\paragraph{Attori:} utente
+	\paragraph{Precondizioni:} il sistema visualizza i contenuti corrispondenti ai criteri di ricerca immessi e ai filtri impostati.
+	\paragraph{Postcondizioni:} il sistema omette dai risultati di ricerca i contenuti pubblicati precedentemente alla data scelta.
+	\paragraph{Scenario principale} \hfill \\
+	L'utente imposta una data minima di pubblicazione o sceglie un valore predefinito ($+\infty$), che disabilita il filtro.
+	\paragraph{Scenari alternativi}
+	\begin{enumerate}
+	\item La data inserita non è valida
+		\begin{enumerate}
+		\item Il sistema restituisce un messaggio di errore;
+		\item l'utente inserisce una data corretta.
+		\end{enumerate}
+	\item La data scelta è successiva a quella corrente.
+		\begin{enumerate}
+		\item Il sistema restituisce un errore;
+		\item l'utente seleziona una data antecedente o corrispondente a quella corrente.
+		\end{enumerate}
+	\item La data scelta è successiva a quella massima.
+		\begin{enumerate}
+		\item Il sistema restituisce un errore;
+		\item l'utente seleziona una data antecedente o corrispondente a quella massima.
+		\end{enumerate}
+	\end{enumerate}
+
+	\subsection[UC.2.12]{UC.2.12 - Selezionare la data massima di pubblicazione dei contenuti}
+	\label{ch:stage:ar:uc:2_12}
+	\paragraph{Attori:} utente
+	\paragraph{Precondizioni:} il sistema visualizza i contenuti corrispondenti ai criteri di ricerca immessi e ai filtri impostati.
+	\paragraph{Postcondizioni:} il sistema omette dai risultati di ricerca i contenuti pubblicati successivamente alla data scelta.
+	\paragraph{Scenario principale} \hfill \\
+	L'utente imposta una data massima di pubblicazione o sceglie un valore predefinito ($-\infty$), che disabilita il filtro.
+	\paragraph{Scenari alternativi}
+	\begin{enumerate}
+	\item La data inserita non è valida
+		\begin{enumerate}
+		\item Il sistema restituisce un messaggio di errore;
+		\item l'utente inserisce una data corretta.
+		\end{enumerate}
+	\item La data scelta è precedente a quella minima.
+		\begin{enumerate}
+		\item Il sistema restituisce un errore;
+		\item l'utente seleziona una data successiva o corrispondente a quella massima.
+		\end{enumerate}
+	\end{enumerate}
+
+	\subsection[UC.2.13]{UC.2.13 - Selezionare una specifica data di pubblicazione dei contenuti}
+	\label{ch:stage:ar:uc:2_13}
+	\paragraph{Attori:} utente
+	\paragraph{Precondizioni:} il sistema visualizza i contenuti corrispondenti ai criteri di ricerca immessi e ai filtri impostati.
+	\paragraph{Postcondizioni:} il sistema omette dai risultati di ricerca i contenuti pubblicati in una data differente rispetto a quella scelta.
+	\paragraph{Scenario principale} \hfill \\
+	L'utente imposta la data minima (\nameref{ch:stage:ar:uc:2_11}) e massima (\nameref{ch:stage:ar:uc:2_12}) di pubblicazione allo stesso giorno.
+
+	\subsection[UC.2.14]{UC.2.14 - Visualizzare la lista degli argomenti autorizzati}
+	\label{ch:stage:ar:uc:2_14}
+	\paragraph{Attori:}
+	\paragraph{Precondizioni:}
+	\paragraph{Postcondizioni:}
+	\paragraph{Scenario principale} \hfill \\
+
+	\subsection[UC.2.15]{UC.2.15 - Visualizzare la lista degli argomenti bloccati}
+	\label{ch:stage:ar:uc:2_15}
+	\paragraph{Attori:}
+	\paragraph{Precondizioni:}
+	\paragraph{Postcondizioni:}
+	\paragraph{Scenario principale} \hfill \\
+
+	\subsection[UC.2.16]{UC.2.16 - Mostrare i contenuti relativi ad un argomento}
+	\label{ch:stage:ar:uc:2_16}
+	\paragraph{Attori:}
+	\paragraph{Precondizioni:}
+	\paragraph{Postcondizioni:}
+	\paragraph{Scenario principale} \hfill \\
+
+	\subsection[UC.2.17]{UC.2.17 - Nascondere i contenuti relativi ad un argomento}
+	\label{ch:stage:ar:uc:2_17}
+	\paragraph{Attori:}
+	\paragraph{Precondizioni:}
+	\paragraph{Postcondizioni:}
+	\paragraph{Scenario principale} \hfill \\
+
+	\subsection[UC.2.18]{UC.2.18 - Mostrare i contenuti relativi a qualsiasi argomento}
+	\label{ch:stage:ar:uc:2_18}
+	\paragraph{Attori:}
+	\paragraph{Precondizioni:}
+	\paragraph{Postcondizioni:}
+	\paragraph{Scenario principale} \hfill \\
+
+	\subsection[UC.2.]{UC.2. - }
+	\label{ch:stage:ar:uc:2_}
+	\paragraph{Attori:}
+	\paragraph{Precondizioni:}
+	\paragraph{Postcondizioni:}
+	\paragraph{Scenario principale} \hfill \\
+
+	\subsection[UC.2.]{UC.2. - }
+	\label{ch:stage:ar:uc:2_}
+	\paragraph{Attori:}
+	\paragraph{Precondizioni:}
+	\paragraph{Postcondizioni:}
+	\paragraph{Scenario principale} \hfill \\
+
+	\subsection[UC.2.]{UC.2. - }
+	\label{ch:stage:ar:uc:2_}
+	\paragraph{Attori:}
+	\paragraph{Precondizioni:}
+	\paragraph{Postcondizioni:}
+	\paragraph{Scenario principale} \hfill \\
+
+	\subsection[UC.2.]{UC.2. - }
+	\label{ch:stage:ar:uc:2_}
+	\paragraph{Attori:}
+	\paragraph{Precondizioni:}
+	\paragraph{Postcondizioni:}
+	\paragraph{Scenario principale} \hfill \\
+
+
+	% SECTION
+	\section{UC.3}
+	\section{UC.4}
+
+	\chapter{Requisiti}
+	\label{ch:stage:ar:requisiti}
+
+	\section{Tracciamento}
+	\label{ch:stage:ar:requisiti:matrice}
+
+	Il tracciamento di requisiti e casi d'uso è consultabile nel file \textit{tracciamento.ods}, allegato alla presente documentazione.
+
+\end{document}
