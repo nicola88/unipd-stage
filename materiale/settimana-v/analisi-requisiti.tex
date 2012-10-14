@@ -28,13 +28,16 @@
 	0.2 & 10-10-2012 & Redatte le sezioni \ref{ch:stage:ar:uc:1} e \ref{ch:stage:ar:uc:2}. \\ \hline
 	0.3 & 11-10-2012 & Ampliata e rivista la sezione \ref{ch:stage:ar:uc:2}. \\ \hline
 	0.4 & 11-10-2012 & Redatte le sezioni \ref{ch:stage:ar:uc:3} e \ref{ch:stage:ar:uc:4}. \\ \hline
-
+	0.5 & 12-10-2012 & Redatti i capitoli \ref{ch:stage:ar:intro} e \ref{ch:stage:ar:requisiti}. \\ \hline
+	0.6 & 13-10-2012 & Aggiunti i diagrammi UML dei casi d'uso. \\ \hline
 	\end{tabular}
 	\caption{Registro delle modifiche}
 	\label{tab:stage:wp:workload}
 	\end{table}
 
 	\tableofcontents
+
+	\listoffigures
 
 	%----------
 	% CAPITOLO
@@ -44,24 +47,49 @@
 
 	\section{Presentazione del prodotto}
 	\label{sec:stage:ar:intro:presentazione}
+	Il prodotto consiste in un'interfaccia grafica per la consultazione dei risultati di ricerche sui contenuti informativi pubblicati nella piattaforma web tematica \textit{Social (Life) Shuttle}.
+
+	Si tratta di una componente software destinata ad essere integrata all'interno di una piattaforma web esistente, nell'ambito della quale sono definiti (a livello di interfaccia o implementazione) i contenuti, i sistemi di classificazione e le componenti con cui essa è chiamata ad interagire.
 
 	\section{Scopo del prodotto}
 	\label{sec:stage:ar:intro:scopo}
+	Lo scopo del prodotto consiste nell'offrire un'interfaccia grafica innovativa ed intuitiva, che faciliti la consultazione dei risultati di una ricerca tra i contenuti pubblicati dagli utenti sulla piattaforma.
 
-	\section{Funzioni del prodotto}
-	\label{sec:stage:ar:intro:funzioni}
+	Tale interfaccia deve fornire una rappresentazione - grafica e/o testuale - efficace delle informazioni fondamentali di ciascun contenuto e dei legami reciproci, oltre ad offrire strumenti opportuni per raffinare i risultati di ricerca, agendo sui criteri di classificazione (argomento, emozione, etichetta, giudizio, intenzione) e le proprietà di ciascun contenuto (autore, data di pubblicazione, \ldots).
+
+	Il prodotto deve permettere inoltre un'agevole consultazione delle discussioni, ossia i flussi di contenuti pubblicati dagli utenti in risposta - diretta o indiretta - a ciascun contenuto specifico.
 
 	\section{Vincoli del prodotto}
 	\label{sec:stage:ar:intro:vincoli}
+	L'interfaccia grafica deve risultare usabile e fruibile in contesti caratterizzati da un elevato numero di contenuti restituiti da una ricerca o dall'impiego di dispositivi aventi caratteristiche limitate (risoluzione, potenza di calcolo, dimensione dello schermo, \ldots).
 
 	\section{Caratteristiche degli utenti}
 	\label{sec:stage:ar:intro:utenti}
+	Il prodotto software dev'essere utilizzabile facilmente da qualsiasi utente, a prescindere dalle competenze in suo possesso e dalla familiarità con piattaforme web tematiche esistenti, e fruibile dalla maggior varietà possibile di dispositivi.
+
+	Ciascun utente registrato alla piattaforma, cui sono associati un profilo esperienziale e una serie di interessi, dovrebbe beneficiare di ulteriori vantaggi, consistenti nella possibilità di filtrare automaticamente i risultati di ricerca coerenti con il proprio profilo e gli interessi dichiarati.
+
+	\section{Riferimenti informativi}
+	\label{sec:stage:ar:intro:riferimenti}
+
+	\begin{itemize}
+	\item Tracciamento dei requisiti (\textit{tracciamento.ods} allegato alla presente documentazione).
+	\end{itemize}
 
 	\chapter{Casi d'uso}
 	\label{ch:stage:ar:uc}
 
 	\section{UC.1 - Ricerca di contenuti informativi}
 	\label{ch:stage:ar:uc:1}
+
+	\begin{figure}[ht]
+		\begin{center}
+	    	\includegraphics[width=12cm]{uc_1.png}
+			\label{gfx:uc:1}
+			\caption{UC.1 - Ricerca di contenuti informativi}
+		\end{center}
+	\end{figure}
+
 	Il diagramma dei casi d'uso (v. figura \ldots) descrive l'interazione dell'utente per eseguire una ricerca sui contenuti pubblicati nella piattaforma.
 
 	Il primo passo\marginpar{Criteri di ricerca} consiste nell'inserire le chiavi di ricerca (\nameref{sec:stage:ar:uc:1_1}), che possono rappresentare etichette del dizionario assegnate ai contenuti o frasi citate all'interno di questi ultimi, nel titolo o nel corpo: l'utente può quindi restringere l'ambito di ricerca alle sole etichette o frasi (\nameref{sec:stage:ar:uc:1_2}).
@@ -91,7 +119,7 @@
 	\item etichette e frasi (predefinito).
 	\end{itemize}
 
-	\subsection[UC.1.3]{UC.1.3 - Selezionare una o più accezioni di un'etichetta}
+	\subsection[UC.1.3]{UC.1.3 - Selezionare un'accezione di un'etichetta}
 	\label{sec:stage:ar:uc:1_3}
 	\paragraph{Attori:} utente
 	\paragraph{Precondizioni:} il sistema mostra un elenco di accezioni relative ad un'etichetta inserita come termine di ricerca.
@@ -175,6 +203,15 @@
 	% SECTION
 	\section{UC.2 - Raffinamento dei criteri di ricerca}
 	\label{ch:stage:ar:uc:2}
+
+	\begin{figure}[]
+		\begin{center}
+	    	\includegraphics[width=12cm]{uc_2.png}
+			\label{gfx:uc:2}
+			\caption{UC.2 - Raffinamento dei criteri di ricerca}
+		\end{center}
+	\end{figure}
+
 	Questo diagramma dei casi d'uso (vedi \ldots) mostra le possibilità offerte all'utente per raffinare i criteri di ricerca così da ridurre la dimensione e migliorare la qualità e l'attinenza dei risultati di ricerca.
 
 	L'utente può intervenire su un'ampia varietà di parametri, suddivisi tra criteri di classificazione e proprietà dei contenuti.
@@ -539,6 +576,15 @@
 	% SECTION
 	\section{UC.3 - Consultazione dei risultati di ricerca}
 	\label{ch:stage:ar:uc:3}
+
+	\begin{figure}[ht]
+		\begin{center}
+	    	\includegraphics[width=12cm]{uc_3.png}
+			\label{gfx:uc:3}
+			\caption{UC.3 - Consultazione dei risultati di ricerca}
+		\end{center}
+	\end{figure}
+
 	Il diagramma dei casi d'uso descrive le modalità di consultazione dei contenuti individuati dalla ricerca, delle relative informazioni e delle reciproche relazioni.
 
 	\subsection[UC.3.1]{UC.3.1 - Visualizzare il grado di attinenza di un contenuto}
@@ -626,6 +672,15 @@
 	% SECTION
 	\section{UC.4 - Gestione dei filtri utente}
 	\label{ch:stage:ar:uc:4}
+
+	\begin{figure}[ht]
+		\begin{center}
+	    	\includegraphics[width=12cm]{uc_4.png}
+			\label{gfx:uc:4}
+			\caption{UC.4 - Gestione dei filtri utente}
+		\end{center}
+	\end{figure}
+
 	Il diagramma dei casi d'uso mostra le opzioni disponibili per l'utente autenticato riguardanti la personalizzazione della ricerca in base agli interessi e al tipo di profilo.
 
 	\subsection[UC.4.1]{UC.4.1 - Attivare il filtro interessi}
@@ -662,6 +717,12 @@
 
 	\chapter{Requisiti}
 	\label{ch:stage:ar:requisiti}
+
+	In questo capitolo sono illustrati i requisiti del sistema software, classificati in:
+	\begin{itemize}
+	\item \textsc{obbligatori}: si tratta di requisiti il cui soddisfacimento è indispensabile per il corretto funzionamento del sistema;
+	\item \textsc{desiderabili}: si tratta di requisiti il cui soddisfacimento conferisce un valore aggiunto al prodotto. 
+	\end{itemize}
 
 	\section{Requisiti funzionali obbligatori}
 	\label{ch:stage:ar:requisiti:ob}
@@ -809,7 +870,7 @@
 
 	\paragraph{RF.de.6} Il sistema deve consentire di abilitare il filtro dei risultati di ricerca basato sul profilo di esperienza dell'utente
 
-	\section{Tracciamento}
+	\section{Tracciamento dei requisiti}
 	\label{ch:stage:ar:requisiti:matrice}
 	Il tracciamento di requisiti e casi d'uso è consultabile nel foglio elettronico \textit{tracciamento.ods}, allegato alla presente documentazione.
 
