@@ -30,6 +30,7 @@
 	0.4 & 11-10-2012 & Redatte le sezioni \ref{ch:stage:ar:uc:3} e \ref{ch:stage:ar:uc:4}. \\ \hline
 	0.5 & 12-10-2012 & Redatti i capitoli \ref{ch:stage:ar:intro} e \ref{ch:stage:ar:requisiti}. \\ \hline
 	0.6 & 13-10-2012 & Aggiunti i diagrammi UML dei casi d'uso. \\ \hline
+	1.0 & 15-10-2012 & Pubblicazione della versione finale. \\ \hline
 	\end{tabular}
 	\caption{Registro delle modifiche}
 	\label{tab:stage:wp:workload}
@@ -47,7 +48,7 @@
 
 	\section{Presentazione del prodotto}
 	\label{sec:stage:ar:intro:presentazione}
-	Il prodotto consiste in un'interfaccia grafica per la consultazione dei risultati di ricerche sui contenuti informativi pubblicati nella piattaforma web tematica \textit{Social (Life) Shuttle}.
+	Il prodotto consiste in un'interfaccia grafica per la consultazione dei risultati di ricerche relative ai contenuti informativi pubblicati nella piattaforma web tematica \textit{Social (Life) Shuttle}.
 
 	Si tratta di una componente software destinata ad essere integrata all'interno di una piattaforma web esistente, nell'ambito della quale sono definiti (a livello di interfaccia o implementazione) i contenuti, i sistemi di classificazione e le componenti con cui essa è chiamata ad interagire.
 
@@ -55,9 +56,9 @@
 	\label{sec:stage:ar:intro:scopo}
 	Lo scopo del prodotto consiste nell'offrire un'interfaccia grafica innovativa ed intuitiva, che faciliti la consultazione dei risultati di una ricerca tra i contenuti pubblicati dagli utenti sulla piattaforma.
 
-	Tale interfaccia deve fornire una rappresentazione - grafica e/o testuale - efficace delle informazioni fondamentali di ciascun contenuto e dei legami reciproci, oltre ad offrire strumenti opportuni per raffinare i risultati di ricerca, agendo sui criteri di classificazione (argomento, emozione, etichetta, giudizio, intenzione) e le proprietà di ciascun contenuto (autore, data di pubblicazione, \ldots).
+	Tale interfaccia deve fornire una rappresentazione - grafica e/o testuale - efficace delle informazioni fondamentali associate di ciascun contenuto e dei legami reciproci, oltre ad offrire strumenti opportuni per raffinare i risultati di ricerca, agendo sui criteri di classificazione (argomento, emozione, etichetta, giudizio, intenzione) e le proprietà di ciascun contenuto (autore, data di pubblicazione, \ldots).
 
-	Il prodotto deve permettere inoltre un'agevole consultazione delle discussioni, ossia i flussi di contenuti pubblicati dagli utenti in risposta - diretta o indiretta - a ciascun contenuto specifico.
+	Il prodotto deve permettere infine di consultare agevolmente le discussioni, ossia i flussi di contenuti pubblicati dagli utenti in risposta - diretta o indiretta - a ciascun contenuto specifico incluso tra i risultati di una ricerca.
 
 	\section{Vincoli del prodotto}
 	\label{sec:stage:ar:intro:vincoli}
@@ -67,14 +68,7 @@
 	\label{sec:stage:ar:intro:utenti}
 	Il prodotto software dev'essere utilizzabile facilmente da qualsiasi utente, a prescindere dalle competenze in suo possesso e dalla familiarità con piattaforme web tematiche esistenti, e fruibile dalla maggior varietà possibile di dispositivi.
 
-	Ciascun utente registrato alla piattaforma, cui sono associati un profilo esperienziale e una serie di interessi, dovrebbe beneficiare di ulteriori vantaggi, consistenti nella possibilità di filtrare automaticamente i risultati di ricerca coerenti con il proprio profilo e gli interessi dichiarati.
-
-	\section{Riferimenti informativi}
-	\label{sec:stage:ar:intro:riferimenti}
-
-	\begin{itemize}
-	\item Tracciamento dei requisiti (\textit{tracciamento.ods} allegato alla presente documentazione).
-	\end{itemize}
+	Ciascun utente registrato alla piattaforma, cui sono associati un profilo esperienziale e una serie di interessi, dovrebbe beneficiare di ulteriori vantaggi, consistenti nella possibilità di filtrare automaticamente i risultati di una ricerca coerenti con il proprio profilo e gli interessi dichiarati.
 
 	\chapter{Casi d'uso}
 	\label{ch:stage:ar:uc}
@@ -90,13 +84,13 @@
 		\end{center}
 	\end{figure}
 
-	Il diagramma dei casi d'uso (v. figura \ldots) descrive l'interazione dell'utente per eseguire una ricerca sui contenuti pubblicati nella piattaforma.
+	Il diagramma dei casi d'uso \ref{gfx:uc:1} descrive le modalità di interazione dell'utente con il sistema software per effettuare una ricerca sui contenuti pubblicati nella piattaforma a partire da un insieme di parole o espressioni chiave.
 
-	Il primo passo\marginpar{Criteri di ricerca} consiste nell'inserire le chiavi di ricerca (\nameref{sec:stage:ar:uc:1_1}), che possono rappresentare etichette del dizionario assegnate ai contenuti o frasi citate all'interno di questi ultimi, nel titolo o nel corpo: l'utente può quindi restringere l'ambito di ricerca alle sole etichette o frasi (\nameref{sec:stage:ar:uc:1_2}).
+	Il primo passo\marginpar{Criteri di ricerca} consiste nell'inserire le chiavi di ricerca (\nameref{sec:stage:ar:uc:1_1}), che possono rappresentare etichette del dizionario assegnate ai contenuti o frasi citate all'interno degli stessi, nel titolo o nel corpo: l'utente può quindi restringere l'ambito di ricerca alle sole etichette o frasi (\nameref{sec:stage:ar:uc:1_2}).
 
-	Per ogni etichetta\marginpar{Etichette ed accezioni} inserita, ove essa possieda accezioni multiple, l'utente è chiamato a indicare quelle di interesse (\nameref{sec:stage:ar:uc:1_3}): nel complesso, esse individuano un insieme di entità di cui si desiderano ottenere informazioni.
+	Per ogni etichetta\marginpar{Etichette ed accezioni} inserita, ove essa possieda accezioni multiple, l'utente è chiamato a indicare quelle di interesse (\nameref{sec:stage:ar:uc:1_3}), che individuano, nel loro complesso, un insieme di entità di cui si desiderano ottenere informazioni.
 
-	I risultati di ricerca riportano la lista delle entità cercate (\nameref{sec:stage:ar:uc:1_4}), che l'utente può modificare - per alterare i criteri di ricerca - eliminando un'entità (\nameref{sec:stage:ar:uc:1_5}) oppure sostituendola con un'entità padre (\nameref{sec:stage:ar:uc:1_6}) o figlio (\nameref{sec:stage:ar:uc:1_7}).
+	I risultati di ricerca riportano la lista delle entità cercate (\nameref{sec:stage:ar:uc:1_4}), che l'utente può modificare - alterando i criteri e dunque i risultati di ricerca - eliminando un'entità (\nameref{sec:stage:ar:uc:1_5}) oppure sostituendola con un padre (\nameref{sec:stage:ar:uc:1_6}) o figlio (\nameref{sec:stage:ar:uc:1_7}).
 
  	\subsection[UC.1.1]{UC.1.1 - Inserire i termini di ricerca}
 	\label{sec:stage:ar:uc:1_1}
@@ -112,7 +106,7 @@
 	\paragraph{Precondizioni:} il browser visualizza la pagina di ricerca.
 	\paragraph{Postcondizioni:} l'utente ha impostato l'ambito di ricerca desiderato.
 	\paragraph{Scenario principale} \hfill \\
-	L'utente seleziona uno dei possibili ambiti in cui effettuare la ricerca:
+	L'utente seleziona uno specifico ambito entro il quale desidera limitare la ricerca:
 	\begin{itemize}
 	\item solo etichette;
 	\item solo frasi;
@@ -131,9 +125,9 @@
 	\label{sec:stage:ar:uc:1_4}
 	\paragraph{Attori:} utente
 	\paragraph{Precondizioni:} il sistema mostra i risultati della ricerca.
-	\paragraph{Postcondizioni:} il sistema mostra le entità cercate nei contenuti .
+	\paragraph{Postcondizioni:} il sistema mostra la lista delle entità cercate nei contenuti.
 	\paragraph{Scenario principale} \hfill \\
-	In un'area dedicata l'utente visualizza la lista delle entità cercate nei contenuti e riferite dalle etichette inserite come termini di ricerca (o dalle relative accezioni).
+	In un'area dedicata l'utente visualizza la lista delle entità cercate nei contenuti e riferite dalle etichette (o dalle relative accezioni) inserite come termini di ricerca.
 
 	\subsection[UC.1.5]{UC.1.5 - Eliminare un'entità cercata}
 	\label{sec:stage:ar:uc:1_5}
@@ -144,13 +138,13 @@
 	\begin{enumerate}
 	\item L'utente visualizza la lista delle entità (\nameref{sec:stage:ar:uc:1_4});
 	\item l'utente seleziona un'entità;
-	\item l'utente cancella l'entità dalla lista.
+	\item l'utente rimuove l'entità dalla lista.
 	\end{enumerate}
 	\paragraph{Scenari alternativi}
 	\begin{enumerate}
-	\item l'entità cercata non è presente nella lista
+	\item L'entità cercata non è presente nella lista
 		\begin{enumerate}
-		\item l'utente non effettua alcuna operazione.
+		\item L'utente non effettua alcuna operazione.
 		\end{enumerate}
 	\end{enumerate}
 
@@ -212,9 +206,9 @@
 		\end{center}
 	\end{figure}
 
-	Questo diagramma dei casi d'uso (vedi \ldots) mostra le possibilità offerte all'utente per raffinare i criteri di ricerca così da ridurre la dimensione e migliorare la qualità e l'attinenza dei risultati di ricerca.
+	Il diagramma dei casi d'uso \ref{gfx:uc:2} mostra le possibilità offerte all'utente per raffinare i criteri di ricerca, così da ridurre il numero e migliorare la qualità e l'attinenza dei risultati di una ricerca.
 
-	L'utente può intervenire su un'ampia varietà di parametri, suddivisi tra criteri di classificazione e proprietà dei contenuti.
+	L'utente può intervenire su svariati parametri, suddivisi tra criteri di classificazione e proprietà dei contenuti.
 
 	\paragraph{Criteri di classificazione}
 	\begin{itemize}
@@ -408,7 +402,7 @@
 	\label{sec:stage:ar:uc:2_16}
 	\paragraph{Attori:} utente
 	\paragraph{Attori:} il sistema visualizza i contenuti corrispondenti ai criteri di ricerca immessi e ai filtri impostati.
-	\paragraph{Postcondizioni:} il sistema mostra i contenuti relativi all'argomento selezionato e corrispondenti ai criteri di ricerca.
+	\paragraph{Postcondizioni:} il sistema mostra - in aggiunta ai precedenti - i contenuti relativi all'argomento selezionato e corrispondenti ai criteri di ricerca.
 	\paragraph{Scenario principale}
 	\begin{enumerate}
 	\item l'utente visualizza la lista degli argomenti bloccati (\nameref{sec:stage:ar:uc:2_15});
@@ -459,7 +453,7 @@
 	\label{sec:stage:ar:uc:2_21}
 	\paragraph{Attori:} utente
 	\paragraph{Attori:} il sistema visualizza i contenuti corrispondenti ai criteri di ricerca immessi e ai filtri impostati.
-	\paragraph{Postcondizioni:} il sistema mostra i contenuti associati all'emozione selezionata e corrispondenti ai criteri di ricerca.
+	\paragraph{Postcondizioni:} il sistema mostra - in aggiunta ai precedenti - i contenuti associati all'emozione selezionata e corrispondenti ai criteri di ricerca.
 	\paragraph{Scenario principale}
 	\begin{enumerate}
 	\item l'utente visualizza la lista delle emozioni bloccate (\nameref{sec:stage:ar:uc:2_20});
@@ -510,7 +504,7 @@
 	\label{sec:stage:ar:uc:2_26}
 	\paragraph{Attori:} utente
 	\paragraph{Attori:} il sistema visualizza i contenuti corrispondenti ai criteri di ricerca immessi e ai filtri impostati.
-	\paragraph{Postcondizioni:} il sistema mostra i contenuti associati all'intenzione selezionata e corrispondenti ai criteri di ricerca.
+	\paragraph{Postcondizioni:} il sistema mostra - in aggiunta ai precedenti - i contenuti associati all'intenzione selezionata e corrispondenti ai criteri di ricerca.
 	\paragraph{Scenario principale}
 	\begin{enumerate}
 	\item l'utente visualizza la lista delle intenzioni bloccate (\nameref{sec:stage:ar:uc:2_25});
@@ -585,7 +579,7 @@
 		\end{center}
 	\end{figure}
 
-	Il diagramma dei casi d'uso descrive le modalità di consultazione dei contenuti individuati dalla ricerca, delle relative informazioni e delle reciproche relazioni.
+	Il diagramma dei casi d'uso \ref{gfx:uc:3} descrive le modalità di consultazione dei contenuti restituiti da una ricerca, delle relative informazioni e delle reciproche relazioni.
 
 	\subsection[UC.3.1]{UC.3.1 - Visualizzare il grado di attinenza di un contenuto}
 	\label{sec:stage:ar:uc:3_1}
@@ -599,7 +593,7 @@
 	\label{sec:stage:ar:uc:3_2}
 	\paragraph{Attori:} utente
 	\paragraph{Precondizioni:} il sistema visualizza i contenuti corrispondenti ai criteri di ricerca immessi e ai filtri impostati.
-	\paragraph{Postcondizioni:} il sistema mostra l'elenco delle entità associate al contenuto selezionato evidenziando quelle corrispondenti ai criteri di ricerca.
+	\paragraph{Postcondizioni:} il sistema mostra l'elenco delle entità associate al contenuto selezionato ed evidenzia quelle corrispondenti ai criteri di ricerca.
 	\paragraph{Scenario principale} \hfill \\
 	L'utente seleziona un contenuto incluso tra i risultati di ricerca e apre la lista delle entità.
 
@@ -649,7 +643,7 @@
 	\subsection[UC.3.7]{UC.3.8 - Impostare la scala temporale di visualizzazione dei contenuti}
 	\label{sec:stage:ar:uc:3_}
 	\paragraph{Attori:} utente
-	\paragraph{Precondizioni:} il sistema visualizza i contenuti corrispondenti ai criteri di ricerca immessi e ai filtri impostati in ordine temporale.
+	\paragraph{Precondizioni:} il sistema visualizza i contenuti corrispondenti ai criteri di ricerca immessi e ai filtri impostati secondo una scansione temporale.
 	\paragraph{Postcondizioni:} il sistema aggiorna la visualizzazione secondo l'unità temporale specificata.
 	\paragraph{Scenario principale}
 	L'utente esprime la scala temporale desiderata in una delle seguenti unità di misura:
@@ -657,7 +651,7 @@
 	\item giorni;
 	\item settimane;
 	\item mesi;
-	\item anni.
+	\item anni;
 	\end{itemize}
 	oppure seleziona la regolazione automatica (basata sulle date di pubblicazione dei contenuti visualizzati).
 	\paragraph{Scenari alternativi}
@@ -681,7 +675,7 @@
 		\end{center}
 	\end{figure}
 
-	Il diagramma dei casi d'uso mostra le opzioni disponibili per l'utente autenticato riguardanti la personalizzazione della ricerca in base agli interessi e al tipo di profilo.
+	Il diagramma dei casi d'uso \ref{gfx:uc:4} mostra le opzioni disponibili per l'utente autenticato riguardanti la personalizzazione della ricerca in base agli interessi e al tipo di profilo.
 
 	\subsection[UC.4.1]{UC.4.1 - Attivare il filtro interessi}
 	\label{sec:stage:ar:uc:4_1}
