@@ -30,11 +30,12 @@
 	0.4 & 19-10-2012 & Redatti i capitoli \ref{ch:stage:design:model} e \ref{ch:stage:design:view}. \\ \hline
 	0.5 & 20-10-2012 & Revisione del documento. \\ \hline
 	1.0 & 20-10-2012 & Pubblicazione della prima versione. \\ \hline
-	1.1 & 22-10-2012 & Aggiunta la sezione \ref{sec:stage:design:sistema:model.provider}. \\ \hline
-	1.2 & 23-10-2012 & \ldots \\ \hline
-	1.3 & 24-10-2012 & \ldots \\ \hline
-	1.4 & 26-10-2012 & \ldots \\ \hline
+	1.1 & 22-10-2012 & Aggiunte la sezioni \ref{sec:stage:design:sistema:model.provider} e \ref{sec:stage:design:sistema:model.timeline}. \\ \hline
+	1.2 & 23-10-2012 & Aggiornate le sezioni \ref{sec:stage:design:sistema:model.criteria} e \ref{sec:stage:design:sistema:model.filter}. \\ \hline
+	1.3 & 24-10-2012 & Aggiornate le sezioni \ref{sec:stage:design:sistema:model} e \ref{sec:stage:design:sistema:model.search}. \\ \hline
+	1.4 & 26-10-2012 & Aggiornato il capitolo \ref{ch:stage:design:view}. \\ \hline
 	1.5 & 27-10-2012 & Aggiunti i capitoli \ref{ch:stage:design:pattern} e \ref{ch:stage:design:tracciamento}. \\ \hline
+	2.0 & 28-10-2012 & Pubblicazione della seconda versione. \\ \hline
 	\end{tabular}
 	\caption{Registro delle modifiche}
 	\label{tab:stage:wp:workload}
@@ -205,6 +206,7 @@
 
 	\subsection[CriterionModel]{CriterionModel | Gestione dei criteri di classificazione}
 	\label{sec:stage:design:sistema:model.criteria:criteria-model}
+	La classe \textit{\nameref{sec:stage:design:sistema:model.criteria:criteria-model}} rappresenta l'interfaccia del model \textit{model.criteria}.
 
 	\subsection[CriterionType]{CriterionType | Classe dei criteri di classificazione}
 	\label{sec:stage:design:sistema:model.criteria:criteria}
@@ -280,10 +282,13 @@
 	
 	Il valore che ciascun contenuto (risultato di una ricerca) assume in relazione ad una proprietà associata ad un filtro può quindi appartenere ad uno dei due sottoinsiemi: il contenuto viene mostrato solo se tutti i valori delle proprietà in questione risultano ammessi.
 
+	\subsection[FilterFactory]{FilterFactory | Creazione dei filtri}
+	\label{sec:stage:design:sistema:model.filter:filter-factory}
+	La classe \textit{\nameref{sec:stage:design:sistema:model.filter:filter-factory}} offre un'interfaccia per creare filtri (\textit{\nameref{sec:stage:design:sistema:model.filter:filter}}) basati sui possibili criteri (\textit{\nameref{sec:stage:design:sistema:model.criteria:criterion-data}}) in modo trasparente rispetto al client. 
+
 	\subsection[FilterModel]{FilterModel | Gestione dei filtri}
 	\label{sec:stage:design:sistema:model.filter:filter-manager}
 	Tale componente rappresenta l'interfaccia del package \textit{model.filter}, utile a esporre le funzionalità per l'istanziazione e la gestione dei filtri.
-	%\paragraph{Design Pattern:} Facade, Singleton
 
 	\subsection[FilterType]{FilterType | Filtro di ricerca}
 	\label{sec:stage:design:sistema:model.filter:filter}
@@ -393,6 +398,11 @@
 
 	\subsection[Timeline]{Timeline | Linea del tempo}
 	\label{sec:stage:design:sistema:model.timeline:timeline}
+	La classe \textit{\nameref{sec:stage:design:sistema:model.timeline:timeline}} rappresenta la linea del tempo, suddivisa in intervalli temporali \textit{\nameref{sec:stage:design:sistema:model.timeline:time-unit}} di ampiezza fissa - personalizzabile dall'utente - in cui vengono collocati i risultati della ricerca o i contenuti di una discussione.
+
+	\subsection[TimeUnit]{TimeUnit | Unità temporale}
+	\label{sec:stage:design:sistema:model.timeline:time-unit}
+	La classe \textit{\nameref{sec:stage:design:sistema:model.timeline:time-unit}} rappresenta un singolo intervallo di tempo e raccoglie i risultati di ricerca o i contenuti di una discussione pubblicati nel periodo corrispondente.
 
 	%----------
 	% CAPITOLO
@@ -521,23 +531,21 @@
 
 	\subsection[Timeline]{Timeline | Cronologia dei contenuti}
 	\label{sec:stage:design:sistema:view.timeline:timeline-view}
+	La classe \textit{\nameref{sec:stage:design:sistema:view.timeline:timeline-view}} rappresenta il componente grafico deputato alla visualizzazione cronologica dei contenuti e degli strumenti di navigazione.
 
 	\subsection[TimeSlot]{TimeSlot | Unità temporale}
 	\label{sec:stage:design:sistema:view.timeline:time-slot}
+	La classe \textit{\nameref{sec:stage:design:sistema:view.timeline:time-slot}} rappresenta il componente grafico deputato alla visualizzazione dei contenuti pubblicati in un certo intervallo di tempo (\textit{\nameref{sec:stage:design:sistema:model.timeline:time-unit}}).
 
 	\subsection[TimeAxis]{TimeAxis | Asse temporale}
 	\label{sec:stage:design:sistema:view.timeline:time-axis}
+	La classe \textit{\nameref{sec:stage:design:sistema:view.timeline:time-axis}} rappresenta l'asse temporale, sul quale è indicata la scala utilizzata e sono forniti gli strumenti per la navigazione. 
 
 	%----------
 	% CAPITOLO
 	%----------
 	\chapter{Componente Controller}
 	\label{ch:stage:design:controller}
-	Questo capitolo illustra i componenti del \textit{Controller}, per ciascuno dei quali è indicato il nome della classe accompagnata da un'identificazione sintetica, separati dal carattere '|' (separatore verticale).
-
-	% SECTION
-	\section{Package controller}
-	\label{ch:stage:design:sistema:controller}
 
 	\begin{figure}[ht]
 		\begin{center}
@@ -546,6 +554,12 @@
 			\caption{Diagramma del package \textit{controller}}
 		\end{center}
 	\end{figure}
+
+	Questo capitolo illustra i componenti del \textit{Controller}, per ciascuno dei quali è indicato il nome della classe accompagnata da un'identificazione sintetica, separati dal carattere '|' (separatore verticale).
+
+	% SECTION
+	\section{Package controller}
+	\label{ch:stage:design:sistema:controller}
 
 	% SECTION
 	\section{Package controller.content}
@@ -569,6 +583,9 @@
 	\chapter{Design Pattern}
 	\label{ch:stage:design:pattern}
 	Questo capitolo illustra i \textit{design pattern} utilizzati nella progettazione, indicando a quali classi siano applicati.
+
+	\section{Abstract Factory}
+	\label{ch:stage:design:pattern:factory}
 
 	\section{Facade}
 	\label{ch:stage:design:pattern:facade}
