@@ -36,6 +36,7 @@
 	1.4 & 26-10-2012 & Aggiornato il capitolo \ref{ch:stage:design:view}. \\ \hline
 	1.5 & 27-10-2012 & Aggiunti i capitoli \ref{ch:stage:design:pattern} e \ref{ch:stage:design:tracciamento}. \\ \hline
 	2.0 & 28-10-2012 & Pubblicazione della seconda versione. \\ \hline
+%	2.1 & 29-10-2012 & \ldots \\ \hline
 	\end{tabular}
 	\caption{Registro delle modifiche}
 	\label{tab:stage:wp:workload}
@@ -43,24 +44,16 @@
 
 	\tableofcontents
 
+	\listoffigures
+
 	%----------
 	% CAPITOLO
 	%----------
 	\chapter{Introduzione}
 	\label{ch:stage:design:intro}
 
-%	\section{Obiettivi}
-%	\begin{itemize}
-%	\item aggiunta, rimozione o aggiornamento (motore di ricerca) di nuovi ambiti di ricerca;
-%	\end{itemize}
-
-%	\section{To do}
-%	\begin{itemize}
-%	\item Aggiungere la lista di informazioni essenziali e aggiuntive di un contenuto nei requisiti.
-%	\end{itemize}
-
 	\section{Convenzioni}
-	La nomenclatura adottata per i package e le classi è il \textit{CamelCase}.	L'identificatore di ciascuna sottoclasse adotta come prefisso le lettere maiuscole presenti nel nome della rispettiva classe base (nel medesimo ordine di apparizione). 
+	La nomenclatura adottata per i package e le classi è il \textit{CamelCase}.	L'identificatore di ciascuna sottoclasse adotta come prefisso le lettere maiuscole presenti nel nome della rispettiva classe base (nel medesimo ordine di apparizione).
 
 	\section{Riferimenti informativi}
 	\begin{itemize}
@@ -206,7 +199,7 @@
 
 	\subsection[CriterionModel]{CriterionModel | Gestione dei criteri di classificazione}
 	\label{sec:stage:design:sistema:model.criteria:criteria-model}
-	La classe \textit{\nameref{sec:stage:design:sistema:model.criteria:criteria-model}} rappresenta l'interfaccia del model \textit{model.criteria}.
+	La classe \textit{\nameref{sec:stage:design:sistema:model.criteria:criteria-model}} rappresenta l'interfaccia del package \textit{model.criteria}.
 
 	\subsection[CriterionType]{CriterionType | Classe dei criteri di classificazione}
 	\label{sec:stage:design:sistema:model.criteria:criteria}
@@ -436,6 +429,14 @@
 	\label{sec:stage:design:sistema:view:content-widget}
 	Si tratta del componente grafico deputato a rappresentare graficamente un contenuto (\textit{\nameref{sec:stage:design:sistema:model:content}}) e le relative informazioni (in formato grafico o testuale).
 
+	\begin{figure}[ht]
+		\begin{center}
+	    	\includegraphics[]{mockup/ricercacontenuto.png}
+			\label{gfx:mockup:content}
+			\caption{Informazioni essenziali di un contenuto}
+		\end{center}
+	\end{figure}
+
 	Le informazioni essenziali\marginpar{Informazioni essenziali} sono utili per una immediato e preciso inquadramento del contenuto da parte dell'utente al fine di stabilirne la rilevanza soggettiva:
 	\begin{description}
 	\item[Autore] L'autore del contenuto è l'utente (\textit{\nameref{sec:stage:design:sistema:model.criteria:user}}) che lo ha pubblicato all'interno della piattaforma e viene rappresentato testualmente mediante il suo \textit{nome utente} o \textit{proprio}.
@@ -444,6 +445,14 @@
 	\item[Tipo] Il tipo di contenuto (\textit{\nameref{sec:stage:design:sistema:model.criteria:type}}) viene rappresentato graficamente variando la forma\footnote{Le forme utilizzate sono elementari per garantire l'immediata riconoscibilità da parte di qualsiasi tipo di utente, evitando l'impiego di forme potenzialmente ambigue o ignote a seconda del suo profilo sociale, culturale, geografico, \ldots} dell'elemento grafico.
 	\item[Titolo] Il titolo assegnato al contenuto viene rappresentata in formato testuale.
 	\end{description}
+
+	\begin{figure}[ht]
+		\begin{center}
+	    	\includegraphics[]{mockup/ricercacontenutodettagli.png}
+			\label{gfx:mockup:content-details}
+			\caption{Informazioni aggiuntive di un contenuto}
+		\end{center}
+	\end{figure}
 
 	Le informazioni aggiuntive\marginpar{informazioni aggiuntive} forniscono all'utente dettagli utili per approfondire l'esame di un contenuto.
 	\begin{description}
@@ -505,9 +514,25 @@
 	\label{sec:stage:design:sistema:view.search:search-entity-list}
 	La classe \textit{\nameref{sec:stage:design:sistema:view.search:search-entity-list}} rappresenta le componente grafica che visualizza le entità (\textit{\nameref{sec:stage:design:sistema:view:entity-widget}}) riferite dalle etichette e cercate tra i contenuti.
 
+	\begin{figure}[ht]
+		\begin{center}
+	    	\includegraphics[]{mockup/ricercavisualizzazionedettaglientit.png}
+			\label{gfx:mockup:entity-list}
+			\caption{Visualizzazione dei dettagli di un'entità}
+		\end{center}
+	\end{figure}
+
 	\subsection[LabelEntityWidget]{LabelEntityWidget | Accezioni di un'etichetta}
 	\label{sec:stage:design:sistema:view.search:label-entity-list}
 	La classe \textit{\nameref{sec:stage:design:sistema:view.search:label-entity-list}} rappresenta il componente grafico che mostra - per ciascuna etichetta inclusa nei termini di ricerca e avente accezioni multiple - la lista delle entità (\textit{\nameref{sec:stage:design:sistema:view:entity-widget}}) riferite, consentendo all'utente di selezionare quella rispetto cui intenda procedere con la ricerca.
+
+	\begin{figure}[ht]
+		\begin{center}
+	    	\includegraphics[]{mockup/ricercaselezioneaccezione.png}
+			\label{gfx:mockup:label-entity}
+			\caption{Selezione dell'accezione delle etichette}
+		\end{center}
+	\end{figure}
 
 	\subsection[SearchBar]{SearchBar | Barra di ricerca}
 	\label{sec:stage:design:sistema:view.search:search-bar}
@@ -560,6 +585,11 @@
 	% SECTION
 	\section{Package controller}
 	\label{ch:stage:design:sistema:controller}
+
+%	\section{Obiettivi}
+%	\begin{itemize}
+%	\item aggiunta, rimozione o aggiornamento (motore di ricerca) di nuovi ambiti di ricerca;
+%	\end{itemize}
 
 	% SECTION
 	\section{Package controller.content}

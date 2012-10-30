@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.5.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.Package</type>
+    <coordinates>
+      <x>50</x>
+      <y>10</y>
+      <w>750</w>
+      <h>750</h>
+    </coordinates>
+    <panel_attributes>model</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>90</x>
+      <y>80</y>
+      <w>320</w>
+      <h>340</h>
+    </coordinates>
+    <panel_attributes>Content
+--
+- author: CDUser
+- content: string
+- emotions: CDEmotion[0...*]
+- intentions: CDIntention[0...*]
+- publicationDate: CDPublicationDate
+- ratings: CDRating[0...*]
+- topic: CDTopic
+- title: string
+--
+//+ findMeaning(Meaning): boolean
+//+ findMeanings(Meaning[0...n]): integer
++ getAuthor(): CDUser
++ getEmotions(): CDEmotion[0...*]
++ getChildren(): Content[0...*]
++ getEntities(): Entity[0...*]
++ getIntentions(): CDIntention[0...*]
++ getParents(): Content[0...*]
++ getPublicationDate(): CDPublicationDate
++ getRatings(): CDRating[0...*]
++ getTopic(): CDTopic
++ getTtitle(): string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>90</x>
+      <y>520</y>
+      <w>190</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Entity
+--
+- id: Meaning
+--
++ getIdentifier(): Label
++ getType(): EntityType</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>470</x>
+      <y>440</y>
+      <w>300</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Label
+--
+--
+_+ getLabel(expression: string): Label_
++ getMeanings(): Meaning[0...*]
+_+ isLabel(expression: string): boolean_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>520</x>
+      <y>620</y>
+      <w>160</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Meaning
+--
+--
++ getLabel(): Label
++ getEntity(): Entity
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>110</x>
+      <y>390</y>
+      <w>50</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=0..n
+m2=0..n</panel_attributes>
+    <additional_attributes>30;30;30;130</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>570</x>
+      <y>500</y>
+      <w>50</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m2=1..n</panel_attributes>
+    <additional_attributes>30;30;30;120</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>250</x>
+      <y>550</y>
+      <w>290</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>270;90;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>110</x>
+      <y>0</y>
+      <w>260</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=0..n
+padre</panel_attributes>
+    <additional_attributes>240;80;240;50;30;50;30;80</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>110</x>
+      <y>700</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>EntityType</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>110</x>
+      <y>580</y>
+      <w>50</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=0..n</panel_attributes>
+    <additional_attributes>30;30;30;120</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>250</x>
+      <y>460</y>
+      <w>240</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=-&lt;
+m1=1
+m2=0...n
+</panel_attributes>
+    <additional_attributes>220;30;30;70</additional_attributes>
+  </element>
+</diagram>
