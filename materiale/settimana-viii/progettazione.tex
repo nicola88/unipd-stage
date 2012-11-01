@@ -36,7 +36,8 @@
 	1.4 & 26-10-2012 & Aggiornato il capitolo \ref{ch:stage:design:view}. \\ \hline
 	1.5 & 27-10-2012 & Aggiunti i capitoli \ref{ch:stage:design:pattern} e \ref{ch:stage:design:tracciamento}. \\ \hline
 	2.0 & 28-10-2012 & Pubblicazione della seconda versione. \\ \hline
-%	2.1 & 29-10-2012 & \ldots \\ \hline
+	2.1 & 29-10-2012 & \ldots \\ \hline
+	2.2 & 30-10-2012 & \ldots \\ \hline
 	\end{tabular}
 	\caption{Registro delle modifiche}
 	\label{tab:stage:wp:workload}
@@ -135,7 +136,7 @@
 
 	\begin{figure}[ht]
 		\begin{center}
-	    	\includegraphics[width=10cm]{class/model.png}
+	    	\includegraphics[width=12cm]{class/model.png}
 			\label{gfx:package:model:model}
 			\caption{Diagramma delle classi del package \textit{model}}
 		\end{center}
@@ -143,50 +144,35 @@
 
 	\subsection[Content]{Content | Contenuto informativo}
 	\label{sec:stage:design:model:content}
-	La classe rappresenta un generico contenuto informativo pubblicato dagli utenti nella piattaforma, caratterizzato dalle seguenti proprietà:
-	\begin{itemize}
-	\item autore (\textit{\nameref{sec:stage:design:model.criteria:user}});
-	\item data di pubblicazione (\textit{\nameref{sec:stage:design:model.criteria:publication-date}});
-	\item titolo.
-	\end{itemize}
+	La classe \textit{\nameref{sec:stage:design:model:content}} rappresenta un generico contenuto informativo pubblicato dagli utenti nella piattaforma.
 
-	A ciascun contenuto sono inoltre associate informazioni aggiuntive di classificazione:
-	\begin{itemize}
-	\item argomento (\textit{\nameref{sec:stage:design:model.criteria:topic}});
-	\item emozioni (\textit{\nameref{sec:stage:design:model.criteria:emotion}});
-	\item giudizio (\textit{\nameref{sec:stage:design:model.criteria:rating}});
-	\item entità (\textit{\nameref{sec:stage:design:model:entity}});
-	\item intenzioni (\textit{\nameref{sec:stage:design:model.criteria:intention}});
-	\item interessi (\textit{\nameref{sec:stage:design:model.criteria:interest}}).
-	\end{itemize}
+	\subsection[Metadata]{Metadata | Metadati dei contenuti}
+	\label{sec:stage:design:model:metadata}
+	La componente \textit{\nameref{sec:stage:design:model:metadata}} rappresenta una meta-informazione generica associata ad un contenuto informativo.
 
-	\subsection[CAnswer]{CAnswer | Risposta}
-	\label{sec:stage:design:model:answer}
-	La classe rappresenta un contenuto di tipo \textit{risposta} ed estende la classe \textit{\nameref{sec:stage:design:model:content}}.
+	\subsection[Emotion]{Emotion | Emozioni}
+	\label{sec:stage:design:model:metadata-emotion}
+	La classe \textit{\nameref{sec:stage:design:model:metadata-emotion}} rappresenta un'emozione associabile ad un contenuto ed estende la classe \textit{\nameref{sec:stage:design:model:metadata}}.
 
-	\subsection[CEvent]{CEvent | Evento}
-	\label{sec:stage:design:model:event}
-	La classe rappresenta un contenuto di tipo \textit{evento} ed estende la classe \textit{\nameref{sec:stage:design:model:content}}.
+	\subsection[Intention]{Intention | Intenzione}
+	\label{sec:stage:design:model:metadata-intention}
+	La classe \textit{\nameref{sec:stage:design:model:metadata-intention}} rappresenta un'intenzione associabile ad un contenuto ed estende la classe \textit{\nameref{sec:stage:design:model:metadata}}.
 
-	\subsection[CMessage]{CMessage | Comunicazione privata}
-	\label{sec:stage:design:model:message}
-	La classe rappresenta un contenuto di tipo \textit{comunicazione privata} ed estende la classe \textit{\nameref{sec:stage:design:model:content}}.
+	\subsection[Interest]{Interest | Interesse}
+	\label{sec:stage:design:model:metadata-interest}
+	La classe \textit{\nameref{sec:stage:design:model:metadata-interest}} rappresenta gli interessi cui è associabile un contenuto ed estende la classe \textit{\nameref{sec:stage:design:model:metadata}}.
 
-	\subsection[CQuestion]{CQuestion | Domanda}
-	\label{sec:stage:design:model:question}
-	La classe rappresenta un contenuto di tipo \textit{domanda} ed estende la classe \textit{\nameref{sec:stage:design:model:content}}.
+	\subsection[Topic]{Topic | Argomento}
+	\label{sec:stage:design:model:metadata-topic}
+	La classe \textit{\nameref{sec:stage:design:model:metadata-topic}} rappresenta un argomento cui può appartenere un contenuto ed estende la classe \textit{\nameref{sec:stage:design:model:metadata}}.
 
-	\subsection[CReview]{CReview | Recensione}
-	\label{sec:stage:design:model:review}
-	La classe rappresenta un contenuto di tipo \textit{recensione} ed estende la classe \textit{\nameref{sec:stage:design:model:content}}.
+	\subsection[Type]{Type | Tipo di contenuto}
+	\label{sec:stage:design:model:metadata-type}
+	La classe \textit{\nameref{sec:stage:design:model:metadata-intention}} rappresenta un'intenzione associabile ad un contenuto ed estende la classe \textit{\nameref{sec:stage:design:model:metadata}}.
 
-	\subsection[CTalk]{CTalk | Discorso}
-	\label{sec:stage:design:model:talk}
-	La classe rappresenta un contenuto di tipo \textit{discorso} ed estende la classe \textit{\nameref{sec:stage:design:model:content}}.
-
-	\subsection[CThought]{CThought | Pensiero}
-	\label{sec:stage:design:model:thought}
-	La classe rappresenta un contenuto di tipo \textit{pensiero} ed estende la classe \textit{\nameref{sec:stage:design:model:content}}.
+	\subsection[User]{User | Autore}
+	\label{sec:stage:design:model:metadata-user}
+	La classe \textit{\nameref{sec:stage:design:model:metadata-user}} rappresenta l'utente che ha pubblicato il contenuto ed estende la classe \textit{\nameref{sec:stage:design:model:metadata}}.
 
 	\subsection[Entity]{Entity | Entità del dominio}
 	\label{sec:stage:design:model:entity}
@@ -194,7 +180,7 @@
 
 	\subsection[EntityType]{EntityType | Tipo di entità}
 	\label{sec:stage:design:model:entity-type}
-	La classe rappresenta i tipi delle entità (\textit{\nameref{sec:stage:design:model:entity}}).
+	La classe rappresenta i tipi di entità del dominio (\textit{\nameref{sec:stage:design:model:entity}}).
 
 	\subsection[Label]{Label | Etichetta del dizionario}
 	\label{sec:stage:design:model:label}
@@ -207,81 +193,99 @@
 	% SECTION
 	\section{Package model.criteria}
 	\label{sec:stage:design:model.criteria}
+
+	\begin{figure}[ht]
+		\begin{center}
+	    	\includegraphics[width=10cm]{class/model_criteria.png}
+			\label{gfx:package:model:criteria}
+			\caption{Diagramma delle classi del package \textit{model.criteria}}
+		\end{center}
+	\end{figure}
+
 	Ciascun contenuto può essere classificato in accordo a differenti criteri, ciascuno dei quali ne prende in esame una proprietà (autore, data di pubblicazione, tipo), un criterio di classificazione (emozioni, intenzioni, \ldots) o un informazione contestuale alla ricerca (attinenza, \ldots) differenti.
 
-	\subsection[CriterionModel]{CriterionModel | Gestione dei criteri di classificazione}
+	\subsection[CriteriaModel]{CriteriaModel | Gestione dei criteri di classificazione}
 	\label{sec:stage:design:model.criteria:criteria-model}
 	La classe \textit{\nameref{sec:stage:design:model.criteria:criteria-model}} rappresenta l'interfaccia del package \textit{model.criteria}.
 
-	\subsection[CriterionType]{CriterionType | Classe dei criteri di classificazione}
+	\subsection[Criterion]{Criterion | Criteri di classificazione}
 	\label{sec:stage:design:model.criteria:criteria}
 	Tale componente rappresenta un'interfaccia per le classi dei criteri di classificazione.
 
-	\subsection[CTList]{CTList | Criterio basato su una lista di valori}
+	\subsection[CList]{CList | Criterio basato su una lista di valori}
 	\label{sec:stage:design:model.criteria:list-criterion}
-	La classe \textit{\nameref{sec:stage:design:model.criteria:list-criterion}} rappresenta un criterio di classificazione basato su una lista di valori, ciascuno dei quali può essere ammissibile o bloccato. Ciascuna istanza viene utilizzata in combinazione con un filtro \textit{\nameref{sec:stage:design:model.filter:list-filter}}, fornendo i valori e i parametri di configurazione iniziale.
+	La classe \textit{\nameref{sec:stage:design:model.criteria:list-criterion}} rappresenta un criterio di classificazione basato su una lista di valori, ciascuno dei quali può essere ammissibile o bloccato. 
 
-	\subsection[CTRange]{CTRange | Criterio basati su un intervallo di valori}
+	Ciascuna istanza viene utilizzata in combinazione con un filtro \textit{\nameref{sec:stage:design:model.filter:list-filter}}, fornendo i valori e i parametri di configurazione iniziale.
+
+	\subsection[CRange]{CRange | Criterio basati su un intervallo di valori}
 	\label{sec:stage:design:model.criteria:range-criterion}
-	La classe \textit{\nameref{sec:stage:design:model.criteria:range-criterion}} rappresenta un criterio di classificazione basato su un intervallo di valori. Ciascuna istanza viene utilizzata in combinazione con un filtro \textit{\nameref{sec:stage:design:model.filter:range-filter}}, fornendo i valori e i parametri di configurazione iniziale.
+	La classe \textit{\nameref{sec:stage:design:model.criteria:range-criterion}} rappresenta un criterio di classificazione basato su un intervallo di valori.
 
-	\subsection[CTSwitch]{CTSwitch | Criterio a doppio stato}
+	Ciascuna istanza viene utilizzata in combinazione con un filtro \textit{\nameref{sec:stage:design:model.filter:range-filter}}, fornendo i valori e i parametri di configurazione iniziale.
+
+	\subsection[CSwitch]{CSwitch | Criterio a doppio stato}
 	\label{sec:stage:design:model.criteria:switch-criterion}
-	La classe \textit{\nameref{sec:stage:design:model.criteria:switch-criterion}} rappresenta un criterio di classificazione che l'utente può semplicemente decidere di attivare o disattivare. Ciascuna istanza viene utilizzata in combinazione con un filtro \textit{\nameref{sec:stage:design:model.filter:switch-filter}}, fornendo i valori e i parametri di configurazione iniziale.
+	La classe \textit{\nameref{sec:stage:design:model.criteria:switch-criterion}} rappresenta un criterio di classificazione che l'utente può semplicemente decidere di attivare o disattivare.
 
-	\subsection[CTValue]{CTValue | Filtro basato su una soglia di valore}
+	Ciascuna istanza viene utilizzata in combinazione con un filtro \textit{\nameref{sec:stage:design:model.filter:switch-filter}}, fornendo i valori e i parametri di configurazione iniziale.
+
+	\subsection[CValue]{CValue | Filtro basato su una soglia di valore}
 	\label{sec:stage:design:model.criteria:value-criterion}
-	La classe \textit{\nameref{sec:stage:design:model.criteria:value-criterion}} rappresenta un criterio di classificazione basato su una soglia di valore. Ciascuna istanza viene utilizzata in combinazione con un filtro \textit{\nameref{sec:stage:design:model.filter:value-filter}}, fornendo i valori e i parametri di configurazione iniziale.
+	La classe \textit{\nameref{sec:stage:design:model.criteria:value-criterion}} rappresenta un criterio di classificazione basato su una soglia di valore.
 
-	\subsection[CriterionData]{CriterionData | Sorgente dati per un criterio di classificazione}
-	\label{sec:stage:design:model.criteria:criterion-data}
-	La classe astratta \textit{\nameref{sec:stage:design:model.criteria:criterion-data}} incapsula le informazioni (parametri di configurazione, valori, \ldots) necessari ad inizializzare un oggetto di tipo \textit{\nameref{sec:stage:design:model.criteria:criteria}}.
-	% Campo dati statico: riferimento ai risultati di ricerca
-	% Sottoclassi: metodo statico che restituisce i valori richiesti (lista, min, max, ...)
-	% Sottoclasse lista con valori predefiniti: campo dati statico con lista di valori dello stesso tipo della classe
+	Ciascuna istanza viene utilizzata in combinazione con un filtro \textit{\nameref{sec:stage:design:model.filter:value-filter}}, fornendo i valori e i parametri di configurazione iniziale.
 
-	\subsection[CDEmotion]{CDEmotion | Emozione}
+	\subsection[CLEmotion]{CLEmotion | Emozione}
 	\label{sec:stage:design:model.criteria:emotion}
-	La classe rappresenta un'emozione associabile ad un contenuto e ne fornisce la lista completa. Le relative istanze vengono impiegate in combinazione con oggetti di tipo \textit{\nameref{sec:stage:design:model.criteria:list-criterion}}.
+	La classe \textit{\nameref{sec:stage:design:model.criteria:emotion}} rappresenta un criterio di classificazione a lista di valori basato sulle emozioni.
 
-	\subsection[CDIntention]{CDIntention | Intenzione}
+	\subsection[CLIntention]{CLIntention | Intenzione}
 	\label{sec:stage:design:model.criteria:intention}
-	La classe rappresenta un'intenzione associata ad un contenuto e ne fornisce la lista completa. Le relative istanze vengono impiegate in combinazione con oggetti di tipo \textit{\nameref{sec:stage:design:model.criteria:list-criterion}}.
+	La classe \textit{\nameref{sec:stage:design:model.criteria:intention}} rappresenta un criterio di classificazione a lista di valori basato sulle intenzioni..
 
-	\subsection[CDInterest]{CDInterest | Interessi dell'utente}
-	\label{sec:stage:design:model.criteria:interest}
-	La classe fornisce la lista degli interessi scelti da un utente (\textit{\nameref{sec:stage:design:model.criteria:user}}) e ciascuna istanza viene impiegata in combinazione con oggetti di tipo \textit{\nameref{sec:stage:design:model.criteria:switch-criterion}}.
-
-	\subsection[CDPublicationDate]{CDPublicationDate | Data di pubblicazione}
-	\label{sec:stage:design:model.criteria:publication-date}
-	La classe rappresenta una generica data di pubblicazione di un contenuto e fornisce la data minima e massima di pubblicazione di quelli corrispondenti ai criteri di ricerca (\textit{\nameref{sec:stage:design:model.search:search-result}}) e l'unità temporale predefinita.
-
-	Ciascuna istanza viene impiegata in combinazione con oggetti di tipo \textit{\nameref{sec:stage:design:model.criteria:range-criterion}}.
-
-	\subsection[CDRating]{CDRating | Giudizio}
-	\label{sec:stage:design:model.criteria:rating}
-	La classe rappresenta il giudizio assegnato ad un contenuto e fornisce il giudizio minimo e massimo assegnabile ad un contenuto. Ciascuna istanza viene impiegata in combinazione con oggetti di tipo \textit{\nameref{sec:stage:design:model.criteria:value-criterion}}.
-
-	\subsection[CDRelevance]{CDRelevance | Attinenza}
-	\label{sec:stage:design:model.criteria:relevance}
-	La classe fornisce il grado di attinenza minimo e massimo di un contenuto rispetto ai criteri di ricerca e ciascuna istanza viene impiegata in combinazione con oggetti di tipo \textit{\nameref{sec:stage:design:model.criteria:value-criterion}}.
-
-	\subsection[CDTopic]{CDTopic | Argomento}
+	\subsection[CLTopic]{CLTopic | Argomento}
 	\label{sec:stage:design:model.criteria:topic}
-	La classe rappresenta un generico argomento cui può appartenere un contenuto e ne fornisce la lista completa. Le relative istanze vengono impiegate in combinazione con oggetti di tipo \textit{\nameref{sec:stage:design:model.criteria:list-criterion}}.
+	La classe \textit{\nameref{sec:stage:design:model.criteria:topic}} rappresenta un criterio di classificazione a lista di valori basato sugli argomenti.
 
-	\subsection[CDType]{CDType | Tipo di contenuto}
+	\subsection[CLType]{CLType | Tipo di contenuto}
 	\label{sec:stage:design:model.criteria:type}
-	La classe rappresenta un tipo di contenuto e ne fornisce la lista completa. Ciascuna istanza viene impiegata in combinazione con oggetti di tipo \textit{\nameref{sec:stage:design:model.criteria:list-criterion}}.
+	La classe \textit{\nameref{sec:stage:design:model.criteria:type}} rappresenta un criterio di classificazione a lista di valori basato sui tipi di contenuto.
 
-	\subsection[CDUser]{CDUser | Utente}
+	\subsection[CLUser]{CLUser | Utente}
 	\label{sec:stage:design:model.criteria:user}
-	La classe rappresenta un utente della piattaforma e le relative istanze vengono impiegate in combinazione con oggetti di tipo \textit{\nameref{sec:stage:design:model.criteria:list-criterion}}.
+	La classe \textit{\nameref{sec:stage:design:model.criteria:user}} rappresenta un criterio di classificazione a lista di valori basato sugli autori dei contenuti.
+
+	\subsection[CRDate]{CRDate | Data di pubblicazione}
+	\label{sec:stage:design:model.criteria:publication-date}
+	La classe \textit{\nameref{sec:stage:design:model.criteria:publication-date}} rappresenta un criterio di classificazione ad intervallo di valori basato sulla data di pubblicazione.
+	% Specifica la data minima e massima di pubblicazione tra i contenuti corrispondenti ai criteri di ricerca (\textit{\nameref{sec:stage:design:model.search:search-result}}) e l'unità temporale predefinita.
+
+	\subsection[CSInterest]{CSInterest | Interessi dell'utente}
+	\label{sec:stage:design:model.criteria:interest}
+	La classe \textit{\nameref{sec:stage:design:model.criteria:interest}} rappresenta un criterio di classificazione ad interruttore basato sugli interessi dell'utente.
+
+	\subsection[CVRating]{CVRating | Giudizio}
+	\label{sec:stage:design:model.criteria:rating}
+	La classe \textit{\nameref{sec:stage:design:model.criteria:rating}} rappresenta un criterio di classificazione a soglia di valore basato sui giudizi espressi dagli utenti sui contenuti.
+
+	\subsection[CVRelevance]{CVRelevance | Attinenza}
+	\label{sec:stage:design:model.criteria:relevance}
+	La classe \textit{\nameref{sec:stage:design:model.criteria:relevance}} rappresenta un criterio di classificazione a soglia di valore basato sulla rilevanza dei contenuti rispetto ai criteri di ricerca immessi.
 
 	% SECTION	
 	\section{Package model.filter}
 	\label{sec:stage:design:model.filter}
-	Ciascun filtro è associato ad un possibile criterio di classificazione (\textit{\nameref{sec:stage:design:model.criteria:criteria}}) e partiziona automaticamente l'insieme dei possibili valori (\textit{\nameref{sec:stage:design:model.criteria:criterion-data}}) in due sottoinsiemi: ammessi o bloccati.
+
+	\begin{figure}[ht]
+		\begin{center}
+	    	\includegraphics[width=12cm]{class/model_filter.png}
+			\label{gfx:package:model:filter}
+			\caption{Diagramma delle classi del package \textit{model.filter}}
+		\end{center}
+	\end{figure}
+
+	Ciascun filtro è associato ad un possibile criterio di classificazione (\textit{\nameref{sec:stage:design:model.criteria:criteria}}), che partiziona automaticamente l'insieme dei possibili valori in due sottoinsiemi: ammessi o bloccati.
 
 	Nella configurazione iniziale, tutti i valori possibili di una proprietà sono ammessi, mentre l'utente può intervenire secondo modalità differenti per alterare tale partizionamento (vedi sezione \ref{sec:stage:design:view.filter}).
 	
@@ -289,23 +293,42 @@
 
 	\subsection[FilterFactory]{FilterFactory | Creazione dei filtri}
 	\label{sec:stage:design:model.filter:filter-factory}
-	La classe \textit{\nameref{sec:stage:design:model.filter:filter-factory}} offre un'interfaccia per creare filtri (\textit{\nameref{sec:stage:design:model.filter:filter}}) basati sui possibili criteri (\textit{\nameref{sec:stage:design:model.criteria:criterion-data}}) in modo trasparente rispetto al client. 
+	La classe \textit{\nameref{sec:stage:design:model.filter:filter-factory}} offre un'interfaccia per creare filtri (\textit{\nameref{sec:stage:design:model.filter:filter}}) basati sui possibili criteri (\textit{\nameref{sec:stage:design:model.criteria:criteria}}) in modo trasparente rispetto al client.
+
+	\begin{table}[ht]
+	\centering
+	\begin{tabular}{|l|l|l|l|}
+	\hline
+	& \textsc{\nameref{sec:stage:design:model.criteria:criteria}} & \textsc{\nameref{sec:stage:design:model.filter:filter}} & \textsc{\nameref{sec:stage:design:view.filter:filter}} \\ \hline
+	\textit{Argomento}  & \nameref{sec:stage:design:model.criteria:list-criterion} & \nameref{sec:stage:design:model.filter:list-filter} & \nameref{sec:stage:design:model.filter:list-filter} \\ \hline
+	\textit{Attinenza} & \nameref{sec:stage:design:model.criteria:value-criterion} & \nameref{sec:stage:design:model.filter:value-filter} & \nameref{sec:stage:design:model.filter:value-filter} \\ \hline
+	\textit{Autore} & \nameref{sec:stage:design:model.criteria:list-criterion} & \nameref{sec:stage:design:model.filter:list-filter} & \nameref{sec:stage:design:model.filter:list-filter} \\ \hline
+	\textit{Data di pub.} & \nameref{sec:stage:design:model.criteria:range-criterion} & \nameref{sec:stage:design:model.filter:range-filter} & \nameref{sec:stage:design:model.filter:range-filter} \\ \hline
+	\textit{Emozioni} & \nameref{sec:stage:design:model.criteria:list-criterion} & \nameref{sec:stage:design:model.filter:list-filter} & \nameref{sec:stage:design:model.filter:list-filter} \\ \hline
+	\textit{Giudizi} & \nameref{sec:stage:design:model.criteria:value-criterion} & \nameref{sec:stage:design:model.filter:value-filter} & \nameref{sec:stage:design:model.filter:value-filter} \\ \hline
+	\textit{Intenzioni} & \nameref{sec:stage:design:model.criteria:list-criterion} & \nameref{sec:stage:design:model.filter:list-filter} & \nameref{sec:stage:design:model.filter:list-filter} \\ \hline
+	\textit{Interessi} & \nameref{sec:stage:design:model.criteria:switch-criterion} & \nameref{sec:stage:design:model.filter:switch-filter} & \nameref{sec:stage:design:model.filter:switch-filter} \\ \hline
+	\textit{Tipo} & \nameref{sec:stage:design:model.criteria:list-criterion} & \nameref{sec:stage:design:model.filter:list-filter}  & \nameref{sec:stage:design:model.filter:list-filter} \\ \hline
+	\end{tabular}
+	\caption{Classi istanziate da \textit{\nameref{sec:stage:design:model.filter:filter-factory}}}
+	\label{tab:stage:design:filter-factory}
+	\end{table}
 
 	\subsection[FilterModel]{FilterModel | Gestione dei filtri}
 	\label{sec:stage:design:model.filter:filter-manager}
 	Tale componente rappresenta l'interfaccia del package \textit{model.filter}, utile a esporre le funzionalità per l'istanziazione e la gestione dei filtri.
 
-	\subsection[FilterType]{FilterType | Filtro di ricerca}
+	\subsection[Filter]{Filter | Filtro di ricerca}
 	\label{sec:stage:design:model.filter:filter}
 	Tale componente rappresenta l'interfaccia dei filtri per il raffinamento dei risultati di una ricerca e viene implementata dalle classi che modellano le tipologie standard di filtri di ricerca (\textit{\nameref{sec:stage:design:model.filter:list-filter}}, \textit{\nameref{sec:stage:design:model.filter:range-filter}}, \textit{\nameref{sec:stage:design:model.filter:switch-filter}} e \textit{\nameref{sec:stage:design:model.filter:value-filter}}).
 	
 	Ciascuna istanza di una sottoclasse concreta è associata ai risultati di una ricerca specifica (\textit{\nameref{sec:stage:design:model.search:search-result}}), su cui si applica il filtro corrispondente.
 
-	\subsection[FTList]{FTList | Filtro a lista di valori}
+	\subsection[FList]{FList | Filtro a lista di valori}
 	\label{sec:stage:design:model.filter:list-filter}
 	La classe \textit{\nameref{sec:stage:design:model.filter:list-filter}} modella un filtro basato su una lista di possibili valori, ciascuno dei quali può essere autorizzato o bloccato dall'utente, e ciascuna delle relative istanze è associata ad un criterio \textit{\nameref{sec:stage:design:model.criteria:list-criterion}}.
 
-	\subsection[FTRange]{FTRange | Filtro ad intervallo di valori}
+	\subsection[FRange]{FRange | Filtro ad intervallo di valori}
 	\label{sec:stage:design:model.filter:range-filter}
 	La classe \textit{\nameref{sec:stage:design:model.filter:range-filter}} modella un filtro basato su un intervallo di valori ordinati (numeri, date, \ldots) e ciascuna istanza è associata ad un criterio \textit{\nameref{sec:stage:design:model.criteria:range-criterion}}.
 
@@ -324,11 +347,11 @@
 	\item $inf \geq min$.
 	\end{itemize}
 
-	\subsection[FTSwitch]{FTSwitch | Filtro a doppio stato}
+	\subsection[FSwitch]{FSwitch | Filtro a doppio stato}
 	\label{sec:stage:design:model.filter:switch-filter}
 	La classe \textit{\nameref{sec:stage:design:model.filter:switch-filter}} modella un filtro il cui partizionamento è predefinito e invariabile e che l'utente può solamente abilitare o disattivare. Ciascuna istanza è associata ad un criterio \textit{\nameref{sec:stage:design:model.criteria:switch-criterion}}.
 
-	\subsection[FTValue]{FTValue | Filtro a soglia di valore}
+	\subsection[FValue]{FValue | Filtro a soglia di valore}
 	\label{sec:stage:design:model.filter:value-filter}
 	La classe \textit{\nameref{sec:stage:design:model.filter:value-filter}} rappresenta un filtro basato su una soglia di valore, ciascuna delle cui istanze è associata ad un criterio \textit{\nameref{sec:stage:design:model.criteria:value-criterion}}.
 
@@ -377,6 +400,15 @@
 	% SECTION	
 	\section{Package model.search}
 	\label{sec:stage:design:model.search}
+
+	\begin{figure}[ht]
+		\begin{center}
+	    	\includegraphics[height=8cm]{class/model_search.png}
+			\label{gfx:package:model:search}
+			\caption{Diagramma delle classi del package \textit{model.search}}
+		\end{center}
+	\end{figure}
+
 	Il package \textit{model.search} raccoglie e gestisce le informazioni inerenti i parametri e i risultati di una ricerca. 
 
 	\subsection[Search]{Search | Gestione della ricerca}
@@ -446,7 +478,7 @@
 	\section{Package view.content}
 	\label{sec:stage:design:view.content}
 
-	\subsection[ContentWidget]{ContentWidget | Contenuto informativo}
+	\subsection[ContentView]{ContentView | Contenuto informativo}
 	\label{sec:stage:design:view:content-widget}
 	Si tratta del componente grafico deputato a rappresentare graficamente un contenuto (\textit{\nameref{sec:stage:design:model:content}}) e le relative informazioni (in formato grafico o testuale).
 
@@ -484,7 +516,35 @@
 	\item[Intenzioni] A ciascun contenuto possono essere associate delle intenzioni (\textit{\nameref{sec:stage:design:model.criteria:intention}}), che possano fornire delle linee guida interpretative ai lettori. La lista delle intenzioni associate ad un contenuto viene visualizzata in formato testuale.
 	\end{description}
 
-	\subsection[EntityWidget]{EntityWidget | Contenuto informativo}
+	\subsection[CVAnswer]{CVAnswer | Risposta}
+	\label{sec:stage:design:view:answer}
+	La classe rappresenta il componente grafico che visualizza un contenuto di tipo \textit{risposta} ed estende la classe \textit{\nameref{sec:stage:design:view:content-widget}}.
+
+	\subsection[CVEvent]{CVEvent | Evento}
+	\label{sec:stage:design:view:event}
+	La classe rappresenta il componente grafico che visualizza un contenuto di tipo \textit{evento} ed estende la classe \textit{\nameref{sec:stage:design:view:content-widget}}.
+
+	\subsection[CVMessage]{CVMessage | Comunicazione privata}
+	\label{sec:stage:design:view:message}
+	La classe rappresenta il componente grafico che visualizza un contenuto di tipo \textit{comunicazione privata} ed estende la classe \textit{\nameref{sec:stage:design:view:content-widget}}.
+
+	\subsection[CVQuestion]{CVQuestion | Domanda}
+	\label{sec:stage:design:view:question}
+	La classe rappresenta il componente grafico che visualizza un contenuto di tipo \textit{domanda} ed estende la classe \textit{\nameref{sec:stage:design:view:content-widget}}.
+
+	\subsection[CVReview]{CVReview | Recensione}
+	\label{sec:stage:design:view:review}
+	La classe rappresenta il componente grafico che visualizza un contenuto di tipo \textit{recensione} ed estende la classe \textit{\nameref{sec:stage:design:view:content-widget}}.
+
+	\subsection[CVTalk]{CVTalk | Discorso}
+	\label{sec:stage:design:view:talk}
+	La classe rappresenta il componente grafico che visualizza un contenuto di tipo \textit{discorso} ed estende la classe \textit{\nameref{sec:stage:design:view:content-widget}}.
+
+	\subsection[CVThought]{CVThought | Pensiero}
+	\label{sec:stage:design:view:thought}
+	La classe rappresenta il componente grafico che visualizza un contenuto di tipo \textit{pensiero} ed estende la classe \textit{\nameref{sec:stage:design:view:content-widget}}.
+
+	\subsection[EntityView]{EntityView | Entità del dominio}
 	\label{sec:stage:design:view:entity-widget}
 	La classe \textit{\nameref{sec:stage:design:view:entity-widget}} rappresenta il componente grafico deputato a visualizzare le informazioni essenziali associate ad un'entità e a consentire all'utente di:
 	\begin{itemize}
@@ -503,11 +563,11 @@
 	\label{sec:stage:design:view.filter:filter-container}
 	Il \textit{\nameref{sec:stage:design:view.filter:filter-container}} raccoglie e mantiene separati in un livello distinto gli elementi grafici di tipo \textit{\nameref{sec:stage:design:view.filter:filter}}, che forniscono all'utente gli strumenti per impostare i filtri di ricerca.
 
-	\subsection[FilterWidget]{FilterWidget | Filtro di ricerca}
+	\subsection[FilterView]{FilterView | Filtro di ricerca}
 	\label{sec:stage:design:view.filter:filter}
 	Tale componente rappresenta l'interfaccia delle componenti grafiche per le classi standard di filtri per il raffinamento della ricerca (\textit{\nameref{sec:stage:design:view.filter:list-filter}}, \textit{\nameref{sec:stage:design:view.filter:range-filter}}, \textit{\nameref{sec:stage:design:view.filter:switch-filter}} e \textit{\nameref{sec:stage:design:view.filter:value-filter}}).
 
-	\subsection[FWList]{FWList | Filtro con lista di valori}
+	\subsection[FVList]{FVList | Filtro con lista di valori}
 	\label{sec:stage:design:view.filter:list-filter}
 	Il componente grafico - associato alla classe \textit{\nameref{sec:stage:design:model.filter:list-filter}} - visualizza le liste dei valori ammissibili e bloccati e consente all'utente di:
 	\begin{itemize}
@@ -515,7 +575,7 @@
 	\item azzerare il filtro, spostando automaticamente tutti i valori nella lista degli ammissibili.
 	\end{itemize}
 
-	\subsection[FWRange]{FWRange | Filtro con intervallo di valori}
+	\subsection[FVRange]{FVRange | Filtro con intervallo di valori}
 	\label{sec:stage:design:view.filter:range-filter}
 	Il componente grafico - associato alla classe \textit{\nameref{sec:stage:design:model.filter:range-filter}} - permette all'utente di specificare l'estremo inferiore e superiore dell'intervallo dei valori ammissibili secondo le regole definite nella suddetta classe.
 
@@ -527,7 +587,7 @@
 		\end{center}
 	\end{figure}
 
-	\subsection[FWSwitch]{FWSwitch | Filtro a doppio stato}
+	\subsection[FVSwitch]{FVSwitch | Filtro a doppio stato}
 	\label{sec:stage:design:view.filter:switch-filter}
 	Il componente grafico - associato alla classe \textit{\nameref{sec:stage:design:model.filter:switch-filter}} - consente di abilitare o disattivare il filtro corrispondente o di visualizzarne lo stato corrente.
 
@@ -539,7 +599,7 @@
 		\end{center}
 	\end{figure}
 
-	\subsection[FWValue]{FWValue | Filtro con soglia di valore}
+	\subsection[FVValue]{FVValue | Filtro con soglia di valore}
 	\label{sec:stage:design:view.filter:value-filter}
 	Il componente grafico - associato alla classe \textit{\nameref{sec:stage:design:model.filter:value-filter}} - consente all'utente di modificare il valore della soglia associata al filtro corrispondente.
 
@@ -656,37 +716,41 @@
 	\label{sec:stage:design:controller:main-controller}
 	La classe \textit{\nameref{sec:stage:design:controller:main-controller}} gestisce l'inizializzazione delle componenti del sistema e il caricamento dell'interfaccia grafica.
 
-	% SECTION
-	\section{Package controller.content}
-	\label{sec:stage:design:controller.content}
+	\subsection[ContentController]{ContentController | Gestione dei contenuti informativi}
+	\label{sec:stage:design:controller:content}
+	La classe \textit{\nameref{sec:stage:design:controller:content}} gestisce le operazioni relative al reperimento e alla consultazione dei contenuti informativi, sia come risultati di una ricerca sia come elementi di una discussione.
 
-	\subsection[ContentManager]{ContentManager | Gestore dei contenuti}
-	\label{sec:stage:design:controller:content-manager}
-	La classe \textit{\nameref{sec:stage:design:controller:content-manager}} gestisce le operazioni relative al reperimento e alla consultazione dei contenuti informativi, sia come risultati di una ricerca sia come elementi di una discussione.
+	\subsection[EntityController]{EntityController | Gestione delle entità}
+	\label{sec:stage:design:controller:entity}
+	La classe \textit{\nameref{sec:stage:design:controller:entity}} gestisce le operazioni relative alle entità del dominio individuate al termine della ricerca e con cui l'utente può interagire.
 
-	% SECTION
-	\section{Package controller.filter}
-	\label{sec:stage:design:controller.filter}
+	\subsection[FilterController]{FilterController | Gestione dei filtri}
+	\label{sec:stage:design:controller:filter}
+	La classe \textit{\nameref{sec:stage:design:controller:filter}} gestisce la creazione, il caricamento e l'interazione dell'utente con i filtri.
 
-	\subsection[FilterManager]{FilterManager | Gestore dei filtri}
-	\label{sec:stage:design:controller:filter-manager}
-	La classe \textit{\nameref{sec:stage:design:controller:filter-manager}} gestisce la creazione, il caricamento e l'interazione dell'utente con i filtri.
+	\subsection[FCList]{FCList | Gestione dei filtri a lista di valori}
+	\label{sec:stage:design:controller:filter-list}
+	La classe \textit{\nameref{sec:stage:design:controller:filter-list}} estende la classe \textit{\nameref{sec:stage:design:controller:filter}} e gestisce i filtri di tipo \textit{\nameref{sec:stage:design:model.filter:list-filter}}.
 
-	% SECTION
-	\section{Package controller.search}
-	\label{sec:stage:design:controller.search}
+	\subsection[FCRange]{FCRange | Gestione dei filtri ad intervallo di valori}
+	\label{sec:stage:design:controller:filter-range}
+	La classe \textit{\nameref{sec:stage:design:controller:filter-range}} estende la classe \textit{\nameref{sec:stage:design:controller:filter}} e gestisce i filtri di tipo \textit{\nameref{sec:stage:design:model.filter:range-filter}}.
 
-	\subsection[SearchManager]{SearchManager | Gestore della ricerca}
-	\label{sec:stage:design:controller:search-manager}
-	La classe \textit{\nameref{sec:stage:design:controller:search-manager}} gestisce le operazioni connesse alla ricerca di contenuti informativi nella piattaforma.	
+	\subsection[FCSwitch]{FCSwitch | Gestione dei filtri ad interruttore}
+	\label{sec:stage:design:controller:filter-switch}
+	La classe \textit{\nameref{sec:stage:design:controller:filter-switch}} estende la classe \textit{\nameref{sec:stage:design:controller:filter}} e gestisce i filtri di tipo \textit{\nameref{sec:stage:design:model.filter:switch-filter}}.
 
-	% SECTION
-	\section{Package controller.timeline}
-	\label{sec:stage:design:controller.timeline}
+	\subsection[FCValue]{FCValue | Gestione dei filtri a soglia di valore}
+	\label{sec:stage:design:controller:filter-value}
+	La classe \textit{\nameref{sec:stage:design:controller:filter-value}} estende la classe \textit{\nameref{sec:stage:design:controller:filter}} e gestisce i filtri di tipo \textit{\nameref{sec:stage:design:model.filter:value-filter}}.
 
-	\subsection[TimelineManager]{TimelineManager | Gestore della cronologia}
-	\label{sec:stage:design:controller:timeline-manager}
-	La classe \textit{\nameref{sec:stage:design:controller:timeline-manager}} gestisce le operazioni riguardanti la navigazione temporale dei contenuti.
+	\subsection[SearchController]{SearchController | Gestione della ricerca}
+	\label{sec:stage:design:controller:search}
+	La classe \textit{\nameref{sec:stage:design:controller:search}} gestisce le operazioni connesse alla ricerca di contenuti informativi nella piattaforma.	
+
+	\subsection[TimelineController]{TimelineController | Gestione della cronologia}
+	\label{sec:stage:design:controller:timeline}
+	La classe \textit{\nameref{sec:stage:design:controller:timeline}} gestisce le operazioni riguardanti la navigazione temporale dei contenuti.
 
 	%----------
 	% CAPITOLO
@@ -700,6 +764,9 @@
 
 	\section{Facade}
 	\label{sec:stage:design:pattern:facade}
+	\begin{itemize}
+	\item \nameref{sec:stage:design:model.criteria:criteria-model};
+	\end{itemize}
 
 	\section{Singleton}
 	\label{sec:stage:design:pattern:singleton}
