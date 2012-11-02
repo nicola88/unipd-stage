@@ -5,17 +5,16 @@
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>70</x>
-      <y>60</y>
+      <y>70</y>
       <w>240</w>
-      <h>100</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>MainWindow
 --
 - contentLayer: Timeline
 - filterLayer: FilterContainer
 - searchLayer: SearchContainer
---
-+ load(): void</panel_attributes>
+--</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -24,7 +23,7 @@
       <x>20</x>
       <y>20</y>
       <w>350</w>
-      <h>170</h>
+      <h>160</h>
     </coordinates>
     <panel_attributes>view</panel_attributes>
     <additional_attributes/>
