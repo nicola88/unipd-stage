@@ -55,7 +55,7 @@
 	\label{ch:stage:design:intro}
 
 	\section{Convenzioni}
-	La nomenclatura adottata per i package e le classi è il \textit{CamelCase}.	L'identificatore di ciascuna sottoclasse adotta come prefisso le lettere maiuscole presenti nel nome della rispettiva classe base (nel medesimo ordine di apparizione).
+	La nomenclatura adottata per i package e le classi è il \textit{CamelCase}.
 
 	\section{Riferimenti informativi}
 	\begin{itemize}
@@ -149,47 +149,47 @@
 
 	\subsection[Metadata]{Metadata | Metadati dei contenuti}
 	\label{sec:stage:design:model:metadata}
-	La componente \textit{\nameref{sec:stage:design:model:metadata}} rappresenta una meta-informazione generica associata ad un contenuto informativo.
+	L'interfaccia \textit{\nameref{sec:stage:design:model:metadata}} rappresenta una meta-informazione generica associata ad un contenuto informativo.
 
 	\subsection[Emotion]{Emotion | Emozioni}
 	\label{sec:stage:design:model:metadata-emotion}
-	La classe \textit{\nameref{sec:stage:design:model:metadata-emotion}} rappresenta un'emozione associabile ad un contenuto ed estende la classe \textit{\nameref{sec:stage:design:model:metadata}}.
+	La classe \textit{\nameref{sec:stage:design:model:metadata-emotion}} rappresenta un'emozione associabile ad un contenuto ed implementa l'interfaccia \textit{\nameref{sec:stage:design:model:metadata}}.
 
 	\subsection[Intention]{Intention | Intenzione}
 	\label{sec:stage:design:model:metadata-intention}
-	La classe \textit{\nameref{sec:stage:design:model:metadata-intention}} rappresenta un'intenzione associabile ad un contenuto ed estende la classe \textit{\nameref{sec:stage:design:model:metadata}}.
+	La classe \textit{\nameref{sec:stage:design:model:metadata-intention}} rappresenta un'intenzione associabile ad un contenuto ed implementa l'interfaccia \textit{\nameref{sec:stage:design:model:metadata}}.
 
 	\subsection[Interest]{Interest | Interesse}
 	\label{sec:stage:design:model:metadata-interest}
-	La classe \textit{\nameref{sec:stage:design:model:metadata-interest}} rappresenta gli interessi cui è associabile un contenuto ed estende la classe \textit{\nameref{sec:stage:design:model:metadata}}.
+	La classe \textit{\nameref{sec:stage:design:model:metadata-interest}} rappresenta gli interessi cui è associabile un contenuto ed implementa l'interfaccia \textit{\nameref{sec:stage:design:model:metadata}}.
 
 	\subsection[Topic]{Topic | Argomento}
 	\label{sec:stage:design:model:metadata-topic}
-	La classe \textit{\nameref{sec:stage:design:model:metadata-topic}} rappresenta un argomento cui può appartenere un contenuto ed estende la classe \textit{\nameref{sec:stage:design:model:metadata}}.
+	La classe \textit{\nameref{sec:stage:design:model:metadata-topic}} rappresenta un argomento cui può appartenere un contenuto ed implementa l'interfaccia \textit{\nameref{sec:stage:design:model:metadata}}.
 
 	\subsection[Type]{Type | Tipo di contenuto}
 	\label{sec:stage:design:model:metadata-type}
-	La classe \textit{\nameref{sec:stage:design:model:metadata-intention}} rappresenta un'intenzione associabile ad un contenuto ed estende la classe \textit{\nameref{sec:stage:design:model:metadata}}.
+	La classe \textit{\nameref{sec:stage:design:model:metadata-intention}} rappresenta un'intenzione associabile ad un contenuto ed implementa l'interfaccia \textit{\nameref{sec:stage:design:model:metadata}}.
 
 	\subsection[User]{User | Autore}
 	\label{sec:stage:design:model:metadata-user}
-	La classe \textit{\nameref{sec:stage:design:model:metadata-user}} rappresenta l'utente che ha pubblicato il contenuto ed estende la classe \textit{\nameref{sec:stage:design:model:metadata}}.
+	La classe \textit{\nameref{sec:stage:design:model:metadata-user}} rappresenta l'utente che ha pubblicato il contenuto ed implementa l'interfaccia \textit{\nameref{sec:stage:design:model:metadata}}.
 
 	\subsection[Entity]{Entity | Entità del dominio}
 	\label{sec:stage:design:model:entity}
-	La classe modella un'entità del dominio della piattaforma, cui è associata un'etichetta - in una specifica accezione - che la identifica univocamente nell'ambito della piattaforma (\textit{\nameref{sec:stage:design:model:label}}).
+	La classe \textit{\nameref{sec:stage:design:model:entity}} rappresenta un'entità del dominio della piattaforma, cui è associata un'etichetta - in una specifica accezione - che la identifica univocamente nell'ambito della piattaforma (\textit{\nameref{sec:stage:design:model:label}}).
 
 	\subsection[EntityType]{EntityType | Tipo di entità}
 	\label{sec:stage:design:model:entity-type}
-	La classe rappresenta i tipi di entità del dominio (\textit{\nameref{sec:stage:design:model:entity}}).
+	La classe \textit{\nameref{sec:stage:design:model:entity-type}} rappresenta i tipi di entità del dominio.
 
 	\subsection[Label]{Label | Etichetta del dizionario}
 	\label{sec:stage:design:model:label}
-	La classe modella le etichette del dizionario della piattaforma, ciascuna delle quali può possedere molteplici accezioni (\textit{\nameref{sec:stage:design:model:meaning}}).
+	La classe \textit{\nameref{sec:stage:design:model:label}} modella le etichette del dizionario della piattaforma, ciascuna delle quali può possedere molteplici accezioni (\textit{\nameref{sec:stage:design:model:meaning}}).
 
 	\subsection[Meaning]{Meaning | Accezione di un'etichetta}
 	\label{sec:stage:design:model:meaning}
-	La classe modella un'accezione di un'etichetta (\textit{\nameref{sec:stage:design:model:label}}), che riferisce un'entità del dominio (\textit{\nameref{sec:stage:design:model:entity}}).
+	La classe \textit{\nameref{sec:stage:design:model:meaning}} rappresenta un'accezione di un'etichetta (\textit{\nameref{sec:stage:design:model:label}}) e si riferisce un'entità del dominio (\textit{\nameref{sec:stage:design:model:entity}}).
 
 	% SECTION
 	\section{Package model.criteria}
@@ -217,19 +217,19 @@
 	\label{sec:stage:design:model.criteria:list-criterion}
 	La classe \textit{\nameref{sec:stage:design:model.criteria:list-criterion}} rappresenta un criterio di classificazione basato su una lista di valori, ciascuno dei quali può essere ammissibile o bloccato. 
 
-	Ciascuna istanza viene utilizzata in combinazione con un filtro \textit{\nameref{sec:stage:design:model.filter:list-filter}}, fornendo i valori e i parametri di configurazione iniziale.
+	Ciascuna istanza viene utilizzata in combinazione con un filtro \textit{\nameref{sec:stage:design:model.filter:list-filter}} o \textit{\nameref{sec:stage:design:model.filter:switch-filter}}, fornendo i valori e i parametri di configurazione iniziale.
 
 	\subsection[CRange]{CRange | Criterio basati su un intervallo di valori}
 	\label{sec:stage:design:model.criteria:range-criterion}
 	La classe \textit{\nameref{sec:stage:design:model.criteria:range-criterion}} rappresenta un criterio di classificazione basato su un intervallo di valori.
 
-	Ciascuna istanza viene utilizzata in combinazione con un filtro \textit{\nameref{sec:stage:design:model.filter:range-filter}}, fornendo i valori e i parametri di configurazione iniziale.
+	Ciascuna istanza viene utilizzata in combinazione con un filtro \textit{\nameref{sec:stage:design:model.filter:range-filter}} o \textit{\nameref{sec:stage:design:model.filter:switch-filter}}, fornendo i valori e i parametri di configurazione iniziale.
 
 	\subsection[CValue]{CValue | Filtro basato su una soglia di valore}
 	\label{sec:stage:design:model.criteria:value-criterion}
 	La classe \textit{\nameref{sec:stage:design:model.criteria:value-criterion}} rappresenta un criterio di classificazione basato su una soglia di valore.
 
-	Ciascuna istanza viene utilizzata in combinazione con un filtro \textit{\nameref{sec:stage:design:model.filter:value-filter}}, fornendo i valori e i parametri di configurazione iniziale.
+	Ciascuna istanza viene utilizzata in combinazione con un filtro \textit{\nameref{sec:stage:design:model.filter:value-filter}} o \textit{\nameref{sec:stage:design:model.filter:switch-filter}}, fornendo i valori e i parametri di configurazione iniziale.
 
 	% SECTION	
 	\section{Package model.filter}
@@ -411,11 +411,23 @@
 
 	\subsection[Timeline]{Timeline | Linea del tempo}
 	\label{sec:stage:design:model.timeline:timeline}
-	La classe \textit{\nameref{sec:stage:design:model.timeline:timeline}} rappresenta la linea del tempo, suddivisa in intervalli temporali \textit{\nameref{sec:stage:design:model.timeline:time-unit}} di ampiezza fissa - personalizzabile dall'utente - in cui vengono collocati i risultati della ricerca o i contenuti di una discussione.
+	La classe \textit{\nameref{sec:stage:design:model.timeline:timeline}} rappresenta la linea del tempo, suddivisa in intervalli (\textit{\nameref{sec:stage:design:model.timeline:time-unit}}) di ampiezza fissa - personalizzabile dall'utente in termini di unità (giorni, settimane, mesi, anni) e scala (1, 2, \ldots) - in cui vengono collocati i risultati della ricerca o i contenuti di una discussione.
 
 	\subsection[TimeUnit]{TimeUnit | Unità temporale}
 	\label{sec:stage:design:model.timeline:time-unit}
-	La classe \textit{\nameref{sec:stage:design:model.timeline:time-unit}} rappresenta un singolo intervallo di tempo e raccoglie i risultati di ricerca o i contenuti di una discussione pubblicati nel periodo corrispondente.
+	La classe \textit{\nameref{sec:stage:design:model.timeline:time-unit}} rappresenta un generico intervallo di tempo, che consente di reperire i contenuti corrispondenti ai risultati di ricerca relativi ad una discussione e pubblicati nel periodot corrispondente.
+
+	\subsection[Day]{Day | Giorno (1-31)}
+	\label{sec:stage:design:model.timeline:time-day}
+
+	\subsection[Week]{Week | Settimana (1-52)}
+	\label{sec:stage:design:model.timeline:time-week}
+
+	\subsection[Month]{Month | Mese (1-12)}
+	\label{sec:stage:design:model.timeline:time-month}
+
+	\subsection[Year]{Year | Anno}
+	\label{sec:stage:design:model.timeline:time-year}
 
 	%----------
 	% CAPITOLO
@@ -501,31 +513,31 @@
 
 	\subsection[CVAnswer]{CVAnswer | Risposta}
 	\label{sec:stage:design:view:answer}
-	La classe rappresenta il componente grafico che visualizza un contenuto di tipo \textit{risposta} ed estende la classe \textit{\nameref{sec:stage:design:view:content-widget}}.
+	La classe \textit{\nameref{sec:stage:design:view:answer}} rappresenta il componente grafico che visualizza un contenuto di tipo \textit{risposta} ed estende la classe \textit{\nameref{sec:stage:design:view:content-widget}}.
 
 	\subsection[CVEvent]{CVEvent | Evento}
 	\label{sec:stage:design:view:event}
-	La classe rappresenta il componente grafico che visualizza un contenuto di tipo \textit{evento} ed estende la classe \textit{\nameref{sec:stage:design:view:content-widget}}.
+	La classe \textit{\nameref{sec:stage:design:view:event}} rappresenta il componente grafico che visualizza un contenuto di tipo \textit{evento} ed estende la classe \textit{\nameref{sec:stage:design:view:content-widget}}.
 
 	\subsection[CVMessage]{CVMessage | Comunicazione privata}
 	\label{sec:stage:design:view:message}
-	La classe rappresenta il componente grafico che visualizza un contenuto di tipo \textit{comunicazione privata} ed estende la classe \textit{\nameref{sec:stage:design:view:content-widget}}.
+	La classe \textit{\nameref{sec:stage:design:view:message}} rappresenta il componente grafico che visualizza un contenuto di tipo \textit{comunicazione privata} ed estende la classe \textit{\nameref{sec:stage:design:view:content-widget}}.
 
 	\subsection[CVQuestion]{CVQuestion | Domanda}
 	\label{sec:stage:design:view:question}
-	La classe rappresenta il componente grafico che visualizza un contenuto di tipo \textit{domanda} ed estende la classe \textit{\nameref{sec:stage:design:view:content-widget}}.
+	La classe \textit{\nameref{sec:stage:design:view:question}} rappresenta il componente grafico che visualizza un contenuto di tipo \textit{domanda} ed estende la classe \textit{\nameref{sec:stage:design:view:content-widget}}.
 
 	\subsection[CVReview]{CVReview | Recensione}
 	\label{sec:stage:design:view:review}
-	La classe rappresenta il componente grafico che visualizza un contenuto di tipo \textit{recensione} ed estende la classe \textit{\nameref{sec:stage:design:view:content-widget}}.
+	La classe \textit{\nameref{sec:stage:design:view:review}} rappresenta il componente grafico che visualizza un contenuto di tipo \textit{recensione} ed estende la classe \textit{\nameref{sec:stage:design:view:content-widget}}.
 
 	\subsection[CVTalk]{CVTalk | Discorso}
 	\label{sec:stage:design:view:talk}
-	La classe rappresenta il componente grafico che visualizza un contenuto di tipo \textit{discorso} ed estende la classe \textit{\nameref{sec:stage:design:view:content-widget}}.
+	La classe \textit{\nameref{sec:stage:design:view:talk}} rappresenta il componente grafico che visualizza un contenuto di tipo \textit{discorso} ed estende la classe \textit{\nameref{sec:stage:design:view:content-widget}}.
 
 	\subsection[CVThought]{CVThought | Pensiero}
 	\label{sec:stage:design:view:thought}
-	La classe rappresenta il componente grafico che visualizza un contenuto di tipo \textit{pensiero} ed estende la classe \textit{\nameref{sec:stage:design:view:content-widget}}.
+	La classe \textit{\nameref{sec:stage:design:view:thought}} rappresenta il componente grafico che visualizza un contenuto di tipo \textit{pensiero} ed estende la classe \textit{\nameref{sec:stage:design:view:content-widget}}.
 
 	\subsection[EntityView]{EntityView | Entità del dominio}
 	\label{sec:stage:design:view:entity-widget}
@@ -778,19 +790,25 @@
 	\section{Abstract Factory}
 	\label{sec:stage:design:pattern:factory}
 	\begin{itemize}
-	\item \nameref{sec:stage:design:model.filter:filter-factory}
+	\item \nameref{sec:stage:design:model.filter:filter-factory}.
 	\end{itemize}
 
 	\section{Decorator}
 	\label{sec:stage:design:pattern:decorator}
 	\begin{itemize}
-	\item \nameref{sec:stage:design:model.filter:switch-filter}
+	\item \nameref{sec:stage:design:model.filter:switch-filter}.
 	\end{itemize}
 
 	\section{Facade}
 	\label{sec:stage:design:pattern:facade}
 	\begin{itemize}
 	\item \nameref{sec:stage:design:model.criteria:criteria-model};
+	\item \nameref{sec:stage:design:model.filter:filter};
+	\item \nameref{sec:stage:design:model.search:provider-model};
+	\item \nameref{sec:stage:design:model.search:search};
+	\item \nameref{sec:stage:design:view.filter:filter-container};
+	\item \nameref{sec:stage:design:view.search:search-container};
+	\item \nameref{sec:stage:design:view.timeline:timeline-view}.
 	\end{itemize}
 
 	\section{Singleton}

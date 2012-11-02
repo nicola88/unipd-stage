@@ -170,7 +170,6 @@ m1=0..n</panel_attributes>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=-&lt;
-m1=1
 m2=0...n
 </panel_attributes>
     <additional_attributes>220;30;30;30</additional_attributes>
@@ -205,14 +204,14 @@ m2=0..n</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>520</x>
-      <y>60</y>
+      <y>50</y>
       <w>240</w>
-      <h>50</h>
+      <h>60</h>
     </coordinates>
-    <panel_attributes>Metadata
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+Metadata
 --
---
-+ getValueList(): Metadata[0...*]</panel_attributes>
+_+ getValueList(): Metadata[0...*]_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

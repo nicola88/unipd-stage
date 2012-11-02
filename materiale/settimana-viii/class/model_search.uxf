@@ -21,15 +21,16 @@
     <coordinates>
       <x>40</x>
       <y>400</y>
-      <w>290</w>
-      <h>90</h>
+      <w>340</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>EntityList
 --
 - list: Entity[0...*]
 --
 + addEntity(entity: Entity): void
-+ removeEntity(entity: Entity): boolean</panel_attributes>
++ removeEntity(entity: Entity): boolean
++ updateEntity(old: Entity, new: Entity): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -87,12 +88,13 @@
       <x>550</x>
       <y>360</y>
       <w>150</w>
-      <h>50</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>Term
 --
 - expression: string
---</panel_attributes>
+--
++ getValue(): string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

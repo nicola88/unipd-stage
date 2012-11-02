@@ -4,7 +4,7 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>250</x>
+      <x>420</x>
       <y>60</y>
       <w>140</w>
       <h>30</h>
@@ -15,7 +15,7 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>450</x>
+      <x>630</x>
       <y>180</y>
       <w>170</w>
       <h>30</h>
@@ -28,8 +28,8 @@
     <coordinates>
       <x>20</x>
       <y>20</y>
-      <w>620</w>
-      <h>210</h>
+      <w>800</w>
+      <h>260</h>
     </coordinates>
     <panel_attributes>view.search</panel_attributes>
     <additional_attributes/>
@@ -37,18 +37,18 @@
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>360</x>
+      <x>530</x>
       <y>60</y>
-      <w>160</w>
+      <w>170</w>
       <h>140</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>30;30;140;120</additional_attributes>
+    <additional_attributes>30;30;150;120</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>340</x>
+      <x>510</x>
       <y>180</y>
       <w>100</w>
       <h>30</h>
@@ -59,7 +59,7 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>180</x>
+      <x>350</x>
       <y>180</y>
       <w>140</w>
       <h>30</h>
@@ -72,16 +72,21 @@
     <coordinates>
       <x>40</x>
       <y>180</y>
-      <w>120</w>
-      <h>30</h>
+      <w>290</w>
+      <h>80</h>
     </coordinates>
-    <panel_attributes>EntityListView</panel_attributes>
+    <panel_attributes>EntityListView
+--
+- list: EntityList
+- widget: EntityView[0...*]
+--
++ deleteEntity(entity: EntityView): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>320</x>
+      <x>490</x>
       <y>60</y>
       <w>90</w>
       <h>140</h>
@@ -92,24 +97,24 @@
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>240</x>
+      <x>390</x>
       <y>60</y>
-      <w>80</w>
+      <w>100</w>
       <h>140</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m2=0...n</panel_attributes>
-    <additional_attributes>60;30;30;120</additional_attributes>
+    <additional_attributes>80;30;30;120</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>80</x>
+      <x>150</x>
       <y>60</y>
-      <w>190</w>
+      <w>290</w>
       <h>140</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>170;30;30;120</additional_attributes>
+    <additional_attributes>270;30;30;120</additional_attributes>
   </element>
 </diagram>
