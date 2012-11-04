@@ -36,9 +36,11 @@
 	1.4 & 26-10-2012 & Aggiornato il capitolo \ref{ch:stage:design:view}. \\ \hline
 	1.5 & 27-10-2012 & Aggiunti i capitoli \ref{ch:stage:design:pattern} e \ref{ch:stage:design:tracciamento}. \\ \hline
 	2.0 & 28-10-2012 & Pubblicazione della seconda versione. \\ \hline
-	2.1 & 29-10-2012 & \ldots \\ \hline
-	2.2 & 30-10-2012 & \ldots \\ \hline
-	2.3 & 02-11-2012 & \ldots \\ \hline
+	2.1 & 29-10-2012 & Aggiornato il capitolo \ref{ch:stage:design:model}. \\ \hline
+	2.2 & 30-10-2012 & Aggiornato il capitolo \ref{ch:stage:design:view}. \\ \hline
+	2.3 & 02-11-2012 & Aggiornato il capitolo \ref{ch:stage:design:controller}. \\ \hline
+	2.4 & 03-11-2012 & Revisione integrale del documento. \\ \hline
+	3.0 & 04-11-2012 & Pubblicazione della terza versione. \\ \hline
 	\end{tabular}
 	\caption{Registro delle modifiche}
 	\label{tab:stage:wp:workload}
@@ -268,7 +270,7 @@
 	\textit{Interessi} & \nameref{sec:stage:design:model.criteria:list-criterion} & \nameref{sec:stage:design:model.filter:switch-filter} & \nameref{sec:stage:design:model.filter:switch-filter} \\ \hline
 	\textit{Tipo} & \nameref{sec:stage:design:model.criteria:list-criterion} & \nameref{sec:stage:design:model.filter:list-filter}  & \nameref{sec:stage:design:model.filter:list-filter} \\ \hline
 	\end{tabular}
-	\caption{Classi istanziate da \textit{\nameref{sec:stage:design:model.filter:filter-factory}}}
+	\caption{Dipendenze tra classi rilevanti per \textit{\nameref{sec:stage:design:model.filter:filter-factory}}}
 	\label{tab:stage:design:filter-factory}
 	\end{table}
 
@@ -709,13 +711,13 @@
 	\chapter{Componente Controller}
 	\label{ch:stage:design:controller}
 
-%	\begin{figure}[ht]
-%		\begin{center}
-%	    	\includegraphics[width=10cm]{package/controller.png}
-%			\label{gfx:package:controller}
-%			\caption{Diagramma del package \textit{controller}}
-%		\end{center}
-%	\end{figure}
+	\begin{figure}[ht]
+		\begin{center}
+	    	\includegraphics[height=8cm]{package/controller.png}
+			\label{gfx:package:controller}
+			\caption{Diagramma del package \textit{controller}}
+		\end{center}
+	\end{figure}
 
 	Questo capitolo illustra i componenti del \textit{Controller}, per ciascuno dei quali è indicato il nome della classe accompagnata da un'identificazione sintetica, separati dal carattere '|' (separatore verticale).
 
@@ -731,14 +733,14 @@
 		\end{center}
 	\end{figure}
 
-	\begin{itemize}
-	%\item Avvio di una ricerca;
-	%\item Esecuzione di una ricerca (ambiti e motori di ricerca);
-	\item Aggiornamento dei risultati di ricerca (modifica entità);
-	\item Aggiornamento dei risultati di ricerca (aggiornamento filtri);
-	\item Navigazione della timeline;
-	\item Visualizzazione discussione.
-	\end{itemize}
+%	\begin{itemize}
+%	\item Avvio di una ricerca;
+%	\item Esecuzione di una ricerca (ambiti e motori di ricerca);
+%	\item Aggiornamento dei risultati di ricerca (modifica entità);
+%	\item Aggiornamento dei risultati di ricerca (aggiornamento filtri);
+%	\item Navigazione della timeline;
+%	\item Visualizzazione discussione.
+%	\end{itemize}
 
 	\subsection[MainController]{MainController | Gestore dell'applicazione}
 	\label{sec:stage:design:controller:main-controller}
@@ -751,6 +753,21 @@
 	\subsection[EntityController]{EntityController | Gestione delle entità}
 	\label{sec:stage:design:controller:entity}
 	La classe \textit{\nameref{sec:stage:design:controller:entity}} gestisce le operazioni relative alle entità del dominio individuate al termine della ricerca e con cui l'utente può interagire.
+
+	\subsection[TimelineController]{TimelineController | Gestione della cronologia}
+	\label{sec:stage:design:controller:timeline}
+	La classe \textit{\nameref{sec:stage:design:controller:timeline}} gestisce le operazioni riguardanti la navigazione temporale dei contenuti.
+
+	\section{Package controller.filter}
+	\label{sec:stage:design:controller.filter}
+
+	\begin{figure}[ht]
+		\begin{center}
+	    	\includegraphics[width=10cm]{class/controller_filter.png}
+			\label{gfx:class:controller:filter}
+			\caption{Diagramma delle classi del package \textit{controller.filter}}
+		\end{center}
+	\end{figure}
 
 	\subsection[FilterController]{FilterController | Gestione dei filtri}
 	\label{sec:stage:design:controller:filter}
@@ -772,13 +789,53 @@
 	\label{sec:stage:design:controller:filter-value}
 	La classe \textit{\nameref{sec:stage:design:controller:filter-value}} estende la classe \textit{\nameref{sec:stage:design:controller:filter}} e gestisce i filtri di tipo \textit{\nameref{sec:stage:design:model.filter:value-filter}}.
 
+	\section{Package controller.search}
+	\label{sec:stage:design:controller.search}
+
+	\begin{figure}[ht]
+		\begin{center}
+	    	\includegraphics[width=12cm]{class/controller_search.png}
+			\label{gfx:class:controller:search}
+			\caption{Diagramma delle classi del package \textit{controller.search}}
+		\end{center}
+	\end{figure}	
+
 	\subsection[SearchController]{SearchController | Gestione della ricerca}
 	\label{sec:stage:design:controller:search}
-	La classe \textit{\nameref{sec:stage:design:controller:search}} gestisce le operazioni connesse alla ricerca di contenuti informativi nella piattaforma.	
+	La classe \textit{\nameref{sec:stage:design:controller:search}} gestisce le operazioni connesse alla ricerca di contenuti informativi nella piattaforma.
 
-	\subsection[TimelineController]{TimelineController | Gestione della cronologia}
-	\label{sec:stage:design:controller:timeline}
-	La classe \textit{\nameref{sec:stage:design:controller:timeline}} gestisce le operazioni riguardanti la navigazione temporale dei contenuti.
+	\subsection[ResultUpdate]{ResultUpdate | Gestione dell'aggiornamento dei risultati di una ricerca}
+	\label{sec:stage:design:controller.search:result-update}
+	La classe \textit{\nameref{sec:stage:design:controller.search:result-update}} rappresenta l'interfaccia delle operazioni inerenti l'aggiornamento dei risultati di ricerca:
+	\begin{itemize}
+	\item alterazione dei filtri di ricerca;
+	\item eliminazione di un'entità cercata;
+	\item visualizzazione di una discussione (a partire da un risultato di ricerca).
+	\end{itemize}
+
+	\subsection[RUListRefine]{RURefine | Gestione del raffinamento dei risultati di ricerca}
+	\label{sec:stage:design:controller.search:result-update-list-refine}
+	La classe \textit{\nameref{sec:stage:design:controller.search:result-update-list-refine}} incapsula il comando di aggiornamento dei risultati di ricerca visualizzati a fronte dell'alterazione di un filtro \textit{\nameref{sec:stage:design:model.filter:list-filter}}.
+
+	\subsection[RURangeRefine]{RURangeRefine | Gestione del raffinamento dei risultati di ricerca}
+	\label{sec:stage:design:controller.search:result-update-range-refine}
+	La classe \textit{\nameref{sec:stage:design:controller.search:result-update-range-refine}} incapsula il comando di aggiornamento dei risultati di ricerca visualizzati a fronte dell'alterazione di un filtro \textit{\nameref{sec:stage:design:model.filter:range-filter}}.
+
+	\subsection[RUSwitchRefine]{RUSwitchRefine | Gestione del raffinamento dei risultati di ricerca}
+	\label{sec:stage:design:controller.search:result-update-switch-refine}
+	La classe \textit{\nameref{sec:stage:design:controller.search:result-update-switch-refine}} incapsula il comando di aggiornamento dei risultati di ricerca visualizzati a fronte dell'abilitazione o disattivazione di un filtro \textit{\nameref{sec:stage:design:model.filter:switch-filter}}.
+
+	\subsection[RUValueRefine]{RUValueRefine | Gestione del raffinamento dei risultati di ricerca}
+	\label{sec:stage:design:controller.search:result-update-value-refine}
+	La classe \textit{\nameref{sec:stage:design:controller.search:result-update-value-refine}} incapsula il comando di aggiornamento dei risultati di ricerca visualizzati a fronte dell'alterazione di un filtro \textit{\nameref{sec:stage:design:model.filter:value-filter}}.
+
+	\subsection[RULoadDiscussion]{RULoadDiscussion | Gestione del raffinamento dei risultati di ricerca}
+	\label{sec:stage:design:controller.search:result-update-load-discussion}
+	La classe \textit{\nameref{sec:stage:design:controller.search:result-update-load-discussion}} incapsula il comando di aggiornamento dei risultati di ricerca a fronte della visualizzazione della discussione generata da un contenuto informativo visualizzato.
+
+	\subsection[RULoadEntity]{RULoadEntity | Gestione del raffinamento dei risultati di ricerca}
+	\label{sec:stage:design:controller.search:result-update-load-entity}
+	La classe \textit{\nameref{sec:stage:design:controller.search:result-update-load-entity}} incapsula il comando di aggiornamento dei risultati di ricerca a fronte dell'eliminazione di un'entità.
 
 	%----------
 	% CAPITOLO
@@ -790,35 +847,52 @@
 	\section{Abstract Factory}
 	\label{sec:stage:design:pattern:factory}
 	\begin{itemize}
-	\item \nameref{sec:stage:design:model.filter:filter-factory}.
+	\item \nameref{sec:stage:design:model.filter:filter-factory}
+	\end{itemize}
+
+	\section{Command}
+	\label{sec:stage:design:pattern:command}
+	\begin{itemize}
+	\item \nameref{sec:stage:design:controller.search:result-update}
+	\begin{itemize}
+	\item \nameref{sec:stage:design:controller.search:result-update-list-refine}
+	\item \nameref{sec:stage:design:controller.search:result-update-range-refine}
+	\item \nameref{sec:stage:design:controller.search:result-update-switch-refine}
+	\item \nameref{sec:stage:design:controller.search:result-update-value-refine}
+	\item \nameref{sec:stage:design:controller.search:result-update-load-discussion}
+	\item \nameref{sec:stage:design:controller.search:result-update-load-entity}
+	\end{itemize}
 	\end{itemize}
 
 	\section{Decorator}
 	\label{sec:stage:design:pattern:decorator}
 	\begin{itemize}
-	\item \nameref{sec:stage:design:model.filter:switch-filter}.
+	\item \nameref{sec:stage:design:model.filter:switch-filter}
 	\end{itemize}
 
 	\section{Facade}
 	\label{sec:stage:design:pattern:facade}
 	\begin{itemize}
-	\item \nameref{sec:stage:design:model.criteria:criteria-model};
-	\item \nameref{sec:stage:design:model.filter:filter};
-	\item \nameref{sec:stage:design:model.search:provider-model};
-	\item \nameref{sec:stage:design:model.search:search};
-	\item \nameref{sec:stage:design:view.filter:filter-container};
-	\item \nameref{sec:stage:design:view.search:search-container};
-	\item \nameref{sec:stage:design:view.timeline:timeline-view}.
+	\item \nameref{sec:stage:design:model.criteria:criteria-model}
+	\item \nameref{sec:stage:design:model.filter:filter}
+	\item \nameref{sec:stage:design:model.search:provider-model}
+	\item \nameref{sec:stage:design:model.search:search}
+	\item \nameref{sec:stage:design:view.filter:filter-container}
+	\item \nameref{sec:stage:design:view.search:search-container}
+	\item \nameref{sec:stage:design:view.timeline:timeline-view}
 	\end{itemize}
 
 	\section{Singleton}
 	\label{sec:stage:design:pattern:singleton}
+	\begin{itemize}
+	\item \nameref{sec:stage:design:controller:main-controller}
+	\end{itemize}
 
 	%----------
 	% CAPITOLO
 	%----------
 	\chapter{Tracciamento}
 	\label{ch:stage:design:tracciamento}
-	Le informazioni relative al tracciamento componenti - requisiti sono disponibili nel file \textit{tracciamento.ods}, allegato alla presente documentazione.
+	Le informazioni relative al tracciamento - requisiti verranno rese disponibili successivamente in un file \textit{tracciamento.ods}.
 
 \end{document}

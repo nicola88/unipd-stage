@@ -4,10 +4,10 @@
   <element>
     <type>com.umlet.element.Package</type>
     <coordinates>
-      <x>90</x>
+      <x>100</x>
       <y>70</y>
-      <w>590</w>
-      <h>430</h>
+      <w>270</w>
+      <h>390</h>
     </coordinates>
     <panel_attributes>controller</panel_attributes>
     <additional_attributes/>
@@ -20,28 +20,6 @@
       <w>200</w>
       <h>130</h>
     </coordinates>
-    <panel_attributes>content</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.Package</type>
-    <coordinates>
-      <x>430</x>
-      <y>320</y>
-      <w>200</w>
-      <h>130</h>
-    </coordinates>
-    <panel_attributes>timeline</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.Package</type>
-    <coordinates>
-      <x>430</x>
-      <y>120</y>
-      <w>200</w>
-      <h>130</h>
-    </coordinates>
     <panel_attributes>filter</panel_attributes>
     <additional_attributes/>
   </element>
@@ -49,11 +27,22 @@
     <type>com.umlet.element.Package</type>
     <coordinates>
       <x>130</x>
-      <y>320</y>
+      <y>300</y>
       <w>200</w>
       <h>130</h>
     </coordinates>
     <panel_attributes>search</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>210</x>
+      <y>220</y>
+      <w>50</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>30;100;30;30</additional_attributes>
   </element>
 </diagram>
