@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper,headsepline,hidelinks]{scrreprt} % KOMA-Script
+\documentclass[12pt,a4paper,headsepline,hidelinks]{scrreprt} % KOMA-Script
 \usepackage[italian]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -13,7 +13,7 @@
 
 \begin{document}
     \title{Relazione di stage - Bozza}
-%	\subject{Analisi e progettazione di un'interfaccia grafica per la consultazione dei contenuti informativi in una piattaforma web tematica}
+	\subject{Analisi e progettazione di un'interfaccia grafica per la consultazione dei contenuti informativi in una piattaforma web tematica}
     \author{Nicola Moretto (matr. 578258)}
     \date{\today}
 
@@ -27,13 +27,22 @@
 	\listoftables
 	\endgroup
 
-%	\part{Contesto}
-
 	% CHAPTER
 	\chapter{L'azienda}
-	L'attività di stage si è svolta presso l'azienda \azienda{}, operante nel settore IT (\textit{Information Technology}) grazie alla vendita e assistenza di software gestionali proprietari rivolti ad aziende attive nel settore alberghiero. Si tratta di una piccola realtà imprenditoriale a clientela nazionale con sede unica a Mestre (VE), la cui gestione e amministrazione è affidata al solo fondatore, che ha assunto il ruolo di tutor esterno e referente aziendale per l'intero arco di svolgimento dello stage.
+	L'attività di stage si è svolta presso l'azienda \azienda{}, operante nel settore IT (\textit{Information Technology}) grazie alla vendita e assistenza di software gestionali proprietari rivolti ad aziende attive nel settore alberghiero.
 
-	Le decisioni assunte e le informazioni prodotte nel corso dello stage sono state condivise, discusse e approvate dal suddetto referente, al quale si è fatto riferimento per domande, dubbi o questioni emersi nel corso delle attività.
+	Si tratta di una piccola realtà imprenditoriale a clientela nazionale con sede unica a Mestre (VE), la cui gestione e amministrazione è affidata al solo fondatore, che ha assunto il ruolo di tutor esterno e referente aziendale per l'intera durata dello stage.
+
+	Le attività svolte si inseriscono nell'ambito di un progetto esterno rispetto al business dell'azienda e affidato ad un team costituito da differenti figure professionali (sociologi, informatici, ingegneri, \ldots), con le quali sono stati mantenuti regolari contatti per garantire il tempestivo soddisfacimento delle propedeuticità per il mio lavoro di stage e per coordinare adeguatamente le reciproche attività.
+
+	La pianificazione del lavoro in unità settimanali ha decretato lo svolgimento - con identica e regolare cadenza - di incontri con il tutor aziendale aventi lo scopo di:
+	\begin{enumerate}
+	\item riepilogare le attività svolte nell'arco della settimana;
+	\item illustrare e discutere i risultati conseguiti;
+	\item fissare gli obiettivi delle attività previste per la settimana successiva.
+	\end{enumerate}   
+
+	Le decisioni assunte e le informazioni prodotte nel corso dello stage sono state condivise, discusse e approvate dal suddetto referente, sia in occasione degli incontri pianificati sia - in caso straordinari - nell'arco della settimana.
 
 	% CHAPTER
 	\chapter{Il progetto}
@@ -42,38 +51,74 @@
 	\section{Introduzione}
 	L'idea di progetto trae origine e ispirazione dalle constatazioni dirette del referente aziendale circa la crisi endemica dei piccoli e medi produttori vitivinicoli, incapaci di sostenere la concorrenza delle grandi realtà industriali sul piano economico e pubblicitario.
 
-	L'impossibilità di offrire i medesimi prezzi al dettaglio e i maggiori costi di gestione connessi alla ridotta scala produttiva hanno contribuito ad aggravare ulteriormente, in un periodo caratterizzato da una congiuntura economica sfavorevole, la loro condizione.
+	L'impossibilità di offrire i medesimi prezzi al dettaglio e i maggiori costi di gestione connessi alla ridotta scala produttiva hanno contribuito ad aggravare ulteriormente, in un periodo recente caratterizzato da una congiuntura economica sfavorevole, la loro condizione.
 
 	Nello sforzo di cercare una soluzione in grado di risollevarne le sorti, riuscendo a valorizzare la superiore qualità dei prodotti e incrementando al contempo il bacino di clientela, è stato individuato nel rapporto diretto tra produttori e consumatori un elemento chiave, capace di favorirne e sostenerne la ripresa sensibilizzando la clientela (attuale e potenziale) sulla qualità della produzione.
 
-	D'altro canto la formula della vendita diretta di prodotti agroalimentari ha riscosso un notevole successo negli ultimi anni assumendo forme e connotazioni differenti, come la filosofica dei consumi a \underline{chilometro zero} e i \underline{gruppi d'acquisto}, che hanno finito con l'essere ripresi e confluire nell'idea di progetto pur in una visione e concezione più ampie.
+	D'altro canto la formula della vendita diretta di prodotti agroalimentari, che consente di offrire prezzi al dettaglio inferiori grazie all'abbattimento della filiera, ha riscosso un notevole successo negli ultimi anni assumendo forme e connotazioni differenti, come la filosofica dei consumi a \underline{chilometro zero} e i \underline{gruppi d'acquisto}, che sono stati ripresi e sono confluiti nell'idea di progetto pur in una visione e concezione più ampie.
 
-	La scelta di realizzare una piattaforma web tematica, che sia in grado di raccogliere un vasto numero di utenti interessati alla specifica tipologia di prodotto, ha rappresentato la risposta al secondo (ma non secondario) obiettivo, ossia l'esigenza di conseguire maggiore visibilità presso la potenziale clientela (locale e nazionale, in primis).
+	La scelta di realizzare una piattaforma di \textit{e-commerce}, che sia in grado di raccogliere un vasto numero di utenti interessati alla specifica tipologia di prodotto, è sembrata la naturale risposta al secondo (ma non secondario) obiettivo, ossia l'esigenza di conseguire maggiore visibilità presso la potenziale clientela (locale e nazionale, innanzitutto).
 
 	\section{Reti sociali}
-	Una piattaforma tematica simile a quella descritta tende inevitabilmente e spontaneamente a raccogliere consensi tra gli utenti che condividano l'interesse specifico.
+	Una piattaforma come quella descritta raccoglie consenso e adesione presso gli utenti che manifestano interesse nei confronti di una certa tipologia di prodotti: ciò significa che attorno alla piattaforma tende a costruirsi spontaneamente una \underline{rete sociale}, che può essere definita - dal punto sociologico - come un insieme di persone, aventi interessi in comune e inclini a collaborare e condividere idee o informazioni, e di relazioni di tipo esperienziale definite tra tali soggetti.
+
+	Da tale considerazione scaturisce l'idea di estendere la componente \textit{business} della piattaforma per offrire uno spazio virtuale favorevole alla crescita e al consolidamento della rete sociale, dove coltivare le relazioni sociali attraverso la discussione e la condivisione di conoscenza o esperienza relativa all'area tematica in questione.
+
+	Il modello sociologico di rete sociale non ha riscontro in alcun modello esistente di piattaforma web per la condivisione di contenuti (blog, forum, \ldots) o di \textit{social network} (Facebook, Twitter, \ldots), in cui il contatto tra soggetti non si traduce o non rispecchia il più delle volte una vera relazione.
+
+	Inoltre diverse piattaforme di condivisione dei contenuti sanciscono una disuguaglianza degli utenti, ove non a tutti coloro che la frequentano è concesso di attingere e contribuire nella stessa misura al patrimonio di conoscenza, ma si assiste ad una scissione tra autori e i fruitori dei contenuti, i primi dei quali acquistano una superiore autorevolezza in virtù del solo ruolo che rivestono.
+
+	Un primo passo fondamentale verso la concretizzazione del modello sociologico di rete sociale consiste nell'abbattimento di ogni distinzione tra creatore e fruitore dei contenuti: l'autorevolezza di ciascun utente si costruisce e si forma nel tempo in base alla qualità dei contenuti pubblicati, anche in considerazione dei giudizi espressi dagli altri utenti.
+
+	Un obiettivo cruciale consiste infine nel trasformare le relazioni virtuali, che si instaurano all'interno della piattaforma web, in vere e proprie relazioni sociali, che si trasferiscono e prosperano nella vita reale.
 
 	\begin{itemize}
-	\item potenzialità al di fuori dell'ambito iniziale
+	\item definizione di rete sociale: Granovetter.
 	\item multidisciplinarietà: coinvolgimento di figure professionali provenienti da numerosi e variegati settori professionali (psicologia, sociologia, marketing, economia, informatica, ingegneria, \ldots)
 	\end{itemize}
 
-	\section{Social (Life) Shuttle}
+	\section{Architettura}
+	Ben presto si individua chiaramente la possibilità di declinare tale modello di piattaforma in innumerevoli varianti, applicabili ai temi più svariati: cucina etnica, moto d'epoca, cinema indipendente, \ldots .
 
-	%\part{Stage}	
+	L'idea di progetto evolve di conseguenza e matura in una piattaforma web tematica, che aspira ad essere costruita intorno alle aspettative e alle esigenze degli utenti e a fondere e coniugare in maniera coerente e consistente due anime:
+	\begin{description}
+	\item[Business] \hfill \\
+	La componente \textit{business} rappresenta un canale di vendita diretto dalle aziende medio-piccole o realtà imprenditoriali indipendenti ai potenziali clienti, corrispondenti all'intero bacino di utenza della piattaforma.
+	\item[Social] \hfill \\
+	La componente \textit{social} raccoglie il patrimonio conoscitivo ed esperienziale generato dai contributi degli utenti in un serbatoio di conoscenza liberamente accessibile e fruibile.
+	\end{description}
+
+	\section{Contenuti informativi}
+	I contenuti informativi rappresentano il mezzo e lo strumento mediante il quale gli utenti attingono e contribuiscono al patrimonio di conoscenza - riguardante un tema specifico - offerto dalla piattaforma.
+
+	Il processo di individuazione delle classi di contenuti informativi tiene conto essenzialmente delle forme di espressione e di comunicazione tipiche nella vita quotidiana, che a loro volta rispecchiano l'intenzione comunicativa dell'azione compiuta e delle parole espresse da un singolo individuo.
+
+	\section{Criteri di classificazione}
 
 	% CHAPTER
 	\chapter{Stage}
 
-	%\section{Criterio di classificazione}
+	\section{Norme di lavoro}
+
+	\section{Piano di lavoro}
+
+	\section{Criterio di classificazione}
 
 	%\subsection{Modello relazionale}
 
-	%\section{Interfaccia grafica}	
+	\section{Interfaccia grafica}	
 
 	% CHAPTER
 	\chapter{Valutazioni finali}
-	% \section{Competenze professionali acquisite}
+
+	\section{Consuntivo}
+
+	\section{Competenze professionali acquisite}
+	\begin{itemize}
+	\item multidisciplinarietà;
+	\end{itemize}
+
+	\section{Stage e università}
 
 	% APPENDIX
 	\appendix
@@ -82,5 +127,8 @@
 	\paragraph{Chilometri zero}
 	\section*{G}
 	\paragraph{Gruppi di acquisto}
+	\section*{R}
+	\paragraph{Rete sociale}
+	Insieme di persone, aventi interessi in comune e inclini a collaborare e condividere idee o informazioni, e di relazioni di tipo esperienziale definite tra tali soggetti.
 
 \end{document}
