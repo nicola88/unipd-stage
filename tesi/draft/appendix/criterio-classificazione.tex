@@ -41,16 +41,16 @@
 \subsection*{Etichette}
 
 \paragraph{Ricerca di un'etichetta}
-Restituisce le stringe corrispondenti alla sequenza di caratteri inserita dall'utente, eventualmente adeguata allo standard di formato previsto.
+Restituisce le stringe corrispondenti alla sequenza di caratteri \textsf{@termine} inserita dall'utente, eventualmente adeguata allo standard di formato previsto.
 
 \begin{verbatim}
 SELECT *
   FROM etichette	
- WHERE valore LIKE '@etichetta%'
+ WHERE valore LIKE '@termine%'
 \end{verbatim}
 	
 \paragraph{Ricerca delle accezioni di un'etichetta}
-Restituisce la lista delle accezioni di un'etichetta.
+Restituisce la lista delle accezioni di un'etichetta \textsf{@etichetta}.
 	
 \begin{verbatim}
 SELECT *
@@ -68,13 +68,14 @@ SELECT COUNT(*) AS num
 \end{verbatim}
 
 \paragraph{Inserimento di un'etichetta}
+Inserisce l'etichetta \textsf{@stringa}...
 	
 \begin{verbatim}
 INSERT INTO etichette
      VALUES (@stringa,current_timestamp)
 \end{verbatim}
 
-Ad ogni etichetta dev'essere associata almeno un'accezione.
+... e le associa almeno un'accezione, riferita all'entità \textsf{@entita}.
 
 \begin{verbatim}
 INSERT INTO accezioni(etichetta,entita)
@@ -84,7 +85,7 @@ INSERT INTO accezioni(etichetta,entita)
 \subsection*{Entità}
 	
 \paragraph{Calcolo di affinità tra due entità}
-L'affinità tra due entita primarie è espressa dal numero di contenuti in cui compaiano entrambe.
+L'affinità tra due entità è espressa dal numero di contenuti in cui compaiano entrambe.
 \begin{verbatim}
   SELECT contenuto, COUNT(*)
     FROM classificazione
@@ -112,7 +113,7 @@ SELECT e.etichetta AS padre
 \end{verbatim}
 
 \paragraph{Ricerca delle etichette}
-Restituisce la lista delle etichette con cui è riferibile una determinata entità del dominio.
+Restituisce la lista delle etichette con cui è riferibile l'entità \textsf{@entita}.
 \begin{verbatim}
 SELECT etichetta
   FROM accezioni AS s JOIN entita AS e
@@ -122,13 +123,14 @@ SELECT etichetta
 
 \subsection*{Contenuti}
 \paragraph{Assegnazione di un'etichetta}
+Assegna l'entita \textsf{@entita} al contenuto \textsf{@contenuto}.
 \begin{verbatim}
 INSERT INTO classificazione(contenuto,entita)
      VALUES (@contenuto,@entita)
 \end{verbatim}
 
 \paragraph{Ricerca delle etichette assegnate}
-Il reperimento della lista delle etichette primarie assegnate ad un contenuto richiede di consultare le tabelle \texttt{classificazione} ed \texttt{entita}.
+Restituisce la lista delle entità assegnate ad un contenuto.
 \begin{verbatim}
 SELECT e.etichetta
   FROM classificazione AS c JOIN entita AS e
@@ -137,7 +139,7 @@ SELECT e.etichetta
 \end{verbatim}
 
 \paragraph{Ricerca di contenuti generici}
-La ricerca dei contenuti cui sia stata assegnata una certa etichetta richiede di consultare la tabella \texttt{classificazione}.
+Restituisce i contenuti cui sia stata assegnata l'entità \textsf{@entità}.
 \begin{verbatim}
 SELECT contenuti
   FROM classificazione
@@ -145,7 +147,7 @@ SELECT contenuti
 \end{verbatim}
 
 \paragraph{Ricerca di contenuti specifici}
-La ricerca di contenuti specifici consiste nell'individuare i contenuti cui siano state assegnate - tra le altre - determinate etichette (due o più) specificate dall'utente. 
+Restituisce i contenuti cui siano state assegnate le entità \textsf{@entita1}, \textsf{@entita2}, \ldots .
 \begin{verbatim}
   SELECT contenuto, COUNT(etichetta)
     FROM classificazione
