@@ -58,13 +58,13 @@ SELECT *
  WHERE etichetta='@etichetta'
 \end{verbatim}
 
-\paragraph{Numero di assegnazioni di un'etichetta}
-Restituisce il numero di contenuti cui sia stata assegnata l'etichetta \textsf{@etichetta}.
+\paragraph{Numero di assegnazioni di un'entità}
+Restituisce il numero di contenuti cui sia stata assegnata l'entita \textsf{@entita}.
 
 \begin{verbatim}
 SELECT COUNT(*) AS num
   FROM classificazione
- WHERE etichetta='@etichetta'
+ WHERE entita='@entita'
 \end{verbatim}
 
 \paragraph{Inserimento di un'etichetta}
@@ -87,7 +87,7 @@ INSERT INTO accezioni(etichetta,entita)
 \paragraph{Calcolo di affinità tra due entità}
 L'affinità tra due entità è espressa dal numero di contenuti in cui compaiano entrambe.
 \begin{verbatim}
-  SELECT contenuto, COUNT(*)
+  SELECT COUNT(*) AS contenuti
     FROM classificazione
    WHERE entita='@entita1' OR entita='@entita2'
 GROUP BY contenuto
@@ -97,28 +97,26 @@ GROUP BY contenuto
 \paragraph{Ricerca delle entità referenti}
 Restituisce la lista delle entità che riferiscono \textsf{@entita}.
 \begin{verbatim}
-SELECT e.etichetta AS figlio
-  FROM gerarchia AS g JOIN entita AS e
-       ON (g.figlio=e.id)
- WHERE padre='@entita'
+SELECT padre
+  FROM gerarchia
+ WHERE figlio='@entita'
 \end{verbatim}
 
 \paragraph{Ricerca delle entità riferite}
 Restituisce la lista delle entità riferite da \textsf{@entita}.
 \begin{verbatim}
-SELECT e.etichetta AS padre
-  FROM gerarchia AS g JOIN entita AS e
-       ON (g.padre=e.id)
- WHERE figlio='@entita'
+SELECT figlio
+  FROM gerarchia
+ WHERE padre='@entita'
 \end{verbatim}
 
 \paragraph{Ricerca delle etichette}
 Restituisce la lista delle etichette con cui è riferibile l'entità \textsf{@entita}.
 \begin{verbatim}
-SELECT etichetta
-  FROM accezioni AS s JOIN entita AS e
-       ON (s.entita=e.id)
- WHERE s.entita='@entita'
+SELECT et.valore AS etichetta
+  FROM accezioni AS acc JOIN etichette AS et
+       ON (acc.etichetta=et.valore)
+ WHERE acc.entita='@entita'
 \end{verbatim}
 
 \subsection*{Contenuti}
@@ -132,9 +130,8 @@ INSERT INTO classificazione(contenuto,entita)
 \paragraph{Ricerca delle etichette assegnate}
 Restituisce la lista delle entità assegnate ad un contenuto.
 \begin{verbatim}
-SELECT e.etichetta
-  FROM classificazione AS c JOIN entita AS e
-       ON (c.entita=e.id)
+SELECT entita
+  FROM classificazione
  WHERE contenuto='@contenuto'
 \end{verbatim}
 
@@ -149,7 +146,7 @@ SELECT contenuti
 \paragraph{Ricerca di contenuti specifici}
 Restituisce i contenuti cui siano state assegnate le entità \textsf{@entita1}, \textsf{@entita2}, \ldots .
 \begin{verbatim}
-  SELECT contenuto, COUNT(etichetta)
+  SELECT contenuto
     FROM classificazione
    WHERE entita='@entita1' [OR entita='@entita2' ...]
 GROUP BY contenuto
