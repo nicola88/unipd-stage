@@ -6,11 +6,7 @@
 
 \subsection{Obiettivi e requisiti}
 \label{sec:tesi:stage:piano:obiettivi}
-L'attività di stage si colloca nell'ambito del progetto presentato nel capitolo \ref{ch:tesi:progetto} e perseguen due obiettivi distinti ma correlati, focalizzandosi sulla componente \textit{social} della piattaforma.
-
-%Secondo alcune stime e indagini interne al team di progetto, la piattaforma presenta un potenziale bacino di utenti piuttosto ampio:  pertanto ci si aspetta che il traffico generato possa attestarsi su livelli tali da richiedere valutazioni: ci si aspetta dunque che l'attività e le dimensioni (in termini, ad esempio, di numero di contenuti pubblicati) possano attestarsi su livelli tali da imporre valutazioni di carattere tecnico, atte a garantire che il sistema sia in grado di gestire in modo accettabile il traffico generato.
-
-%Sebbene la caratterizzazione quantitativa e qualitativa del problema e degli eventuali limiti imposti sia tuttora oggetto di analisi, ci sono evidenti implicazioni e ricadute per quanto concerne l'attività di stage, che deve cercare, pur in modo preliminare ed empirico, di esaminare le potenziali criticità, l'incidenza e l'impatto delle scelte sulle prestazioni e sull'efficienza del sistema.
+L'attività di stage si colloca nell'ambito del progetto presentato nel capitolo \ref{ch:tesi:progetto} e persegue due obiettivi distinti ma correlati, focalizzandosi sulla componente \textit{social} della piattaforma.
 
 \paragraph{Criteri di classificazione} \hfill \\
 Il primo obiettivo consiste nell'estendere l'attuale sistema di classificazione (v. sezione \ref{sec:progetto:classificazione}) integrandovi un criterio aggiuntivo per la catalogazione dei contenuti pubblicati dagli utenti e la costruzione di un'enciclopedia della conoscenza per rendere il reperimento e la consultazione delle informazioni desiderate il più efficiente ed agevole possibile.
@@ -79,7 +75,7 @@ Progettazione dell'interfaccia grafica: navigazione dei contenuti & 40 \\ \hline
 
 \section{Norme di stage}
 
-\subsection{Ambiente di lavoro}
+\paragraph{Ambiente di lavoro}
 Nel corso dello stage sono stati impiegati diversi strumenti per gestire le attività di progetto e produrre la documentazione prevista.
 
 \begin{table}[ht]
@@ -100,43 +96,18 @@ Nel corso dello stage sono stati impiegati diversi strumenti per gestire le atti
 \label{tab:tesi:stage:norme:strumenti}
 \end{table}
 
-\subsection{Documentazione}
-La documentazione è stata redatta in \LaTeX\ e pubblicata in formato \underline{PDF}.
+\paragraph{Documentazione}
+La documentazione è stata redatta in \LaTeX\ e pubblicata in formato \underline{PDF}. A ciascun documento è assegnato un numero di versione $x.y$, ove $x$ rappresenta l'ultima \textsc{versione formale}, rivista e approvata dal referente aziendale e disponibile a terze parti interessate (membri del team di progetto, tutor interno), mentre il numero $y$ si riferisce ad una \textsc{versione preliminare} per uso interno, eventualmente consultabile dal referente aziendale.
 
-\paragraph{Struttura}
-Ciascun documento è organizzato in capitoli e presenta una struttura e un formato comuni:
-\begin{enumerate}
-\item il frontespizio riporta il titolo del documento, l'autore e la data di compilazione;
-\item la seconda pagina mostra una sintetica e sommaria presentazione dello scopo del documento;
-\item la terza pagina riporta il registro delle modifiche;
-\item la quarta pagina mostra l'indice del documento;
-\item a seguire è visibile la lista delle figure e delle tabelle presenti nel documento.
-\end{enumerate}
+\paragraph{Modello relazionale}
+Il modello relazionale del database è stato realizzato mediante lo strumento adottato dal team di progetto, ossia l'editor \textit{MySQL Workbench}, per facilitare la condivisione e l'integrazione delle informazioni.
 
-\paragraph{Registro delle modifiche}
-Il registro delle modifiche tiene traccia della cronologia delle versioni del documento (dalla più recente alla più vecchia), mostrando per ciascuna di esse la data di redazione e una descrizione sintetica delle modifiche apportate.
+I nomi delle tabelle sono espressi in lingua italiana e contengono solo caratteri alfabetici minuscoli e non accentati, eventualmente separati mediante il simbolo '\textunderscore' (trattino basso). I nomi degli attributi, preceduti dal nome della tabella e dal carattere '.' (punto), sono espressi in lingua italiana e contengono solo caratteri alfabetici in formato \underline{CamelCase}, ove la lettera iniziale è sempre in minuscolo.
 
-\paragraph{Versionamento}
-A ciascun documento è assegnato un numero di versione $x.y$, ove $x$ rappresenta l'ultima \textsc{versione formale}, rivista e approvata dal referente aziendale e disponibile a terze parti interessate (membri del team di progetto, tutor interno), mentre il numero $y$ si riferisce ad una \textsc{versione preliminare} per uso interno, eventualmente consultabile dal referente aziendale.
+\paragraph{Digrammi UML}
+Durante l'attività di stage sono stati redatti e inclusi nella documentazione diversi diagrammi \underline{UML} dei casi d'uso, dei package e delle classi, di cui sono presenti svariati esempi nel prosieguo del documento.
 
-Un incremento del numero di versione secondario $y$ implica l'aggiunta o integrazione dei contenuti o una revisione informale di tutto o parte del documento.
-
-Un incremento del numero di versione primario $x$ si verifica solamente a seguito di una revisione formale e dell''approvazione del documento da parte del referente aziendale.
-
-\paragraph{Nomi dei file}
-Il nome assegnato alle versioni preliminari di ciascun documento contiene esclusivamente caratteri alfabetici minuscoli, eventualmente separati mediante il simbolo '-' (trattino). Le versioni formali aggiungono un suffisso, formato dal simbolo '\textunderscore' (trattino basso) accompagnato dal numero di versione $x.y$.
-
-\subsection{Modello relazionale}
-Il modello relazionale del database è stato realizzato mediante lo strumento adottato dal team di progetto, ossia l'editor \textit{MySQL Workbench}, per facilitare la condivisione e l'integrazione delle informazioni. I file e gli script generati utilizzano la codifica \underline{UTF-8} per garantire la massima compatibilità.
-
-\paragraph{Nomi delle tabelle}
-I nomi delle tabelle sono espressi in lingua italiana e contengono solo caratteri alfabetici minuscoli e non accentati, eventualmente separati mediante il simbolo '\textunderscore' (trattino basso).
-
-\paragraph{Nomi degli attributi}
-I nomi degli attributi, preceduti dal nome della tabella e dal carattere '.' (punto), sono espressi in lingua italiana e contengono solo caratteri alfabetici in formato \underline{CamelCase}, ove la lettera iniziale è sempre in minuscolo.
-
-\subsection{Digrammi UML}
-Durante l'attività di stage sono stati redatti e inclusi nella documentazione diversi diagrammi dei casi d'uso, dei package e delle classi secondo lo standard \underline{UML} 2.x. Nei paragrafi successivi vengono presentate le linee guida e le convenzioni concernenti la struttura e il formato, mentre sono disponibili svariati esempi nel prosieguo del documento.
+I nomi delle sottoclassi riportano per esteso o in forma abbreviata l'identificatore della superclasse diretta: nel secondo caso sono presenti - come prefisso - le sole lettere maiuscole, nel medesimo ordine di apparizione.
 
 \paragraph{Casi d'uso}
 La notazione utilizzata per identificare un caso d'uso è così definita:
@@ -148,22 +119,7 @@ ove:
 \item $y \in \left\{1,2,\ldots\right\}$ è il numero associato al caso d'uso.
 \end{itemize}
 
-La notazione grafica è accompagnata da una descrizione testuale, che riporta:
-\begin{enumerate}
-	\item l'autore principale (\textsc{utente}, \textsc{utente autenticato});
-	\item le precondizioni;
-	\item le postcondizioni;
-	\item lo scenario principale;
-	\item gli eventuali scenari alternativi.
-\end{enumerate}
-
-\paragraph{Package}
-I nomi dei package contengono solo caratteri alfabetici minuscoli e non accentati, eventualmente separati dal carattere '-' (trattino).
-
-\paragraph{Classi}
-I nomi delle classi sono in formato \textit{CamelCase} e le sottoclassi riportano per esteso o in forma abbreviata l'identificatore della superclasse diretta: nel secondo caso sono presenti - come prefisso - le sole lettere maiuscole, nel medesimo ordine di apparizione.
-
-\subsection{Requisiti funzionali}
+\paragraph{Requisiti funzionali}
 I requisiti del sistema software sono univocamente identificati mediante la seguente notazione:
 $$Rf.x.y$$
 ove:
@@ -173,7 +129,7 @@ ove:
 \item $y \in \left\{1,2,\ldots\right\}$ è il numero associato ad un requisito.
 \end{itemize}
 
-\subsubsection{Tracciamento dei casi d'uso}
+\paragraph{Tracciamento dei casi d'uso}
 Il tracciamento delle dipendenze tra casi d'uso e requisiti software è stato realizzato mediante un foglio elettronico, ove:
 \begin{itemize}
 \item ciascuna riga rappresenta un requisito del sistema software;
@@ -199,8 +155,8 @@ ove:
 %--------
 % SECTION
 %--------
-\section{Fase 1: criterio di classificazione}
-\label{sec:tesi:stage:fase-1}
+\section{Criterio di classificazione}
+\label{sec:tesi:stage:criterio-classificazione}
 Il patrimonio di conoscenza della piattaforma è garantito essenzialmente dai contenuti pubblicati dagli utenti ed arricchito dal loro valore informativo: ciascuno di essi, a prescindere dalla forma (testo, immagini, audio, video, \ldots) o dalla classe (domanda, discorso, evento, recensione, \ldots), condivide delle informazioni inerenti uno o più elementi del dominio tematico della piattaforma.
 
 \begin{figure}[ht]
@@ -365,8 +321,7 @@ Un ulteriore aspetto da considerare riguarda la dimensione del dizionario $E$ e 
 \alpha = \frac{\sum{\left|A_j\right|}}{\left|D\right|}
 \end{equation}
 Assegnando ai contenuti un'etichetta qualsiasi si aumenterebbe di una costante moltiplicativa $\alpha$ la complessità dell'operazione ricerca, dovendola ripetere per ciascuna delle $\alpha$ etichette anziché per la sola entità corrispondente.\footnote{Si assuma per semplicità che la ricerca verifichi - per ciascun contenuto - quali termini cercati (entità o etichette) siano presenti, uno per volta, e che la complessità computazionale sia equivalente in entrambi i casi.}
-\newline
-\newline
+
 La rilevanza di un contenuto informativo rispetto ai criteri di ricerca è infine determinata dal grado di corrispondenza rispetto alle entità cercate: maggiore è il numero di riscontri, maggiore sarà approssimativamente la rilevanza attribuita nel contesto della ricerca.
 
 Se $E_s$ è l'insieme delle etichette cercate e $E_c$ l'insieme delle etichette assegnate a ciascun contenuto si possono distinguere tre casi principali:
@@ -512,13 +467,33 @@ La ricerca di contenuti informativi prevede l'inserimento dei termini di ricerca
 
 Durante la ricerca, qualora vengano individuate delle corrispondenze tra i termini cercati e le etichette del dizionario e queste presentino accezioni multiple, l'utente è chiamato a selezionare quella corrispondente all'entità rispetto alla quale intende svolgere la ricerca (\textit{UC.1.3}).
 
-Al termine della ricerca, l'utente può consultare la lista delle entità individuate a partire dai criteri di ricerca specificati (\textit{UC.1.4}) e intervenire sui risultati di ricerca eliminando una di esse (\textit{UC.1.5}) o sostituendola con un'altra, avente un legame diretto (\textit{UC.1.8}, \textit{UC.1.9}). Perciò l'attore dev'essere in grado di visualizzare - per ciascuna entità - le entità riferite (\textit{UC.1.7}) e referenti (\textit{UC.1.6}).
+Al termine della ricerca, l'utente può consultare la lista delle entità individuate a partire dai criteri di ricerca specificati (\textit{UC.1.4}) e intervenire sui risultati di ricerca eliminando una di esse (\textit{UC.1.5}) o sostituendola con un'altra, avente un legame diretto (\textit{UC.1.8}, \textit{UC.1.9}). Per sostituire un'entità con un'altra l'attore dev'essere in grado di visualizzare - per ciascuna - quelle che la riferiscono (\textit{UC.1.6}) o da lei riferite (\textit{UC.1.7}).
 
 \paragraph{UC.2 - Raffinamento dei criteri di ricerca} \hfill \\
+Per facilitare l'individuazione dei contenuti di interesse tra i risultati dai ricerca, l'utente dev'essere messo in condizione di filtrarli ...
+
+\paragraph{Parametri}
+Il primo passo consiste nell'individuare le proprietà dei contenuti informativi aventi particolare rilevanza e definite su un insieme $U$ di valori adeguato ad essere associato ad un filtro: il solo requisito è la possibilità di partizionare l'insieme $U$ in due sottoinsiemi, che rappresentano rispettivamente i valori autorizzati ($U_a$) e bloccati ($U_b$) in un certo istante.
+
+%Se consideriamo $U = U_a \cup U_b$
+
+La configurazione predefinita di ciascun filtro prevede che tutti i valori siano ammissibili, ossia $U_a = U$ e $U_b = \emptyset$. L'azione dell'utente consiste essenzialmente nell'alterare tale partizionamento dell'insieme $U$ in tre modi principali:
+\begin{itemize}
+	\item bloccando un valore $u$ ($u \in U_b$);
+	\item autorizzando un valore ($u \in U_a$);
+	\item azzerando il filtro, ossia ripristinando la configurazione iniziale e autorizzando tutti i valori ($U = U_a$).
+\end{itemize}
+
+Considerata una generica proprietà, 
+
+
+\paragraph{Classi di filtri}
+Il secondo passo
+
 
 \begin{itemize}
-	\item quali criteri di classificazione?
-	\item quali proprietà ?
+	\item quali criteri di classificazione? quali proprietà ?
+	\item classificazione
 \end{itemize}
 
 \paragraph{UC.2 - Consultazione dei risultati di ricerca}
