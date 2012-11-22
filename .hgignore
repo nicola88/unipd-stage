@@ -1,6 +1,7 @@
 syntax: glob
 
 *.aux
+*.fdb_latexmk
 *.lof
 *.log
 *.lot
@@ -8,5 +9,3 @@ syntax: glob
 *.synctex.gz
 *.toc
 *~
-
-

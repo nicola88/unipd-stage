@@ -9,7 +9,7 @@
 L'attività di stage si colloca nell'ambito del progetto presentato nel capitolo \ref{ch:tesi:progetto} e persegue due obiettivi distinti ma correlati, focalizzandosi sulla componente \textit{social} della piattaforma.
 
 \paragraph{Criteri di classificazione} \hfill \\
-Il primo obiettivo consiste nell'estendere l'attuale sistema di classificazione (v. sezione \ref{sec:progetto:classificazione}) integrandovi un criterio aggiuntivo per la catalogazione dei contenuti pubblicati dagli utenti e la costruzione di un'enciclopedia della conoscenza per rendere il reperimento e la consultazione delle informazioni desiderate il più efficiente ed agevole possibile.
+Il primo obiettivo consiste nell'estendere l'attuale sistema di classificazione (v. sezione \ref{sec:tesi:progetto:classificazione}) integrandovi un criterio aggiuntivo per la catalogazione dei contenuti pubblicati dagli utenti e la costruzione di un'enciclopedia della conoscenza per rendere il reperimento e la consultazione delle informazioni desiderate il più efficiente ed agevole possibile.
 
 L'ideazione e concezione del suddetto criterio deve tener conto della natura tematica della piattaforma, riuscendo a conciliare due esigenze distinte:
 \begin{itemize}
@@ -408,27 +408,19 @@ Il vincolo referenziale tra i contenuti e le entità rappresenta l'essenza del c
 %--------
 % SECTION
 %--------
-\section{Fase 2: interfaccia grafica}
-\label{sec:tesi:stage:fase-2}
-
-La seconda fase dell'attività di stage consiste nell'analisi e nella progettazione di un'interfaccia grafica per la consultazione dei risultati di ricerche relative ai contenuti informativi pubblicati dagli utenti nella piattaforma. Le principali qualità attese sono:
+\section{Interfaccia grafica}
+\label{sec:tesi:stage:gui}
+La seconda fase dell'attività di stage consiste nell'analisi e nella progettazione di un'interfaccia grafica per la consultazione dei risultati di ricerche sui contenuti informativi, che soddisfi adeguatamente i seguenti requisiti di qualità:
 \begin{description}
 	\item[Intuitiva] \hfill \\
-	L'interfaccia grafica deve risultare agevole e facilmente utilizzabile da qualsiasi categoria di utenti, a prescindere dal livello di esperienza e dalla familiarità con piattaforme web esistenti (\textit{chat}, \textit{forum}, \textit{social network}, \ldots). Ciò richiede una particolare attenzione alle esigenze ed aspettative dell'utente generico della piattaforma, evidenziate da indagini di carattere sociologico svolte da altri membri del team di progetto.
+	L'interfaccia grafica deve risultare agevole e facilmente utilizzabile da qualsiasi categoria di utenti, a prescindere dal livello di esperienza e dalla familiarità con piattaforme web esistenti (\textit{chat}, \textit{forum}, \textit{social network}, \ldots).
 	\item[Multipiattaforma] \hfill \\
-	L'interfaccia grafica dev'essere fruibile dal maggior numero possibile di dispositivi (\textit{computer}, \textit{tablet}, \textit{smartphone}), tenendo ben presente le differenti modalità di interazione.
+	L'interfaccia grafica dev'essere fruibile dal maggior numero possibile di dispositivi (\textit{computer}, \textit{tablet}, \textit{smartphone}, \ldots), avendo ben presente le differenti modalità di interazione.
 	\item[Ordinata] \hfill \\
 	L'interfaccia grafica dev'essere in grado di rappresentare in maniera ordinata ed efficace le informazioni, a prescindere dal numero di contenuti caricati: quelle essenziali devono essere immediatamente disponibili e facilmente identificabili, mentre quelle aggiuntive o accessorie devono essere comodamente accessibili.
 \end{description}
 
-Tale interfaccia dev'essere in grado di:
-\begin{itemize}
-	\item rappresentare - in forma grafica o testuale - le proprietà fondamentali di ciascun contenuto (\ldots), i metadati di classificazione (emozioni, giudizi, intenzioni, \ldots) e i legami reciproci;
-	\item raffinare i risultati di ricerca secondo alcune proprietà (autore, data di pubblicazione, \ldots) o parametri di classificazione (argomento, emozione, etichetta, giudizio, intenzione) dei contenuti;
-	\item mostrare la discussione generata da un contenuto informativo, incluso tra i risultati di ricerca iniziali.
-\end{itemize}
-
-Per semplificare la fase di analisi e progettazione il modello concettuale del prodotto software atteso è stato suddisivo in quattro componenti (di seguito anche \textsc{livelli}):
+Per semplificare le fasi di analisi e progettazione il modello concettuale del prodotto software è stato suddiviso in tre componenti:
 \begin{description}
  	\item[Ricerca] \hfill \\
  	Insieme dei parametri e criteri di ricerca (parole chiave, ambito di ricerca, \ldots).
@@ -436,43 +428,36 @@ Per semplificare la fase di analisi e progettazione il modello concettuale del p
  	Insieme dei filtri di raffinamento della ricerca.
  	\item[Contenuti] \hfill \\
  	Insieme dei contenuti informativi corrispondenti ai criteri di ricerca.
- 	\item[Navigazione] \hfill \\
- 	Interfaccia di navigazione dei risultati di ricerca.
  \end{description}
  
-%\paragraph{Criteri}
-
-%\paragraph{Filtri}
-
-%\paragraph{Risultati}
-
-%\paragraph{Discussione}
-
-\subsection{Casi d'uso}
-
-\paragraph{Attori}
-L'individuazione, la classificazione e l'analisi dei casi d'uso inizia dal riconoscimento di due attori principali, ossia l'\textsc{utente autenticato} ed il visitatore (di seguito semplicemente \textsc{utente}. L'utente autenticato rappresenta un tipo specializzato del visitatore, dal momento che alcune informazioni di profilo, come gli interessi dichiarati o il livello di esperienza, vengono sfruttate per filtrare automaticamente i risultati di ricerca: a lui solo, dunque, è offerta la possibilità di abilitare o meno tali filtri personalizzati.
-
 \paragraph{Obiettivi}
 Le finalità d'interazione dell'utente con l'interfaccia grafica sono in buona parte riconducibili alla scomposizione concettuale del sistema, illustrata nella sezione precedente:
 \begin{enumerate}
 	\item impostare i parametri iniziali di ricerca o modificarli a posteriori;
-	\item filtrare i risultati di ricerca in accordo a criteri di classificazione o proprietà dei contenuti;
+	\item filtrare i risultati di ricerca in accordo a criteri di classificazione (argomento, emozione, etichetta, giudizio, intenzione, interessi) o proprietà dei contenuti (autore, data di pubblicazione, tipo);
 	\item individuare i contenuti di interesse e consultare le informazioni associate;
+	\item mostrare la discussione associata ad un contenuto informativo;
 	\item impostare i filtri personalizzati (solo per utenti autenticati).
+	\item rappresentare - in forma grafica o testuale - le proprietà fondamentali di ciascun contenuto (\ldots), i metadati di classificazione (emozioni, giudizi, intenzioni, \ldots) e i legami reciproci;
 \end{enumerate}
-
+ 
+\subsection{Risultati di ricerca}
+\begin{enumerate}
+	\item aggiornamento risultati a fronte
+\end{enumerate}
+- discussione
 \paragraph{UC.1 - Ricerca di contenuti informativi} \hfill \\
 La ricerca di contenuti informativi prevede l'inserimento dei termini di ricerca (\textit{UC.1.1}), separati da virgola, e la restrizione dell'ambito alle sole entità associate o alle informazioni presenti in un contenuto (titolo, corpo, \ldots) (\textit{UC.1.2}).
 
 Durante la ricerca, qualora vengano individuate delle corrispondenze tra i termini cercati e le etichette del dizionario e queste presentino accezioni multiple, l'utente è chiamato a selezionare quella corrispondente all'entità rispetto alla quale intende svolgere la ricerca (\textit{UC.1.3}).
 
 Al termine della ricerca, l'utente può consultare la lista delle entità individuate a partire dai criteri di ricerca specificati (\textit{UC.1.4}) e intervenire sui risultati di ricerca eliminando una di esse (\textit{UC.1.5}) o sostituendola con un'altra, avente un legame diretto (\textit{UC.1.8}, \textit{UC.1.9}). Per sostituire un'entità con un'altra l'attore dev'essere in grado di visualizzare - per ciascuna - quelle che la riferiscono (\textit{UC.1.6}) o da lei riferite (\textit{UC.1.7}).
+ 
+\subsection{Filtri di ricerca}
 
 \paragraph{UC.2 - Raffinamento dei criteri di ricerca} \hfill \\
 Per facilitare l'individuazione dei contenuti di interesse tra i risultati dai ricerca, l'utente dev'essere messo in condizione di filtrarli ...
 
-\paragraph{Parametri}
 Il primo passo consiste nell'individuare le proprietà dei contenuti informativi aventi particolare rilevanza e definite su un insieme $U$ di valori adeguato ad essere associato ad un filtro: il solo requisito è la possibilità di partizionare l'insieme $U$ in due sottoinsiemi, che rappresentano rispettivamente i valori autorizzati ($U_a$) e bloccati ($U_b$) in un certo istante.
 
 %Se consideriamo $U = U_a \cup U_b$
@@ -484,23 +469,17 @@ La configurazione predefinita di ciascun filtro prevede che tutti i valori siano
 	\item azzerando il filtro, ossia ripristinando la configurazione iniziale e autorizzando tutti i valori ($U = U_a$).
 \end{itemize}
 
-Considerata una generica proprietà, 
-
-
-\paragraph{Classi di filtri}
-Il secondo passo
-
-
 \begin{itemize}
 	\item quali criteri di classificazione? quali proprietà ?
 	\item classificazione
 \end{itemize}
 
-\paragraph{UC.2 - Consultazione dei risultati di ricerca}
-- entità rappresentate mediante etichetta primaria
+\paragraph{UC.4 - Gestione dei filtri utente}
 
-\paragraph{UC.2 - Gestione dei filtri utente}
+\paragraph{Utente autenticato}
+Nell'ambito dei filtri riservati all'utente autenticato l'individuazione, la classificazione e l'analisi dei casi d'uso inizia dal riconoscimento di due attori principali, ossia l'\textsc{utente autenticato} ed il visitatore (di seguito semplicemente \textsc{utente}. L'utente autenticato rappresenta un tipo specializzato del visitatore, dal momento che alcune informazioni di profilo, come gli interessi dichiarati o il livello di esperienza, vengono sfruttate per filtrare automaticamente i risultati di ricerca: a lui solo, dunque, è offerta la possibilità di abilitare o meno tali filtri personalizzati.
 
-\subsection{Requisiti}
+\subsection{Navigazione dei contenuti}
+- discussione
 
-\subsection{Progettazione}
+\paragraph{UC.3 - Consultazione dei risultati di ricerca}
