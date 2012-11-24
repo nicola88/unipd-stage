@@ -152,6 +152,9 @@ ove:
 
 \paragraph{Necessità} Per ogni riga, se la formula restituisce un valore pari a 0 (zero) sta ad indicare che il requisito software corrispondente è superfluo.
 
+%==============
+% OK FINO A QUI
+%==============
 %--------
 % SECTION
 %--------
@@ -163,204 +166,174 @@ Il patrimonio di conoscenza della piattaforma è garantito essenzialmente dai co
 \begin{center}
  \includegraphics{placeholder.png}
  \label{fig:tesi:stage:classificazione:serbatoio-contenuti}
- \caption{Contenuti informativi e conoscenza}
-\end{center}
-\end{figure}
-
-\paragraph{Contenuti informativi}
-Allo state attuale, la piattaforma si limita ad essere un serbatoio di \textsc{contenuti informativi} disaggregati, priva degli strumenti per classificare e catalogare il sapere custodito conferendovi una struttura ordinata, una sorta di indice enciclopedico in grado di facilitarne la ricerca, il reperimento e la consultazione.
-
-Ciascun contenuto rappresenta - dal punto di vista conoscitivo - una collezione di frammenti di informazioni, ciascuno dei quali contribuisce ad arricchire la conocenza relativa a qualche \textsc{entità}, oggetto di discussione all'interno del dominio della piattaforma.
-
-\begin{figure}[ht]
-\begin{center}
- \includegraphics{placeholder.png}
- \label{fig:tesi:stage:fase-uno:contenuti-informativi}
  \caption{Valore informativo di un contenuto}
 \end{center}
 \end{figure}
 
-\paragraph{Dominio conoscitivo}
-L'insieme di entità definite - in un certo istante - all'interno della piattaforma ne costituisce il \textsc{dominio della conoscenza} (di seguito per brevità \textsc{dominio}), in maniera analoga a quanto accade con i lemmi di un'enciclopedia. Ciascun frammento di informazione presente in un contenuto è concettualmente associabile e riferibile ad una o più entità del dominio.
+\subsection{Enciclopedia del sapere}
+Attualmente, il limite della piattaforma consiste nell'essere un serbatoio di \textsc{contenuti informativi} disaggregati e priva degli strumenti per classificare e catalogare il sapere custodito conferendovi una struttura ordinata, una sorta di indice in grado di facilitarne la ricerca, il reperimento e la consultazione.
 
-L'obiettivo primario del nuovo criterio di classificazione consiste dunque nel modellare tale dominio e le relazioni esistenti tra le entità ed i contenuti informativi.
+L'obiettivo del criterio di classificazione consiste essenzialmente nel costruire un'enciclopedia del sapere a partire dalle informazioni presenti nei contenuti informativi.
 
-\begin{figure}[ht]
-\begin{center}
- \includegraphics{placeholder.png}
- \label{fig:tesi:stage:fase-uno:dominio-conoscenza}
- \caption{Dominio di conoscenza della piattaforma}
-\end{center}
-\end{figure}
+\begin{quotation}
+Un'enciclopedia è un'opera letteraria che raccoglie e ordina la sintesi della conoscenza umana in tutti i campi o in un determinato settore. Le enciclopedie sono divise in voci, o lemmi, cui si accede di solito in ordine alfabetico.
+\begin{center}[\ldots]\end{center}
+Le enciclopedie possono essere generali, e contenere voci su qualsiasi argomento (lettere, scienze, arti), oppure specialistiche e concentrarsi su un particolare campo della conoscenza (ad esempio un'enciclopedia di medicina o di filosofia). \cite{wiki:enciclopedia}
+\end{quotation}
 
-\subsection{Entità}  
-Le \textsc{entità} $d_i \in D$ del dominio rappresentano elementi concreti (luoghi, persone, eventi, \ldots) o astratti (concetti, \ldots) a cui afferiscono i contenuti. Ciascuna di esse costituisce metaforicamente un lemma dell'enciclopedia del sapere disponibile presso la piattaforma e - pur avendo un preciso valore semantico - dev'essere identificata sul piano sintattico mediante un'\textsc{etichetta} $e_j \in E$.
+Il modello concettuale dell'enciclopedia diventa un riferimento essenziale, che aiuta a:
+\begin{enumerate}
+	\item identificare i casi d'uso essenziali concernenti la consultazione del sapere custodito nella piattaforma (ricerca per lemma, argomento o affinità);
+	\item identificare gli elementi strutturali del sistema di classificazione (lemmi, accezioni, \ldots);
+	\item identificare i requisiti e le specifiche più rilevanti per il criterio di classificazione;
+	\item individuare le principali criticità rispetto alla coerenza e consistenza dell'enciclopedia.
+\end{enumerate}
 
-%\begin{equation}
-%e_j = f(d_i)
-%\end{equation}
+\paragraph{Contenuto informativo}
+Ciascun contenuto può essere considerato una collezione di frammenti di informazioni, che contribuiscono ad arricchire la conoscenza relativa ad uno o più lemmi dell'enciclopedia: il criterio di classificazione deve quindi tenere traccia della relazione tra contenuti informativi e lemmi per essere in grado di catalogare e ricostruire l'intera conoscenza disponibile riguardo un certo tema.
 
-\paragraph{Ambiguità sintattica}
-Gli utenti possono tuttavia riferirsi ad un'entità $d_i$ con termini o espressioni differenti ($e_{i,j} \in E_i$): tale ambiguità non può essere ignorata o trascurata e impone di considerare la relazione tra l'entità e le etichette con cui può essere riferita di tipo uno-a-molti. Il criterio di classificazione dev'essere quindi in grado di esprimere il fatto che tali etichette rappresentino sinomini di una stessa entità.
-
-\begin{figure}[ht]
-\begin{center}
-\includegraphics{placeholder.png}
-\label{fig:tesi:stage:fase-uno:ambiguita-sintattica-entita}
-\caption{Ambiguità sintattica di un'entità}
-\end{center}
-\end{figure}
-
-\paragraph{Etichette duplicate}
-Allo stesso tempo occorre impedire la proliferazione di etichette duplicate, ossia equivalenti sul piano semantico ma sintatticamente differenti. Un fenomeno simile avrebbe inevitabili ripercussioni sull'efficacia del criterio di classificazione e sull'efficienza della ricerca: reperire tutte e sole le informazioni inerenti una certa entità richiederebbe infatti di individuare tutte le etichette con cui possa essere riferita e cercare riscontri per ciascuna di esse nei contenuti pubblicati.
-
-Per incrementare l'efficienza di catalogazione e ricerca dei contenuti risulta conveniente che l'entità sia identificata univocamente nei contenuti informativi, a prescindere dalla specifica etichetta utilizzata.
-
-\paragraph{Sintassi e semantica}
-Il fattore essenziale consiste nel mantenere separata la componente semantica (il dominio delle entità) da quella sintattica (il dizionario delle etichette): solo così è possibile stabilire un associazione naturale e diretta tra i contenuti e le entità, a prescindere dalle etichette.
+\paragraph{Entità}
+Nell'ambito della piattaforma, i lemmi vengono definiti \textsc{entità} ($d_i \in D$) e rappresentano elementi concreti (luoghi, persone, eventi, \ldots) o astratti (concetti, temi, \ldots) a cui afferiscono i contenuti. L'insieme delle entità definite - in un certo istante - all'interno della piattaforma rappresenta il \textsc{dominio della conoscenza} (di seguito per brevità \textsc{dominio}).
 
 \begin{figure}[ht]
-\begin{center}
-\includegraphics{placeholder.png}
-\label{fig:tesi:stage:fase-uno:entita-sintassi-semantica}
-\caption{Sintassi e semantica di un'entità}
-\end{center}
+	\begin{center}
+		\includegraphics{placeholder.png}
+		\label{fig:tesi:stage:fase-uno:entita-relazioni}
+		\caption{Relazioni tra le entità del dominio}
+	\end{center}
 \end{figure}
 
-Ciò non toglie la necessità di individuare un'etichetta, che permetta di esprimere e comunicare l'entità cui si fa riferimento: per soddisfare tale condizione si individua - per ciascuna entità - un'\textsc{etichetta primaria} $e_{i,0}$, che la identifica univocamente nell'ambito della piattaforma, mentre le restanti (\textsc{etichette secondarie}) ne vengono considerate sinonimi.
+Così come ciascun lemma di un'enciclopedia contiene spesso riferimenti ad altre voci, che trattano temi specifici o attinenti, nella piattaforma ciascuna entità può riferire o essere riferita da un numero arbitrario di entità distinte e possono esistere riferimenti incrociati, ossia coppie di entità che si riferiscono a vicenda.
 
-%\begin{equation}
-%e_{i,0} = f'(d_i)
-%\end{equation}
-
-\paragraph{Relazioni}
-Riprendendo la metafora enciclipedica, ciascun lemma contiene spesso riferimenti ad altre voci, che trattano temi specifici o attinenti: ci si aspetta che tali relazioni siano replicabili anche nel dominio della piattaforma sotto forma di legami molti-a-molti tra le entità.
-
-\begin{figure}[ht]
-\begin{center}
-\includegraphics{placeholder.png}
-\label{fig:tesi:stage:fase-uno:entita-relazioni}
-\caption{Relazioni tra entità}
-\end{center}
-\end{figure}
-
-A questo punto il dominio può essere intepretato come un grafo orientato ove:
+Ciò si traduce nel modello relazionale con un vincolo referenziale di tipo molti-a-molti tra le entità, che distingue entità referenti e riferite e permette così di interpretare il dominio $D$ come una struttura a grafo orientato ove:
 \begin{itemize}
-\item ciascun nodo rappresenta un entità, identificata dalla relativa etichetta primaria;
+\item ciascun nodo rappresenta un entità;
 \item ciascun arco uscente identifica un'entità riferita;
 \item ciascun arco uscente identifica un'entità referente.
 \end{itemize}
 
-\subsection{Etichette}
-Un'\textsc{etichetta} $e_j \in E$ rappresenta la forma sintattica - una stringa di lunghezza variabile - mediante la quale gli utenti ed il sistema identificano un'entità del dominio. L'insieme di etichette definite in un certo istante costituisce il \textsc{dizionario} della piattaforma.
+\paragraph{Etichette}
+Ciascuna entità ha un valore semantico preciso ed univoco, ma dev'essere identificata anche sul piano sintattico mediante un'\textsc{etichetta} ($e_j \in E$), ossia una stringa di lunghezza variabile che consenta agli utenti di riferirla all'interno di ciascun contenuto. L'insieme di etichette definite in un certo istante costituisce il \textsc{dizionario} $E$ della piattaforma.
 
-\paragraph{Accezioni}
-Analogamente ad un lemma enciclopedico, un'etichetta può risultare semanticamente ambigua ed essere caratterizzata da svariate \textsc{accezioni} $a_{j,k} \in A_j$, ciascuna delle quali assume un significato e si riferisce ad un'entità distinti. Da questa prospettiva, la natura tematica della piattaforma dovrebbe contribuire a limitare il numero medio di accezioni per ciascuna etichetta.
+Il modello illustrato presenta tuttavia due notevoli inconvenienti, che devono essere risolti per soddisfare i requisiti e gli obiettivi previsti per il criterio di classificazione: l'ambiguità sintattica e quella semantica.
+
+\subsection{Ambiguità sintattica}
+Nel linguaggio comune, è possibile riferirsi ad una certa entità ($d_i$) con termini o espressioni differenti ($e_{i,j} \in E_i$): la presenza di sinonimi, aventi il medesimo valore semantico ma diversa sintassi, rappresenta un fattore di ambiguità intrinseco e non trascurabile, che trasforma la relazione uno-a-uno tra entità ed etichette in una di tipo uno-a-molti.
 
 \begin{figure}[ht]
-\begin{center}
-\includegraphics{placeholder.png}
-\label{fig:tesi:stage:fase-uno:etichette-accezioni}
-\caption{Accezioni di un'etichetta}
-\end{center}
+	\begin{center}
+		\includegraphics{placeholder.png}
+		\label{fig:tesi:stage:fase-uno:ambiguita-sintattica}
+		\caption{Ambiguità sintattica di un'entità (+ modello relazionale)}
+	\end{center}
 \end{figure}
 
-L'etichetta $e_j$ identifica dunque entità del dominio distinte, a seconda dell'accezione $a_{j,k}$ considerata: la distinzione tra etichetta primaria e secondaria si trasferisce dunque alle accezioni, che si distinguono in \textsc{chiave} o \textsc{sinonimica}.
-
-\begin{description}
-	\item[Accezione chiave] \hfill \\
-	L'accezione chiave $a_{j,0}$ indica che la relativa etichetta $e_j$ identifica univocamente l'entità corrispondente: ciò significa che - in ogni istante - a ciascuna entità dev'essere associata una e una sola etichetta primaria. Qualora si rimuova un'accezione chiave di un'etichetta, occorre individuare una nuova etichetta primaria per l'entità riferita.
-	\item[Accezione sinonimica] \hfill \\
-	L'accezione sinonimica ($a_{j,1},\ldots,a_{j,\left|A_j\right|}$) indica che l'etichetta associata $e_j$ rappresenta un sinonimo dell'entità corrispondente. La relazione uno-a-molti tra entità ed etichette si traduce dunque in:
-	\begin{itemize}
-		\item una relazione uno-a-molti tra le etichette e le accezioni:
-		%\begin{equation}
-		%e_j = g(a_{j,k})
-		%\end{equation}
-		\item una relazione uno-a-molti tra le entità e le accezioni:
-		%\begin{equation}
-		%d_i = h(a_{j,k})
-		%\end{equation}
-	\end{itemize}
-\end{description}
+Il criterio di classificazione è dunque chiamato a conciliare la possibilità per l'utente di riferirsi ad una certa entità con etichette differenti e l'esigenza di identificarla univocamente nei contenuti informativi.
 
 \paragraph{Sinonimi}
-Sebbene le entità siano identificate univocamente dalle corrispondenti etichette primarie, è assai utile includere e conservare nel dizionario anche i sinonimi (etichette secondarie) note o utilizzate dagli utenti al fine di garantire maggiore copertura sintattica, aumentando così la probabilità che i termini o le espressioni utilizzati successivamente per riferire una certa entità siano gia presenti nel dizionario e quindi immediatamente riconoscibili.
+La gestione dei sinonimi di un'entità rappresenta un aspetto cruciale, poiché scegliere tra i possibili sinonimi un'etichetta arbitraria con cui identificare un'entità ed ignorare i rimanenti, pur semplificando il modello, costringerebbe gli utenti a conoscere e ad utilizzare solo quell'etichetta imponendo una scelta del tutto arbitraria e - in quanto tale - fortemente soggettiva.
 
-\paragraph{Ricerca}
-L'utente alla ricerca di informazioni riguardanti un particolare tema cerca in genere le etichette che presentino maggior attinenza. Per evitare la proliferazione di etichette semanticamente identiche e sintatticamente simili, si fissa uno standard per il formato, che normi la capitalizzazione delle lettere, la gestione degli spazi, \ldots al fine di uniformare la struttura sintattica delle etichette.
+Per facilitare la ricerca di un'entità è opportuno includere e conservare nel dizionario tutte le etichette note o utilizzate dagli utenti, così da rendere il sistema sempre più accurato nell'individuare e riconoscere l'entità cui un utente fa riferimento quando utilizza una certa etichetta. Con il passare del tempo, il numero dei sinonimi di ciascuna entità è destinato a crescere grazie al contributo degli utenti, garantendo così una migliore copertura sintattica.
 
-L’osservanza e l’adesione a tali regole da parte delle etichette inserite viene accertata automaticamente, provvedendo - ove necessario - ad apportare le opportune correzioni per adeguarle allo standard, e rappresenta un requisito essenziale per garantire la consistenza del dizionario della piattaforma.
+La proliferazione di sinonimi, ossia etichette equivalenti sul piano semantico ma sintatticamente differenti, rischia tuttavia di avere pesanti ripercussioni sull'efficacia del criterio di classificazione e particolarmente sull'efficienza della ricerca: se ai contenuti vengono assegnate delle etichette, reperire tutte e sole le informazioni inerenti una certa entità richiederebbe infatti di cercare riscontri nei contenuti pubblicati per ogni etichetta con cui possa venir riferita.
 
-\subsection{Contenuti}  
-L'obiettivo primario del criterio di classificazione consiste nel tenere traccia delle entità riferite all'interno di ciascun contenuto per rendere facilmente reperibili le informazioni che le riguardano.
+\paragraph{Contenuti}
+A tale inconveniente si pone rimedio facilmente definendo una relazione molti-a-molti tra le entità e i contenuti, che ignori le etichette utilizzate per indicarle: così facendo si preserva l'identificazione univoca di ciascuna entità nei contenuti informativi, almeno sul piano semantico, e si guadagna in termini di efficienza.
 
-\paragraph{Valore informativo}
-Ciascun contenuto reca con sé informazioni riguardanti una o più entità: ne consegue che la relazione tra entità e contenuti sia di tipo molti-a-molti (\texttt{n:m}). Preservare la distinzione tra entità (semantica) ed etichette (sintassi) consente di identificare in maniera chiara e univoca nell'intera piattaforma ciò a cui si fa riferimento nei vari contenuti, a prescindere dai termini o dalle espressioni linguistiche impiegati per indicarli.
-
-\paragraph{Catalogazione}
-L'assegnazione di un'etichetta ad un contenuto è un processo che traduce un ingresso sintattico dell'utente (l'etichetta) in un'uscita semantica (l'entità), che viene effettivamente e concretamente assegnata al contenuto.
-
-Sebbene si sia scelto di riferire - nei contenuti pubblicati - ciascuna entità sempre e solo con l'etichetta primaria, per ragioni di semplicità ed efficienza (l'etichetta primaria è un'informazione strettamente correlata all'entità), nulla impedirebbe di assegnare ai contenuti qualsiasi etichetta scelta dagli utenti. Ciò comporterebbe tuttavia la necessità di associare al contenuto non solo l'entità, ma anche - tra le possibili - l'etichetta scelta per indicarla.
-
-\subsection{Utente}
-Le scelte progettuali descritte nelle sezioni precedenti sono state valutate tenendo presenti alcuni casi d'uso inerenti l'esplorazione dei contenuti pubblicati nella piattaforma da parte dell'utente, arrivando a delinarne alcuni di particolare interesse o rilevanza. La metafora dell'enciclopedia, che accosta il nuovo criterio di classificazione ad un indice enciclopedico, esprime in maniera assai accurata e favorisce la comprensione delle dinamiche e degli obiettivi con cui gli utenti consultano il sapere della piattaforma. 
-
-\paragraph{Ricerca per temi}
-La ricerca per temi consiste essenzialmente in un'esplorazione dei contenuti informativi a partire dalle entità, che sono assimilabili agli argomenti di discussione, in maniera analoga alla consultazione dei un'enciclopedia, quando si procede da un lemma all'altro, facendosi guidare dai riferimenti tra le voci sino a trovare quella di interesse. Nella piattaforma ciò si esprime in un'esplorazione libera del grafo orientato delle entità, ciascuna identificata dalla relativa etichetta primaria.
-
-\paragraph{Ricerca per etichette}
-La classica strategia di ricerca prevede l'inserimento di alcune parole chiave, che agli occhi dell'utente identificano l'informazione cui è interessato e hanno maggiore probabilità di essere associate o comparire nei contenuti.
-
-Nella piattaforma, una volta riconosciuta un'etichetta in un termine inserito, occorre identificare il valore semantico (l'entità) attribuitole dall'utente, inevitabilmente associato ad un'accezione dell'etichetta stessa, così da giungere ad identificare univocamente l'entità cercata.
-
-Ove la ricerca si soffermi a considerare l’etichetta, i risultati possono risultare parziali, includendo i soli contenuti in cui l’entità sia riferita dalla specifica etichetta, o addirittura non pertitenti, includendo contenuti ove l'etichetta è presente ma in un'accezione differente.
-
-Un ulteriore aspetto da considerare riguarda la dimensione del dizionario $E$ e del dominio $D$: sapendo che ciascuna accezione rappresenta una coppia <etichetta,entità> univoca, possiamo esprimere il numero medio di etichette associate a ciascuna entità come:
+Si considerino il dizionario $E$ ed il dominio $D$. Il numero medio $\alpha$ di etichette associato a ciascuna entità è pari a:
 \begin{equation}
-\alpha = \frac{\sum{\left|A_j\right|}}{\left|D\right|}
+\alpha = \frac{\sum{\left|E_i\right|}}{\left|D\right|}
 \end{equation}
-Assegnando ai contenuti un'etichetta qualsiasi si aumenterebbe di una costante moltiplicativa $\alpha$ la complessità dell'operazione ricerca, dovendola ripetere per ciascuna delle $\alpha$ etichette anziché per la sola entità corrispondente.\footnote{Si assuma per semplicità che la ricerca verifichi - per ciascun contenuto - quali termini cercati (entità o etichette) siano presenti, uno per volta, e che la complessità computazionale sia equivalente in entrambi i casi.}
+Ciò significa intuitivamente che assegnare ai contenuti un'etichetta arbitraria aumenterebbe di una costante moltiplicativa $\alpha$ la complessità dell'operazione ricerca, che dovrebbe essere ripetuta per ciascuna delle $\alpha$ etichette anziché per la sola entità corrispondente.\footnote{Si assuma per semplicità che la ricerca verifichi - per ciascun contenuto - quali termini cercati (entità o etichette) siano presenti, uno per volta, e che la complessità computazionale sia equivalente in entrambi i casi.}
 
-La rilevanza di un contenuto informativo rispetto ai criteri di ricerca è infine determinata dal grado di corrispondenza rispetto alle entità cercate: maggiore è il numero di riscontri, maggiore sarà approssimativamente la rilevanza attribuita nel contesto della ricerca.
+\paragraph{Etichette}
+Tuttavia, per riferire un'entità nella piattaforma web occorre caratterizzarla anche sul piano sintattico: sebbene non vi siano particolari controindicazioni nel permettere all'utente di scegliere l'etichetta da utilizzare nei contenuti che pubblica, si rischia di:
+\begin{itemize}
+	\item generare ambiguità e confusione tra gli utenti stessi, rendendo poco intuitivo stabilire se due entità citate in due contenuti diversi e con etichette differenti siano effettivamente la stessa;
+	\item dover aggiungere alla relazione tra entità e contenuti un informazione aggiuntiva, ossia l'etichetta scelta per indicarla (v. sezione ???).
+\end{itemize}
 
-Se $E_s$ è l'insieme delle etichette cercate e $E_c$ l'insieme delle etichette assegnate a ciascun contenuto si possono distinguere tre casi principali:
-\begin{description}
-\item[Corrispondenza completa:] $E_s \subseteq E_c$ \hfill \\
-Al contenuto risultano assegnate tutte le entità cercate (massima attinenza).
-\item[Corrispondenza parziale:] $E_s \cap E_c \neq \emptyset$ \hfill \\
-Al contenuto risulta assegnata parte delle entità cercate (media attinenza).
-\item[Nessuna corrispondenza:] $E_s \cap E_c = \emptyset$\hfill \\
-Al contenuto non risulta assegnata alcuna entità cercata (attinenza nulla).
-\end{description}
+Per tale ragione, si individua arbitrariamente - per ciascuna entità $d_i$ - un'\textsc{etichetta primaria} ($e_{i,0} \in E_i$), che la identifica univocamente nell'ambito della piattaforma, mentre le restanti (\textsc{etichette secondarie}) ne vengono considerate sinonimi.
 
-\paragraph{Ricerca per affinità}
-Il terzo approccio di ricerca consiste nell'identificare i contenuti attinenti ad uno dato, ossia aventi il maggior numero di entità in comune. Valgono per questo scenario le medesime considerazioni fatte nella sezione precedente, previa sostituzione di $E_s$ con l'insieme delle etichette assegnate al contenuto corrente.
+Così facendo si introducono tuttavia alcuni vincoli aggiuntivi sulla relazione, che risulta scissa in due distinte:
+\begin{enumerate}
+	\item una relazione di tipo uno-a-uno tra l'entità e la corrispondente etichetta primaria;
+	\item una relazione uno-a-molti tra l'entità e le etichette secondarie.
+\end{enumerate}
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics{placeholder.png}
+		\label{fig:tesi:stage:fase-uno:entita-sintassi-semantica}
+		\caption{Etichette primarie e secondarie (+ modello relazionale)}
+	\end{center}
+\end{figure}
+
+In conclusione, il nodo cruciale della soluzione individuata consiste nel mantenere separato l'aspetto semantico (le entità) da quello sintattico (le etichette): ogni qualvolta l'utente ricerca o assegna un'etichetta ad un contenuto, il sistema traduce il suo ingresso sintattico (l'etichetta) in un'uscita semantica (l'entità).
+
+Tale meccanismo è tuttavia soggetto ad alcune complicazioni, dovute all'ambiguità semantica di ciascuna etichetta.
+
+\subsection{Ambiguità semantica}
+Riprendendo il modello dell'enciclopedia, si osserva come ciascuna etichetta $e_j$ possa avere svariate \textsc{accezioni} ($a_{j,k} \in A_j$), ciascuna delle quali ne individua un significato differente e si riferisce ad un'entità distinta.
+
+Sebbene la natura tematica della piattaforma tenda a mitigare la presenza di etichette aventi accezioni multiple, tale eventualità non può essere esclusa e dev'essere dunque opportunamente gestita.
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[width=12cm]{disambigua.png}
+		\label{fig:tesi:stage:classificazione:disambiguazione}
+		\caption{Pagina di disambiguazione \cite{wiki:disambigua}}
+	\end{center}
+\end{figure}
+
+Occorre innanzi tutto rivedere la relazione uno-a-molti tra entità ed etichette, che diventa di tipo molti-a-molti e per cui vale la proprietà illustrata di seguito.
+
+\begin{quotation}
+Siano $a_{j,k}$ e $a_{j,k'}$ accezioni distinte di un'etichetta $e_j$ e sia definita la funzione
+\begin{equation}
+f(a_{j,k}): A_j \rightarrow D
+\end{equation}
+che restituisce l'entità $d_i$ riferita dall'accezione $a_{j,k}$. Allora
+\begin{equation}
+a_{j,k} \neq a_{j,k'} \implies f(a_{j,k}) \neq f(a_{j,k'})
+\end{equation}
+\end{quotation}
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics{placeholder.png}
+		\caption{Accezioni di un'etichetta (+ modello relazionale)}
+		\label{fig:tesi:stage:fase-uno:etichette-accezioni}
+	\end{center}
+\end{figure}
+
+Si registrano inoltre rilevanti ripercussioni in merito alla distinzione tra etichette primarie e secondarie. A ciascuna entità continuano ad essere associate una e una sola etichetta primaria, oltre ad un numero arbitrario (anche nullo) di etichette secondarie: ove ciascuna etichetta può riferirsi a diverse entità, tale distinzione varia a seconda dell'accezione considerata, poiché la medesima etichetta può essere primaria rispetto ad un entità e secondaria rispetto ad un'altra.
+
+Per preservare i suddetti vincoli sulle relazioni tra etichette ed entità, si classificano le accezioni in \textsc{chiave} ($a_{j,0}$) o \textsc{sinonimiche} ($a_{j,1},\ldots,a_{j,\left|A_j\right|}$), a seconda che l'etichetta risulti rispettivamente primaria o secondaria per l'entità corrispondente. In questo modo si riesce a trasferire tale distinzione dalle etichette alle accezioni, preservando la percezione della relazione dal punto di vista dell'entità.
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics{placeholder.png}
+		\caption{Accezioni chiave e sinonimiche (+ modello relazionale)}
+		\label{fig:tesi:stage:classificazione:entita-etichette}
+	\end{center}
+\end{figure}
+
+A risentire maggiormente dell'esistenza delle accezioni è il processo di ricerca di un'entità $d_i$ a partire da un'etichetta $e_j$: se $\left|A_j\right|\geq 2$ l'identificazione dell'entità richiede - da parte dell'utente - la selezione di un'accezione $a_{j,k} \in A_j$ tra le $\left|A_j\right|$ disponibili per indicare esplicitamente l'entità cui fa riferimento.
 
 \subsection{Modello relazionale}
 
 \begin{figure}[ht]
-\begin{center}
-\includegraphics[width=14.7cm]{modello-er.png}
-\label{fig:tesi:stage:er:modello}
-\caption{Modello relazione del criterio di classificazione}
-\end{center}
+	\begin{center}
+		\includegraphics[width=14.7cm]{modello-er.png}
+		\caption{Modello relazione del criterio di classificazione}
+		\label{fig:tesi:stage:er:modello}
+	\end{center}
 \end{figure}
 
-Al termine della fase progettuale, si rende necessario aggiungere al modello relazionale della piattaforma le opportune modifiche per integrare le informazioni addizionali legate al nuovo criterio di classificazione.
+Al termine della fase progettuale, si rende necessario modificare il modello relazionale della piattaforma per integrare le informazioni addizionali legate al nuovo criterio di classificazione.
 
 Rispetto all'immagine \ref{fig:tesi:stage:er:modello}, la sola tabella \textsf{contenuti} risulta importata dal modello relazionale della piattaforma per evidenziare alcune relazioni fondamentali. Le rimanenti sono organizzate in tre \textit{layer} (\textsf{contenuti}, \textsf{semantica} e \textsf{sintassi}) per chiarirne il ruolo all'interno del sistema di classificazione.
-
-\paragraph{Entità}
-Le entità vengono rappresentate mediante la tabella \textsf{entita} e si caratterizzano per due vincoli referenziali:
-\begin{description}
-\item[tipo] 
-Chiave esterna verso la tabella \textsf{tipi\textunderscore entita}, indica se si tratti di luogo, evento, persona, concetto astratto, \ldots. 
-\item[etichetta]
-Chiave esterna verso la tabella \textsf{etichette}, rappresenta l'etichetta primaria associata all'entità.
-\end{description}
-
-La relazione di tipo molti-a-molti tra le entità si traduce nella tabella \textsf{gerarchia}, che contiene due chiavi esterne verso la medesima tabella \textsf{entita} a rappresentare rispettivamente le entità riferite e quelle referenti.
 
 \paragraph{Etichette}
 Le etichette sono rappresentate mediante la tabella \textsf{etichette} e sono identificate univocamente dalla stringa associata, che rappresenta l'attributo \textsf{etichette.valore}. Tale scelta risponde alla naturale identificazione dell'etichetta nella sequenza di caratteri corrispondente, costituisce una garanzia contro la presenza di duplicati e consente di recuperare il valore dell'etichetta primaria di un'entità senza dover effettuare un'operazione di \textit{join} tra le tabelle \textsf{entita} ed \textsf{etichette}.
@@ -374,11 +347,11 @@ Le accezioni rappresentano un legame univoco tra le etichette e le entità e pos
 \end{enumerate}
 
 \begin{figure}[ht]
-\begin{center}
-\includegraphics{placeholder.png}
-\label{fig:tesi:stage:er:accezioni}
-\caption{Modello ad oggetti delle accezioni}
-\end{center}
+	\begin{center}
+		\includegraphics{placeholder.png}
+		\caption{Modello ad oggetti delle accezioni}
+		\label{fig:tesi:stage:er:accezioni}
+	\end{center}
 \end{figure}
 
 Ne consegue che sia la superclasse (\textsf{accezioni}) sia le sottoclassi (\textsf{accezioni\textunderscore chiave} e \textsf{accezioni\textunderscore sinonimiche}) presentano dei vincoli referenziali; in particolare, la presenza delle prime due relazioni costringe a distinguere - dal punto di vista dell'entità - tra accezioni chiave e sinonimiche.
@@ -395,15 +368,12 @@ Il partizionamento verticale consente di modellare correttamente tutti e tre i v
 
 A seguito di alcune osservazioni si decide di adottare la soluzione della tabella unica:
 \begin{itemize}
-\item la distinzione tra etichette chiave e sinomimiche ha rilevanza essenzialmente dal punto di vista della classe \textsf{entita};
+\item la distinzione tra etichette chiave e sinonimiche ha rilevanza essenzialmente dal punto di vista della classe \textsf{entita};
 \item il vincolo referenziale tra \textsf{etichette} ed \textsf{accezioni} suggerisce che la distinzione di cui al punto precedente sia irrilevante dal punto di vista delle etichette, ragion per cui risulta utile mantenere tutte le accezioni nella medesima tabella.\footnote{Si consideri ad esempio il caso d'uso della ricerca di un'entità a partire da un'etichetta, ove occorre recuperare la lista completa delle relative accezioni.}
-\item le sottoclassi non hanno attributi propri, per cui il partizionamento verticale e orizzontale sono da ritenersi soluzioni inadeguate o carenti.
+\item le sottoclassi non hanno attributi propri, per cui il partizionamento verticale e orizzontale sono ritenute soluzioni inadeguate.
 \end{itemize}
 
-Il soddisfacimento delle condizioni richieste viene raggiunto eliminando qualsiasi riferimento al tipo dell'accezione nella classe \textsf{accezioni} e modellando la relazione uno-a-uno tra le entita e le relative etichette primarie mediante una vincolo referenziale di chiave esterna nella classe \textsf{entita}, ossia \textsf{entita.etichetta}, che identifica la corrispondente etichetta primaria nella tabella \textsf{etichette}. Così facendo si riescono ad esprimere tutti i vincoli referenziali senza dover definire le sottoclassi.
-
-\paragraph{Contenuti}
-Il vincolo referenziale tra i contenuti e le entità rappresenta l'essenza del criterio di classificazione, consentendo di classificare e catalogare le informazioni disponibili nella piattaforma. La relazione molti-a-molti tra \textsf{contenuti} ed \textsf{entita} viene modellata aggiungendo la nuova classe \textsf{classificazione}, che tiene precisamente traccia delle entità associate a ciascun contenuto.
+Il soddisfacimento delle condizioni richieste viene raggiunto eliminando qualsiasi riferimento al tipo dell'accezione nella classe \textsf{accezioni} e modellando direttamente la relazione uno-a-uno tra le entità e le relative etichette primarie mediante una vincolo referenziale di chiave esterna nella classe \textsf{entita}, ossia \textsf{entita.etichetta}, che identifica la corrispondente etichetta primaria nella tabella \textsf{etichette}. Così facendo si riescono ad esprimere tutti i vincoli referenziali senza dover definire le sottoclassi.
 
 %--------
 % SECTION
@@ -483,3 +453,15 @@ Nell'ambito dei filtri riservati all'utente autenticato l'individuazione, la cla
 - discussione
 
 \paragraph{UC.3 - Consultazione dei risultati di ricerca}
+
+La rilevanza di un contenuto informativo rispetto ai criteri di ricerca è infine determinata dal grado di corrispondenza rispetto alle entità cercate: maggiore è il numero di riscontri, maggiore sarà approssimativamente la rilevanza attribuita nel contesto della ricerca.
+
+Se $E_s$ è l'insieme delle etichette cercate e $E_c$ l'insieme delle etichette assegnate a ciascun contenuto si possono distinguere tre casi principali:
+\begin{description}
+\item[Corrispondenza completa:] $E_s \subseteq E_c$ \hfill \\
+Al contenuto risultano assegnate tutte le entità cercate (massima attinenza).
+\item[Corrispondenza parziale:] $E_s \cap E_c \neq \emptyset$ \hfill \\
+Al contenuto risulta assegnata parte delle entità cercate (media attinenza).
+\item[Nessuna corrispondenza:] $E_s \cap E_c = \emptyset$\hfill \\
+Al contenuto non risulta assegnata alcuna entità cercata (attinenza nulla).
+\end{description}
