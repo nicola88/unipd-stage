@@ -1,7 +1,9 @@
 syntax: glob
 
 *.aux
+*.dvi
 *.fdb_latexmk
+*.ini
 *.lof
 *.log
 *.lot
