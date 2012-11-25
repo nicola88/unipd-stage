@@ -152,9 +152,6 @@ ove:
 
 \paragraph{Necessità} Per ogni riga, se la formula restituisce un valore pari a 0 (zero) sta ad indicare che il requisito software corrispondente è superfluo.
 
-%==============
-% OK FINO A QUI
-%==============
 %--------
 % SECTION
 %--------
@@ -255,7 +252,7 @@ Ciò significa intuitivamente che assegnare ai contenuti un'etichetta arbitraria
 Tuttavia, per riferire un'entità nella piattaforma web occorre caratterizzarla anche sul piano sintattico: sebbene non vi siano particolari controindicazioni nel permettere all'utente di scegliere l'etichetta da utilizzare nei contenuti che pubblica, si rischia di:
 \begin{itemize}
 	\item generare ambiguità e confusione tra gli utenti stessi, rendendo poco intuitivo stabilire se due entità citate in due contenuti diversi e con etichette differenti siano effettivamente la stessa;
-	\item dover aggiungere alla relazione tra entità e contenuti un informazione aggiuntiva, ossia l'etichetta scelta per indicarla (v. sezione ???).
+	\item dover aggiungere alla relazione tra entità e contenuti un informazione aggiuntiva, ossia l'etichetta scelta per indicarla.
 \end{itemize}
 
 Per tale ragione, si individua arbitrariamente - per ciascuna entità $d_i$ - un'\textsc{etichetta primaria} ($e_{i,0} \in E_i$), che la identifica univocamente nell'ambito della piattaforma, mentre le restanti (\textsc{etichette secondarie}) ne vengono considerate sinonimi.
@@ -388,76 +385,147 @@ Il soddisfacimento delle condizioni richieste viene raggiunto eliminando qualsia
 %--------
 % SECTION
 %--------
+% TO DO
+% - architettura MVC
 \section{Interfaccia grafica}
 \label{sec:tesi:stage:gui}
-La seconda fase dell'attività di stage consiste nell'analisi e nella progettazione di un'interfaccia grafica per la consultazione dei risultati di ricerche sui contenuti informativi, che soddisfi adeguatamente i seguenti requisiti di qualità:
+La seconda fase dell'attività di stage consiste nell'analisi e nella progettazione di un'interfaccia grafica per la consultazione dei risultati di ricerche sui contenuti informativi, che sfrutti il criterio di classificazione definito in precedenza e permetta all'utente di:
+\begin{enumerate}
+	\item impostare i parametri iniziali di ricerca, ossia le parole chiave e l'ambito;
+	\item modificare a posteriori la lista delle entità cercate mediante sostituzione o eliminazione;
+	\item filtrare i risultati di ricerca in accordo a criteri di classificazione o proprietà dei contenuti;
+	\item consultare - in forma grafica o testuale - le proprietà fondamentali di ciascun contenuto, i metadati di classificazione e i legami reciproci;
+	\item mostrare la discussione associata ad un contenuto informativo;
+	\item impostare i filtri personalizzati (solo per utenti autenticati).
+\end{enumerate}
+
+Nella fase di progettazione devono essere tenuti in debita considerazione alcuni requisiti di qualità desiderabili:
 \begin{description}
 	\item[Intuitiva] \hfill \\
 	L'interfaccia grafica deve risultare agevole e facilmente utilizzabile da qualsiasi categoria di utenti, a prescindere dal livello di esperienza e dalla familiarità con piattaforme web esistenti (\textit{chat}, \textit{forum}, \textit{social network}, \ldots).
 	\item[Multipiattaforma] \hfill \\
-	L'interfaccia grafica dev'essere fruibile dal maggior numero possibile di dispositivi (\textit{computer}, \textit{tablet}, \textit{smartphone}, \ldots), avendo ben presente le differenti modalità di interazione.
+	L'interfaccia grafica dev'essere fruibile dal maggior numero possibile di dispositivi (\textit{computer}, \textit{tablet}, \textit{smartphone}, \ldots), avendo ben presenti le differenti modalità di interazione.
 	\item[Ordinata] \hfill \\
 	L'interfaccia grafica dev'essere in grado di rappresentare in maniera ordinata ed efficace le informazioni, a prescindere dal numero di contenuti caricati: quelle essenziali devono essere immediatamente disponibili e facilmente identificabili, mentre quelle aggiuntive o accessorie devono essere comodamente accessibili.
 \end{description}
 
-Per semplificare le fasi di analisi e progettazione il modello concettuale del prodotto software è stato suddiviso in tre componenti:
+Per semplificare le fasi di analisi e progettazione il modello del prodotto software è stato suddiviso in tre componenti:
 \begin{description}
  	\item[Ricerca] \hfill \\
  	Insieme dei parametri e criteri di ricerca (parole chiave, ambito di ricerca, \ldots).
  	\item[Filtri] \hfill \\
  	Insieme dei filtri di raffinamento della ricerca.
  	\item[Contenuti] \hfill \\
- 	Insieme dei contenuti informativi corrispondenti ai criteri di ricerca.
+ 	Insieme dei contenuti informativi corrispondenti ai criteri di ricerca e dei relativi strumenti di navigazione.
  \end{description}
  
-\paragraph{Obiettivi}
-Le finalità d'interazione dell'utente con l'interfaccia grafica sono in buona parte riconducibili alla scomposizione concettuale del sistema, illustrata nella sezione precedente:
-\begin{enumerate}
-	\item impostare i parametri iniziali di ricerca o modificarli a posteriori;
-	\item filtrare i risultati di ricerca in accordo a criteri di classificazione (argomento, emozione, etichetta, giudizio, intenzione, interessi) o proprietà dei contenuti (autore, data di pubblicazione, tipo);
-	\item individuare i contenuti di interesse e consultare le informazioni associate;
-	\item mostrare la discussione associata ad un contenuto informativo;
-	\item impostare i filtri personalizzati (solo per utenti autenticati).
-	\item rappresentare - in forma grafica o testuale - le proprietà fondamentali di ciascun contenuto (\ldots), i metadati di classificazione (emozioni, giudizi, intenzioni, \ldots) e i legami reciproci;
-\end{enumerate}
- 
 \subsection{Risultati di ricerca}
+L'insieme dei contenuti informativi corrispondenti ai criteri di ricerca dev'essere gestito in modo che sia possibile:
+\begin{itemize}
+	\item aggiornare i risultati di ricerca in seguito ad una variazione dei parametri di ricerca;
+	\item gestire il sottoinsieme dei contenuti da visualizzare, in accordo alla configurazione dei filtri di ricerca;
+	\item aggiornare lo stato di visualizzazione dei contenuti in modo intelligente (restrizione vs ampliamento) a trasparente rispetto ai filtri;
+	\item mantenere in memoria i risultati di ricerca durante la consultazione di una discussione.
+\end{itemize}
+
+L'architettura MVC del sistema dev'essere in grado di: 
 \begin{enumerate}
-	\item aggiornamento risultati a fronte
+	\item aggiornare in tempo reale i risultati in tempo reale a fronte di alterazioni dei valori impostati sui filtri di ricerca; %ogni aggiornamento del filtro dv'essere comunicato al gestore dei risultati di ricerca
 \end{enumerate}
-- discussione
-\paragraph{UC.1 - Ricerca di contenuti informativi} \hfill \\
-La ricerca di contenuti informativi prevede l'inserimento dei termini di ricerca (\textit{UC.1.1}), separati da virgola, e la restrizione dell'ambito alle sole entità associate o alle informazioni presenti in un contenuto (titolo, corpo, \ldots) (\textit{UC.1.2}).
-
-Durante la ricerca, qualora vengano individuate delle corrispondenze tra i termini cercati e le etichette del dizionario e queste presentino accezioni multiple, l'utente è chiamato a selezionare quella corrispondente all'entità rispetto alla quale intende svolgere la ricerca (\textit{UC.1.3}).
-
-Al termine della ricerca, l'utente può consultare la lista delle entità individuate a partire dai criteri di ricerca specificati (\textit{UC.1.4}) e intervenire sui risultati di ricerca eliminando una di esse (\textit{UC.1.5}) o sostituendola con un'altra, avente un legame diretto (\textit{UC.1.8}, \textit{UC.1.9}). Per sostituire un'entità con un'altra l'attore dev'essere in grado di visualizzare - per ciascuna - quelle che la riferiscono (\textit{UC.1.6}) o da lei riferite (\textit{UC.1.7}).
  
 \subsection{Filtri di ricerca}
+\label{sec:tesi:stage:gui:filtri}
+\paragraph{Requisiti}
+La progettazione dei filtri di ricerca richiede innanzi tutto di individuare i criteri di classificazione e le proprietà dei contenuti informativi che siano definiti su un insieme $U$ di possibili valori $u$, ciascuno dei quali - in un dato istante - sia ammissibile ($u \in U_A$) o bloccato ($u \in U_B$): deve quindi valere che $U_A \cap U_B = \emptyset$ e $U_A \cup U_B = U$.
 
-\paragraph{UC.2 - Raffinamento dei criteri di ricerca} \hfill \\
-Per facilitare l'individuazione dei contenuti di interesse tra i risultati dai ricerca, l'utente dev'essere messo in condizione di filtrarli ...
+Inizialmente tutti i valori possibili per una certa proprietà sono ammessi, ossia $U_a = U$ e $U_b = \emptyset$: l'azione dell'utente consiste dunque nell'alterare tale partizionamento dell'insieme $U$ bloccando un valore, autorizzandolo o azzerando il filtro, rendendo ammissibili tutti i valori ($U_A = U$).
 
-Il primo passo consiste nell'individuare le proprietà dei contenuti informativi aventi particolare rilevanza e definite su un insieme $U$ di valori adeguato ad essere associato ad un filtro: il solo requisito è la possibilità di partizionare l'insieme $U$ in due sottoinsiemi, che rappresentano rispettivamente i valori autorizzati ($U_a$) e bloccati ($U_b$) in un certo istante.
-
-%Se consideriamo $U = U_a \cup U_b$
-
-La configurazione predefinita di ciascun filtro prevede che tutti i valori siano ammissibili, ossia $U_a = U$ e $U_b = \emptyset$. L'azione dell'utente consiste essenzialmente nell'alterare tale partizionamento dell'insieme $U$ in tre modi principali:
+Un contenuto informativo, incluso tra i risultati di ricerca, viene quindi visualizzato se e solo se tutte le proprietà sono soddisfatte. Una generica proprietà risulta soddisfatta, a seconda che assuma un singolo valore o multipli, se e solo se:
 \begin{itemize}
-	\item bloccando un valore $u$ ($u \in U_b$);
-	\item autorizzando un valore ($u \in U_a$);
-	\item azzerando il filtro, ossia ripristinando la configurazione iniziale e autorizzando tutti i valori ($U = U_a$).
+\item il valore assunto è ammissibile (valore singolo);
+\item almeno uno dei valori assunti è ammissibile (valori multipli).
 \end{itemize}
 
+\paragraph{Parametri}
+Al termine dell'analisi viene redatta una lista completa dei parametri per i filtri, riportata nella tabella \ref{tab:tesi:stage:parametri-filtri}.\footnote{Il termine \textsc{etichette} riportato nella tabella designa di seguito il criterio di classificazione illustrato nella sezione \ref{sec:tesi:stage:criterio-classificazione}.}
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textsc{Proprietà} & \textsc{Criteri di classificazione} \\ \hline
+Autore & Argomento \\
+Data di pubblicazione & Emozioni \\
+Tipo & Etichette \\
+& Giudizi \\
+& Intenzioni \\ \hline
+\end{tabular}
+\caption{Lista dei parametri per i filtri di ricerca}
+\label{tab:tesi:stage:parametri-filtri}
+\end{table}
+
+\paragraph{Classificazione}
+Il passo successivo consiste nel classificare tali parametri in relazione alla natura dell'insieme $U$ (ordinato, finito, \ldots) e alle possibili modalità d'interazione dell'utente (intervallo, soglia, \ldots), che determinano e alterano i sottoinsiemi $U_A$ e $U_B$. Si individuano quattro classi di filtri di ricerca:
+\begin{description}
+	\item[A lista di valori] \hfill \\
+	Il filtro a lista di valori consente di autorizzare o bloccare selettivamente ciascun valore. I casi d'uso includono:
+	\begin{itemize}
+		\item la consultazione della lista dei valori ammessi;
+		\item la consultazione della lista dei valori bloccati;
+		\item l'autorizzazione di un valore;
+		\item l'azzeramento del filtro (autorizzare tutti i valori);
+		\item il bloccaggio di un valore.
+	\end{itemize}
+	\item[A soglia di valore] \hfill \\
+	Nel filtro a soglia di valore l'insieme $U$ è ordinato, ossia rappresenta un intervallo caratterizzato da un minimo $min \in U$ ed un massimo $max \in U$. L'utente può impostare un valore $x$, che soddisfi la condizione $min \leq x \leq max$, e l'insieme dei valori soddisfacibili è così definito: $U_A = \lbrace u \in U : u \geq x \rbrace$. I casi d'uso includono:
+	\begin{itemize}
+		\item la selezione del valore $x$.
+	\end{itemize}
+	\item[Ad intervallo] \hfill \\
+	Nel filtro ad intervallo l'insieme $U$ è ordinato e si caratterizza per un minimo $min \in U$ ed un massimo $max \in U$. L'utente è libero di selezionare l'estremo inferiore ($inf \in U$) e superiore ($sup\in U$) dell'intervallo, purché sia soddisfatta la seguente catena di disuguaglianze: $min \leq inf \leq sup \leq max$. L'insieme dei valori ammissibili risulta ovviamente $U_A = \lbrace u \in U : inf \leq u \leq sup \rbrace$. I casi d'uso includono:
+	\begin{itemize}
+		\item la selezione del valore minimo $inf$;
+		\item la selezione del valore massimo $sup$.
+		\item la selezione di un valore esatto ($inf = sup$).
+	\end{itemize}
+	\item[Ad interruttore] \hfill \\
+	Il filtro ad interruttore consente all'utente di scegliere se applicarlo o meno ai risultati di ricerca, permettendo di incapsulare al suo interno uno qualsiasi di quelli elencati e descritti in precedenza. I casi d'uso includono:
+	\begin{itemize}
+		\item l'attivazione del filtro;
+		\item la disattivazione del filtro.
+	\end{itemize}
+\end{description}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textsc{Lista di valori} & \textsc{Soglia di valore} & \textsc{Intervallo} & \textsc{Interruttore}\\ \hline
+Autore & Giudizi & Data di pubblicazione & Interessi \\
+Argomento & & & \\
+Emozioni & & & \\
+Etichette & & & \\
+Intenzioni & & & \\
+Tipo & & & \\ \hline
+\end{tabular}
+\caption{Elenco dei parametri - suddivisi per tipo - per i filtri di ricerca}
+\label{tab:tesi:stage:parametri-filtri-tipo}
+\end{table}
+
+\paragraph{Progettazione} La fase di progettazione deve distinguere per ogni classe di filtro:
 \begin{itemize}
-	\item quali criteri di classificazione? quali proprietà ?
-	\item classificazione
-\end{itemize}
+\item il componente grafico mediante il quale l'utente interagisce per regolarlo (\textit{view});
+\item il componente che incapsula la logica di controllo del filtro, gestendo l'interazione dell'utente (\textit{controller});
+\item il componente che incapsula le informazioni correnti associate al filtro;
+\item il componente che rappresenta il parametro generico.
+\end{itemize} 
 
-\paragraph{UC.4 - Gestione dei filtri utente}
+Per indicare quali parametri specifici parametri siano compatibili con un certo generico, si definisce un'interfaccia da essi implementata e utilizzata come tipo base nei metodi di quest'ultimo componente.
 
-\paragraph{Utente autenticato}
-Nell'ambito dei filtri riservati all'utente autenticato l'individuazione, la classificazione e l'analisi dei casi d'uso inizia dal riconoscimento di due attori principali, ossia l'\textsc{utente autenticato} ed il visitatore (di seguito semplicemente \textsc{utente}. L'utente autenticato rappresenta un tipo specializzato del visitatore, dal momento che alcune informazioni di profilo, come gli interessi dichiarati o il livello di esperienza, vengono sfruttate per filtrare automaticamente i risultati di ricerca: a lui solo, dunque, è offerta la possibilità di abilitare o meno tali filtri personalizzati.
+Resta inoltre da considerare che ciascun parametro specifico recupera le informazioni di inizializzazione (i valori di $U$) in modo diverso: una lista statica di classe o dinamica, basata su un'interrogazione ai risultati di ricerca: tale meccanismo dev'essere reso trasparente nell'interfaccia in questione.
+
+\paragraph{Abstract Factory}
+- pattern factory (2x model + view)
+- controller ???
 
 \subsection{Navigazione dei contenuti}
 - discussione
