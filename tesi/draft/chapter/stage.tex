@@ -241,9 +241,14 @@ La proliferazione di sinonimi, ossia etichette equivalenti sul piano semantico m
 A tale inconveniente si pone rimedio facilmente definendo una relazione molti-a-molti tra le entità e i contenuti, che ignori le etichette utilizzate per indicarle: così facendo si preserva l'identificazione univoca di ciascuna entità nei contenuti informativi, almeno sul piano semantico, e si guadagna in termini di efficienza.
 
 Si considerino il dizionario $E$ ed il dominio $D$. Il numero medio $\alpha$ di etichette associato a ciascuna entità è pari a:
-\begin{equation}
-\alpha = \frac{\sum{\left|E_i\right|}}{\left|D\right|}
+\begin{equation} \label{eq:tesi:stage:etichette-per-entità}
+\alpha = \frac{\left|E_0\right| + \left|E_1\right| + \ldots}{\left|D\right|} = \frac{\sum{\left|E_i\right|}}{\left|D\right|}
 \end{equation}
+ove
+\begin{equation} \label{eq:tesi:stage:dizionario}
+\sum{\left|E_i\right|} = \left|E\right| \: \footnote{Poiché la relazione tra etichette ed entità è di tipo uno-a-molti, ciascuna etichetta è associata ad una ed una sola entità. Ne consegue che $P = {E_0, E_1, \ldots}$ è una partizione di $E$, ossia vale $\bigcup E_i = E$ e $\forall A \in P, B \in P: A \neq B \implies A \cap B = \emptyset$.}
+\end{equation}
+
 Ciò significa intuitivamente che assegnare ai contenuti un'etichetta arbitraria aumenterebbe di una costante moltiplicativa $\alpha$ la complessità dell'operazione ricerca, che dovrebbe essere ripetuta per ciascuna delle $\alpha$ etichette anziché per la sola entità corrispondente.\footnote{Si assuma per semplicità che la ricerca verifichi - per ciascun contenuto - quali termini cercati (entità o etichette) siano presenti, uno per volta, e che la complessità computazionale sia equivalente in entrambi i casi.}
 
 \paragraph{Etichette}
@@ -288,7 +293,6 @@ Sebbene la natura tematica della piattaforma tenda a mitigare la presenza di eti
 
 Occorre innanzi tutto rivedere la relazione uno-a-molti tra entità ed etichette, che diventa di tipo molti-a-molti e per cui vale la proprietà illustrata di seguito.
 
-\begin{quotation}
 Siano $a_{j,k}$ e $a_{j,k'}$ accezioni distinte di un'etichetta $e_j$ e sia definita la funzione
 \begin{equation}
 f(a_{j,k}): A_j \rightarrow D
@@ -297,7 +301,12 @@ che restituisce l'entità $d_i$ riferita dall'accezione $a_{j,k}$. Allora
 \begin{equation}
 a_{j,k} \neq a_{j,k'} \implies f(a_{j,k}) \neq f(a_{j,k'})
 \end{equation}
-\end{quotation}
+
+L'equazione \ref{eq:tesi:stage:etichette-per-entità} conserva la propria validità, mentre la \ref{eq:tesi:stage:dizionario} dev'essere modificata per riflettere la differente molteplicità della suddetta relazione, ossia il fatto che ciascuna etichetta possa riferire una o più entità:
+\begin{equation}
+	\sum{\left|E_i\right|} = \sum{\left|B_i\right|} = \left|A\right| =	\sum{\left|A_j\right|} \geq \left|E\right| \:
+	\footnote{La prima uguaglianza esprime una banale identità tra le etichette di un'entità e  e le accezioni corrispondenti; la seconda discende dal fatto che $P' = {B_1,B_2,\ldots}$ rappresenta una partizione di $A$ rispetto alle entità, mentre la successiva uguaglianza si deduce analogamente dal fatto che $P''={A_1, A_2, \ldots}$ è anch'essa partizione di $A$ (rispetto alle etichette); l'ultima disuguaglianza si deduce osservando che $\forall j \left|A_j\right| \geq 1$, ossia per ciascuna etichetta del dizionario esiste almeno un'accezione.}
+\end{equation}
 
 \begin{figure}[ht]
 	\begin{center}
@@ -307,6 +316,7 @@ a_{j,k} \neq a_{j,k'} \implies f(a_{j,k}) \neq f(a_{j,k'})
 	\end{center}
 \end{figure}
 
+\pagebreak
 Si registrano inoltre rilevanti ripercussioni in merito alla distinzione tra etichette primarie e secondarie. A ciascuna entità continuano ad essere associate una e una sola etichetta primaria, oltre ad un numero arbitrario (anche nullo) di etichette secondarie: ove ciascuna etichetta può riferirsi a diverse entità, tale distinzione varia a seconda dell'accezione considerata, poiché la medesima etichetta può essere primaria rispetto ad un entità e secondaria rispetto ad un'altra.
 
 Per preservare i suddetti vincoli sulle relazioni tra etichette ed entità, si classificano le accezioni in \textsc{chiave} ($a_{j,0}$) o \textsc{sinonimiche} ($a_{j,1},\ldots,a_{j,\left|A_j\right|}$), a seconda che l'etichetta risulti rispettivamente primaria o secondaria per l'entità corrispondente. In questo modo si riesce a trasferire tale distinzione dalle etichette alle accezioni, preservando la percezione della relazione dal punto di vista dell'entità.

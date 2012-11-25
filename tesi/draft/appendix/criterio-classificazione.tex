@@ -3,13 +3,21 @@
 
 \section*{Legenda}
 
+\begin{description}
+	\item[$i$] \hfill \\
+	$1 \leq i \leq \left|D\right|,\; i \in \mathbb{N}$.
+	\item[$j$] \hfill \\
+	$1 \leq j \leq \left|E\right|,\; j \in \mathbb{N}$.
+	\item[$k$] \hfill \\
+	$1 \leq k \leq \left|A_j\right|,\; k \in \mathbb{N}$.
+\end{description}
+
 \subsection*{Entità}
 \begin{description}
 	\item[$D$] \hfill \\
 	Dominio delle entità.
 	\item[$d_i$] \hfill \\
-	Entità del dominio ($d_i \in D$).\\
-	$1 \leq i \leq \left|D\right|,\; i \in \mathbb{N}$.
+	Entità del dominio ($d_i \in D$).
 \end{description}	
 
 \subsection*{Etichette}
@@ -19,8 +27,7 @@
 	\item[$E_i$] \hfill \\
 	Insieme delle etichette relative all'entità $d_i$ ($E_i \subset E$).
 	\item[$e_j$] \hfill \\
-	Etichetta del dizionario ($e_j \in E$).\\
-	$1 \leq j \leq \left|E\right|,\; j \in \mathbb{N}$.
+	Etichetta del dizionario ($e_j \in E$).
 	\item[$e_{i,j}$] \hfill \\
 	Etichetta del dizionario relativa all'entità $d_i$ ($e_{i,j} \in E$).
 	\item[$e_{i,0}$] \hfill \\
@@ -29,11 +36,16 @@
 
 \subsection*{Accezioni}
 \begin{description}
+	\item[$A$] \hfill \\
+	Insieme delle accezioni.
 	\item[$A_j$] \hfill \\
 	Insieme delle accezioni di un'etichetta $e_j$.
+	\item[$B_i$] \hfill \\
+	Insieme delle accezioni relative ad un'entità $d_i$.
 	\item[$a_{j,k}$] \hfill \\
-	Accezione di un'etichetta $e_j$ ($a_{j,k} \in A_j$).\\
-	$1 \leq k \leq \left|A_j\right|,\; j \in \mathbb{N}$.
+	Accezione di un'etichetta $e_j$ ($a_{j,k} \in A_j$).
+	\item[$b_{i,k}$] \hfill \\
+	Accezione relativa ad un'entità $d_j$ ($b_{i,k} \in B_i$).
 \end{description}
 
 \section*{Codice SQL}
@@ -43,112 +55,112 @@
 \paragraph{Ricerca di un'etichetta}
 Restituisce le stringe corrispondenti alla sequenza di caratteri \textsf{@termine} inserita dall'utente, eventualmente adeguata allo standard di formato previsto.
 
-\begin{verbatim}
+\begin{minted}{sql}
 SELECT *
   FROM etichette	
  WHERE valore LIKE '@termine%'
-\end{verbatim}
+\end{minted}
 	
 \paragraph{Ricerca delle accezioni di un'etichetta}
 Restituisce la lista delle accezioni di un'etichetta \textsf{@etichetta}.
 	
-\begin{verbatim}
+\begin{minted}{sql}
 SELECT *
   FROM accezioni	
  WHERE etichetta='@etichetta'
-\end{verbatim}
+\end{minted}
 
 \paragraph{Numero di assegnazioni di un'entità}
 Restituisce il numero di contenuti cui sia stata assegnata l'entita \textsf{@entita}.
 
-\begin{verbatim}
+\begin{minted}{sql}
 SELECT COUNT(*) AS num
   FROM classificazione
  WHERE entita='@entita'
-\end{verbatim}
+\end{minted}
 
 \paragraph{Inserimento di un'etichetta}
 Inserisce l'etichetta \textsf{@stringa}...
 	
-\begin{verbatim}
+\begin{minted}{sql}
 INSERT INTO etichette
      VALUES (@stringa,current_timestamp)
-\end{verbatim}
+\end{minted}
 
 ... e le associa almeno un'accezione, riferita all'entità \textsf{@entita}.
 
-\begin{verbatim}
+\begin{minted}{sql}
 INSERT INTO accezioni(etichetta,entita)
      VALUES (@etichetta,@entita)
-\end{verbatim}
+\end{minted}
 	
 \subsection*{Entità}
 	
 \paragraph{Calcolo di affinità tra due entità}
 L'affinità tra due entità è espressa dal numero di contenuti in cui compaiano entrambe.
-\begin{verbatim}
+\begin{minted}{sql}
   SELECT COUNT(*) AS contenuti
     FROM classificazione
    WHERE entita='@entita1' OR entita='@entita2'
 GROUP BY contenuto
   HAVING COUNT(*)>=2
-\end{verbatim}
+\end{minted}
 
 \paragraph{Ricerca delle entità referenti}
 Restituisce la lista delle entità che riferiscono \textsf{@entita}.
-\begin{verbatim}
+\begin{minted}{sql}
 SELECT padre
   FROM gerarchia
  WHERE figlio='@entita'
-\end{verbatim}
+\end{minted}
 
 \paragraph{Ricerca delle entità riferite}
 Restituisce la lista delle entità riferite da \textsf{@entita}.
-\begin{verbatim}
+\begin{minted}{sql}
 SELECT figlio
   FROM gerarchia
  WHERE padre='@entita'
-\end{verbatim}
+\end{minted}
 
 \paragraph{Ricerca delle etichette}
 Restituisce la lista delle etichette con cui è riferibile l'entità \textsf{@entita}.
-\begin{verbatim}
+\begin{minted}{sql}
 SELECT et.valore AS etichetta
   FROM accezioni AS acc JOIN etichette AS et
        ON (acc.etichetta=et.valore)
  WHERE acc.entita='@entita'
-\end{verbatim}
+\end{minted}
 
 \subsection*{Contenuti}
 \paragraph{Assegnazione di un'etichetta}
 Assegna l'entita \textsf{@entita} al contenuto \textsf{@contenuto}.
-\begin{verbatim}
+\begin{minted}{sql}
 INSERT INTO classificazione(contenuto,entita)
      VALUES (@contenuto,@entita)
-\end{verbatim}
+\end{minted}
 
 \paragraph{Ricerca delle etichette assegnate}
 Restituisce la lista delle entità assegnate ad un contenuto.
-\begin{verbatim}
+\begin{minted}{sql}
 SELECT entita
   FROM classificazione
  WHERE contenuto='@contenuto'
-\end{verbatim}
+\end{minted}
 
 \paragraph{Ricerca di contenuti generici}
 Restituisce i contenuti cui sia stata assegnata l'entità \textsf{@entità}.
-\begin{verbatim}
+\begin{minted}{sql}
 SELECT contenuti
   FROM classificazione
  WHERE entita='@entita'
-\end{verbatim}
+\end{minted}
 
 \paragraph{Ricerca di contenuti specifici}
 Restituisce i contenuti cui siano state assegnate le entità \textsf{@entita1}, \textsf{@entita2}, \ldots .
-\begin{verbatim}
+\begin{minted}{sql}
   SELECT contenuto
     FROM classificazione
    WHERE entita='@entita1' [OR entita='@entita2' ...]
 GROUP BY contenuto
   HAVING COUNT(*)>=@num_etichette
-\end{verbatim}
+\end{minted}

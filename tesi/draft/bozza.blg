@@ -5,12 +5,11 @@ A level-1 auxiliary file: chapter/progetto.aux
 A level-1 auxiliary file: chapter/stage.aux
 A level-1 auxiliary file: chapter/conclusioni.aux
 A level-1 auxiliary file: appendix/glossario.aux
-A level-1 auxiliary file: appendix/criterio-classificazione.aux
 The style file: plain.bst
 Database file #1: bibliografia.bib
 You've used 2 entries,
             2118 wiz_defined-function locations,
-            509 strings with 4291 characters,
+            508 strings with 4254 characters,
 and the built_in function-call counts, 434 in all, are:
 = -- 38
 > -- 14
