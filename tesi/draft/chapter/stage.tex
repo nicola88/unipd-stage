@@ -8,7 +8,7 @@
 \label{sec:tesi:stage:piano:obiettivi}
 L'attività di stage si colloca nell'ambito del progetto presentato nel capitolo \ref{ch:tesi:progetto} e persegue due obiettivi distinti ma correlati, focalizzandosi sulla componente \textit{social} della piattaforma.
 
-\paragraph{Criteri di classificazione} \hfill \\
+\paragraph{Criteri di classificazione}
 Il primo obiettivo consiste nell'estendere l'attuale sistema di classificazione (v. sezione \ref{sec:tesi:progetto:classificazione}) integrandovi un criterio aggiuntivo per la catalogazione dei contenuti pubblicati dagli utenti e la costruzione di un'enciclopedia della conoscenza per rendere il reperimento e la consultazione delle informazioni desiderate il più efficiente ed agevole possibile.
 
 L'ideazione e concezione del suddetto criterio deve tener conto della natura tematica della piattaforma, riuscendo a conciliare due esigenze distinte:
@@ -19,7 +19,7 @@ L'ideazione e concezione del suddetto criterio deve tener conto della natura tem
 
 La soluzione individuata deve inoltre prescindere da assunzioni legate alla tecnologia utilizzata. Infine, alla luce di possibili evoluzioni nello sviluppo della piattaforma, si desidera che la classificazione di un contenuto informativo (assegnazione di metadati, individuazione di correlazioni, \ldots) possa essere - in futuro - demandata a componenti software integrate nella piattaforma.
 
-\paragraph{Interfaccia grafica} \hfill \\
+\paragraph{Interfaccia grafica}
 Il secondo obiettivo consiste nel progettare un'interfaccia grafica per la consultazione dei contenuti informativi, che sfrutti il criterio di classificazione aggiuntivo per facilitare la ricerca ed il reperimento delle informazioni di interesse per l'utente all'interno del patrimonio enciclopedico della piattaforma. La sfida principale consiste nel progettare un'interfaccia in grado di visualizzare in maniera chiara e ordinata un ridotto o elevato numero di contenuti, a prescindere dalla classe del dispositivo impiegato (\textit{smartphone}, \textit{tablet}, \textit{notebook}, \ldots).
 
 Il primo passo consiste nell'individuare le informazioni essenziali ad una rapida e precisa identificazione dei contenuti (titolo, autore, data, \ldots) e valutare la notazione (grafica o testuale) più adatta per esprimerle, al fine di renderle accessibili al maggior numero possibile di utenti; le informazioni aggiuntive devono essere comunque accessibili, ma solo su esplicita richiesta dell'utente. In questo ambito si inseriscono una serie di analisi e valutazioni di carattere sociologico, svolte da altri membri del team di progetto, per individuare le soluzioni più idonee a comunicare tali informazioni in modo da renderne la comprensione chiara e intuitiva a qualsiasi utente.
@@ -178,12 +178,12 @@ Un'enciclopedia è un'opera letteraria che raccoglie e ordina la sintesi della c
 Le enciclopedie possono essere generali, e contenere voci su qualsiasi argomento (lettere, scienze, arti), oppure specialistiche e concentrarsi su un particolare campo della conoscenza (ad esempio un'enciclopedia di medicina o di filosofia). \cite{wiki:enciclopedia}
 \end{quotation}
 
-Il modello concettuale dell'enciclopedia diventa un riferimento essenziale, che aiuta a:
+Il modello concettuale dell'enciclopedia diventa un riferimento utile ad identificare:
 \begin{enumerate}
-	\item identificare i casi d'uso essenziali concernenti la consultazione del sapere custodito nella piattaforma (ricerca per lemma, argomento o affinità);
-	\item identificare gli elementi strutturali del sistema di classificazione (lemmi, accezioni, \ldots);
-	\item identificare i requisiti e le specifiche più rilevanti per il criterio di classificazione;
-	\item individuare le principali criticità rispetto alla coerenza e consistenza dell'enciclopedia.
+	\item i casi d'uso essenziali concernenti la consultazione del sapere custodito nella piattaforma (ricerca per lemma, argomento o affinità);
+	\item gli elementi strutturali del sistema di classificazione (lemmi, accezioni, \ldots);
+	\item i requisiti e le specifiche più rilevanti per il criterio di classificazione;
+	\item le principali criticità rispetto alla coerenza e consistenza dell'enciclopedia.
 \end{enumerate}
 
 \paragraph{Contenuto informativo}
@@ -200,7 +200,7 @@ Nell'ambito della piattaforma, i lemmi vengono definiti \textsc{entità} ($d_i \
 	\end{center}
 \end{figure}
 
-Così come ciascun lemma di un'enciclopedia contiene spesso riferimenti ad altre voci, che trattano temi specifici o attinenti, nella piattaforma ciascuna entità può riferire o essere riferita da un numero arbitrario di entità distinte e possono esistere riferimenti incrociati, ossia coppie di entità che si riferiscono a vicenda.
+Così come ciascun lemma di un'enciclopedia contiene spesso riferimenti ad altre voci, che trattano temi specifici o attinenti, nella piattaforma ciascuna entità può riferire o essere riferita da un numero arbitrario di entità distinte e possono esistere riferimenti incrociati, ossia coppie di entità che si citano a vicenda.
 
 Ciò si traduce nel modello relazionale con un vincolo referenziale di tipo molti-a-molti tra le entità, che distingue entità referenti e riferite e permette così di interpretare il dominio $D$ come una struttura a grafo orientato ove:
 \begin{itemize}
@@ -385,8 +385,6 @@ Il soddisfacimento delle condizioni richieste viene raggiunto eliminando qualsia
 %--------
 % SECTION
 %--------
-% TO DO
-% - architettura MVC
 \section{Interfaccia grafica}
 \label{sec:tesi:stage:gui}
 La seconda fase dell'attività di stage consiste nell'analisi e nella progettazione di un'interfaccia grafica per la consultazione dei risultati di ricerche sui contenuti informativi, che sfrutti il criterio di classificazione definito in precedenza e permetta all'utente di:
@@ -428,6 +426,8 @@ L'insieme dei contenuti informativi corrispondenti ai criteri di ricerca dev'ess
 	\item mantenere in memoria i risultati di ricerca durante la consultazione di una discussione.
 \end{itemize}
 
+- restituisce i valori di inizializzazione dei parametri per i filtri di ricerca
+
 L'architettura MVC del sistema dev'essere in grado di: 
 \begin{enumerate}
 	\item aggiornare in tempo reale i risultati in tempo reale a fronte di alterazioni dei valori impostati sui filtri di ricerca; %ogni aggiornamento del filtro dv'essere comunicato al gestore dei risultati di ricerca
@@ -436,59 +436,59 @@ L'architettura MVC del sistema dev'essere in grado di:
 \subsection{Filtri di ricerca}
 \label{sec:tesi:stage:gui:filtri}
 \paragraph{Requisiti}
-La progettazione dei filtri di ricerca richiede innanzi tutto di individuare i criteri di classificazione e le proprietà dei contenuti informativi che siano definiti su un insieme $U$ di possibili valori $u$, ciascuno dei quali - in un dato istante - sia ammissibile ($u \in U_A$) o bloccato ($u \in U_B$): deve quindi valere che $U_A \cap U_B = \emptyset$ e $U_A \cup U_B = U$.
+La progettazione dei filtri di ricerca richiede innanzi tutto di scegliere i criteri di classificazione e le proprietà dei contenuti informativi (di seguito \textsc{parametri}) utilizzabili in combinazione ad un filtro: il requisito obbligatorio consiste nell'essere definiti su un insieme $U$ di possibili valori $u$, ciascuno dei quali - in un dato istante - dev'essere ammissibile ($u \in U_A$) o bloccato ($u \in U_B$). Deve quindi valere che $U_A \cap U_B = \emptyset$ e $U_A \cup U_B = U$.
 
-Inizialmente tutti i valori possibili per una certa proprietà sono ammessi, ossia $U_a = U$ e $U_b = \emptyset$: l'azione dell'utente consiste dunque nell'alterare tale partizionamento dell'insieme $U$ bloccando un valore, autorizzandolo o azzerando il filtro, rendendo ammissibili tutti i valori ($U_A = U$).
+Inizialmente tutti i valori per un certo parametro sono ammessi, ossia $U_a = U$ e $U_b = \emptyset$: l'azione dell'utente consiste nell'alterare tale suddivisione dell'insieme $U$ bloccando un valore, autorizzandolo o azzerando il filtro, ossia rendendo ammissibili tutti i valori ($U_A = U$).
 
-Un contenuto informativo, incluso tra i risultati di ricerca, viene quindi visualizzato se e solo se tutte le proprietà sono soddisfatte. Una generica proprietà risulta soddisfatta, a seconda che assuma un singolo valore o multipli, se e solo se:
+\paragraph{Soddisfacibilità}
+Un contenuto informativo, incluso tra i risultati di ricerca, viene quindi visualizzato se e solo soddisfa tutti i parametri. A seconda che ciascun contenuto assuma un singolo valore (autore, data di pubblicazione, argomento, \ldots) o una lista (emozioni, etichette, intenzioni, \ldots), il parametro risulta soddisfatto se e solo se:
 \begin{itemize}
 \item il valore assunto è ammissibile (valore singolo);
 \item almeno uno dei valori assunti è ammissibile (valori multipli).
 \end{itemize}
 
 \paragraph{Parametri}
-Al termine dell'analisi viene redatta una lista completa dei parametri per i filtri, riportata nella tabella \ref{tab:tesi:stage:parametri-filtri}.\footnote{Il termine \textsc{etichette} riportato nella tabella designa di seguito il criterio di classificazione illustrato nella sezione \ref{sec:tesi:stage:criterio-classificazione}.}
+Al termine dell'analisi viene redatta una lista completa dei parametri che soddisfano il requisito iniziale, visibile nella tabella \ref{tab:tesi:stage:parametri-filtri} (tra parentesi si riporta il nome della classe corrispondente, ove disponibile).\footnote{Il termine \textsc{etichette} riportato nella tabella designa in seguito il criterio di classificazione illustrato nella sezione \ref{sec:tesi:stage:criterio-classificazione}.}
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|l|}
 \hline
 \textsc{Proprietà} & \textsc{Criteri di classificazione} \\ \hline
-Autore & Argomento \\
-Data di pubblicazione & Emozioni \\
-Tipo & Etichette \\
-& Giudizi \\
-& Intenzioni \\ \hline
+Autore (\textsf{model.User}) & Argomento (\textsf{model.Topic})\\
+Data di pubblicazione & Emozioni (\textsf{model.Emotion}) \\
+Tipo (\textsf{model.Type}) & Etichette (\textsf{model.Entity}) \\
+Giudizi (\textsf{model.Rating}) & Interessi (\textsf{model.Interest}) \\
+& Intenzioni (\textsf{model.Intention}) \\ \hline
 \end{tabular}
 \caption{Lista dei parametri per i filtri di ricerca}
 \label{tab:tesi:stage:parametri-filtri}
 \end{table}
 
 \paragraph{Classificazione}
-Il passo successivo consiste nel classificare tali parametri in relazione alla natura dell'insieme $U$ (ordinato, finito, \ldots) e alle possibili modalità d'interazione dell'utente (intervallo, soglia, \ldots), che determinano e alterano i sottoinsiemi $U_A$ e $U_B$. Si individuano quattro classi di filtri di ricerca:
+Per identificare i requisiti e i casi d'uso correlati ai filtri di ricerca conviene classificare i parametri in relazione alla natura dell'insieme $U$ (ordinato, finito, \ldots) e alle possibili modalità d'interazione dell'utente (selezione di un intervallo di valori, impostazione di una soglia, \ldots), che determinano e alterano i sottoinsiemi $U_A$ e $U_B$.
+
+L'analisi si conclude con l'individuazione di quattro classi di filtri di ricerca:
 \begin{description}
 	\item[A lista di valori] \hfill \\
-	Il filtro a lista di valori consente di autorizzare o bloccare selettivamente ciascun valore. I casi d'uso includono:
+	Il filtro a lista di valori consente di autorizzare o bloccare selettivamente ciascun elemento dell'insieme $U$. I casi d'uso includono:
 	\begin{itemize}
 		\item la consultazione della lista dei valori ammessi;
 		\item la consultazione della lista dei valori bloccati;
 		\item l'autorizzazione di un valore;
-		\item l'azzeramento del filtro (autorizzare tutti i valori);
-		\item il bloccaggio di un valore.
+		\item il blocco di un valore;
+		\item l'azzeramento del filtro (autorizzare tutti i valori).
 	\end{itemize}
 	\item[A soglia di valore] \hfill \\
-	Nel filtro a soglia di valore l'insieme $U$ è ordinato, ossia rappresenta un intervallo caratterizzato da un minimo $min \in U$ ed un massimo $max \in U$. L'utente può impostare un valore $x$, che soddisfi la condizione $min \leq x \leq max$, e l'insieme dei valori soddisfacibili è così definito: $U_A = \lbrace u \in U : u \geq x \rbrace$. I casi d'uso includono:
-	\begin{itemize}
-		\item la selezione del valore $x$.
-	\end{itemize}
+	Nel filtro a soglia di valore l'insieme $U$ è ordinato e rappresenta un intervallo caratterizzato da un minimo $min \in U$ ed un massimo $max \in U$. L'utente può scegliere arbitrariamente un valore $x$, purché soddisfi la condizione $min \leq x \leq max$: l'insieme dei valori soddisfacibili risulta così definito: $U_A = \lbrace u \in U : u \geq x \rbrace$.
 	\item[Ad intervallo] \hfill \\
-	Nel filtro ad intervallo l'insieme $U$ è ordinato e si caratterizza per un minimo $min \in U$ ed un massimo $max \in U$. L'utente è libero di selezionare l'estremo inferiore ($inf \in U$) e superiore ($sup\in U$) dell'intervallo, purché sia soddisfatta la seguente catena di disuguaglianze: $min \leq inf \leq sup \leq max$. L'insieme dei valori ammissibili risulta ovviamente $U_A = \lbrace u \in U : inf \leq u \leq sup \rbrace$. I casi d'uso includono:
+	Nel filtro ad intervallo l'insieme $U$ è ordinato e si caratterizza per un minimo $min \in U$ ed un massimo $max \in U$. L'utente è libero di selezionare l'estremo inferiore ($inf \in U$) e superiore ($sup\in U$) dell'intervallo, purché sia soddisfatta la seguente catena di disuguaglianze: $min \leq inf \leq sup \leq max$. L'insieme dei valori ammissibili risulta ovviamente $U_A = \lbrace u \in U : inf \leq u \leq sup \rbrace$. I casi d'uso annoverano:
 	\begin{itemize}
 		\item la selezione del valore minimo $inf$;
 		\item la selezione del valore massimo $sup$.
 		\item la selezione di un valore esatto ($inf = sup$).
 	\end{itemize}
 	\item[Ad interruttore] \hfill \\
-	Il filtro ad interruttore consente all'utente di scegliere se applicarlo o meno ai risultati di ricerca, permettendo di incapsulare al suo interno uno qualsiasi di quelli elencati e descritti in precedenza. I casi d'uso includono:
+	Il filtro ad interruttore consente all'utente di scegliere se applicare o meno ai risultati di ricerca il filtro corrispondente, che può essere di un tipo qualsiasi tra quelli elencati e descritti in precedenza. I casi d'uso prevedono:
 	\begin{itemize}
 		\item l'attivazione del filtro;
 		\item la disattivazione del filtro.
@@ -511,27 +511,144 @@ Tipo & & & \\ \hline
 \label{tab:tesi:stage:parametri-filtri-tipo}
 \end{table}
 
-\paragraph{Progettazione} La fase di progettazione deve distinguere per ogni classe di filtro:
-\begin{itemize}
-\item il componente grafico mediante il quale l'utente interagisce per regolarlo (\textit{view});
-\item il componente che incapsula la logica di controllo del filtro, gestendo l'interazione dell'utente (\textit{controller});
-\item il componente che incapsula le informazioni correnti associate al filtro;
-\item il componente che rappresenta il parametro generico.
-\end{itemize} 
+\paragraph{Progettazione} La fase di progettazione deve integrare nell'architettura \underline{MVC} della piattaforma le classi e i parametri dei filtri di ricerca:
+\begin{description}
+  \item[Model] \hfill \\
+  Ciascun tipo di filtro di ricerca è rappresentato dalla classe corrispondente nel package \textsf{model.filter}: \textsf{FList} (a lista di valori), \textsf{FRange} (ad intervallo), \textsf{FSwitch} (ad interruttore) ed \textsf{FValue} (a soglia di valore). Ciascuna di esse implementa un'interfaccia standard (\textsf{Filter}) per ridurre l'accoppiamento con le componenti del \textsc{controller} e facilitare l'estensibilità del sistema (aggiunta di nuovi tipi di filtri).
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics{placeholder.png}
+		\caption{Diagramma delle classi - Package \textit{model.filter}}
+		\label{fig:tesi:stage:design:model-filter-classi}
+	\end{center}
+\end{figure}
+
+  A parità di classe i parametri differiscono - dal punto di vista di un filtro - per le specifiche dell'insieme $U$, in particolare per la sorgente (statica o dinamica) ed il tipo (emozioni, intenzioni, etichette, \ldots) di dati gestiti: ciascuna classe riportata nella tabella \ref{tab:tesi:stage:parametri-filtri} rappresenta - a livello di tipo - il corrispondente parametro per il filtro di ricerca (il generico insieme $U$) mentre - a livello di istanze - ciascuno dei possibili valori ($u \in U$).
+
+	Per rendere le classi dei filtri polimorfe rispetto ai parametri, ossia per rendere i primi indipendenti dai secondi facilitando l'aggiunta, l'aggiornamento e la rimozione dei parametri stessi, si definisce una classe astratta (\textsf{model.Metadata}), che tutte le suddette classi devono estendere. Essa include un metodo astratto (\textsf{Metadata.getValueList}) da ridefinire per gestire opportunamente l'approvvigionamento dell'insieme dei valori $u \in U$, sia che si tratti di una lista statica (tipo, argomento, \ldots) o dinamica, ossia ricavata dai risultati di ricerca (autore, data di pubblicazione, \ldots): nel primo caso la lista di valori viene memorizzata nella classe come campo dati statico.
+
+	I filtri vengono quindi creati a partire da una lista di valori, istanze di una sottoclasse concreta di \textsf{model.Metadata}: per favorire il disaccoppiamento si introduce una collezione di classi (\textsf{model.criteria}), che incapsulano tali valori e li rendono accessibili mediante un'interfaccia standard adeguata alla specifica classe del filtro: \textsf{CList} (a lista di valori), \textsf{CRange} (ad intervallo) e \textsf{CValue} (a soglia di valore).
+
+	Questo ulteriore livello di indirezione permette di conseguire un altro obiettivo, ossia poter inizializzare un filtro ad interruttore con qualsiasi tipo di criterio, nascondendone le specifiche alle classi che ne gestiscono essenzialmente lo stato di attivazione (\textsf{FSwitch} e \textsf{FVSwitch}).  
+
+	Occorre garantire la corretta combinazione di istanze delle tre classi (v. tabella \ref{tab:tesi:stage:parametri-filtri-tipo}): la soluzione al problema consiste nell'applicazione del \underline{design pattern} \textit{Abstract Factory}, a garanzia di una corretta e consistente creazione dei filtri.
+
+	\item[View] \hfill \\
+	Ciascuna classe di filtro richiede un componente grafico differente, che metta a disposizione dell'utente gli strumenti e le opzioni adeguate per consentire un'interazione completa rispetto a quanto previsto dai rispettivi casi d'uso: \textsf{FVList} (a lista di valori), \textsf{FVRange} (ad intervallo), \textsf{FVSwitch} (ad interruttore) e \textsf{FVValue} (a soglia di valore). Le classi elencate implementano la medesima interfaccia (\textsf{ViewFilter}) e devono essere inizializzate con un oggetto di tipo \textsf{Filter}.
+
+	Occorre assicurare che il tipo dinamico di questo oggetto sia coerente e consistente rispetto al tipo di componente grafico che stiamo costruendo (v. tabella \ref{tab:tesi:stage:design:filter-factory}): per tale ragione il costruttore di ciascuna classe presa in esame richiede un argomento avente tipo statico corrispondente alla sottoclasse concreta di \textsf{Filter}, che rappresenta il filtro corrispondente.
+
+	In aggiunta si estende il \textit{design pattern} \textit{Abstract Factory} in modo da gestire in modo trasparente l'intero processo di creazione di un filtro a \textit{runtime}: il parametro, il filtro e il componente grafico.
+
+	\item[Controller] \hfill \\
+	Ciascun tipo di filtro prevede diverse modalità d'interazione, che richiedono di essere gestite mediante altrettante classi del \textit{package} \textsf{controller.filter}
+\end{description}
 
 Per indicare quali parametri specifici parametri siano compatibili con un certo generico, si definisce un'interfaccia da essi implementata e utilizzata come tipo base nei metodi di quest'ultimo componente.
 
 Resta inoltre da considerare che ciascun parametro specifico recupera le informazioni di inizializzazione (i valori di $U$) in modo diverso: una lista statica di classe o dinamica, basata su un'interrogazione ai risultati di ricerca: tale meccanismo dev'essere reso trasparente nell'interfaccia in questione.
 
 \paragraph{Abstract Factory}
-- pattern factory (2x model + view)
-- controller ???
+Il design pattern \textit{Abstract Factory} consente di nascondere i dettagli relativi alle classi istanziate durante il processo di creazione di un filtro, riepilogate nella tabella \ref{}.
+
+\begin{table}
+	\centering
+	\begin{tabular}{|l|c|c|c|c|c|}
+	\hline
+	 & \textsf{Metadata} & \textsf{Criterion} & \textsf{Filter} & \textsf{FilterController} & \textsf{FilterView} \\ \hline
+	\textit{Argomento}  & & & & & \\ \hline
+	\textit{Attinenza} & & & & & \\ \hline
+	\textit{Autore} & & & & & \\ \hline
+	\textit{Data di pub.} & & & & & \\ \hline
+	\textit{Emozioni} & & & & & \\ \hline
+	\textit{Giudizi} & & & & & \\ \hline
+	\textit{Intenzioni} & & & & & \\ \hline
+	\textit{Interessi} & & & & & \\ \hline
+	\textit{Tipo} & & & & & \\ \hline
+	\end{tabular}
+	\caption{Famiglie di prodotti}
+	\label{tab:tesi:stage:design:filter-factory}
+\end{table}
 
 \subsection{Navigazione dei contenuti}
-- discussione
+La componente di navigazione e consultazione dei risultati rappresenta un elemento cardine del sistema software poiché ha il compito di presentare all'utente i risultati di ricerca e le relative informazioni in modo chiaro e ordinato, a prescindere dal numero di contenuti e dalle specifiche del dispositivo utilizzato (dimensione, risoluzione dello schermo, modalità d'interazione, \ldots).
 
+Seguendo un approccio \textit{bottom-up} ci si focalizza innanzi tutto sulla rappresentazione di un contenuto informativo (proprietà, metadati, relazioni) e in seguito sulla progettazione dell'interfaccia, che li presenti all'utente in modo da facilitarne la fruizione.
+
+\paragraph{Contenuti}
+Ciascun contenuto presenta numerose informazioni sotto forma di proprietà o metadati, questi ultimi legati a criteri di classificazione o contestuali alla ricerca.
+
+Il primo passo consiste nel distinguere le informazioni \textsc{essenziali}, ossia utili o indispensabili all'identificazione e alla contestualizzazione di un contenuto, da quelle \textsc{aggiuntive} (o accessorie), che rappresentano un valore aggiunto a fronte di un particolare interesse dell'utente: le prime devono essere immediatamente e chiaramente riconoscibili e consultabili, mentre le seconde devono risultare nascoste ma facilmente accessibili.
+
+\begin{table}
+	\centering
+	\begin{tabular}{|l|c|}
+	\hline
+	\textsc{Proprietà essenziali} & \textsc{Proprietà aggiuntive} \\ \hline
+	Autore  & Argomento \\
+	Attinenza & Emozioni\\
+	Data di publicazione & Etichette \\
+	Tipo & Giudizi \\
+	Titolo & Intenzioni \\ \hline
+	\end{tabular}
+	\caption{Famiglie di prodotti}
+	\label{tab:tesi:stage:design:tipi-proprietà}
+\end{table}
+
+Ciò consente di rendere più efficiente lo sfruttamento dello spazio disponibile e di comunicare all'utente le sole informazioni rilevanti e utili per stabilire la pertinenza del contenuto: ove il contenuto soddisfi le aspettative dell'utente, suscitandone l'interesse, quest'ultimo può accedere e consultare le informazioni aggiuntive.
+
+Una volta distinte le informazioni in essenziali o aggiuntive occorre scegliere - per ciascuna di esse - la modalità di rappresentazione (grafica o testuale) più adatta per esprimerla e comunicarla all'utente, in modo da risultare intuitivamente comprensibile. Per soddisfare tali requisiti di qualità si fissano alcune linee guida:
+\begin{itemize}
+  \item mantenere un bilanciamento equilibrato tra informazioni testuali e grafiche, garantendo un adeguato livello di accessibilità (cite::WCAG);
+  \item utilizzare in modo limitato e non esclusivo il colore;
+  \item ricorrere a forme grafiche per esprimere informazioni quantitative o definite su un insieme limitato di valori, così da facilitare rispettivamente l'associazione tra la dimensione o il tipo di forma al corrispondente significato.
+\end{itemize}
+ 
+\begin{description}
+\item[Argomento] \hfill \\
+L'argomento di un contenuto è espresso sia in forma grafica, mediante l'uso del colore, sia testuale e viene collocato in posizione esterna rispetto alla forma per porre in risalto che si tratta di un'informazione aggiuntiva.
+\item[Autore] \hfill \\
+L'autore viene indicato in forma testuale.
+\item[Attinenza] \hfill \\
+Il grado di attinenza è espresso dalla dimensione direttamente proporzionale del componente grafico: in questo modo i contenuti maggiormente attinenti alla ricerca sono i primi a catturare l'attenzione dell'utente.
+\item[Data di pubblicazione] \hfill \\
+La data di pubblicazione è espressa in forma testuale.
+\item[Emozioni] \hfill \\
+Le emozioni associate ad un contenuto sono riportate in forma testuale.
+\item[Etichette] \hfill \\
+La lista delle entità assegnate al contenuto è riportata in forma testuale, con particolare evidenza e rilevanza visiva (ordine di apparizione, formato) e semantica per quelle corrispondenti ai termini di ricerca.
+\item[Giudizi] \hfill \\
+I giudizi espressi dagli altri utenti sono riportati in forma testuale.
+\item[Intenzioni] \hfill \\
+Le intenzioni associate ad un contenuto sono riportate in forma testuale.
+\item[Tipo] \hfill \\
+Il tipo di contenuto è identificato dalla forma del componente grafico: la scelta di impiegare forme elementari risponde alla primeva esigenza di renderli immediatamente riconoscibili e comprensibili da qualsiasi categoria di utenti. La scelta della forma associate a ciascun tipo si avvale di analisi sociologiche svolte da altri membri del team di progetto.
+\item[Titolo] \hfill \\
+Il titolo è riportato in forma testuale.
+\end{description}
+
+\paragraph{Classi di contenuti}
+Dal momento che la rappresentazione visiva di ciascuna classe di contenuti differisce essenzialmente per la forma elementare scelta, che a sua volta influenza il posizionamento ed il \textit{rendering} delle informazioni, si ritiene opportuno definire una gerarchia di classi ove:
+\begin{itemize}
+  \item la classe base (\textsf{ContentView}) rappresenta il componente grafico per un generico contenuto (incluse le relative informazioni associate, tra cui le reciproche relazioni);
+  \item le sottoclassi (\textsf{CVAnswer}, \textsf{CVEvent}, \ldots) identificano le possibili classi di un contenuto, a ciascuna delle quali è associata la specifica forma elementare e un insieme di regole per la visualizzazione delle informazioni.
+\end{itemize}
+Questa scelta progettuale intende facilitare l'aggiornamento delle specifiche di \textit{rendering} di una classe di contenuti (variazione della forma o dell'organizzazione delle informazioni) e ne facilita l'integrazione di sotitutive o aggiuntive.
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics{placeholder.png}
+		\caption{Diagramma delle classi - Package \textit{view.content}}
+		\label{fig:tesi:stage:design:view-content-classi}
+	\end{center}
+\end{figure}
+ 
+\paragraph{Cronologia}
+I risultati di una ricerca devono essere presentati secondo una struttura chiara ed ordinata, che ne agevoli la consultazione da parte dell'utente e che sia adeguatamente fruibile a prescindere dal numero di risultati o dal dispositivo utilizzato (risoluzione, dimensione dello schermo, modalità d'interazione, \ldots).
+
+%\paragraph{Discussione}
 \paragraph{UC.3 - Consultazione dei risultati di ricerca}
-
 La rilevanza di un contenuto informativo rispetto ai criteri di ricerca è infine determinata dal grado di corrispondenza rispetto alle entità cercate: maggiore è il numero di riscontri, maggiore sarà approssimativamente la rilevanza attribuita nel contesto della ricerca.
 
 Se $E_s$ è l'insieme delle etichette cercate e $E_c$ l'insieme delle etichette assegnate a ciascun contenuto si possono distinguere tre casi principali:
