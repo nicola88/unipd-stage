@@ -1,15 +1,16 @@
-This is BibTeX, Version 0.99d (TeX Live 2012/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2012)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: bozza.aux
 A level-1 auxiliary file: chapter/progetto.aux
 A level-1 auxiliary file: chapter/stage.aux
 A level-1 auxiliary file: chapter/conclusioni.aux
 A level-1 auxiliary file: appendix/glossario.aux
+A level-1 auxiliary file: appendix/interfaccia-grafica.aux
 The style file: plain.bst
 Database file #1: bibliografia.bib
 You've used 2 entries,
             2118 wiz_defined-function locations,
-            508 strings with 4254 characters,
+            509 strings with 4286 characters,
 and the built_in function-call counts, 434 in all, are:
 = -- 38
 > -- 14
