@@ -5,7 +5,7 @@
 \label{sec:tesi:progetto:genesi}
 L'idea della piattaforma \textit{Social (Life) Shuttle} nasce nel 2010 da un progetto concepito per dar vita ad una comunità virtuale destinata agli artisti sconosciuti e accessibile in mobilità mediante un'applicazione dedicata, \textit{ArtYR}.
 
-Nello stesso periodo una consulenza nell'ambito dei sistemi informativi territoriali ad un'azienda di Bolzano conduce allo sviluppo di un'innovativa piattaforma software: un sistema informativo territoriale in cui l'erogazione di informazioni turistiche è integrata con la vendita di servizi turistici.
+Nello stesso periodo una consulenza nell'ambito dei sistemi informativi territoriali ad un'azienda di Bolzano conduce allo sviluppo di un'innovativa piattaforma software: un sistema informativo territoriale in cui l'erogazione di informazioni turistiche è integrata con la vendita di servizi collegati.
 
 Il progetto evolve - grazie alla partecipazione di Comuni, Province e Regioni - in una rete tematica di agenzie di viaggio con un'identità comune e finalizzata alla fusione dei sistemi informativi distrettuali e di vendita.
 
@@ -21,13 +21,15 @@ L'architettura di \textit{Social (Life) Shuttle} trae profonda ispirazione, inte
 
 \section{Reti sociali}
 \label{sec:tesi:progetto:reti-sociali}
-Il modello sociologico di \underline{rete sociale} non ha attualmente riscontro presso le piattaforme web di condivisione dei contenuti (\textit{blog}, \textit{forum}, \ldots) o i \textit{social network} (Facebook, Twitter, \ldots), che si limitano a considerarne e concretizzarne singoli aspetti.
+Il modello sociologico di \underline{rete sociale} non ha attualmente riscontro presso le piattaforme web di condivisione dei contenuti (\textit{blog}, \textit{forum}, \ldots) o i \textit{social network} (\textit{Facebook}, \textit{Twitter}, \ldots), che si limitano a considerarne e concretizzarne singoli aspetti.
 
-Nelle moderne reti sociali è infatti assente l'incentivo alla condivisione e distribuzione della conoscenza, fattore cruciale per l'aggregazione fisica dei membri delle comunità, da intendersi a sua volta come aggregazioni formatesi intorno ed attraverso la manifestazione di interesse nei confronti di uno specifico tema di dialogo o discussione che attraversa la sfera individuale, intima e personale dei suoi membri.
+Nelle moderne reti sociali è infatti assente l'incentivo alla condivisione e distribuzione della conoscenza, fattore cruciale per l'aggregazione fisica dei membri delle comunità, da intendersi a sua volta come aggregazioni formatesi intorno ed attraverso la manifestazione di interesse nei confronti di uno specifico tema di dialogo o discussione, che attraversa la sfera individuale, intima e personale dei suoi membri.
 
-Il progetto \textit{Social (Life) Shuttle} rappresenta una nuova generazione di piattaforma di socializzazione, in cui il web diventa solamente un canale di condivisione e un serbatoio della conoscenza generata dalla dialettica tra persone e dove vengono integrati i canoni classici di \textit{blog}, \textit{forum}, \textit{social network} e \textit{media} .
+Il progetto \textit{Social (Life) Shuttle} rappresenta una nuova generazione di piattaforma di socializzazione, in cui il web diventa solamente un canale di condivisione e un serbatoio della conoscenza generata dalla dialettica tra persone e dove vengono integrati i canoni classici di \textit{blog}, \textit{forum}, \textit{social network} e \textit{media}.
 
-Una relazione sociale nata e costruita su un interesse comune stravolge l'attuale paradigma delle reti sociali virtuali, in cui il legame nasce a prescindere dalla presenza di interessi comuni o informazioni da condividere, e favorisce l'incontro tra persone aventi esperienze simili frutto di tali interessi condivisi. Ove l'esperienza riguardi anche beni o prodotti, la componente business intende offrire ai membri la possibilità di interagire con i produttori, anch'essi attori della comunità.
+Una relazione sociale nata e costruita su un interesse comune stravolge l'attuale paradigma delle reti sociali virtuali, in cui il legame nasce a prescindere dalla presenza di interessi comuni o informazioni da condividere, e favorisce l'incontro tra persone aventi esperienze simili frutto di tali interessi condivisi.
+
+Ove l'esperienza riguardi anche beni o prodotti, la componente \textit{business} intende offrire ai membri la possibilità di interagire con i produttori, anch'essi attori della comunità.
 
 L'architettura di \textit{Social (Life) Shuttle} consente di declinare la piattaforma in innumerevoli varianti, applicabili ai temi più svariati: al momento sono in fase di sperimentazione per il mondo del vino, il cibo biologico, l'arte commercializzabile e l'attività di ricerca e progettazione collaborativa. 
 
@@ -43,7 +45,7 @@ Tale piattaforma presenta numerose aspetti che la differenziano dalla concorrenz
 
 \begin{figure}[ht]
 	\begin{center}
-		\includegraphics{img/placeholder.png}
+		\includegraphics[width=6cm]{img/gerarchia-utenti.png}
 		\label{fig:tesi:progetto:gerarchia-utenti}
 		\caption{Gerarchia degli utenti nelle piattaforme web tradizionali}
 	\end{center}
@@ -56,7 +58,7 @@ Per quanto concerne le attività di stage, due aspetti della piattaforma assumon
 \label{sec:tesi:progetto:contenuti}
 I contenuti informativi rappresentano lo strumento essenziale per la condivisione delle esperienze e della conoscenza intorno al tema specifico della piattaforma.
 
-Per individuare le classi di contenuti adatte a esprimere in una forma strutturata le informazioni si è tratta ispirazione dalle forme espressive e comunicative tipiche della dialettica quotidiana, poiché risultano immediatamente e intuitivamente comprensibili agli utenti, a prescindere dal loro livello di esperienza.
+Per individuare le classi di contenuti adatte a esprimere in una forma strutturata le informazioni si è tratta ispirazione dalle forme espressive e comunicative tipiche della dialettica quotidiana, poiché immediatamente e intuitivamente comprensibili agli utenti, a prescindere dal loro livello di esperienza.
 
 In particolare, si distinguono la natura della comunicazione, connessa allo scopo e al tono con cui ci esprimiamo, e il formato delle informazioni, che dipendono strettamente dai sensi e dai canali di comunicazione a disposizione per scambiare informazioni con l'interlocutore, sia esso un individuo singolo o un gruppo.
 
@@ -68,9 +70,9 @@ La domanda classica rende particolarmente esplicito lo scopo della comunicazione
 \item[Risposta] \hfill \\
 Duale della domanda, la risposta è anch'essa in forma pubblica o privata per consentire all'utente di renderla accessibile e consultabile solo a certi utenti, spesso l'autore della domanda a cui risponde.
 \item[Pensierino] \hfill \\
-Il pensierino rappresenta una forma di comunicazione adatta ad esprimere un contenuto di lunghezza breve e con contenuti superficiali (considerazioni, stati d'animo, freddure, \ldots).
+Il pensierino rappresenta una forma di comunicazione adatta ad esprimere un contenuto di lunghezza breve e prevalentemente superficiale (considerazioni, stati d'animo, freddure, \ldots).
 \item[Evento] \hfill \\
-L'evento identifica e aiuta a promuovere qualsiasi iniziativa che rientri nell'ambito tematico della piattaforma e cui possano prender parte altre persone (incontro pubblico, concerto, fiera, \ldots).
+L'evento aiuta a promuovere qualsiasi iniziativa che rientri nell'ambito tematico della piattaforma e cui possano prender parte altre persone (incontro pubblico, concerto, fiera, \ldots).
 \item[Discorso] \hfill \\
 Il discorso identifica un contenuto articolato, sia nella forma sia nei contenuti, destinato alla condivisione di informazioni dettagliate e approfondite.
 \item[Recensione] \hfill \\
@@ -84,7 +86,7 @@ Ciascun tipo di contenuto esprime un intento comunicativo ben preciso, ma non è
 
 Ove la dialettica quotidiana dispone infatti di cinque sensi e può esprimersi in forma non solo verbale, nel web gli utenti sperimentano differenti forme di comunicazione: contenuti testuali e grafici, flussi audio e video, documenti elettronici, messaggistica istantanea, \ldots\ .
 
-I contenuti informativi non presentano dunque una struttura fissa a seconda della classe ma possono essere liberamente redatti a partire da una serie di elementi predefiniti, frutto di una ricerca tra le principali e più diffuse piattaforme web disponibili (\textit{blog}, \textit{forum}, \textit{social network}, \textit{chat}, \ldots) e di una successiva analisi e rielaborazione dei risultati ottenuti:
+I contenuti informativi non presentano dunque una struttura fissa a seconda della classe, ma possono essere liberamente redatti a partire da una serie di elementi predefiniti, frutto di una ricerca tra le principali e più diffuse piattaforme web disponibili (\textit{blog}, \textit{forum}, \textit{social network}, \textit{chat}, \ldots) e di una successiva analisi e rielaborazione dei risultati ottenuti:
 \begin{description}
 \item[Audio] \hfill \\
 Contenuto audio statico o in tempo reale (\textit{live streaming}, \ldots).
@@ -173,8 +175,8 @@ L'interfaccia grafica per la consultazione dei risultati di una ricerca sui cont
 	\item deve consentire all'utente di inserire dei termini di ricerca e selezionare un ambito;
 	\item deve potersi interfacciare a componenti terze per ottenere i risultati di ricerca;
 	\item deve mostrare i contenuti con forme geometriche elementari, che permettano di distinguerne intuitivamente la classe di appartenenza;
-	\item deve permettere la consultazione della discussione associata ad un contenuto, evidenziando il flusso informativo (le sequenze di risposte ad un contenuto):
-	\item dovrebbe gestire dei filtri basati sugli interessi ed il livello di esperienza di un utente registrato.
+	\item deve permettere la consultazione della \textsc{discussione} associata ad un contenuto, evidenziando il flusso informativo (le sequenze di risposte ad un contenuto);
+	\item dovrebbe gestire dei filtri basati sugli interessi ed il livello di esperienza di un utente registrato;
 	\item dev'essere in grado di visualizzare ordinatamente un numero elevato di risultati di ricerca, evitando un sovraccarico cognitivo;
 	\item dev'essere utilizzabile agevolmente da utenti con differenti livelli di esperienza;
 	\item dev'essere adeguatamente fruibile su dispositivi mobili.

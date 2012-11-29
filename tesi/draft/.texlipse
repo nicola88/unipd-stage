@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Tue Nov 27 12:54:20 CET 2012
+markTmpDer=true
+builderNum=2
+outputDir=
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=bozza.tex
+outputFile=bozza.pdf
+langSpell=it
+markDer=true
+srcDir=

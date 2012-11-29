@@ -53,6 +53,7 @@
 \pagestyle{scrheadings} %alternativa: headings%
 \frenchspacing
 \raggedbottom
+\renewcommand{\arraystretch}{1.5}
 %\renewcommand*{\bibname}{new name}
 %\setbibpreamble{}
 
@@ -67,13 +68,11 @@
 \include{matter/Contents}
 
 %********************************************************************
-% Parte 1
+% Contents
 %*******************************************************
 % use \cleardoublepage here to avoid problems with pdfbookmark
-%\ctparttext{Presentazione dei criteri di classificazione addizionali per la catalogazione ed il reperimento dei contenuti informativi pubblicati dagli utenti.}
-%\part{Sistema di classificazione}
 \include{chapters/progetto}
-\include{chapters/Chapter03}
+\include{chapters/stage}
 \include{chapters/Chapter04}
 
 % ********************************************************************
@@ -82,6 +81,9 @@
 \appendix
 %\part{Appendice}
 \include{chapters/glossario}
-\cleardoublepage\include{matter/Bibliography}
+%\cleardoublepage\include{matter/Bibliography}
 %\cleardoublepage\printindex
+\bibliographystyle{plain}
+\bibliography{bibliografia}
+
 \end{document}
