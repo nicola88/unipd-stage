@@ -1,8 +1,13 @@
-\begin{thebibliography}{0}
-\providecommand{\natexlab}[1]{#1}
-\providecommand{\url}[1]{\texttt{#1}}
-\expandafter\ifx\csname urlstyle\endcsname\relax
-  \providecommand{\doi}[1]{doi: #1}\else
-  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+\begin{thebibliography}{1}
+
+\bibitem{wiki:enciclopedia}
+Wikipedia.
+\newblock Enciclopedia - wikipedia{,} l'enciclopedia libera, 2012.
+\newblock [Online; in data 23-novembre-2012].
+
+\bibitem{wiki:disambigua}
+Wikipedia.
+\newblock The newsroom - wikipedia{,} l'enciclopedia libera, 2012.
+\newblock [Online; in data 23-novembre-2012].
 
 \end{thebibliography}
