@@ -1,0 +1,66 @@
+%************************************************
+\chapter{Valutazioni finali}
+\label{ch:tesi:conclusioni}
+%************************************************
+
+\section{Obiettivi}
+Nel corso dello stage sono state svolte due attività correlate, ma differenti in merito al tipo di impegno e di competenze richieste:
+\begin{enumerate}
+  \item lo sviluppo di un criterio di classificazione aggiuntivo per catalogare il sapere custodito nei contenuti pubblicati dagli utenti;
+  \item l'analisi e la progettazione di un'interfaccia grafica per la consultazione dei risultati di una ricerca sui contenuti informativi.
+\end{enumerate}
+
+La progettazione del criterio di classificazione ha richiesto inizialmente un'attività di ricerca riguardante lo stato dell'arte dei sistemi di classificazione attualmente adottati nelle principali piattaforme di condivisione di contenuti:
+\begin{itemize}
+  \item blog (\textit{Drupal}, \textit{Wordpress});
+  \item forum;
+  \item social network (\textit{Facebook}, \textit{Twitter}).
+\end{itemize}
+
+I risultati di questa analisi hanno consentito di conoscere i principali meccanismi di catalogazione delle informazioni, di evidenziarne le principali analogie e differenze e di coglierne i punti di forza e di debolezza. A partire da queste informazioni ho inteso affrontare lo sviluppo di un criterio di classificazione, che riuscisse a coniugarne - nella soluzione più semplice e adatta alla piattaforma \textit{Social (Life) Shuttle} - gli aspetti essenziali, riuscendo al contempo a superarne i limiti evidenziati.
+
+I principali dubbi e criticità sono emersi all'atto di valutare l'interazione dell'utente in particolari scenari e casi d'uso: sebbene il criterio di classificazione risolva i problemi legati alle ambiguità sintattiche e semantiche, occorre considerare che la distinzione tra sintassi e semantica comporta la necessità di individuare esplicitamente le relazioni tra entità del dominio ed etichette del dizionario, al fine di garantire la consistenza e coerenza del criterio stesso, ogni qualvolta si definisce una nuova entità, si crea una nuova etichetta o si aggiunge un'accezione ad un'etichetta esistente.
+
+In tali frangenti occorre individuare meccanismi che siano in grado di fornire aiuto e assistenza agli utenti nel processo di individuazione di tali legami o provvedere ad effettuare un controllo a posteriori finalizzato ad assicurare - con il miglior margine possibile - la consistenza del dizionario e del dominio, la correttezza o l'assenza dei suddetti legami tra entità ed etichette.
+
+Un esempio emblematico riguarda l'individuazione dell'entità associata ad una nuova etichetta, utilizzata per la prima volta da un utente: in certi casi, ad esempio con i nomi propri, possono esistere molteplici varianti (nomi d'arte, soprannomi, \ldots) che differiscono sul piano sintattico, a volte marginalmente e a volte sensibilmente, e occorre individuare la correlazione esistente sul piano semantico.
+
+Data la natura complessa del problema, queste criticità sono state raccolte e segnalate ai restanti membri del team e saranno oggetto di indagini da parte di persone qualificate. Nell'attesa si è ritenuto di dotare ogni declinazione della piattaforma di un dominio degli argomenti principali e di un dizionario delle espressioni più comuni, in modo da garantire una solida base rispetto alla quale catalogare e classificare le informazioni presenti nei contenuti pubblicati.  
+
+La fase di analisi dei requisiti ha invece approfondito le modalità d'interazione dell'utente generico con il sistema a partire dai requisiti essenziali illustrati nella sezione \ref{sec:tesi:progetto:requisiti:interfaccia-grafica}, riuscendo ad individuare requisiti impliciti e caratteristiche funzionali inizialmente non preventivate.
+
+La decisione, presa di comune accordo con il referente aziendale, di demandare la valutazione delle tecnologie di sviluppo al momento in cui le specifiche della piattaforma e le esigenze tecniche dell'interfaccia grafica fossero più stabili e definite, ha richiesto uno sforzo aggiuntivo di astrazione per quanto concerne la progettazione della soluzione, ma al contempo ha rappresentato uno spunto di riflessione per comprendere con maggior chiarezza il ruolo e l'identità della fase stessa nel ciclo di vita del software.
+
+Nell'ambito dell'agnosticismo tecnologico, le attività si sono focalizzate sull'architettura e sulla presentazione dell'interfaccia grafica, fornendo ove possibile e utile delle linee guida o delle specifiche dettagliate riguardo approcci risolutivi (\textit{design pattern}) o componenti di particolare interesse o rilevanza per il progetto, al fine di chiarire l'impianto progettuale.
+
+Le soluzioni concepite hanno comunque tenuto conto delle esigenze di adattabilità a cambiamenti ed evoluzioni del sistema, incluse l'estensione o integrazione di funzionalità esistenti.
+
+\section{Competenze professionali}
+Le attività di stage si inseriscono nell'ambito di un percorso di collaborazione con l'azienda \textit{Sintesi Sas}, iniziato in occasione dell'iniziativa \textit{Mimprendo} promossa da \textit{Confindustria Padova}, che mi ha permesso di seguire il percorso evolutivo del progetto \textit{Social (Life) Shuttle} sin dagli albori ed ha rappresentato un'opportunità di crescita professionale molto rilevante.
+
+Sin dalle attività precedenti ma particolarmente nel corso dello stage ho potuto apprezzare gli enormi benefici - in termini di competenze professionali acquisite - derivanti dall'operare all'interno di un progetto segnato da un forte carattere multidisciplinare: il team di progetto include infatti figure provenienti da svariati settori professionali (psicologia, sociologia, marketing, economia, informatica, ingegneria, \ldots), che collaborano attivamente e a stretto contatto integrando le reciproche conoscenze e competenze.
+
+Nel corso dell'attività di stage ho avuto occasione di confrontarmi con queste figure, da cui ho appreso informazioni che mi hanno consentito di svolgere le attività previste nel modo migliore e che mi hanno fatto comprendere come il successo di un progetto non possa in alcun modo prescindere dal contributo di competenze professionali diversificate.
+
+L'analisi, la progettazione e lo sviluppo della piattaforma \textit{Social (Life) Shuttle} non si limitano a considerare i soli aspetti tecnici o tecnologici nella concezione e nella valutazione delle soluzioni da adottare nell'intero ciclo di vita del software, ma cercano di comprendere ed interpretare le esigenze degli utenti e le dinamiche sociali. In questa piattaforma di socializzazione e di condivisione della conoscenza la tecnologia è diventata non il fine, bensì il mezzo attraverso il quale si cerca di concretizzare un certo tipo di esperienza (virtuale e non).
+
+Durante la fase di integrazione del criterio di classificazione nel modello relazionale della piattaforma le competenze acquisite in ambito universitario mi hanno permesso di individuare soluzioni semplici ma efficaci, che sono state accolte e giudicate positivamente dal team di progetto. Le principali difficoltà incontrate hanno riguardato l'integrazione della propria soluzione nel modello relazionale esistente in maniera coerente e collaborativa, essendo diverse persone impegnate, seppur su fronti diversi, alla modifica e all'aggiornamento dello stesso.
+
+Le attività previste per la seconda fase dello stage sono state caratterizzate solo in minima parte da attività di ricerca, integrata in molti aspetti da indagini di carattere sociologico svolte da altri membri del team di progetto.
+
+Queste, seppur preliminari, hanno rappresentato un contributo cruciale nel processo di identificazione e comprensione delle esigenze di utenti con profili esperienziali diversificati e di valutazione delle scelte progettuali effettuate.
+
+La maggior parte del tempo a disposizione è stato speso per svolgere un'accurata analisi dei requisiti, che ha permesso di delineare dettagliatamente i casi d'uso degli utenti e individuare alcuni requisiti fondamentali: in questa fase si è rivelata decisiva, per lo svolgimento delle attività secondo le scadenze previste dal piano di lavoro, un'organizzazione e una metodologia acquisiti e maturati durante la carriera universitaria.
+
+La documentazione prodotta, in particolare, è stata giudicata assai favorevolmente per la completezza e l'organicità con cui sono stati presentati e illustrati in dettaglio i risultati del lavoro svolto nell'arco delle varie settimane.
+
+\section{Stage e università}
+Sebbene la formazione universitaria mi abbia consentito di superare piuttosto agevolmente le sfide e le difficoltà incontrate lungo il percorso di stage, grazie alle conoscenze e alle metodologie di lavoro acquisite, il principale fattore di novità riscontrato nell'ambito del progetto \textit{Social (Life) Shuttle} è rappresentato dal taglio fortemente multidisciplinare, che obbliga a rivedere un modello di pensiero ed una \textit{forma mentis} principalmente focalizzate sull'aspetto tecnico e tecnologico del prodotto.
+
+Sin dalle prime comunicazioni con il referente aziendale, mi è risultato chiaro come l'attitudine a pensare in termini multidisciplinari fosse necessaria per comprendere lo spirito e gli obiettivi del progetto: maturato nel corso dei mesi, grazie al dialogo e alla collaborazione con gli altri membri del team di progetto, tale approccio ha rappresentato un elemento cruciale per integrarsi con successo nel progetto e comprenderne a fondo le reali esigenze ed il genuino spirito.
+
+Durante l'attività di stage, si sono rivelati fondamentali per il conseguimento degli obiettivi fissati un approccio sistematico e organizzato alle fasi di analisi e progettazione dell'interfaccia grafica, frutto degli insegnamenti impartiti nel corso di \textit{Ingegneria del Software} e dell'esperienza maturata durante l'attività di progetto collegata.
+
+A riguardo, l'esperienza di stage mi ha consentito di rivalutare il ruolo decisivo svolto da attività in precedenza considerate di minor rilevanza, come la pianificazione accurata delle attività e la documentazione dei risultati ottenuti: in diversi frangenti la redazione stessa della documentazione mi ha consentito di rilevare incongruenze, criticità o aspetti non sufficientemente approfonditi, permettendomi così di apportare tempestivamente correttivi e miglioramenti.
+
+La varietà di tecnologie, linguaggi e prodotti con cui mi sono misurato durante l'intera esperienza nell'ambito del progetto \textit{Social (Life) Shuttle} ha rafforzato via via la convinzione che le competenze metodologiche e la \textit{forma mentis} rivestano un ruolo decisamente più rilevante rispetto alla conoscenza di linguaggi o tecnologie e meritino di essere affrontate sin dai primi corsi di laurea per stimolare un approccio organizzato e multidisciplinare al lavoro.
