@@ -397,3 +397,207 @@ A seguito di alcune osservazioni si decide di adottare la soluzione della tabell
 \end{itemize}
 
 Il soddisfacimento delle condizioni richieste viene raggiunto eliminando qualsiasi riferimento al tipo dell'accezione nella classe \textsf{accezioni} e modellando direttamente la relazione uno-a-uno tra le entità e le relative etichette primarie mediante un vincolo referenziale di chiave esterna nella classe \textsf{entita} (\textsf{entita.etichetta}), che identifica la corrispondente etichetta primaria (\textsf{etichette.valore}). Così facendo si riescono ad esprimere tutti i vincoli referenziali senza la necessità di definire le sottoclassi.
+
+%--------
+% SECTION
+%--------
+\section{Filtri di ricerca}
+\label{sec:tesi:stage:gui:filtri}
+
+\subsection{Introduzione}
+La seconda fase dell'attività di stage consiste nell'analisi e nella progettazione di un'interfaccia grafica per la consultazione dei risultati di una ricerca sui contenuti informativi, che sfrutti il criterio di classificazione definito in precedenza e permetta all'utente di:
+\begin{enumerate}
+	\item impostare i parametri iniziali di ricerca (parole chiave, ambito);
+	\item modificare la lista delle entità cercate mediante sostituzione o eliminazione;
+	\item filtrare i risultati di ricerca in accordo a criteri di classificazione o proprietà dei contenuti;
+	\item consultare - in forma grafica o testuale - le proprietà fondamentali, i metadati di classificazione e i legami tra i contenuti;
+	\item mostrare la \textsc{discussione} associata ad un contenuto informativo;
+	\item impostare i filtri personalizzati (solo per utenti autenticati).
+\end{enumerate}
+
+Nella fase di progettazione dell'interfaccia grafica devono essere tenuti in debita considerazione alcuni requisiti di qualità desiderabili:
+\begin{itemize}
+  \item deve risultare intuitiva e facilmente utilizzabile da qualsiasi categoria di utenti, a prescindere dal livello di esperienza e dalla familiarità con piattaforme web esistenti (\textit{chat}, \textit{forum}, \textit{social network}, \ldots);
+  \item dev'essere fruibile dal maggior numero possibile di dispositivi (\textit{computer}, \textit{tablet}, \textit{smartphone}, \ldots), ciascuno secondo le peculiari modalità di interazione;
+  \item deve rappresentare in maniera ordinata ed efficace le informazioni, a prescindere dal numero di contenuti caricati.
+\end{itemize}
+
+\subsection{Parametri}
+La progettazione dei filtri di ricerca richiede innanzi tutto di scegliere i criteri di classificazione e le proprietà dei contenuti informativi (di seguito \textsc{parametri}) utilizzabili in combinazione ad un filtro.
+
+Il requisito obbligatorio consiste nell'essere definiti su un insieme $U$ di possibili valori $u \in U$, ciascuno dei quali - in un dato istante - dev'essere ammissibile ($u \in U_A$) o bloccato ($u \in U_B$). Deve quindi valere in ogni istante che $U_A \cap U_B = \emptyset$ e $U_A \cup U_B = U$.
+
+Inizialmente tutti i valori relativi ad un certo parametro sono ammessi, ossia $U_A = U$ e $U_B = \emptyset$: l'azione dell'utente altera tale suddivisione dell'insieme $U$ bloccando un valore, autorizzandolo o azzerando il filtro, ossia rendendo ammissibili tutti i valori ($U_A = U$).
+
+\paragraph{Soddisfacibilità}
+Un contenuto informativo, incluso tra i risultati di ricerca, viene quindi visualizzato se e solo se il valore di ciascun parametro soddisfa il filtro associato.
+
+A seconda che i contenuti assumano - per un dato parametro - un singolo valore (autore, data di pubblicazione, \ldots) o una lista (emozioni, etichette, intenzioni, \ldots), il filtro è soddisfatto se e solo se:
+\begin{itemize}
+\item il valore assunto è ammissibile (valore singolo);
+\item almeno uno dei valori assunti è ammissibile (valori multipli).
+\end{itemize}
+
+Al termine dell'analisi viene redatta una lista completa dei parametri soddisfacenti il requisito iniziale, visibile nella tabella \ref{tab:tesi:stage:parametri-filtri} (tra parentesi si riporta il nome della classe corrispondente, ove disponibile).\footnote{Il termine \textsc{etichette} riportato nella tabella designa in seguito il criterio di classificazione illustrato nella sezione \ref{sec:tesi:stage:criterio-classificazione}. L'espressione \textit{Data di pub.} è un'abbreviazione usata di seguito per indicare la data di pubblicazione.}
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textsc{Proprietà} & \textsc{Criteri di classificazione} \\ \hline
+Autore (\textsf{User}) & Argomento (\textsf{Topic})\\
+Data di pub. (\textsf{Date}) & Emozioni (\textsf{Emotion}) \\
+Tipo (\textsf{Type}) & Etichette (\textsf{Entity}) \\
+Giudizi (\textsf{Rating}) & Interessi (\textsf{Interest}) \\
+& Intenzioni (\textsf{Intention}) \\ \hline
+\end{tabular}
+\caption{Lista dei parametri per i filtri di ricerca}
+\label{tab:tesi:stage:parametri-filtri}
+\end{table}
+
+\subsection{Classi di filtri}
+Per identificare i requisiti e i casi d'uso correlati ai filtri di ricerca risulta conveniente classificarli in relazione a:
+\begin{itemize}
+  \item la natura dell'insieme $U$ (ordinato, finito, \ldots);
+  \item le modalità d'interazione dell'utente (selezione di un intervallo, impostazione di una soglia, \ldots), che determinano i sottoinsiemi $U_A$ e $U_B$.
+\end{itemize}
+
+L'analisi si conclude con l'individuazione di quattro classi di filtri di ricerca, illustrate di seguito.
+
+\paragraph{A lista di valori}
+Il filtro a lista di valori consente di autorizzare o bloccare selettivamente ciascun elemento $u \in U$. I casi d'uso includono:
+\begin{itemize}
+	\item la consultazione della lista dei valori ammessi ($U_A$);
+	\item la consultazione della lista dei valori bloccati ($U_B$);
+	\item l'autorizzazione di un valore;
+	\item il blocco di un valore;
+	\item l'azzeramento del filtro ($U_A = U$ e $U_B = \emptyset$).
+\end{itemize}
+	
+\paragraph{A soglia di valore}
+Nel filtro a soglia di valore l'insieme $U$ è ordinato e contiene un elemento minimo $min \in U$ ed uno massimo $max \in U$.
+
+L'utente può scegliere arbitrariamente un valore $x$, purché soddisfi la condizione $min \leq x \leq max$. L'insieme dei valori ammissibili risulta così definito: $U_A = \lbrace u : u \geq x, u \in U\rbrace$.
+
+\paragraph{Ad intervallo}
+Nel filtro ad intervallo l'insieme $U$ è ordinato e contiene un elemento minimo $min \in U$ ed uno massimo $max \in U$.
+
+L'utente può liberamente selezionare l'estremo inferiore ($inf \in U$) e superiore ($sup\in U$) dell'intervallo, purché sia soddisfatta la seguente catena di disuguaglianze: $min \leq inf \leq sup \leq max$.
+
+L'insieme dei valori ammissibili risulta ovviamente $U_A = \lbrace u \in U : inf \leq u \leq sup \rbrace$.
+
+I casi d'uso annoverano:
+\begin{itemize}
+	\item la selezione del valore minimo $inf$;
+	\item la selezione del valore massimo $sup$.
+	\item la selezione di un valore esatto ($inf = sup$).
+\end{itemize}
+
+\paragraph{Ad interruttore}
+Il filtro ad interruttore consente all'utente di scegliere se applicare o meno ai risultati di ricerca il filtro corrispondente, che può essere di un tipo qualsiasi tra quelli descritti in precedenza.
+
+I casi d'uso prevedono solamente:
+\begin{itemize}
+	\item l'attivazione del filtro;
+	\item la disattivazione del filtro.
+\end{itemize}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textsc{Lista di valori} & \textsc{Soglia di valore} & \textsc{Intervallo} & \textsc{Interruttore}\\ \hline
+Autore & Giudizi & Data di pub. & Interessi \\
+Argomento & & & \\
+Emozioni & & & \\
+Etichette & & & \\
+Intenzioni & & & \\
+Tipo & & & \\ \hline
+\end{tabular}
+\caption{Elenco dei parametri per i filtri di ricerca, suddivisi per tipo.}
+\label{tab:tesi:stage:parametri-filtri-tipo}
+\end{table}
+	
+\subsection{Progettazione}
+La fase di progettazione deve integrare nell'architettura \underline{MVC} della piattaforma le classi e i parametri dei filtri di ricerca; il risultato finale è mostrato nella tabella \ref{tab:tesi:stage:design:filter-factory}.
+
+\paragraph{Model}
+ Ciascun tipo di filtro di ricerca è rappresentato dalla classe corrispondente (v. figura \ref{fig:tesi:stage:design:model-filter-classi}), che implementa un'interfaccia standard (\textsf{Filter}) per ridurre l'accoppiamento con le altre componenti e facilitare l'estendibilità del sistema (aggiunta di nuovi tipi di filtri, \ldots):
+  \begin{itemize}
+    \item \textsf{FList} (a lista di valori);
+    \item \textsf{FRange} (ad intervallo);
+    \item \textsf{FSwitch} (ad interruttore);
+    \item \textsf{FValue} (a soglia di valore).
+  \end{itemize}
+  
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[width=12cm]{img/model_filter.png}
+		\caption{Diagramma delle classi per il package \textit{model.filter}}
+		\label{fig:tesi:stage:design:model-filter-classi}
+	\end{center}
+\end{figure}
+
+  A parità di classe del filtro, i parametri differiscono per le specifiche dell'insieme $U$, in particolare per la \textsc{sorgente} (statica o dinamica) ed il \textsc{tipo} (emozioni, intenzioni, etichette, \ldots) di dati gestiti.
+  
+  Ciascuna classe riportata nella tabella \ref{tab:tesi:stage:parametri-filtri} rappresenta - a livello di tipo - il corrispondente parametro (un generico insieme $U$) mentre - a livello di istanze - ciascuno dei possibili valori ($u \in U$).
+
+Per rendere le classi dei filtri polimorfe rispetto ai parametri, ossia per facilitare l'aggiunta, l'aggiornamento e la rimozione di questi ultimi, si definisce una classe astratta (\textsf{Metadata}), che tutte le suddette classi devono estendere. Essa include un metodo astratto (\textsf{getValueList}) da ridefinire per gestire opportunamente l'approvvigionamento dell'insieme dei valori $u \in U$, sia che si tratti di una lista statica (tipo, argomento, \ldots) o dinamica (autore, data di pubblicazione, \ldots), ossia ricavata dai risultati di ricerca. Nel primo caso la lista di valori può essere memorizzata direttamente in un campo dati statico della classe.
+
+I filtri vengono quindi creati a partire da una lista di valori, collezione di istanze di una sottoclasse concreta di \textsf{Metadata}: per favorire il disaccoppiamento si introducono alcune classi aggiuntive (v. figura \ref{fig:tesi:stage:design:model-criteria-classi}), che incapsulano tali valori e li rendono accessibili mediante un'interfaccia standard:
+\begin{itemize}
+  \item \textsf{CList} (criterio a lista di valori);
+  \item \textsf{CRange} (criterio ad intervallo);
+  \item \textsf{CValue} (criterio a soglia di valore).
+\end{itemize}
+
+Questa soluzione offre la possibilità di inizializzare un filtro ad interruttore con qualsiasi tipo di criterio, nascondendone così le specifiche alle classi che ne gestiscono solamente lo stato di attivazione (\textsf{FSwitch} e \textsf{FVSwitch}).
+	
+\begin{figure}[ht]
+\begin{center}
+	\includegraphics[width=12cm]{img/model_criteria.png}
+	\caption{Diagramma delle classi per il package \textit{model.criteria}}
+	\label{fig:tesi:stage:design:model-criteria-classi}
+\end{center}
+\end{figure}
+
+\paragraph{View}
+	Ciascun tipo di filtro richiede un componente grafico differente, che metta a disposizione dell'utente gli strumenti e le opzioni adeguate per consentire un'interazione coerente rispetto a quanto previsto dai rispettivi casi d'uso:
+	\begin{itemize}
+	  \item \textsf{FVList} (filtro a lista di valori);
+	  \item \textsf{FVRange} (filtro ad intervallo);
+	  \item \textsf{FVSwitch} (filtro ad interruttore);
+	  \item \textsf{FVValue} (filtro a soglia di valore).
+	\end{itemize}
+Ciascuna classe implementa un'interfaccia standard (\textsf{ViewFilter}) e viene istanziata con un corrispondente oggetto di tipo \textsf{Filter}. Per assicurare che il tipo dinamico dell'oggetto sia coerente rispetto al tipo statico del componente grafico (v. tabella \ref{tab:tesi:stage:design:filter-factory}) il costruttore di ciascuna classe considerata si aspetta un argomento avente tipo statico corrispondente alla sottoclasse concreta di \textsf{Filter}, che modella il filtro corrispondente.
+
+\begin{figure}[ht]
+\begin{center}
+	\includegraphics[width=8cm]{img/view_filter.png}
+	\caption{Diagramma delle classi per il package \textit{view.filter}}
+	\label{fig:tesi:stage:design:view-filter-classi}
+\end{center}
+\end{figure}
+
+\paragraph{Controller}
+Ciascun tipo di filtro prevede diverse modalità d'interazione, che richiedono di essere gestite mediante altrettante classi del \textsf{controller}
+
+\paragraph{Abstract Factory}
+Per assicurare la corretta combinazione di istanze delle classi (v. tabella \ref{tab:tesi:stage:design:filter-factory}) si ricorre al \textit{design pattern} \textit{Abstract Factory}, a cui sono note le corrette combinazioni di oggetti da utilizzare e che permette così di nascondere i dettagli relativi alle classi effettivamente istanziate durante il processo di creazione di un filtro.
+
+\begin{table}
+	\centering
+	\begin{tabular}{|l|c|c|c|c|c|}
+	\hline
+	 & \textsf{Metadata} & \textsf{Criterion} & \textsf{Filter} & \textsf{FilterController} & \textsf{FilterView} \\ \hline
+	Argomento & \textsf{Topic} & \textsf{CList} & \textsf{FList} & \textsf{FCList} & \textsf{FVList} \\ \hline
+	Autore & \textsf{User} & \textsf{CList} & \textsf{FList} & \textsf{FCList} & \textsf{FVList} \\ \hline
+	Data di pub. & \textsf{Date} & \textsf{CRange} & \textsf{FRange} & \textsf{FCRange}& \textsf{FVRange} \\ \hline
+	Emozioni & \textsf{Emotion} & \textsf{CList} & \textsf{FList} & \textsf{FCList} & \textsf{FVList} \\ \hline
+	Giudizi & \textsf{Rating} & \textsf{CValue} & \textsf{FValue} & \textsf{FCValue} & \textsf{FVValue} \\ \hline
+	Intenzioni & \textsf{Intention} & \textsf{CList} & \textsf{FList} & \textsf{FCList} & \textsf{FVList} \\ \hline
+	Interessi & \textsf{Interest} & \textsf{CList} & \textsf{FSwitch} & \textsf{FCSwitch} & \textsf{FVSwitch} \\ \hline
+	Tipo & \textsf{Type} & \textsf{CList} & \textsf{FList} & \textsf{FCList} & \textsf{FVList} \\ \hline
+	\end{tabular}
+	\caption{Riepilogo delle classi gestite dall \textit{design patter} \textit{Abstract Factory}}
+	\label{tab:tesi:stage:design:filter-factory}
+\end{table}
