@@ -744,3 +744,32 @@ Infine occorre fornire agli utenti gli strumenti e le opzioni di navigazione tem
 		\label{fig:tesi:stage:design:timeline}
 	\end{center}
 \end{figure}
+
+\subsection{Risultati}
+L'esito delle attività è stato nel complesso soddisfacente: gli obiettivi fissati sono stati raggiunti e tutti i vincoli o requisiti espressi dal committente sono stati esauditi.
+
+La progettazione del criterio di classificazione si è conclusa con il raggiugimento degli obiettivi ed il soddisfacimento dei requisiti illustrati nella sezione \ref{sec:tesi:progetto:requisiti:criterio-classificazione}: in particolare l'indipendenza da altri criteri di classificazione o dalle classi di contenuti (si veda l'immagine \ref{fig:tesi:stage:er:modello}).
+
+La soluzione individuata consente infatti di preservare la totale indipendenza del criterio aggiuntivo rispetto a quelli esistenti e definisce le proprietà o relazioni necessarie alla classificazione delle informazioni sul generico contenuto (si veda l'immagine \ref{fig:tesi:stage:er:modello}, garantendo la possibilità di catalogare il sapere disponibile in modo autonomo e indipendente rispetto alla forma comunicativa impiegata per condividerlo, ossia la classe del contenuto informativo e i tipi di media impiegati (v. sezione \ref{sec:tesi:progetto:contenuti}).
+
+La semplicità del criterio di classificazione e la sua implementabilità a livello di \underline{DBMS}, in termini di proprietà, vincoli e logica, dovrebbero inoltre favorire in futuro l'automatizzazione (parzialo o totale) dei processi di catalogazione e classificazione del sapere (l'assegnazione automatica delle entità ai contenuti, l'individuazione dele entità associabili ad una nuova eticetta, l'individuazione di legami di affinità o correlazioni tra i contenuti informativi, \ldots) e l'integrazione con componenti software terze, che a vario titolo e in qualsiasi forma siano interessate o necessitino di accedere alle informazioni in questione.
+
+Il criterio aggiuntivo beneficia in taluni frangenti, in particolare nella mitigazione del problema dell'ambiguità semantica, della natura tematica della piattaforma, ma nel contempo offre un meccanismo di classificazione particolarmente astratto e flessibile, in grado di adattarsi perfettamente alle varianti tematiche in cui possa essere declinata e anche ad eventuali evoluzioni future.
+
+Il problema dell'ambiguità sintattica viene invece risolto distinguendo le etichette - dal punto di vista dell'entità - in primarie e secondarie: associare a ciascuna entità del dominio un'etichetta, che la identifica sul piano sintattico e linguistico e la rende univocamente e consistentemente riconoscibile nella piattaforma, consente di garantire agli utenti la libertà di cercarla e riferirla con il termine o l'espressione preferito, contribuendo a loro volta ad arricchire il dizionario interno della piattaforma, senza dover scendere a gravi compromessi in termini di efficienza del criterio di classificazione stesso.
+
+L'ambiguità semantica presenta il sostanziale inconveniente di rendere la relazione tra entità ed etichette di tipo molti-a-molti: nella progettazione del diagramma relazionale si è tuttavia riusciti a conciliare tale molteplicità con le esigenze dettate dall'ambiguità semantica.
+
+Le singole specifiche del criterio di classificazione sono globalmente riconducibili alla cruciale distinzione tra sintassi (le etichette) e semantica (le entità), che pur presentando alcuni aspetti problematici, consente di definire in maniera logica e naturale la relazione tra entità e contenuti, che stabilisce un legame forte e diretto con l'informazione stessa (ciò di cui si parla) piuttosto che la forma linguistica con cui questa viene identificata.
+
+La progettazione dell'interfaccia grafica si è conclusa anch'essa con il soddisfacimento dei requisiti fissati dal committente ed illustrati nella sezione \ref{sec:tesi:progetto:requisiti:interfaccia-grafica}, oltre a quelli emersi durante la fase di analisi dei requisiti.
+
+Tra i problemi progettuali ad aver ricevuto maggiore attenzione, si annovera la gestione dei filtri di ricerca in virtù delle esigenze di l'espandibilità, come ad esempio l'aggiunta, l'aggiornamento o la rimozione dei criteri stessi di classificazione.
+
+Il nodo della soluzione consiste nell'individuazione di alcune tipologie standard di filtri, caratterizzate da principi e meccanismi di funzionamento similari e sostanzialmente indipendenti dal tipo effettivo dei valori gestiti. Ciascuna classe di filtri si differenza per la natura dell'insieme $U$ dei valori su cui è definita (ordinato, finito, \ldots) e dalle modalità d'interazione dell'utente. % (v. casi d'uso)
+
+L'indipendenza tra il tipo di filtro e il parametro su cui opera incrementa sostanzialmente la riusabilità e la manutenibilità del codice, potendo definire una sola volta ciascun tipo di filtro e istanziarlo di volta in volta (a \textit{runtime}) con il parametro opportuno, che fornisce l'insieme specifico dei valori su cui il filtro stesso andrà ad agire.   
+
+Il corretto funzionamento del meccanismo si basa sulla coerenza tra la natura dell'insieme $U$ attesa dal filtro e l'insieme di valori forniti dal parametro: per garantire la soddisfazione del vincolo si adotta un approccio basato sul \textit{design pattern} \textit{Abstract Factory}, che consente di garantire una corretta istanziazione delle componenti. Ove possibile si ricorre ad alcuni ulteriori accorgimenti, come la definizione di costruttori con parametri aventi tipo statico corrispondente alla specifica classe con cui possono essere combinati.
+
+La navigazione cronologica dei contenuti, la loro rappresentazione visiva mediante forme elementari e la scelta di forme espressive (grafiche o testuali) adeguate ed accessibili per comunicare le informazioni essenziali contribuiscono a soddisfare infine i requisiti di qualità connessi alla facilità d'uso da parte di qualsiasi categoria di utenti, alla fruibilità sulla maggior parte di dispositivi mobili e alla capacità di rappresentare le informazioni in maniera ordinata e chiaramente leggibile, a prescindere dal numero di risultati di ricerca.
