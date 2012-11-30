@@ -807,3 +807,38 @@ Infine occorre fornire agli utenti gli strumenti e le opzioni di navigazione tem
 		\label{fig:tesi:stage:design:timeline}
 	\end{center}
 \end{figure}
+
+\section{Risultati}
+L'esito delle attività è stato nel complesso soddisfacente: gli obiettivi fissati sono stati raggiunti e tutti i vincoli o requisiti espressi dal committente sono stati esauditi.
+
+La progettazione del criterio di classificazione si è conclusa con il soddisfacimento dei requisiti illustrati nella sezione \ref{sec:tesi:progetto:requisiti:criterio-classificazione}, in particolare l'indipendenza da altri criteri di classificazione e dalle classi di contenuti (v. figura \ref{fig:tesi:stage:er:modello}).
+
+La soluzione individuata consente infatti di preservare la totale indipendenza del criterio aggiuntivo rispetto a quelli esistenti e definisce le proprietà o relazioni necessarie alla classificazione delle informazioni sul generico contenuto (v. figura \ref{fig:tesi:stage:er:modello}), garantendo così la possibilità di catalogare il sapere disponibile in modo autonomo e indipendente rispetto alla forma comunicativa impiegata per condividerlo (v. sezione \ref{sec:tesi:progetto:contenuti}).
+
+La semplicità del criterio di classificazione e la sua implementabilità a livello di \underline{DBMS} (in termini di proprietà, vincoli e logica) dovrebbero inoltre favorire in futuro:
+\begin{itemize}
+  \item l'automatizzazione (parziale o totale) dei processi di catalogazione e classificazione del sapere (l'assegnazione automatica delle entità ai contenuti, l'individuazione delle entità associabili ad una nuova etichetta, l'individuazione di legami di affinità o correlazioni tra i contenuti informativi, \ldots);
+  \item l'integrazione con componenti software terze, che a vario titolo e in qualsiasi forma siano interessate o necessitino di accedere alle informazioni di classificazione. 
+\end{itemize}
+
+Il criterio aggiuntivo beneficia in taluni frangenti, in particolare nella mitigazione del fenomeno dell'ambiguità semantica, della natura tematica della piattaforma, offrendo nel contempo un meccanismo di classificazione astratto e flessibile, in grado di adattarsi agevolmente alle varianti tematiche in cui possa essere declinata la piattaforma e anche a sue future evoluzioni.
+
+Il problema dell'ambiguità sintattica viene invece risolto distinguendo le etichette - dal punto di vista dell'entità - in primarie e secondarie. Associare a ciascuna entità del dominio un'etichetta, che la identifica sul piano sintattico e linguistico e la rende univocamente e consistentemente riconoscibile nella piattaforma, garantisce agli utenti la libertà di cercarla e riferirla con il termine o l'espressione preferito, contribuendo all'arricchimento del dizionario interno, senza tuttavia dover scendere a gravi compromessi in termini di efficienza del criterio di classificazione stesso.
+
+L'ambiguità semantica presenta il sostanziale inconveniente di rendere la relazione tra entità ed etichette di tipo molti-a-molti: nella progettazione del diagramma relazionale si è tuttavia riusciti a conciliare tale molteplicità con i requisiti da essa imposti.
+
+Le singole specifiche del criterio di classificazione sono globalmente riconducibili alla cruciale distinzione tra sintassi (le etichette) e semantica (le entità), che, pur presentando alcuni aspetti problematici, consente di definire in maniera logica e naturale la relazione tra entità e contenuti, stabilendo un legame forte e diretto con l'informazione stessa (ciò di cui si parla) piuttosto che con la forma linguistica con cui viene identificata.
+
+La progettazione dell'interfaccia grafica si è conclusa anch'essa con il soddisfacimento dei requisiti fissati dal committente ed illustrati nella sezione \ref{sec:tesi:progetto:requisiti:interfaccia-grafica}, oltre a quelli emersi durante la fase di analisi dei requisiti.
+
+Tra i problemi progettuali che hanno ricevuto maggiore attenzione, si annovera la gestione dei filtri di ricerca, che ha tenuto in debita considerazione le esigenze di espandibilità (aggiunta, aggiornamento o rimozione di criteri di classificazione).
+
+Il nodo della soluzione consiste nell'individuazione di alcune tipologie standard di filtri, caratterizzate da principi e meccanismi di funzionamento similari e sostanzialmente indipendenti dal tipo effettivo dei valori gestiti. Ciò che le differenzia è la natura dell'insieme $U$ dei valori su cui sono definite (ordinato, finito, \ldots) e le modalità d'interazione dell'utente.
+
+L'indipendenza tra il tipo di filtro e il parametro su cui opera incrementa sostanzialmente la riusabilità e la manutenibilità del codice, potendo definire una sola volta ciascun tipo di filtro e istanziarlo un numero arbitrario (a \textit{runtime}) con i parametri opportuni, che forniscono l'insieme specifico dei valori su cui il filtro stesso agisce.   
+
+Il corretto funzionamento del meccanismo si basa sulla coerenza tra la natura dell'insieme $U$ attesa dal filtro e l'insieme di valori forniti dal parametro. Per garantire la soddisfazione del vincolo si adotta un approccio basato sul \textit{design pattern} \textit{Abstract Factory}, che consente di garantire una corretta istanziazione delle componenti.
+
+Ove possibile si ricorre ad alcuni ulteriori accorgimenti, come la definizione di costruttori con parametri aventi tipo statico corrispondente alla specifica classe con cui devono essere inizializzati.
+
+La navigazione cronologica dei contenuti, la loro rappresentazione visiva mediante forme elementari e la scelta di forme espressive (grafiche o testuali) adeguate per comunicare le informazioni contribuiscono a soddisfare infine i requisiti di qualità connessi alla facilità d'uso da parte di qualsiasi categoria di utenti, alla fruibilità sulla maggior parte di dispositivi mobili e alla capacità di rappresentare le informazioni in maniera ordinata e chiaramente leggibile, a prescindere dal numero di risultati di ricerca.
