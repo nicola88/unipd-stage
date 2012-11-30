@@ -601,3 +601,76 @@ Per assicurare la corretta combinazione di istanze delle classi (v. tabella \ref
 	\caption{Riepilogo delle classi gestite dall \textit{design patter} \textit{Abstract Factory}}
 	\label{tab:tesi:stage:design:filter-factory}
 \end{table}
+
+\section{Risultati di ricerca}
+\label{sec:tesi:stage:gui:risultati}
+I risultati di una ricerca sono un insieme $S$ di contenuti informativi, all'interno del quale si individua un sottoinsieme $S_v \subseteq S$ formato da tutti e soli quelli visualizzati, che soddisfano tutti i filtri di ricerca.
+
+\subsection{Visualizzazione}
+Per stabilire se un contenuto debba essere visualizzato ($s \in U_s$) occorre associargli dei metadati, che permettano di asserire se soddisfi tutti i filtri e - a fronte dell'interazione dell'utente con questi - di aggiornare conseguentemente il sottoinsieme $S_v$.
+
+Si individuano due possibili esempi di soluzione: 
+\begin{enumerate}
+  \item un \textsc{contatore}, che tenga traccia del numero di filtri soddisfatti in un dato istante;\footnote{Un contenuto viene visualizzato se e solo se il valore del contatore coincide con il numero di filtri.}
+  \item un \textsc{array} di valori booleani, ciascuno dei quali esprima il soddisfacimento rispetto ad un singolo filtro;\footnote{Un contenuto viene visualizzato se e solo se tutti gli elementi sono veri.}.
+\end{enumerate}
+
+\subsection{Aggiornamento}
+L'aggiornamento di un filtro da parte dell'utente presenta due principali fattori di differenziazione:
+\begin{itemize}
+\item la variazione di $S_v$, che esprime una diminuzione o un aumento dell'insieme dei valori ammissibili;
+\item la classe del filtro, che determina l'esatta natura della condizione da verificare per asserire se un contenuto lo soddisfi.
+\end{itemize}
+
+A seconda della variazione di $S_v$, per stabilire quali contenuti debbano essere visualizzati occorre:
+\begin{itemize}
+  \item se $\Delta \left|S_v\right|<0$, individuare gli elementi $s \in S_v$ che non soddisfino la nuova condizione e spostarli in $S$;
+  \item se $\Delta \left|S_v\right|>0$, individuare gli elementi $s \in S$ che soddisfino il filtro corrente e spostare in $S_v$ quelli che li soddisfano tutti.
+\end{itemize}
+
+La soluzione del contatore richiede, nel primo caso, un decremento unitario del valore corrispondente per tutti e soli gli elementi che non soddisfino il filtro, sapendo che la precondizione $s \in S_v$ implica il soddisfacimento di tutti i filtri, incluso quello corrente.
+
+Nel secondo caso, invece, emerge un limite legato alla necessità di verificare il soddisfacimento del filtro nella condizione precedente e successiva all'aggiornamento dello stesso, non potendo stabilire sulla base del semplice valore del contatore se il filtro in questione fosse tra quelli soddisfatti o meno.
+
+Viceversa, la soluzione basata su un array di valori booleani offre un controllo granulare, che consente di controllare solamente la post-condizione, ma nel secondo caso emerge una complessità proporzionale al numero di filtri e dovuta all'esigenza di verificare che ciascuno di essi sia soddisfatto.
+
+\subsection{Interazione}
+Ciascuna classe di filtri prevede diverse modalità d'interazione per alterare l'insieme dei valori ammissibili $S_v$.
+
+\paragraph{A lista di valori}
+\begin{itemize}
+  \item Autorizzare un valore;
+  \item bloccare un valore.
+\end{itemize}
+
+\paragraph{A soglia di valore}
+\begin{itemize}
+  \item Aumentare il valore di soglia;
+  \item diminuire il valore di soglia.
+\end{itemize}
+
+\paragraph{Ad intervallo}
+\begin{itemize}
+  \item Aumentare il limite inferiore ($inf$);
+  \item diminuire il limite inferiore ($inf$);
+  \item aumentare il limite superiore ($sup$);
+  \item diminuire il limite superiore ($sup$).
+\end{itemize}
+
+\paragraph{Ad interruttore}
+\begin{itemize}
+  \item Attivare il filtro;
+  \item disattivare il filtro.
+\end{itemize}
+
+\pagebreak
+\paragraph{Progettazione}
+La soluzione consigliata per modellare tale scenario si basa sul \textit{design pattern} \textit{Command} e consente di:
+\begin{itemize}
+  \item incapsulare le singole richieste di aggiornamento in oggetti di tipo \textsf{FilterUpdate};
+  \item gestire le richieste concorrenti mediante una coda \linebreak(\textsf{FilterUpdateQueue});
+  \item processare serialmente le richieste grazie ad un \textit{dispatcher}\linebreak (\textsf{FilterUpdateDispatcher});
+  \item aggiungere nuovi comandi a fronte della definizione di nuovi tipi di filtri (\textsf{Filter}).
+\end{itemize}
+
+Si conclude definendo un'opportuna gerarchia di classi \textsf{FilterUpdate}, che incapsulano la logica di controllo e le informazioni necessarie per aggiornare l'insieme $S_v$ a fronte della variazione di un filtro a causa di una specifica modalità d'interazione, tra quelle elencate in precedenza.
