@@ -169,7 +169,7 @@ Il patrimonio di conoscenza della piattaforma è garantito essenzialmente dai co
 
 \begin{figure}[ht]
 \begin{center}
- \includegraphics[width=6cm]{img/valore-informativo-contenuto.png}
+ \includegraphics[width=7cm]{img/valore-informativo-contenuto.png}
  \caption{Valore informativo di un contenuto}
  \label{fig:tesi:stage:classificazione:serbatoio-contenuti}
 \end{center}
@@ -203,7 +203,7 @@ L'insieme delle entità definite - in un certo istante - all'interno della piatt
 
 \begin{figure}[ht]
 	\begin{center}
-		\includegraphics[width=6cm]{img/relazioni-entita.png}
+		\includegraphics[width=7cm]{img/relazioni-entita.png}
 		\label{fig:tesi:stage:fase-uno:entita-relazioni}
 		\caption{Relazioni tra le entità del dominio}
 	\end{center}
@@ -215,7 +215,7 @@ Ciò si traduce nel modello relazionale con un vincolo referenziale di tipo molt
 \begin{itemize}
 \item ciascun nodo rappresenta un entità;
 \item ciascun arco uscente identifica un'\textsc{entità riferita};
-\item ciascun arco uscente identifica un'\textsc{entità referente}.
+\item ciascun arco entrante identifica un'\textsc{entità referente}.
 \end{itemize}
 
 \paragraph{Etichette}
@@ -231,7 +231,7 @@ Nel linguaggio comune, è possibile riferirsi ad una certa entità ($d_i$) con t
 
 \begin{figure}[ht]
 	\begin{center}
-		\includegraphics{img/ambiguita-sintattica.png}
+		\includegraphics[width=7cm]{img/ambiguita-sintattica.png}
 		\label{fig:tesi:stage:fase-uno:ambiguita-sintattica}
 		\caption{Ambiguità sintattica di un'entità}
 	\end{center}
@@ -242,7 +242,7 @@ Il criterio di classificazione è dunque chiamato a conciliare la possibilità p
 \paragraph{Sinonimi}
 La gestione dei sinonimi di un'entità rappresenta un aspetto cruciale, poiché scegliere tra i possibili sinonimi un'etichetta arbitraria con cui identificare un'entità ed ignorare i rimanenti, pur semplificando il modello, costringerebbe gli utenti a conoscere e ad utilizzare solo quell'etichetta, imponendo una scelta del tutto arbitraria e - in quanto tale - fortemente soggettiva.
 
-Per facilitare la ricerca di un'entità è opportuno includere e conservare nel dizionario tutte le etichette note o utilizzate dagli utenti, così da rendere il sistema sempre più accurato nell'individuare e riconoscere l'entità cui un utente fa riferimento quando utilizza una certa etichetta. Con il passare del tempo, il numero dei sinonimi di ciascuna entità è destinato a crescere grazie al contributo degli utenti, garantendo così una migliore copertura sintattica.
+Per facilitare la ricerca di un'entità è opportuno includere e conservare nel dizionario tutte le etichette note o utilizzate dagli utenti, così da rendere il sistema sempre più accurato nell'individuare e riconoscere l'entità cui un utente fa riferimento ogni qualvolta utilizza una certa etichetta. Con il passare del tempo, il numero dei sinonimi di ciascuna entità è destinato a crescere grazie al contributo degli utenti, garantendo così una migliore copertura sintattica.
 
 La proliferazione di sinonimi, ossia etichette equivalenti sul piano semantico ma sintatticamente differenti, rischia tuttavia di avere pesanti ripercussioni sull'efficacia del criterio di classificazione e particolarmente sull'efficienza della ricerca: se ai contenuti vengono assegnate delle etichette, reperire tutte e sole le informazioni inerenti una certa entità richiederebbe infatti di cercare riscontri nei contenuti pubblicati per ogni etichetta con cui possa venir riferita.
 
@@ -279,7 +279,7 @@ Così facendo si introducono tuttavia alcuni vincoli aggiuntivi sulla relazione,
 
 \begin{figure}[ht]
 	\begin{center}
-		\includegraphics{img/etichette-primarie-secondarie.png}
+		\includegraphics[width=7cm]{img/etichette-primarie-secondarie.png}
 		\label{fig:tesi:stage:fase-uno:entita-sintassi-semantica}
 		\caption{Etichetta primaria e secondarie}
 	\end{center}
@@ -295,13 +295,24 @@ Riprendendo il modello dell'enciclopedia, si osserva come ciascuna etichetta $e_
 
 \begin{figure}[ht]
 	\begin{center}
-		\includegraphics{img/placeholder.png}
-		\caption{Accezioni di un'etichetta (+ modello relazionale)}
+		\includegraphics[width=10.5cm]{img/ambiguita-semantica.png}
+		\caption{Accezioni di un'etichetta}
 		\label{fig:tesi:stage:fase-uno:etichette-accezioni}
 	\end{center}
 \end{figure}
 
 Sebbene la natura tematica della piattaforma tenda a mitigare la presenza di etichette aventi accezioni multiple, tale eventualità non può essere esclusa e dev'essere dunque opportunamente gestita.
+
+Occorre innanzi tutto rivedere la relazione uno-a-molti tra entità ed etichette, che diventa di tipo molti-a-molti e per cui vale la proprietà illustrata di seguito.
+
+Siano $a_{j,k}$ e $a_{j,k'}$ accezioni distinte di un'etichetta $e_j$ e sia definita la funzione
+\begin{equation}
+f(a_{j,k}): A_j \rightarrow D
+\end{equation}
+che restituisce l'entità $d_i$ riferita dall'accezione $a_{j,k}$. Allora
+\begin{equation}
+a_{j,k} \neq a_{j,k'} \implies f(a_{j,k}) \neq f(a_{j,k'})
+\end{equation}
 
 \begin{figure}[ht]
 	\begin{center}
@@ -311,34 +322,22 @@ Sebbene la natura tematica della piattaforma tenda a mitigare la presenza di eti
 	\end{center}
 \end{figure}
 
-Occorre innanzi tutto rivedere la relazione uno-a-molti tra entità ed etichette, che diventa di tipo molti-a-molti e per cui vale la proprietà illustrata di seguito.
-
-\begin{quotation}
-Siano $a_{j,k}$ e $a_{j,k'}$ accezioni distinte di un'etichetta $e_j$ e sia definita la funzione
+L'equazione \ref{eq:tesi:stage:etichette-per-entità} conserva la propria validità, mentre la \ref{eq:tesi:stage:dizionario} dev'essere modificata per riflettere la differente molteplicità della suddetta relazione, ossia che ciascuna etichetta riferisce una o più entità:
 \begin{equation}
-f(a_{j,k}): A_j \rightarrow D
-\end{equation}
-che restituisce l'entità $d_i$ riferita dall'accezione $a_{j,k}$. Allora
-\begin{equation}
-a_{j,k} \neq a_{j,k'} \implies f(a_{j,k}) \neq f(a_{j,k'})
-\end{equation}
-\end{quotation}
-
-L'equazione \ref{eq:tesi:stage:etichette-per-entità} conserva la propria validità, mentre la \ref{eq:tesi:stage:dizionario} dev'essere modificata per riflettere la differente molteplicità della suddetta relazione, ossia il fatto che ciascuna etichetta possa riferire una o più entità:
-\begin{equation}
-	\sum{\left|E_i\right|} = \sum{\left|B_i\right|} = \left|A\right| =	\sum{\left|A_j\right|} \geq \left|E\right| \:
-	\footnote{La prima uguaglianza esprime una banale identità tra le etichette di un'entità e  e le accezioni corrispondenti; la seconda discende dal fatto che $P' = {B_1,B_2,\ldots}$ rappresenta una partizione di $A$ rispetto alle entità, mentre la successiva uguaglianza si deduce analogamente dal fatto che $P''={A_1, A_2, \ldots}$ è anch'essa partizione di $A$ (rispetto alle etichette); l'ultima disuguaglianza si deduce osservando che $\forall j \left|A_j\right| \geq 1$, ossia per ciascuna etichetta del dizionario esiste almeno un'accezione.}
+	\sum{\left|E_i\right|} = \sum{\left|B_i\right|} = \left|A\right| =	\sum{\left|A_j\right|} \geq \left|E\right|
 \end{equation}
 
-Si registrano inoltre rilevanti ripercussioni in merito alla distinzione tra etichette primarie e secondarie. A ciascuna entità continuano ad essere associate una e una sola etichetta primaria, oltre ad un numero arbitrario (anche nullo) di etichette secondarie: ove ciascuna etichetta può riferirsi a diverse entità, tale distinzione varia a seconda dell'accezione considerata, poiché la medesima etichetta può essere primaria rispetto ad un entità e secondaria rispetto ad un'altra.
+%La prima uguaglianza esprime una banale identità tra le etichette di un'entità e  e le accezioni corrispondenti; la seconda discende dal fatto che $P' = {B_1,B_2,\ldots}$ rappresenta una partizione di $A$ rispetto alle entità, mentre la successiva uguaglianza si deduce analogamente dal fatto che $P''={A_1, A_2, \ldots}$ è anch'essa partizione di $A$ (rispetto alle etichette); l'ultima disuguaglianza si deduce osservando che $\forall j \left|A_j\right| \geq 1$, ossia per ciascuna etichetta del dizionario esiste almeno un'accezione.
 
-Per preservare i suddetti vincoli sulle relazioni tra etichette ed entità, si classificano le accezioni in \textsc{chiave} ($a_{j,0}$) o \textsc{sinonimiche} ($a_{j,1},\ldots,a_{j,\left|A_j\right|}$), a seconda che l'etichetta risulti rispettivamente primaria o secondaria per l'entità corrispondente. In questo modo si riesce a trasferire tale distinzione dalle etichette alle accezioni, preservando la percezione della relazione dal punto di vista dell'entità.
+A ciascuna entità continuano ad essere associate una e una sola etichetta primaria e un numero arbitrario (anche nullo) di etichette secondarie. Ove ciascuna etichetta può riferirsi a diverse entità, tale distinzione varia a seconda dell'accezione considerata, poiché la medesima etichetta può essere primaria rispetto ad un entità e secondaria rispetto ad un'altra.
+
+Per preservare i suddetti vincoli sulle relazioni tra etichette ed entità, si classificano le accezioni in \textsc{chiave} ($a_{j,0}$) o \textsc{sinonimiche} ($a_{j,1},\ldots$), a seconda che l'etichetta risulti rispettivamente primaria o secondaria per l'entità corrispondente. In questo modo si riesce a trasferire tale distinzione dalle etichette alle accezioni, preservando la percezione della relazione dal punto di vista dell'entità.
 
 \begin{figure}[ht]
 	\begin{center}
-		\includegraphics{img/placeholder.png}
+		\includegraphics[width=10.5cm]{img/accezioni-chiave-sinonimiche.png}
 		\caption{Accezioni chiave e sinonimiche}
-		\label{fig:tesi:stage:classificazione:entita-etichette}
+		\label{fig:tesi:stage:fase-uno:accezioni-chiave-sinonimiche}
 	\end{center}
 \end{figure}
 
@@ -349,14 +348,14 @@ A risentire maggiormente dell'esistenza delle accezioni è il processo di ricerc
 \begin{figure}[ht]
 	\begin{center}
 		\includegraphics[width=12cm]{img/modello-er.png}
-		\caption{Modello relazione del criterio di classificazione}
+		\caption{Modello relazionale del criterio di classificazione}
 		\label{fig:tesi:stage:er:modello}
 	\end{center}
 \end{figure}
 
 Al termine della fase progettuale, si rende necessario modificare il modello relazionale della piattaforma per integrare le informazioni addizionali legate al nuovo criterio di classificazione.
 
-Rispetto all'immagine \ref{fig:tesi:stage:er:modello}, la sola tabella \textsf{contenuti} risulta importata dal modello relazionale della piattaforma per evidenziare alcune relazioni fondamentali. Le rimanenti sono organizzate in tre \textit{layer} (\textsf{contenuti}, \textsf{semantica} e \textsf{sintassi}) per chiarirne il ruolo all'interno del sistema di classificazione.
+Rispetto all'immagine \ref{fig:tesi:stage:er:modello}, la sola tabella \textsf{contenuti} risulta importata dal modello relazionale della piattaforma per evidenziare alcuni vincoli fondamentali. Le rimanenti sono organizzate in tre \textit{layer} (\textsf{contenuti}, \textsf{semantica} e \textsf{sintassi}) per chiarirne il ruolo all'interno del sistema di classificazione.
 
 \paragraph{Etichette}
 Le etichette sono rappresentate mediante la tabella \textsf{etichette} e sono identificate univocamente dalla stringa associata, che rappresenta l'attributo \textsf{etichette.valore}. Tale scelta risponde alla naturale identificazione dell'etichetta nella sequenza di caratteri corrispondente, costituisce una garanzia contro la presenza di duplicati e consente di recuperare il valore dell'etichetta primaria di un'entità senza dover effettuare un'operazione di \textit{join} tra le tabelle \textsf{entita} ed \textsf{etichette}.
@@ -364,9 +363,9 @@ Le etichette sono rappresentate mediante la tabella \textsf{etichette} e sono id
 \paragraph{Accezioni}
 Le accezioni rappresentano un legame univoco tra le etichette e le entità e possono essere di tipo chiave o sinonimico. Esse non presentano attributi propri significativi, ma prevedono tre vincoli referenziali:
 \begin{enumerate}
-\item a ciascuna entità è associata una e una sola \textsc{accezione chiave} (relazione uno-a-uno), che identifica l'etichetta primaria;
-\item a ciascuna entità sono associate $0\ldots n$ \textsc{accezioni sinonimiche} (relazione uno-a-molti), che rappresentano i sinonimi dell'etichetta primaria;
-\item ciascuna etichetta possiede $0\ldots n$ \textsc{accezioni} (relazione uno-a-molti).
+\item a ciascuna entità è associata una e una sola accezione chiave (relazione uno-a-uno), che ne identifica l'etichetta primaria;
+\item a ciascuna entità sono associate $0\ldots n$ accezioni sinonimiche (relazione uno-a-molti), che rappresentano i sinonimi dell'etichetta primaria;
+\item ciascuna etichetta possiede $0\ldots n$ accezioni (relazione uno-a-molti).
 \end{enumerate}
 
 \begin{figure}[ht]
@@ -377,7 +376,7 @@ Le accezioni rappresentano un legame univoco tra le etichette e le entità e pos
 	\end{center}
 \end{figure}
 
-Ne consegue che sia la superclasse (\textsf{accezioni}) sia le sottoclassi (\textsf{accezioni\textunderscore chiave} e \textsf{accezioni\textunderscore sinonimiche}) presentano dei vincoli referenziali; in particolare, la presenza delle prime due relazioni costringe a distinguere - dal punto di vista dell'entità - tra accezioni chiave e sinonimiche.
+Ne consegue che sia la superclasse (\textsf{accezioni}) sia le sottoclassi \linebreak(\textsf{accezioni\textunderscore chiave} e \textsf{accezioni\textunderscore sinonimiche}) presentano dei vincoli referenziali; in particolare, la presenza delle prime due relazioni costringe a distinguere - dal punto di vista dell'entità - tra accezioni chiave e sinonimiche.
 
 Per modellare tale scenario vengono presi in considerazione tre possibili approcci:
 \begin{description}
@@ -389,6 +388,7 @@ Il partizionamento orizzontale riesce a modellare i vincoli referenziali delle s
 Il partizionamento verticale consente di modellare correttamente tutti e tre i vincoli referenziali, relativi sia alla superclasse sia alle sottoclassi. Tuttavia si rende più complesso modificare il tipo di un'accezione e si introduce l'esigenza di un'operazione \textit{join} per recuperare la lista completa delle accezioni, pur non possedendo le sottoclassi attributi propri.
 \end{description}
 
+\pagebreak
 A seguito di alcune osservazioni si decide di adottare la soluzione della tabella unica:
 \begin{itemize}
 \item la distinzione tra etichette chiave e sinonimiche ha rilevanza essenzialmente dal punto di vista della classe \textsf{entita};
@@ -396,4 +396,4 @@ A seguito di alcune osservazioni si decide di adottare la soluzione della tabell
 \item le sottoclassi non hanno attributi propri, per cui il partizionamento verticale e orizzontale sono ritenute soluzioni inadeguate.
 \end{itemize}
 
-Il soddisfacimento delle condizioni richieste viene raggiunto eliminando qualsiasi riferimento al tipo dell'accezione nella classe \textsf{accezioni} e modellando direttamente la relazione uno-a-uno tra le entità e le relative etichette primarie mediante una vincolo referenziale di chiave esterna nella classe \textsf{entita}, ossia \textsf{entita.etichetta}, che identifica la corrispondente etichetta primaria nella tabella \textsf{etichette}. Così facendo si riescono ad esprimere tutti i vincoli referenziali senza dover definire le sottoclassi.
+Il soddisfacimento delle condizioni richieste viene raggiunto eliminando qualsiasi riferimento al tipo dell'accezione nella classe \textsf{accezioni} e modellando direttamente la relazione uno-a-uno tra le entità e le relative etichette primarie mediante un vincolo referenziale di chiave esterna nella classe \textsf{entita} (\textsf{entita.etichetta}), che identifica la corrispondente etichetta primaria (\textsf{etichette.valore}). Così facendo si riescono ad esprimere tutti i vincoli referenziali senza la necessità di definire le sottoclassi.

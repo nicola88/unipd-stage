@@ -8,9 +8,6 @@ Nel corso dello stage sono state svolte due attività correlate, ma differenti i
   \item l'analisi e la progettazione di un'interfaccia grafica per la consultazione dei risultati di una ricerca sui contenuti informativi.
 \end{enumerate}
 
-L'esito delle attività è stato nel complesso soddisfacente: gli obiettivi fissati sono stati raggiunti e tutti i vincoli o requisiti voluti dal committente sono stati esauditi.
-
-\subsection{Criterio di classificazione}
 La progettazione del criterio di classificazione ha richiesto nella fase iniziale dello stage un'attività di ricerca riguardante lo stato dell'arte dei sistemi di classificazione attualmente adottati nelle principali piattaforme di condivisione di contenuti:
 \begin{itemize}
   \item blog (\textit{Drupal}, \textit{Wordpress});
@@ -20,14 +17,21 @@ La progettazione del criterio di classificazione ha richiesto nella fase inizial
 
 I risultati di questa analisi hanno consentito di conoscere i principali meccanismi di catalogazione delle informazioni, di evidenziarne le principali analogie e differenze e di coglierne i punti di forza e di debolezza: a partire da queste informazioni ho inteso affrontare lo sviluppo di un criterio di classificazione, che riuscisse a coniugare - nella soluzione più semplice e adatta alla piattaforma \textit{Social (Life) Shuttle} - gli aspetti essenziali riuscendo al contempo a superarne i limiti evidenziati.
 
-La progettazione del criterio di classificazione è riuscita a soddisfare i requisiti indicati nella sezione \ref{sec:tesi:progetto:requisiti:criterio-classificazione}, in particolare l'indipendenza da altri criteri di classificazione o dalle classi di contenuti (si veda l'immagine \ref{fig:tesi:stage:er:modello}). Sono state inoltre compiute delle valutazioni preliminari in merito alla possibilità di automatizzare la gestione del criterio di classificazione, ad esempio nell'assegnazione automatica delle entità ai contenuti o nell'individuazione di legami o correlazioni tra i contenuti informativi.
+I principali dubbi e criticità sono emersi al momento di valutare l'interazione dell'utente in particolari scenari e casi d'uso: sebbene il criterio di classificazione risolva i problemi legati alle ambiguità sintattiche e semantiche, occorre considerare che la distinzione tra sintassi e semantica comporta la necessità di inviduare esplicitamente le relazioni tra entità del dominio ed etichette del dizionario, al fine di garantire la consistenza e coerenza del criterio stesso, ogni qualvota si definisce una nuova entità, si crea una nuova etichetta o si aggiunge un'accezione ad un'etichetta esistente.
 
-\subsection{Interfaccia grafica}
-La fase di analisi dei requisiti ha approfondito le modalità d'interazione dell'utente generico con il sistema a partire dai requisiti essenziali illustrati nella sezione \ref{sec:tesi:progetto:requisiti:interfaccia-grafica}, riuscendo ad individuare requisiti impliciti e caratteristiche funzionali inizialmente non preventivate. 
+In tali frangenti occorre individuare meccanismi che siano in grado di fornire aiuto e assistenza agli utenti nel processo di individuazione di tali legami o provvedere ad effettuare un controllo a posteriori finalizzato ad assicurare - con il miglior margine possibile - la consistenza del dizionario e del dominio, la correttezza o l'assenza dei suddetti legami tra entità ed etichette.
 
-La decisione, presa di comune accordo con il referente aziendale, di demandare la valutazione delle tecnologie di sviluppo al momento in cui le specifiche della piattaforma e le esigenze tecniche dell'interfaccia fossero più stabili e definite ha richiesto uno sforzo aggiuntivo di astrazione per quanto concerne la progettazione della soluzione, ma al contempo ha rappresentato uno spunto di riflessione per comprendere con maggior chiarezza il ruolo e l'identità della fase stessa di progettazione nel ciclo di vita del software.
+Un esempio emblematico riguarda l'individuazione dell'entità associata ad una nuova etichetta utilizzata da un utente: in certi casi, ad esempio con i nomi propri, possono esistere molteplici varianti, inclusi nomi d'arte o soprannomi generici che differiscono a volte marginalmente a volte sensibilmente sul piano sintattico, e occore individuare la correlazione esistente sul piano semantico.
 
-Per tale ragione le attività si sono focalizzate sull'architettura e sulla presentazione dell'interfaccia grafica, fornendo alcune linee guida dettagliate in merito a specifiche componenti di particolare interesse o rilevanza per il progetto, ed è stato possibile - in assenza di vincoli tecnologici - concepire soluzioni specifiche in grado di adattarsi più facilmente ad eventuali cambiamenti ed evoluzioni del sistema, inclusa l'estensione o integrazione di funzionalità esistenti.
+Data la natura complessa del problema, queste criticità sono state raccolte e segnalate ai restanti membri del team e saranno oggetto di indagini da parte di persone qualificate. Nell'attesa si intende dotare ogni declinazione della piattaforma di un dizionario delle espressioni e un dominio degli argomenti principali, in modo da fornire una solida base rispetto alla quale catalogare e classificare le informazioni che saranno presenti nei contenuti pubblicati.  
+
+La fase di analisi dei requisiti ha approfondito le modalità d'interazione dell'utente generico con il sistema a partire dai requisiti essenziali illustrati nella sezione \ref{sec:tesi:progetto:requisiti:interfaccia-grafica}, riuscendo ad individuare requisiti impliciti e caratteristiche funzionali inizialmente non preventivate.
+
+La decisione, presa di comune accordo con il referente aziendale, di demandare la valutazione delle tecnologie di sviluppo al momento in cui le specifiche della piattaforma e le esigenze tecniche dell'interfaccia fossero più stabili e definite ha richiesto uno sforzo aggiuntivo di astrazione per quanto concerne la progettazione della soluzione, ma al contempo ha rappresentato uno spunto di riflessione per comprendere con maggior chiarezza il ruolo e l'identità della fase stessa nel ciclo di vita del software.
+
+Nell'ambito dell'agnosticismo tecnologico, le attività si sono focalizzate sull'architettura e sulla presentazione dell'interfaccia grafica, fornendo ove possibile e utile delle linee guida o delle specifiche dettagliate riguardo approcci risolutivi (\textit{design pattern}) o componenti di particolare interesse o rilevanza per il progetto, al fine di chiarire l'impianto progettuale.
+
+Le soluzioni concepite hanno comunque tenuto conto delle esigenze di adattabilità a cambiamenti ed evoluzioni del sistema, incluse l'estensione o integrazione di funzionalità esistenti.
 
 \section{Competenze professionali}
 Le attività di stage si inseriscono nell'ambito di un percorso di collaborazione con l'azienda \textit{Sintesi Sas}, iniziato in occasione dell'iniziativa \textit{Mimprendo} promossa da \textit{Confindustria Padova}, che mi ha permesso di seguire il percorso evolutivo del progetto \textit{Social (Life) Shuttle} sin dai primi albori ed ha rappresentanto un'opportunità di crescita professionale molto rilevante.
@@ -38,11 +42,8 @@ Nel corso dell'attività di stage ho avuto occasione di confrontarmi con queste 
 
 L'analisi, la progettazione e lo sviluppo della piattaforma \textit{Social (Life) Shuttle} non si limitano a considerare i soli aspetti tecnici o tecnologici nella concezione e nella valutazione delle soluzioni da adottare nell'intero ciclo di vita del software, ma cercano di comprendere ed intepretare le esigenze degli utenti e le dinamiche sociali. In questa piattaforma di socializzazione e di condivisione della conoscenza la tecnologia è diventata non il fine, bensì il mezzo attraverso il quale si cerca di concretizzare un certo tipo di esperienza virtuale (e non).
 
-\subsection{Criterio di classificazione}
-
 Durante la fase di integrazione del criterio di classificazione nel modello relazionale della piattaforma le competenze acquisite in ambito universitario mi hanno permesso di individuare soluzioni semplici ma efficaci, che sono state accolte e giudicate positivamente dal team di progetto. Le principali difficoltà incontrate riguardano l'integrazione della propria soluzione nel modello relazionale esistente in maniera coerente e collaborativa, essendo diverse persone impegnate, seppur su fronti diversi, alla modifica e all'aggiornamento dello stesso.
 
-\subsection{Interfaccia grafica}
 Le attività previste per la seconda fase dello stage sono state caratterizzate solo in minima parte da attività di ricerca, integrata in molti aspetti da indagini di carattere sociologico. Queste, seppur preliminari, hanno rappresentato un contributo cruciale nel processo di identificazione e comprensione delle variegate esigenze di utenti con profili esperienziali diversificati e di valutazione delle scelte progettuali effettuate.
 
 La maggior parte del tempo a disposizione è stato speso per effettuare l'analisi dei requisiti, che ha permesso di delineare i casi d'uso degli utenti e individuare alcuni requisiti fondamentali: in questa fase si è rivelata decisiva per lo svolgimento delle attività previste in modo da rispettare il piano di lavoro un'organizzazione del lavoro e una metodologia acquisiti e maturati durante la carriera universitaria.
