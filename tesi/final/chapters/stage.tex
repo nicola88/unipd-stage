@@ -598,7 +598,7 @@ Per assicurare la corretta combinazione di istanze delle classi (v. tabella \ref
 	Interessi & \textsf{Interest} & \textsf{CList} & \textsf{FSwitch} & \textsf{FCSwitch} & \textsf{FVSwitch} \\ \hline
 	Tipo & \textsf{Type} & \textsf{CList} & \textsf{FList} & \textsf{FCList} & \textsf{FVList} \\ \hline
 	\end{tabular}
-	\caption{Riepilogo delle classi gestite dall \textit{design patter} \textit{Abstract Factory}}
+	\caption{Riepilogo delle classi gestite dal \textit{design pattern} \textit{Abstract Factory}}
 	\label{tab:tesi:stage:design:filter-factory}
 \end{table}
 
@@ -674,3 +674,136 @@ La soluzione consigliata per modellare tale scenario si basa sul \textit{design 
 \end{itemize}
 
 Si conclude definendo un'opportuna gerarchia di classi \textsf{FilterUpdate}, che incapsulano la logica di controllo e le informazioni necessarie per aggiornare l'insieme $S_v$ a fronte della variazione di un filtro a causa di una specifica modalità d'interazione, tra quelle elencate in precedenza.
+
+\section{Navigazione dei contenuti}
+\label{sec:tesi:stage:gui:cronologia}
+La navigazione e la consultazione dei risultati di una ricerca rappresentano un'attività cardine degli utenti perciò è necessario presentare i contenuti e le relative informazioni in modo chiaro e ordinato, a prescindere dal numero di risultati e dalle specifiche del dispositivo utilizzato (dimensione, risoluzione dello schermo, modalità d'interazione, \ldots).
+
+Seguendo un approccio \textit{bottom-up} ci si concentra innanzi tutto sulla rappresentazione di un contenuto informativo (proprietà, metadati, relazioni) e in seguito sulla progettazione dell'interfaccia nel suo complesso.
+
+\subsection{Contenuti informativi}
+Ciascun contenuto presenta numerose informazioni sotto forma di proprietà o metadati, questi ultimi legati a criteri di classificazione o contestuali alla ricerca.
+
+Il primo passo consiste nel distinguere le informazioni \textsc{essenziali}, ossia utili o indispensabili all'identificazione e alla contestualizzazione di un contenuto, da quelle \textsc{aggiuntive} (o accessorie), che rappresentano un valore aggiunto a fronte di un particolare interesse dell'utente: le prime devono essere immediatamente e chiaramente riconoscibili e consultabili, mentre le seconde devono risultare nascoste ma facilmente accessibili.
+
+\begin{table}
+	\centering
+	\begin{tabular}{|l|c|}
+	\hline
+	\textsc{Proprietà essenziali} & \textsc{Proprietà aggiuntive} \\ \hline
+	Autore  & Argomento \\
+	Attinenza & Emozioni\\
+	Data di pub. & Etichette \\
+	Tipo & Giudizi \\
+	Titolo & Intenzioni \\ \hline
+	\end{tabular}
+	\caption{Proprietà di un contenuto informativo}
+	\label{tab:tesi:stage:design:tipi-proprietà}
+\end{table}
+
+Tale classificazione consente di rendere più efficiente lo sfruttamento dello spazio disponibile, comunicando all'utente le sole informazioni rilevanti per stabilire la pertinenza del contenuto. Ove questo ne soddisfi le aspettative e ne susciti l'interesse, l'utente può consultarne le informazioni aggiuntive.
+
+In seguito occorre scegliere - per ciascuna informazione - la modalità di rappresentazione (grafica o testuale) più adatta per esprimerla e comunicarla all'utente, in modo da risultare intuitivamente comprensibile e cercando di:
+\begin{itemize}
+  \item mantenere un bilanciamento equilibrato tra informazioni testuali e grafiche;
+  \item utilizzare in modo limitato e non esclusivo il colore;
+  \item privilegiare le forme grafiche per esprimere informazioni quantitative o definite su un insieme limitato di valori, nell'intento di facilitare l'associazione rispettivamente tra la dimensione o il tipo di forma al corrispondente significato.
+\end{itemize}
+
+\paragraph{Argomento}
+L'argomento di un contenuto è espresso sia in forma grafica, mediante l'uso del colore, sia testuale e viene collocato in posizione esterna rispetto alla forma per porre in risalto che si tratta di un'informazione aggiuntiva.
+\paragraph{Autore}
+L'autore viene indicato in forma testuale.
+\paragraph{Attinenza}
+Il grado di attinenza è espresso dalla dimensione proporzionale del componente grafico: in questo modo i contenuti maggiormente attinenti alla ricerca sono i primi a catturare l'attenzione dell'utente.
+\paragraph{Data di pubblicazione}
+La data di pubblicazione è espressa in forma testuale.
+\paragraph{Emozioni}
+Le emozioni associate ad un contenuto sono riportate in forma testuale.
+\paragraph{Etichette}
+La lista delle entità assegnate al contenuto è riportata in forma testuale, con particolare evidenza e rilevanza visiva (ordine di apparizione, formato, \ldots) per quelle corrispondenti ai termini di ricerca.
+\paragraph{Giudizi}
+I giudizi espressi dagli altri utenti sono riportati in forma testuale.
+\paragraph{Intenzioni}
+Le intenzioni associate ad un contenuto sono riportate in forma testuale.
+\paragraph{Tipo}
+Il tipo di contenuto è identificato dalla forma del componente grafico: la scelta di impiegare forme elementari risponde all'esigenza di renderli immediatamente riconoscibili e comprensibili a qualsiasi categoria di utenti. La scelta della forma associata a ciascun tipo si avvale di analisi sociologiche svolte da altri membri del team di progetto.
+
+Dal momento che la rappresentazione visiva delle classi di contenuti differisce essenzialmente per la forma elementare scelta, che a sua volta influenza il posizionamento ed il \textit{rendering} delle informazioni, si definisce una gerarchia di classi che faciliti l'aggiornamento di tali informazioni:
+\begin{itemize}
+  \item la classe base (\textsf{ContentView}) rappresenta il componente grafico relativo ad un generico contenuto;
+  \item le sottoclassi (\textsf{CVAnswer}, \textsf{CVEvent}, \ldots) identificano le singole classi di un contenuto, a ciascuna delle quali sono associati una distinta forma elementare e un insieme di regole per la visualizzazione delle informazioni.
+\end{itemize}
+
+\paragraph{Titolo}
+Il titolo è riportato in forma testuale.
+
+\pagebreak
+\subsection{Cronologia}
+I risultati di una ricerca devono essere presentati secondo una struttura chiara ed ordinata, che ne agevoli la consultazione e sia adeguatamente fruibile a prescindere dal numero di risultati o dal dispositivo utilizzato.
+
+Per assicurare la chiarezza espositiva delle informazioni in scenari variegati occorre tenere presente alcuni vincoli fisici, onde evitare un sovraccarico cognitivo dovuto all'eccessivo numero di informazioni mostrate. Una situazione simile pregiudicherebbe alle fondamenta l'esperienza d'uso dell'interfaccia, rendendo assai arduo individuare i contenuti d'interesse: date le previsioni di crescita della piattaforma, si ritiene opportuno includere sin da subito le potenziali criticità nelle valutazioni progettuali.
+
+Una volta prese in considerazione alcune proposte di soluzione e vagliatine pro e contro, si giudica che l'organizzazione cronologica dei contenuti informativi rappresenti una soluzione estremamente intuitiva dal punto di vista dell'utente e allo stesso tempo in grado di offrire un'eccellente flessibilità rispetto ai vincoli e limiti espressi in precedenza.
+
+\subsection{Raggruppamento}
+Sia $[t_{min}, t_{max}]$ l'arco di tempo entro il quale sono stati pubblicati i risultati di ricerca.
+
+La soluzione individuata consiste nell'organizzare e suddividere i risultati di ricerca in \textsc{unità di tempo}, corrispondenti ad intervalli di lunghezza fissa (espressa in giorni, mesi o anni), gestendo opportunamente i seguenti parametri:
+\begin{itemize}
+  \item l'ampiezza della singola unità di tempo ($r$);
+  \item il numero di unità di tempo visualizzate ($t$);
+  \item il numero di contenuti visualizzati per unità di tempo ($c$).
+\end{itemize}
+
+La variazione dinamica di tali parametri secondo le specifiche del dispositivo utilizzato consente di offrire un'esperienza di consultazione e navigazione dei risultati di ricerca su misura: è sufficiente definire alcune semplici regole o criteri che scelgano automaticamente i valori ottimali in base ad opportune informazioni (risoluzione orizzontale o verticale, tipo di dispositivo, \ldots).
+
+Si potrebbero ad esempio variare $t$ in misura proporzionale alla risoluzione orizzontale dello schermo e $c$ rispetto a quella verticale, fissando dei valori costanti (in pixel) per la larghezza di un'unità di tempo e l'altezza di un contenuto.
+
+Il numero di risultati visualizzati corrisponde sempre e comunque a:\begin{equation}
+c_{tot} = c * t
+\end{equation}
+
+Questi meccanismi consentirebbero inoltre di ottimizzare la visualizzazione delle unità di tempo (e i contenuti associati) a seconda dell'orientamento del dispositivo:
+\begin{itemize}
+  \item se orizzontale, le unità di tempo vengono mostrate come colonne affiancate e i risultati come un elenco verticale;
+  \item se verticale, le unità di tempo possono essere mostrate come righe e i risultati come una lista di elementi;
+\end{itemize}
+
+\paragraph{Arco temporale}
+Se si desidera infine visualizzare l'intero arco temporale $[t_{min}, t_{max}]$, sotto l'ipotesi che per garantire una sufficiente leggibilità dei contenuti il numero di unità di tempo $t$ sia fissato, occorre impostare l'ampiezza $r$ delle unità di tempo in modo che:
+\begin{equation}
+ r = \frac{t_{max}-t_{min}}{t}
+\end{equation}
+
+In caso contrario, si mostrano solo i risultati relativi ad un sottointervallo di $[t_{min}, t_{max}]$, con un evidente guadagno in termini di:
+\begin{itemize}
+  \item efficienza, legata alla possibilità di caricare i soli contenuti da visualizzare;
+  \item scalabilità rispetto al numero di contenuti e all'ampiezza dell'intervallo $[t_{min}, t_{max}]$.
+\end{itemize}
+
+Per ciascuna unità di tempo avente un numero di risultati di ricerca associati superiore al numero massimo di contenuti visualizzabili ($c_i > c$) può essere sufficiente includere un collegamento, che consenta di visualizzare l'intera lista di risultati in uno spazio dedicato.
+
+\subsection{Ordinamento}
+In uno scenario caratterizzato da un elevato numero di risultati di ricerca appare particolarmente opportuno definire uno o più criteri di ordinamento dei risultati all'interno di ciascuna unità temporale, cercando di favorire quelli aventi maggiore attinenza\footnote{Se $E_s$ è l'insieme delle etichette cercate e $E_c$ l'insieme delle etichette assegnate a ciascun contenuto si possono distinguere tre casi, a seconda del numero di etichette assegnate ad un contenuto tra quelle cercate: corrispondenza completa ($E_s \subseteq E_c$), parziale ($E_s \cap E_c \neq \emptyset$) o assente ($E_s \cap E_c = \emptyset$).}, pubblicati più di recente, \ldots\ .
+
+D'altro canto, la probabilità $P$ che un contenuto venga visualizzato in un'unità temporale è inversamente proporzionale al numero di risultati associati:
+\begin{equation}
+P = \frac{c}{c_i}
+\end{equation}
+ove $c_i$ rappresenta il numero di risultati di ricerca pubblicati nell'unità di tempo $i$-esima.
+
+\subsection{Navigazione}
+Infine occorre fornire agli utenti gli strumenti e le opzioni di navigazione temporale dei contenuti per consentire loro di:
+\begin{itemize}
+  \item visualizzare i contenuti relativi al passato o al futuro (rispetto al periodo corrente);
+  \item modificare la scala temporale, impostando un numero arbitrario di giorni, mesi o anni ($r$).
+\end{itemize}
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[width=12cm]{img/timeline.png}
+		\caption{Asse temporale}
+		\label{fig:tesi:stage:design:timeline}
+	\end{center}
+\end{figure}
