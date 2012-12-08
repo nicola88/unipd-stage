@@ -13,11 +13,27 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme"> <!-- beige|default -->
 		<style type="text/css">
+		/*
+		 * purple		#FF5E99
+		 * green		#13DAEC
+		 * gray			#2B2B2B
+		 * light brown	#C0A86E
+		 * dark brown	#8B743D
+		*/
+		
+		.reveal h3 {
+			margin-bottom: 0.6em;
+		}
+		strong {
+			color: #FF5E99;
+		}
+		
+		/* FOOTER */
 		footer {
 			font-size: 1.2em;
-			color: white;
+			color: #8B743D;
 			position: fixed;
 			width: 100%;
 			bottom: 40px;
@@ -25,7 +41,96 @@
 			z-index: 10;
 		}
 		#title {
-			margin-left: 20%;
+			margin-left: 25%;
+			font-style: italic;
+		}
+		#author {
+			font-weight: bold;
+		}
+		
+		/* INDEX */
+		.reveal nav ol {
+			list-style-type: upper-roman;
+		}
+		nav li {
+			opacity:0.1;
+		}
+		nav li.current {
+			opacity:1.0;
+			font-weight: bold;	
+		}
+		
+		object {
+			text-align: center;
+			margin: 0;
+			padding: 0;
+			border: 0;
+		}
+		
+		/* LIST */
+		.reveal ul {
+			vertical-align: middle;
+		}
+		.reveal ul li {
+			background-color: #E5E5E5;
+			border-radius: 5px;
+			color: black;
+			display: block;
+			list-style-type: none;
+			margin-bottom: 0.2em;
+			padding: 0.3em 0.6em;
+		}
+		.reveal li.list-header {
+			background-color: #FF5E99;
+			color: white;
+			text-align: center;
+			font-size: 1.1em;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+		.reveal blockquote {
+			box-shadow: none;
+			text-align: justify;
+		}
+		.reveal ul.inline li {
+			font-size: 0.8em;
+			display: inline-block;
+		}
+		
+		/* TABLE */
+		.reveal table {
+			font-size: 0.8em;
+			text-align: center;
+		}
+		.reveal table th {
+			border-radius: 5px;
+			text-transform: uppercase;
+			padding: 0.2em 0.4em;
+			text-shadow: none;		
+		}
+		.reveal table th.row {
+			background-color: #8B743D;
+			color: white;
+			margin-right: 0.4em;
+			text-transform: uppercase;
+		}		
+		.reveal table th.column {
+			background-color: #E5E5E5;
+			border-radius: 5px;
+			color: black;
+			margin-bottom: 0.4em;
+		}
+		.reveal table td {
+			padding: 0.2em 0.4em;
+		}
+		.reveal code {
+			font-size: 0.6em;
+		}
+		
+		/* TYPOGRAPHIC */
+		span.term {
+			color: #FF5E99;
+			font-weight: bold;
 		}
 		</style>
 
@@ -51,6 +156,305 @@
 			<section>
 				<h1>Titolo</h1>
 			</section>
+			
+			<section>
+				<h2>Indice</h2>
+				<nav>
+				<ol>
+					<li class="current">Criterio di classificazione</li>
+					<li>Interfaccia grafica</li>
+					<li>Filtri di ricerca</li>
+					<li>Risultati di ricerca</li>
+					<li>Navigazione</li>
+				</ol>
+				</nav>
+			</section>
+
+			<section>
+				<ul>
+					<li class="list-header">Pilastri</li>
+					<li class="fragment">Modello enciclopedico</li>
+					<li class="fragment">Ambiguità sintattica</li>
+					<li class="fragment">Ambiguità semantica</li>
+				</ul>
+			</section>
+			
+			<section>
+				<h3>Modello enciclopedico</h3>
+				<section>
+					<blockquote>
+					Un'enciclopedia è un'opera letteraria che raccoglie e ordina la sintesi della <strong>conoscenza umana</strong> in tutti i campi o in un determinato settore.</br>
+					Le enciclopedie sono divise in voci, o <strong>lemmi</strong>, cui si accede di solito in ordine alfabetico.
+					</blockquote>
+				</section>
+				<section>
+					<h4>Dominio</h4>
+					<object data="dominio.svg" type="image/svg+xml"></object>
+					<aside class="notes">
+						Insieme di elementi concreti (luoghi, persone, eventi, &hellip;) o astratti (concetti, temi, &hellip;) a cui afferiscono i contenuti.
+					</aside>
+				</section>
+				<section>
+					<h4>Dizionario</h4>
+					<object data="dizionario.svg" type="image/svg+xml"></object>
+				</section>
+			</section>
+			
+			<section>
+				<h3>Ambiguità sintattica</h3>
+				<section>
+					<p>Ciascuna entità ammette 0&hellip;n sinonimi</p>
+					<!--<img alt="Ambiguità sintattica" src="images/ambiguita-sintattica.png">-->
+				 	<object data="ambiguita-sintattica.svg" type="image/svg+xml"></object> 
+					<ul class="inline">
+						<li class="list-header fragment">Requisiti</li>
+						<li class="fragment">Copertura</li>
+						<li class="fragment">Identità</li>
+					</ul>
+				</section>
+				<section>
+					<h4>Etichette primarie e secondarie</h4>
+				 	<object data="etichette-primarie-secondarie.svg" type="image/svg+xml"></object>
+				</section>
+			</section>
+			
+			<section>
+				<h3>Ambiguità semantica</h3>
+				<section>
+					<p>Ogni etichetta ha 1&hellip;n accezioni</p>
+					<object data="accezioni-etichette.svg" type="image/svg+xml"></object>
+					<p>Accezioni chiave e sinonimica</p>
+				</section>
+				<section>
+					<p>Ogni accezione rappresenta l'etichetta di un'entità</p>
+					<object data="accezioni-entita.svg" type="image/svg+xml"></object>
+				</section>
+				<section>
+					<h4>Accezioni chiave e sinonimiche</h4>
+					<object data="accezioni-chiave-sinonimiche.svg" type="image/svg+xml"></object>
+				</section>
+			</section>
+			
+			<section>
+				<h3>Modello relazionale</h3>
+				<section>
+					<p>Figura 11</p>
+				</section>
+				<section>
+					<h4>Tabella unica</h4>
+				</section>
+				<section>
+					<h4>Partizionamento orizzontale</h4>
+				</section>
+				<section>
+					<h4>Partizionamento verticale</h4>
+				</section>
+				<section>
+					<h4>Soluzione</h4>
+				</section>
+			</section>
+
+			<section>
+				<h2>Indice</h2>
+				<nav>
+				<ol>
+					<li>Criterio di classificazione</li>
+					<li class="current">Interfaccia grafica</li>
+					<li>Filtri di ricerca</li>
+					<li>Risultati di ricerca</li>
+					<li>Navigazione</li>
+				</ol>
+				</nav>
+			</section>
+			
+			<section>
+				<h3>Architettura</h3>
+				<table>
+					<tr class="fragment">
+						<th></th>
+						<th class="row">Model</th>
+						<th class="row">View</th>
+						<th class="row">Controller</th>
+					</tr>
+					<tr class="fragment">
+						<th class="column">Ricerca</th>
+						<td><code>model.provider</code></br><code>model.search</code></td>
+						<td><code>view.search</code></td>
+						<td><code>controller.search</code></td>
+					</tr>
+					<tr class="fragment">
+						<th class="column">Filtri</th>
+						<td><code>model.criteria</code></br><code>model.filter</code></td>
+						<td><code>view.filter</code></td>
+						<td><code>controller.filter</code></td>
+					</tr>
+					<tr class="fragment">
+						<th class="column">Contenuti</th>
+						<td><code>model</code></td>
+						<td><code>view.content</code></td>
+						<td><code>controller</code></td>
+					</tr>
+					<tr class="fragment">
+						<th class="column">Navigazione</th>
+						<td><code>model.timeline</code></td>
+						<td><code>view.timeline</code></td>
+						<td><code>controller</code></td>
+					</tr>
+				</table>
+			</section>
+			
+			<section>
+				<ul>
+					<li class="list-header">Aree d'interesse</li>
+					<li class="fragment">Filtri di ricerca</li>
+					<li class="fragment">Risultati di ricerca</li>
+					<li class="fragment">Navigazione</li>
+				</ul>
+			</section>
+			
+			<section>
+				<h2>Indice</h2>
+				<nav>
+				<ol>
+					<li>Criterio di classificazione</li>
+					<li>Interfaccia grafica</li>
+					<li class="current">Filtri di ricerca</li>
+					<li>Risultati di ricerca</li>
+					<li>Navigazione</li>
+				</ol>
+				</nav>
+			</section>			
+<!-- 			
+			<section id="filtri">
+				<h2>Parte III</h2>
+				<p>Filtri di ricerca</p>
+			</section>
+ -->			
+			<section id="filtri-ricerca">
+				<h3>Filtri di ricerca</h3>
+				Scomposizione delle componenti di un filtro (v. Abstract Factory)
+			</section>
+
+			<section id="filtri-ricerca-parametri">
+				<h3>Parametri e criteri</h3>
+			</section>
+
+			<section id="filtri-ricerca-classi">
+				<h3>Classi di filtri</h3>
+				<section>
+					Indicare per ciascuna la natura dell'insieme e la classe corrispondente.
+				</section>
+				<section>
+					<h4>A lista di valori</h4>
+				</section>
+				<section>
+					<h4>A soglia</h4>
+				</section>
+				<section>
+					<h4>Ad intervallo</h4>
+				</section>
+				<section>
+					<h4>Ad interruttore</h4>
+				</section>
+			</section>
+			
+			<section>
+				<h3><em>Abstract Factory</em></h3>
+			</section>
+
+			<section>
+				<h2>Indice</h2>
+				<nav>
+				<ol>
+					<li>Criterio di classificazione</li>
+					<li>Interfaccia grafica</li>
+					<li>Filtri di ricerca</li>
+					<li class="current">Risultati di ricerca</li>
+					<li>Navigazione</li>
+				</ol>
+				</nav>
+			</section>	
+<!-- 
+			<section id="risultati">
+				<h2>Parte IV</h2>
+				<p>Risultati di ricerca</p>
+			</section>			
+ -->			
+			<section>
+				<h3>Risultati di ricerca</h3>
+			</section>
+			
+			<section>
+				<h3>Visualizzazione</h3>
+			</section>
+			
+			<section>
+				<h3>Aggiornamento</h3>
+				<section>
+					Fattori di differenziazione
+				</section>
+				<section>
+					<h4>Variazione di Sv</h4>
+				</section>
+				<section>
+					<h4>Interazione</h4>
+				</section>
+			</section>
+			
+			<section>
+				<h3><em>Command</em></h3>
+			</section>
+
+			<section>
+				<h2>Indice</h2>
+				<nav>
+				<ol>
+					<li>Criterio di classificazione</li>
+					<li>Interfaccia grafica</li>
+					<li>Filtri di ricerca</li>
+					<li>Risultati di ricerca</li>
+					<li class="current">Navigazione</li>
+				</ol>
+				</nav>
+			</section>
+<!--
+			<section id="navigazione">
+				<h2>Parte V</h2>
+				<p>Navigazione</p>
+			</section>
+-->			
+			<section>
+				<h3>Navigazione</h3>
+			</section>
+			
+			<section>
+				<h3>Contenuti informativi</h3>
+				<section>
+					Immagine di un contenuto di esempio con indicazione delle informazioni essenziali e aggiuntive
+				</section>
+				<section>
+					<h4>Argomento</h4>
+				</section>
+				<section>
+					<h4>Attinenza</h4>
+				</section>
+				<section>
+					<h4>Tipo</h4>
+				</section>
+				<section>
+					<h4>Altri</h4>
+					<ul>
+						<li>Emozioni</li>
+						<li>Etichette</li>
+						<li>Intenzioni</li>
+					</ul>
+				</section>
+			</section>
+			
+			<section>
+				<h3>Interfaccia</h3>
+			</section>
+			
 			</div>
 		</div>
 		<footer>
@@ -68,8 +472,6 @@
 				controls: true,
 				progress: true,
 				history: true,
-				rollingLinks: false,
-
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
 

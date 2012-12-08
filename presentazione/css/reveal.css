@@ -282,7 +282,7 @@ body {
 
 .reveal table th,
 .reveal table td {
-	text-align: left;
+	text-align: center;
 	padding-right: .3em;
 }
 
@@ -384,7 +384,7 @@ body {
 .reveal .progress {
 	position: fixed;
 	display: none;
-	height: 3px;
+	height: 6px;
 	width: 100%;
 	bottom: 0;
 	left: 0;
