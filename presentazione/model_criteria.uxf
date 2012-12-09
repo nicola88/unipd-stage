@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.5.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>400</x>
+      <y>50</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+Criterion</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>140</x>
+      <y>40</y>
+      <w>280</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>260;30;30;110</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>420</x>
+      <y>60</y>
+      <w>50</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>30;30;30;90</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>490</x>
+      <y>40</y>
+      <w>170</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>30;30;150;110</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>50</x>
+      <y>150</y>
+      <w>280</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>CList
+--
+- values: Metadata[0...*]
+--
++ getList(): Metadata[0...*]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>340</x>
+      <y>150</y>
+      <w>250</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>CRange
+--
+- current: double
+- min: double
+- max: double
+--
++ getCurrent(): double
++ getMax(): double
++ getMin(): double
++ setCurrent(value: double): void
++ setMax(value: double): void
++ setMin(value: double): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>600</x>
+      <y>150</y>
+      <w>260</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>CValue
+--
+- max: double
+- min: double
+--
++ getMax(): double
++ getMin(): double
++ setMax(value: double): void
++ setMin(value: double): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

@@ -12,6 +12,10 @@
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
+	    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+	    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+	    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/beige.css" id="theme"> <!-- beige|default -->
 		<style type="text/css">
@@ -95,6 +99,14 @@
 		.reveal ul.inline li {
 			font-size: 0.8em;
 			display: inline-block;
+		}
+		.reveal li.allowed {
+			background-color: rgb(153,204,255);
+			color: black;
+		}
+		.reveal li.blocked {
+			background-color: rgb(235,97,61);
+			color: white;
 		}
 		
 		/* TABLE */
@@ -189,14 +201,14 @@
 				</section>
 				<section>
 					<h4>Dominio</h4>
-					<object data="dominio.svg" type="image/svg+xml"></object>
+					<object data="images/dominio.svg" type="image/svg+xml"></object>
 					<aside class="notes">
 						Insieme di elementi concreti (luoghi, persone, eventi, &hellip;) o astratti (concetti, temi, &hellip;) a cui afferiscono i contenuti.
 					</aside>
 				</section>
 				<section>
 					<h4>Dizionario</h4>
-					<object data="dizionario.svg" type="image/svg+xml"></object>
+					<object data="images/dizionario.svg" type="image/svg+xml"></object>
 				</section>
 			</section>
 			
@@ -205,7 +217,7 @@
 				<section>
 					<p>Ciascuna entità ammette 0&hellip;n sinonimi</p>
 					<!--<img alt="Ambiguità sintattica" src="images/ambiguita-sintattica.png">-->
-				 	<object data="ambiguita-sintattica.svg" type="image/svg+xml"></object> 
+				 	<object data="images/ambiguita-sintattica.svg" type="image/svg+xml"></object> 
 					<ul class="inline">
 						<li class="list-header fragment">Requisiti</li>
 						<li class="fragment">Copertura</li>
@@ -214,7 +226,7 @@
 				</section>
 				<section>
 					<h4>Etichette primarie e secondarie</h4>
-				 	<object data="etichette-primarie-secondarie.svg" type="image/svg+xml"></object>
+				 	<object data="images/etichette-primarie-secondarie.svg" type="image/svg+xml"></object>
 				</section>
 			</section>
 			
@@ -222,16 +234,16 @@
 				<h3>Ambiguità semantica</h3>
 				<section>
 					<p>Ogni etichetta ha 1&hellip;n accezioni</p>
-					<object data="accezioni-etichette.svg" type="image/svg+xml"></object>
+					<object data="images/accezioni-etichette.svg" type="image/svg+xml"></object>
 					<p>Accezioni chiave e sinonimica</p>
 				</section>
 				<section>
 					<p>Ogni accezione rappresenta l'etichetta di un'entità</p>
-					<object data="accezioni-entita.svg" type="image/svg+xml"></object>
+					<object data="images/accezioni-entita.svg" type="image/svg+xml"></object>
 				</section>
 				<section>
 					<h4>Accezioni chiave e sinonimiche</h4>
-					<object data="accezioni-chiave-sinonimiche.svg" type="image/svg+xml"></object>
+					<object data="images/accezioni-chiave-sinonimiche.svg" type="image/svg+xml"></object>
 				</section>
 			</section>
 			
@@ -324,42 +336,68 @@
 				</ol>
 				</nav>
 			</section>			
-<!-- 			
-			<section id="filtri">
-				<h2>Parte III</h2>
-				<p>Filtri di ricerca</p>
-			</section>
- -->			
+			
 			<section id="filtri-ricerca">
-				<h3>Filtri di ricerca</h3>
-				Scomposizione delle componenti di un filtro (v. Abstract Factory)
+				<ul>
+					<li class="list-header">Filtro di ricerca</li>
+					<li class="fragment">Parametro</li>
+					<li class="fragment">Criterio</li>
+					<li class="fragment">Classe</li>
+					<li class="fragment">Widget</li>
+					<li class="fragment">Controller</li>
+				</ul>
+				<!-- Scomposizione delle componenti di un filtro (v. Abstract Factory) -->
 			</section>
-
-			<section id="filtri-ricerca-parametri">
-				<h3>Parametri e criteri</h3>
-			</section>
-
+			
 			<section id="filtri-ricerca-classi">
 				<h3>Classi di filtri</h3>
 				<section>
-					Indicare per ciascuna la natura dell'insieme e la classe corrispondente.
+				<object data="images/model_filter.svg" type="image/svg+xml"></object>
+				<ul class="inline">
+					<li class="fragment list-header">Variabili</li>
+					<li class="fragment" style="width:4.5em;">Insieme <math><mrow><mi>U</mi></mrow></math></li>
+					<li class="fragment">Casi d'uso</li>
+				</ul>
+				</section>
+				<!-- 
+				A lista di valori - ad interruttore - a soglia di valore - ad intervallo
+				 -->
+			</section>
+			
+			<section id="filtri-ricerca-criteri">
+				<h3>Criteri</h3>
+				<p>Rappresenta l'insieme <math><mrow><mi>U</mi></mrow></math> su cui opera una <a href="#/filtri-ricerca-classi">classe di filtri</a></p>
+				<object data="images/model_criteria.svg" type="image/svg+xml"></object>
+				<ul class="inline">
+					<li class="list-header fragment">Parametri</li>
+					<li class="fragment">Tipo di dati</li>
+					<li class="fragment">Sorgente dati</li>
+				</ul>
+			</section>
+
+			<section id="filtri-ricerca-parametri">
+				<h3>Parametri</h3>
+				<section>
+				<ul class="inline">
+					<li class="allowed">Ammessi (<math><mrow><msub><mi>U</mi><mi>A</mi></msub></mrow></math>)</li>
+					<li class="blocked">Bloccati (<math><mrow><msub><mi>U</mi><mi>B</mi></msub></mrow></math>)</li>
+				</ul>
+				<object data="images/filtri-parametri.svg" type="image/svg+xml"></object>
 				</section>
 				<section>
-					<h4>A lista di valori</h4>
-				</section>
-				<section>
-					<h4>A soglia</h4>
-				</section>
-				<section>
-					<h4>Ad intervallo</h4>
-				</section>
-				<section>
-					<h4>Ad interruttore</h4>
+					<h4>Sorgenti dati</h4>
+					<object data="images/model.svg" type="image/svg+xml"></object>
 				</section>
 			</section>
 			
 			<section>
 				<h3><em>Abstract Factory</em></h3>
+				<section>
+					<object data="images/filter-factory.svg" type="image/svg+xml"></object>
+				</section>
+				<section>
+					<p>Tabella 5: Riepilogo delle classi gestite dal <em>design pattern Abstract Factory</em>  (v. tesi)</p>
+				</section>
 			</section>
 
 			<section>
@@ -374,35 +412,45 @@
 				</ol>
 				</nav>
 			</section>	
-<!-- 
-			<section id="risultati">
-				<h2>Parte IV</h2>
-				<p>Risultati di ricerca</p>
-			</section>			
- -->			
+
 			<section>
 				<h3>Risultati di ricerca</h3>
+				<object data="images/risultati-ricerca.svg" type="image/svg+xml"></object>
+				<ul class="inline">
+					<li class="fragment list-header">Casi d'uso</li>
+					<li class="fragment"><math><mrow> <mo stretchy="false">Δ</mo><mtext/><mrow><mrow><mo stretchy="false">∣</mo><mrow><msub><mi>S</mi><mi>v</mi></msub></mrow><mo stretchy="false">∣</mo></mrow><mo stretchy="false">&gt;</mo><mn>0</mn></mrow></mrow></math></li>
+					<li class="fragment"><math><mrow> <mo stretchy="false">Δ</mo><mtext/><mrow><mrow><mo stretchy="false">∣</mo><mrow><msub><mi>S</mi><mi>v</mi></msub></mrow><mo stretchy="false">∣</mo></mrow><mo stretchy="false">&lt;</mo><mn>0</mn></mrow></mrow></math></li>
+				</ul>
 			</section>
 			
 			<section>
-				<h3>Visualizzazione</h3>
+				<h3>Contatore</h3>
+				<ul class="fragment" style="display:inline-block;">
+					<li class="list-header">Pro</li>
+					<li>&hellip;</li>
+				</ul>
+				<ul class="fragment" style="display:inline-block;">
+					<li class="list-header" style="background-color:#8B743D;color:white;">Contro</li>
+					<li>&hellip;</li>
+				</ul>
 			</section>
-			
+
 			<section>
-				<h3>Aggiornamento</h3>
-				<section>
-					Fattori di differenziazione
-				</section>
-				<section>
-					<h4>Variazione di Sv</h4>
-				</section>
-				<section>
-					<h4>Interazione</h4>
-				</section>
+				<h3>Array di booleani</h3>
+				<ul class="fragment" style="display:inline-block;">
+					<li class="list-header">Pro</li>
+					<li>&hellip;</li>
+				</ul>
+				<ul class="fragment" style="display:inline-block;">
+					<li class="list-header" style="background-color:#8B743D;color:white;">Contro</li>
+					<li>&hellip;</li>
+				</ul>
 			</section>
 			
 			<section>
 				<h3><em>Command</em></h3>
+				<p>Implementa le operazioni di aggiornamento dei risultati di ricerca</p>
+				<object data="images/command.svg" type="image/svg+xml"></object>
 			</section>
 
 			<section>
@@ -417,38 +465,14 @@
 				</ol>
 				</nav>
 			</section>
-<!--
-			<section id="navigazione">
-				<h2>Parte V</h2>
-				<p>Navigazione</p>
-			</section>
--->			
-			<section>
-				<h3>Navigazione</h3>
-			</section>
-			
+
 			<section>
 				<h3>Contenuti informativi</h3>
-				<section>
-					Immagine di un contenuto di esempio con indicazione delle informazioni essenziali e aggiuntive
-				</section>
-				<section>
-					<h4>Argomento</h4>
-				</section>
-				<section>
-					<h4>Attinenza</h4>
-				</section>
-				<section>
-					<h4>Tipo</h4>
-				</section>
-				<section>
-					<h4>Altri</h4>
-					<ul>
-						<li>Emozioni</li>
-						<li>Etichette</li>
-						<li>Intenzioni</li>
-					</ul>
-				</section>
+				<!-- <object data="images/contenuto-informativo.svg" type="image/svg+xml"></object> -->
+			</section>
+
+			<section>
+				<h3>Navigazione</h3>
 			</section>
 			
 			<section>
