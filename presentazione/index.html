@@ -177,6 +177,8 @@
 			
 			<section>
 				<h1>Tesi di Laurea in Informatica</h1>
+				<p style="margin-top:1.5em;">Analisi e progettazione di un'interfaccia grafica per la consultazione dei contenuti informativi in una piattaforma web tematica</p>
+				<h2 style="margin-top:1.5em;font-size:1em;"><span style="text-transform:lowercase;">di</span> Nicola Moretto</h2>
 			</section>
 			
 			<section>
@@ -338,7 +340,7 @@
 			</section>
 			
 			<section>
-				<h3><em>Abstract Factory (2.4.4)</em></h3>
+				<h3><em>Abstract Factory</em> (2.4.4)</h3>
 				<ul>
 					<li class="list-header">Prodotti</li>
 					<li>Parametri (<code>model.Metadata</code>)</li>
@@ -348,7 +350,7 @@
 					<li>Controller (<code>controller.filter.FilterController</code>)</li>
 				</ul>
 			</section>
-
+			
 			<section>
 				<h2>Indice</h2>
 				<nav>
@@ -356,7 +358,7 @@
 					<li>Criterio di classificazione</li>
 					<li>Interfaccia grafica</li>
 					<li>Filtri di ricerca</li>
-					<li class="current">Risultati di ricerca (2.5)</li>
+					<li class="current">Risultati di ricerca (2.5 - 2.6)</li>
 					<li>Consuntivo</li>
 				</ol>
 				</nav>
@@ -371,7 +373,7 @@
 					<li class="fragment"><math><mrow><mo stretchy="false">Δ</mo><mtext/><mrow><mrow><mo stretchy="false">∣</mo><mrow><msub><mi>S</mi><mi>v</mi></msub></mrow><mo stretchy="false">∣</mo></mrow><mo stretchy="false">&lt;</mo><mn>0</mn></mrow></mrow></math></li>
 				</ul>
 			</section>
-			
+<!-- 			
 			<section>
 				<h3>Contatore (2.5.2)</h3>
 				<ul style="display:inline-block;" class="fragment">
@@ -393,11 +395,22 @@
 					<li><math><mrow><mo stretchy="false">Δ</mo><mtext/><mrow><mrow><mo stretchy="false">∣</mo><mrow><msub><mi>S</mi><mi>v</mi></msub></mrow><mo stretchy="false">∣</mo></mrow><mo stretchy="false">&lt;</mo><mn>0</mn></mrow></mrow></math></li>
 				</ul>
 			</section>
-			
+ -->			
 			<section>
 				<h3><em>Command</em> (2.5.3)</h3>
 				<p>Operazioni di aggiornamento dei <a href="#/risultati-ricerca" title="Risultati di ricerca">risultati di ricerca</a></p>
 				<object data="images/svg/command.svg" type="image/svg+xml"></object>
+			</section>
+			
+			<section>
+				<h3>Cronologia (2.6)</h3>
+				<p>Ciascuna classe di contenuti informativi è rappresentata mediante una forma geometrica elementare</p> 
+				<ul class="fragment" style="margin-top:0.8em;">
+					<li class="list-header">Unità di tempo</li>
+					<li>Durata (in giorni, mesi o anni)</li>
+					<li>Numero</li>
+					<li>Contenuti visualizzati</li>
+				</ul>
 			</section>
 			
 			<section>
@@ -407,7 +420,7 @@
 					<li>Criterio di classificazione</li>
 					<li>Interfaccia grafica</li>
 					<li>Filtri di ricerca</li>
-					<li>Risultati di ricerca (2.5)</li>
+					<li>Risultati di ricerca</li>
 					<li class="current">Consuntivo</li>
 				</ol>
 				</nav>
@@ -502,7 +515,7 @@
 			var tot = document.querySelectorAll("div.slides > section").length;
 			
 			Reveal.addEventListener( 'slidechanged', function( event ) {
-				document.getElementById("slide_current").innerHTML = event.indexh + " di " + tot;
+				document.getElementById("slide_current").innerHTML = (event.indexh+1) + " di " + tot;
 			    // event.previousSlide, event.currentSlide, event.indexh, event.indexv
 			} );
 
