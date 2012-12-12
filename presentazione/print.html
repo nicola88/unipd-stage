@@ -10,7 +10,11 @@
 		<meta name="author" content="Nicola Moretto">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />  
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+	    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+	    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/beige.css" id="theme"> <!-- beige|default -->
@@ -29,29 +33,23 @@
 		strong {
 			color: #FF5E99;
 		}
-		.reveal code {
-			font-family: "Ubuntu";
-		}
 		
 		/* FOOTER */
 		footer {
-			font-size: 1.1em;
+			font-size: 1.2em;
 			color: #8B743D;
 			position: fixed;
 			width: 100%;
-			bottom: 15px;
+			bottom: 40px;
 			text-align: center;
-			z-index: 0;
+			z-index: 10;
 		}
 		#title {
-			margin-left: 12%;
+			margin-left: 25%;
 			font-style: italic;
 		}
 		#author {
 			font-weight: bold;
-		}
-		#slide_current {
-			margin-left: 12%;
 		}
 		
 		/* INDEX */
@@ -63,8 +61,7 @@
 		}
 		nav li.current {
 			opacity:1.0;
-			font-weight: 100;
-			font-size: 1.1em;	
+			font-weight: bold;	
 		}
 		
 		object {
@@ -118,14 +115,14 @@
 			text-align: center;
 		}
 		.reveal table th {
-			background-color: #8B743D;
-			color: white;
-			font-weight: bold;
+			border-radius: 5px;
 			text-transform: uppercase;
 			padding: 0.2em 0.4em;
 			text-shadow: none;		
 		}
 		.reveal table th.row {
+			background-color: #8B743D;
+			color: white;
 			margin-right: 0.4em;
 			text-transform: uppercase;
 		}		
@@ -140,13 +137,6 @@
 		}
 		.reveal code {
 			font-size: 0.6em;
-		}
-		.reveal ul code {
-			font-size: 0.8em;
-		}
-		.reveal ul li.code {
-			background-color: #8B743D;
-			color: white;
 		}
 		
 		/* TYPOGRAPHIC */
@@ -176,36 +166,33 @@
 			<div class="slides">
 			
 			<section>
-				<h1>Tesi di Laurea in Informatica</h1>
+				<h1>Titolo</h1>
 			</section>
 			
 			<section>
 				<h2>Indice</h2>
 				<nav>
-					<ol>
-						<li class="current">Criterio di classificazione (2.3)</li>
-						<li>Interfaccia grafica</li>
-						<li>Filtri di ricerca</li>
-						<li>Risultati di ricerca</li>
-						<li>Consuntivo</li>
-					</ol>
+				<ol>
+					<li class="current">Criterio di classificazione</li>
+					<li>Interfaccia grafica</li>
+					<li>Filtri di ricerca</li>
+					<li>Risultati di ricerca</li>
+					<li>Navigazione</li>
+				</ol>
 				</nav>
 			</section>
 
 			<section>
 				<ul>
-					<li class="list-header">Requisiti</li>
-					<li class="fragment">Indipendenza dai criteri esistenti</li>
-					<li class="fragment">Indipendenza dalle classi di contenuti</li>
-					<li class="fragment">Indipendenza dalle componenti del sistema</li>
-					<li class="fragment">Modularità</li>
-					<li class="fragment">Tematicità</li>
+					<li class="list-header">Pilastri</li>
+					<li class="fragment">Modello enciclopedico</li>
+					<li class="fragment">Ambiguità sintattica</li>
+					<li class="fragment">Ambiguità semantica</li>
 				</ul>
 			</section>
-
-<!-- 			
+			
 			<section>
-				<h3>Modello enciclopedico (2.3.1)</h3>
+				<h3>Modello enciclopedico</h3>
 				<section>
 					<blockquote>
 					Un'enciclopedia è un'opera letteraria che raccoglie e ordina la sintesi della <strong>conoscenza umana</strong> in tutti i campi o in un determinato settore.</br>
@@ -214,64 +201,55 @@
 				</section>
 				<section>
 					<h4>Dominio</h4>
-					<object data="images/svg/dominio.svg" type="image/svg+xml"></object>
+					<img alt="" src="images/dominio.png">
 					<aside class="notes">
 						Insieme di elementi concreti (luoghi, persone, eventi, &hellip;) o astratti (concetti, temi, &hellip;) a cui afferiscono i contenuti.
 					</aside>
 				</section>
 				<section>
 					<h4>Dizionario</h4>
-					<object data="images/svg/dizionario.svg" type="image/svg+xml"></object>
+					<img src="images/dizionario.png" />
 				</section>
-			</section>
- -->			
-			<section>
-				<h3>Ambiguità sintattica (2.3.2)</h3>
-				<p>Ciascuna entità ammette 1&hellip;n sinonimi</p>
-				<!--<img alt="Ambiguità sintattica" src="images/ambiguita-sintattica.png">-->
-			 	<object data="images/svg/ambiguita-sintattica.svg" type="image/svg+xml"></object> 
-				<ul class="inline">
-					<li class="list-header fragment">Requisiti</li>
-					<li class="fragment">Copertura</li>
-					<li class="fragment">Identità</li>
-				</ul>
-				<!-- 
-				<section>
-				 	<object data="images/svg/etichette-primarie-secondarie.svg" type="image/svg+xml"></object>
-				</section>
-				 -->
 			</section>
 			
 			<section>
-				<h3>Ambiguità semantica (2.3.3)</h3>
-				<p>Ogni etichetta ha 1&hellip;n accezioni</p>
-				<object data="images/svg/accezioni-etichette.svg" type="image/svg+xml"></object>
-				<p>Accezioni chiave e sinonimica</p>
-<!-- 			<section>
+				<h3>Ambiguità sintattica</h3>
+				<section>
+					<p>Ciascuna entità ammette 0&hellip;n sinonimi</p>
+				 	<img src="images/ambiguita-sintattica.png" height="50%" width="50%" />
+					<ul class="inline">
+						<li class="list-header fragment">Requisiti</li>
+						<li class="fragment">Copertura</li>
+						<li class="fragment">Identità</li>
+					</ul>
+				</section>
+				<section>
+					<h4>Etichette primarie e secondarie</h4>
+				 	<img src="images/etichette-primarie-secondarie.png" />
+				</section>
+			</section>
+			
+			<section>
+				<h3>Ambiguità semantica</h3>
+				<section>
+					<p>Ogni etichetta ha 1&hellip;n accezioni</p>
+					<img src="images/accezioni-etichette.png" />
+				</section>
+				<section>
 					<p>Ogni accezione rappresenta l'etichetta di un'entità</p>
-					<object data="images/svg/accezioni-entita.svg" type="image/svg+xml"></object>
+					<img src="images/accezioni-entita.png" />
 				</section>
 				<section>
 					<h4>Accezioni chiave e sinonimiche</h4>
-					<object data="images/svg/accezioni-chiave-sinonimiche.svg" type="image/svg+xml"></object>
+					<img src="images/accezioni-chiave-sinonimiche.png" />
 				</section>
- -->
 			</section>
 			
 			<section>
-				<ul>
-					<li class="list-header">Vincoli referenziali</li>
-					<li class="fragment">Ad ogni contenuto sono associate <strong>0&hellip;n</strong> etichette</li>
-					<li class="fragment">Ogni entità riferisce <strong>0&hellip;n</strong> altre entità</li>
-					<li class="fragment">Ogni entità è identificata da un'etichetta primaria</li>
-					<li class="fragment">Ogni entità è riferibile mediante <strong>1&hellip;n</strong> etichette</li>
-					<li class="fragment">Ogni etichetta ha <strong>1&hellip;n</strong> accezioni</li>
-				</ul>
-			</section>
-			
-			<section id="modello-relazionale">
-				<h3>Modello relazionale (2.3.4)</h3>
-				<object data="images/svg/modello-relazionale.svg" type="image/svg+xml"></object>
+				<h3>Modello relazionale</h3>
+				<section>
+					<img src="images/modello-relazionale.png" height="60%" width="60%" />
+				</section>
 			</section>
 
 			<section>
@@ -279,30 +257,19 @@
 				<nav>
 				<ol>
 					<li>Criterio di classificazione</li>
-					<li class="current">Interfaccia grafica (2.4)</li>
+					<li class="current">Interfaccia grafica</li>
 					<li>Filtri di ricerca</li>
 					<li>Risultati di ricerca</li>
-					<li>Consuntivo</li>
+					<li>Navigazione</li>
 				</ol>
 				</nav>
-			</section>
-			
-			<section>
-				<ul>
-					<li class="list-header">Requisiti</li>
-					<li class="fragment">Ricerca dei contenuti</li>
-					<li class="fragment">Filtro dei risultati</li>
-					<li class="fragment">Visualizzazione ordinata dei risultati <!-- tipo di dispositivo --></li>
-					<li class="fragment">Facilità di consultazione delle informazioni <!-- notazione grafica (forme geometriche elementari) e testuale,  esperienza degli utenti --></li>					
-					<li class="fragment">Fruibilità con dispositivi mobili</li>
-				</ul>
 			</section>
 			
 			<section>
 				<h3>Architettura</h3>
 				<table>
 					<tr class="fragment">
-						<th style="background-color:rgba(255,255,255,0);"></th>
+						<th></th>
 						<th class="row">Model</th>
 						<th class="row">View</th>
 						<th class="row">Controller</th>
@@ -333,7 +300,7 @@
 					</tr>
 				</table>
 			</section>
-<!-- 			
+			
 			<section>
 				<ul>
 					<li class="list-header">Aree d'interesse</li>
@@ -342,24 +309,36 @@
 					<li class="fragment">Navigazione</li>
 				</ul>
 			</section>
- -->			
+			
 			<section>
 				<h2>Indice</h2>
 				<nav>
 				<ol>
 					<li>Criterio di classificazione</li>
 					<li>Interfaccia grafica</li>
-					<li class="current">Filtri di ricerca (2.4)</li>
+					<li class="current">Filtri di ricerca</li>
 					<li>Risultati di ricerca</li>
-					<li>Consuntivo</li>
+					<li>Navigazione</li>
 				</ol>
 				</nav>
+			</section>			
+			
+			<section id="filtri-ricerca">
+				<ul>
+					<li class="list-header">Filtro di ricerca</li>
+					<li class="fragment">Parametro</li>
+					<li class="fragment">Criterio</li>
+					<li class="fragment">Classe</li>
+					<li class="fragment">Widget</li>
+					<li class="fragment">Controller</li>
+				</ul>
+				<!-- Scomposizione delle componenti di un filtro (v. Abstract Factory) -->
 			</section>
 			
 			<section id="filtri-ricerca-classi">
-				<h3>Classi di filtri (2.4.3)</h3>
+				<h3>Classi di filtri</h3>
 				<section>
-				<object data="images/svg/model_filter.svg" type="image/svg+xml"></object>
+				<img src="images/model_filter.png" />
 				<ul class="inline">
 					<li class="fragment list-header">Variabili</li>
 					<li class="fragment" style="width:4.5em;">Insieme <math><mrow><mi>U</mi></mrow></math></li>
@@ -374,7 +353,7 @@
 			<section id="filtri-ricerca-criteri">
 				<h3>Criteri</h3>
 				<p>Rappresenta l'insieme <math><mrow><mi>U</mi></mrow></math> su cui opera una <a href="#/filtri-ricerca-classi">classe di filtri</a></p>
-				<object data="images/svg/model_criteria.svg" type="image/svg+xml"></object>
+				<img src="images/model_criteria.png" />
 				<ul class="inline">
 					<li class="list-header fragment">Parametri</li>
 					<li class="fragment">Tipo di dati</li>
@@ -383,34 +362,28 @@
 			</section>
 
 			<section id="filtri-ricerca-parametri">
-				<h3>Parametri (2.4.2)</h3>
-				<object data="images/svg/model.svg" type="image/svg+xml"></object>
-<!-- 
+				<h3>Parametri</h3>
 				<section>
 				<ul class="inline">
 					<li class="allowed">Ammessi (<math><mrow><msub><mi>U</mi><mi>A</mi></msub></mrow></math>)</li>
 					<li class="blocked">Bloccati (<math><mrow><msub><mi>U</mi><mi>B</mi></msub></mrow></math>)</li>
 				</ul>
-				<object data="images/svg/filtri-parametri.svg" type="image/svg+xml"></object>
+				<img src="images/filtri-parametri.png" height="50%" width="50%" />
 				</section>
- -->
+				<section>
+					<h4>Sorgenti dati</h4>
+					<img src="images/model.png" />
+				</section>
 			</section>
 			
 			<section>
-				<h3><em>Abstract Factory (2.4.4)</em></h3>
-<!-- 
+				<h3><em>Abstract Factory</em></h3>
 				<section>
-					<object data="images/svg/filter-factory.svg" type="image/svg+xml"></object>
+					<img src="images/filter-factory.png" />
 				</section>
- -->
-				<ul>
-					<li class="list-header">Prodotti</li>
-					<li>Parametri (<code>model.Metadata</code>)</li>
-					<li>Criteri (<code>model.criteria.Criterion</code>)</li>
-					<li>Classi (<code>model.filter.Filter</code>)</li>
-					<li>Widget (<code>view.filter.FilterView</code>)</li>
-					<li>Controller (<code>controller.filter.FilterController</code>)</li>
-				</ul>
+				<section>
+					<p>Tabella 5: Riepilogo delle classi gestite dal <em>design pattern Abstract Factory</em>  (v. tesi)</p>
+				</section>
 			</section>
 
 			<section>
@@ -420,50 +393,52 @@
 					<li>Criterio di classificazione</li>
 					<li>Interfaccia grafica</li>
 					<li>Filtri di ricerca</li>
-					<li class="current">Risultati di ricerca (2.5)</li>
-					<li>Consuntivo</li>
+					<li class="current">Risultati di ricerca</li>
+					<li>Navigazione</li>
 				</ol>
 				</nav>
 			</section>	
 
-			<section id="risultati-ricerca">
+			<section>
 				<h3>Risultati di ricerca</h3>
-				<object data="images/svg/risultati-ricerca.svg" type="image/svg+xml"></object>
+				<img src="images/risultati-ricerca.png" />
 				<ul class="inline">
 					<li class="fragment list-header">Casi d'uso</li>
-					<li class="fragment"><math><mrow><mo stretchy="false">Δ</mo><mtext/><mrow><mrow><mo stretchy="false">∣</mo><mrow><msub><mi>S</mi><mi>v</mi></msub></mrow><mo stretchy="false">∣</mo></mrow><mo stretchy="false">&gt;</mo><mn>0</mn></mrow></mrow></math></li>
-					<li class="fragment"><math><mrow><mo stretchy="false">Δ</mo><mtext/><mrow><mrow><mo stretchy="false">∣</mo><mrow><msub><mi>S</mi><mi>v</mi></msub></mrow><mo stretchy="false">∣</mo></mrow><mo stretchy="false">&lt;</mo><mn>0</mn></mrow></mrow></math></li>
+					<li class="fragment"><math><mrow> <mo stretchy="false">Δ</mo><mtext/><mrow><mrow><mo stretchy="false">∣</mo><mrow><msub><mi>S</mi><mi>v</mi></msub></mrow><mo stretchy="false">∣</mo></mrow><mo stretchy="false">&gt;</mo><mn>0</mn></mrow></mrow></math></li>
+					<li class="fragment"><math><mrow> <mo stretchy="false">Δ</mo><mtext/><mrow><mrow><mo stretchy="false">∣</mo><mrow><msub><mi>S</mi><mi>v</mi></msub></mrow><mo stretchy="false">∣</mo></mrow><mo stretchy="false">&lt;</mo><mn>0</mn></mrow></mrow></math></li>
 				</ul>
 			</section>
 			
 			<section>
-				<h3>Contatore (2.5.2)</h3>
-				<ul style="display:inline-block;" class="fragment">
+				<h3>Contatore</h3>
+				<ul class="fragment" style="display:inline-block;">
 					<li class="list-header">Pro</li>
-					<li><math><mrow><mo stretchy="false">Δ</mo><mtext/><mrow><mrow><mo stretchy="false">∣</mo><mrow><msub><mi>S</mi><mi>v</mi></msub></mrow><mo stretchy="false">∣</mo></mrow><mo stretchy="false">&lt;</mo><mn>0</mn></mrow></mrow></math></li>
+					<li>&hellip;</li>
 				</ul>
-				<ul style="display:inline-block;" class="fragment">
+				<ul class="fragment" style="display:inline-block;">
 					<li class="list-header" style="background-color:#8B743D;color:white;">Contro</li>
-					<li><math><mrow><mo stretchy="false">Δ</mo><mtext/><mrow><mrow><mo stretchy="false">∣</mo><mrow><msub><mi>S</mi><mi>v</mi></msub></mrow><mo stretchy="false">∣</mo></mrow><mo stretchy="false">&gt;</mo><mn>0</mn></mrow></mrow></math></li>
+					<li>&hellip;</li>
 				</ul>
+			</section>
 
-				<h3 style="margin-top:1em;">Array di booleani (2.5.2)</h3>
-				<ul style="display:inline-block;" class="fragment">
+			<section>
+				<h3>Array di booleani</h3>
+				<ul class="fragment" style="display:inline-block;">
 					<li class="list-header">Pro</li>
-					<li><math><mrow><mo stretchy="false">Δ</mo><mtext/><mrow><mrow><mo stretchy="false">∣</mo><mrow><msub><mi>S</mi><mi>v</mi></msub></mrow><mo stretchy="false">∣</mo></mrow><mo stretchy="false">&gt;</mo><mn>0</mn></mrow></mrow></math></li>
+					<li>&hellip;</li>
 				</ul>
-				<ul style="display:inline-block;" class="fragment">
+				<ul class="fragment" style="display:inline-block;">
 					<li class="list-header" style="background-color:#8B743D;color:white;">Contro</li>
-					<li><math><mrow><mo stretchy="false">Δ</mo><mtext/><mrow><mrow><mo stretchy="false">∣</mo><mrow><msub><mi>S</mi><mi>v</mi></msub></mrow><mo stretchy="false">∣</mo></mrow><mo stretchy="false">&lt;</mo><mn>0</mn></mrow></mrow></math></li>
+					<li>&hellip;</li>
 				</ul>
 			</section>
 			
 			<section>
-				<h3><em>Command</em> (2.5.3)</h3>
-				<p>Operazioni di aggiornamento dei <a href="#/risultati-ricerca" title="Risultati di ricerca">risultati di ricerca</a></p>
-				<object data="images/svg/command.svg" type="image/svg+xml"></object>
+				<h3><em>Command</em></h3>
+				<p>Implementa le operazioni di aggiornamento dei risultati di ricerca</p>
+				<img src="images/command.png" />
 			</section>
-			
+
 			<section>
 				<h2>Indice</h2>
 				<nav>
@@ -471,71 +446,16 @@
 					<li>Criterio di classificazione</li>
 					<li>Interfaccia grafica</li>
 					<li>Filtri di ricerca</li>
-					<li>Risultati di ricerca (2.5)</li>
-					<li class="current">Consuntivo</li>
+					<li>Risultati di ricerca</li>
+					<li class="current">Navigazione</li>
 				</ol>
 				</nav>
-			</section>
-			
-			<section>
-				<h3>Carico di lavoro</h3>
-				<table>
-					<tr>
-						<th>Attività</th>
-						<th>Impegno</th>
-					</tr>
-					<tr>
-						<td>Analisi delle specifiche del sistema di classificazione</td>
-						<td>40 ore</td>
-					</tr>
-					<tr>
-						<td>Analisi comparativa dei principali sistemi di classificazione</td>
-						<td>40 ore</td>
-					</tr>
-					<tr>
-						<td>Progettazione del sistema di classificazione</td>
-						<td>40 ore</td>
-					</tr>
-					<tr>
-						<td>Integrazione del sistema di classificazione nel modello relazionale</td>
-						<td>40 ore</td>
-					</tr>
-					<tr>
-						<td>Analisi dei requisiti dell'interfaccia grafica</td>
-						<td>40 ore</td>
-					</tr>
-					<tr>
-						<td>Progettazione dell'interfaccia grafica</td>
-						<td>120 ore</td>
-					</tr>
-				</table>
-			</section>
-			
-			<section>
-				<ul>
-					<li class="list-header">Prodotti</li>
-					<li class="document">[doc] Sistema di classificazione</li>
-					<li>[diag] Modello relazionale</li>
-					<li class="document">[doc] Modello relazionale</li>
-					<li class="document">[doc] Interfaccia grafica - Analisi dei requisiti</li>
-					<li class="document">[doc] Interfaccia grafica - Specifica tecnica</li>
-				</ul>
-				<ul class="inline" style="margin-top:1em;">
-					<li style="background-color:rgba(0,0,0,0);font-variant:small-caps;">Legenda</li>
-					<li><strong>[doc]</strong> Documento</li>
-					<li><strong>[diag]</strong> Diagramma</li>
-				</ul>
-			</section>
-			
-			<section>
-				<h3>Statistiche</h3>
-				<object data="images/svg/statistiche.svg" type="image/svg+xml"></object>
 			</section>
 			
 			</div>
 		</div>
 		<footer>
-			<p><span id="author">Nicola Moretto</span><span id="title">Tesi di Laurea in Informatica</span><span id="slide_current"></span></p>
+			<p><span id="author">Nicola Moretto</span><span id="title">Titolo</span></p>
 		</footer>
 
 		<script src="lib/js/head.min.js"></script>
@@ -562,13 +482,6 @@
 					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
-			
-			var tot = document.querySelectorAll("div.slides > section").length;
-			
-			Reveal.addEventListener( 'slidechanged', function( event ) {
-				document.getElementById("slide_current").innerHTML = event.indexh + " di " + tot;
-			    // event.previousSlide, event.currentSlide, event.indexh, event.indexv
-			} );
 
 		</script>
 
